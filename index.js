@@ -22,9 +22,9 @@ const AppMiddleWare = () => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <PaperProvider theme={isDarkMode ? theme.dark : theme.light}>
-        <SafeAreaProvider>
-          <App />
-        </SafeAreaProvider>
+      <SafeAreaProvider>
+        <App />
+      </SafeAreaProvider>
     </PaperProvider>
   );
 };
