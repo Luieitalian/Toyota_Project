@@ -5,9 +5,12 @@ import {MD3DarkTheme, MD3LightTheme, PaperProvider} from 'react-native-paper';
 import LightTheme from './themes/LightTheme.json';
 import DarkTheme from './themes/DarkTheme.json';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {useColorScheme} from 'react-native';
+import {useState, useCallback, useMemo} from 'react';
+import {ThemeContext} from './contexts/ThemeContext';
+import SystemNavigationBar from 'react-native-system-navigation-bar';
+import './i18n';
 
-const theme = {
+const themes = {
   dark: {
     ...MD3DarkTheme,
     colors: DarkTheme.colors,
@@ -19,13 +22,31 @@ const theme = {
 };
 
 const AppMiddleWare = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+  const [isDark, setIsDark] = useState(true);
+  const theme = isDark ? themes.dark : themes.light;
+
+  SystemNavigationBar.setNavigationColor(theme.colors.surfaceVariant);
+
+  const toggleTheme = useCallback(() => {
+    return setIsDark(!isDark);
+  }, [isDark]);
+
+  const context = useMemo(
+    () => ({
+      toggleTheme,
+      isDark,
+    }),
+    [toggleTheme, isDark]
+  );
+
   return (
-    <PaperProvider theme={isDarkMode ? theme.dark : theme.light}>
-      <SafeAreaProvider>
-        <App />
-      </SafeAreaProvider>
-    </PaperProvider>
+    <ThemeContext.Provider value={context}>
+      <PaperProvider theme={theme}>
+        <SafeAreaProvider>
+          <App />
+        </SafeAreaProvider>
+      </PaperProvider>
+    </ThemeContext.Provider>
   );
 };
 
