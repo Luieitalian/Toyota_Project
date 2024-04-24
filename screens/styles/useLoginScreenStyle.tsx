@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import {StyleSheet} from 'react-native';
 import {useTheme} from 'react-native-paper';
 
@@ -12,7 +12,7 @@ const useLoginScreenStyle = () => {
           flexDirection: 'column',
           alignItems: 'center',
           gap: 5,
-          backgroundColor: theme.colors.surfaceVariant,
+          backgroundColor: theme.colors.background,
         },
         wrapper: {
           flex: 1,
@@ -20,7 +20,7 @@ const useLoginScreenStyle = () => {
           marginBottom: 12,
           justifyContent: 'space-between',
           alignItems: 'center',
-          backgroundColor: theme.colors.onSecondaryContainer,
+          backgroundColor: theme.colors.onBackground,
           borderRadius: 12,
           padding: 40,
           paddingBottom: 10,
@@ -37,37 +37,12 @@ const useLoginScreenStyle = () => {
           textAlign: 'center',
           color: theme.colors.background,
         },
-        header: {
-          flex: 0.08,
-          alignItems: 'center',
-          flexDirection: 'row',
-          justifyContent: 'flex-end',
-          width: '100%',
-          gap: 20,
-          paddingHorizontal: 20,
-          backgroundColor: theme.colors.surfaceVariant,
-        },
-        changeLanguage: {
-          backgroundColor: theme.colors.onBackground,
-          borderRadius: 100,
-          padding: 8,
-          alignItems: 'center',
-          justifyContent: 'center',
-        },
-        menu: {
-          backgroundColor: theme.colors.background,
-        },
-        menuItem: {
-          color: theme.colors.onBackground,
-        },
         divider: {
           width: '100%',
           borderWidth: 0.2,
-          borderColor: theme.colors.onSurface,
+          borderColor: theme.colors.onBackground,
         },
-        icon: {
-          color: theme.colors.background,
-        },
+
         form: {
           gap: 10,
         },
@@ -77,14 +52,6 @@ const useLoginScreenStyle = () => {
           borderRadius: 10,
           color: theme.colors.onSurfaceVariant,
           paddingHorizontal: 15,
-        },
-        footer: {
-          justifyContent: 'center',
-          alignItems: 'center',
-        },
-        version: {
-          color: theme.colors.surfaceVariant,
-          fontFamily: 'Roboto-Medium',
         },
       }),
     [theme]
