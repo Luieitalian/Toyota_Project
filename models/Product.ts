@@ -3,6 +3,6 @@ export type Product = {
   img: string;
   price: string;
   id: number;
-  'amount/attribute': string;
+  amount_attribute: string;
   category: string;
 };
