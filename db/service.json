@@ -1,3 +1,5 @@
 {
-  "version": "1.29.2"
+  "service": {
+    "version": "1.29.2"
+  }
 }
