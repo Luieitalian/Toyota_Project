@@ -25,7 +25,7 @@ const AppMiddleWare = () => {
   const [isDark, setIsDark] = useState(true);
   const theme = isDark ? themes.dark : themes.light;
 
-  SystemNavigationBar.setNavigationColor(theme.colors.surfaceVariant);
+  SystemNavigationBar.setNavigationColor(theme.colors.surfaceVariant); // Set Navigation bar color to fit the app theme
 
   const toggleTheme = useCallback(() => {
     return setIsDark(!isDark);
