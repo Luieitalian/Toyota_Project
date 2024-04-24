@@ -4,5 +4,7 @@
   "welcome_to_app": "HızlıPos'a Hoşgeldiniz",
   "turkish": "Türkçe",
   "english": "İngilizce",
-  "username": "Kullanıcı Adı"
+  "username": "Kullanıcı Adı",
+  "password": "Şifre",
+  "version": "Sürüm"
 }
