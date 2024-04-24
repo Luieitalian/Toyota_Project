@@ -4,7 +4,7 @@ import axios from 'axios';
 import dev_local_products from '../db/all_products.json';
 
 const useProducts = (isOnline: boolean) => {
-  const [products, setProducts] = useState<string>();
+  const [products, setProducts] = useState<string>('[]');
 
   useEffect(() => {
     if (isOnline) {
@@ -13,6 +13,7 @@ const useProducts = (isOnline: boolean) => {
           .get('http://10.0.2.2:3001/products') // 10.0.2.2 Special alias to the host loopback interface
           .then((res) => {
             const data = JSON.stringify(res.data);
+            console.log('Getting products from server!');
             setProducts(data);
           })
           .catch((error) => {
@@ -33,7 +34,7 @@ const useProducts = (isOnline: boolean) => {
             );
           }
           data = await AsyncStorage.getItem('products');
-          //console.log(data);
+          console.log('Getting products from local storage!');
           setProducts(data as string);
         } catch (error) {
           console.log(error);
@@ -41,7 +42,8 @@ const useProducts = (isOnline: boolean) => {
       };
       getProductsFromLocalDB();
     }
-  }, [isOnline]);
+    return () => console.log('returning from effect');
+  }, []);
 
   return products;
 };
