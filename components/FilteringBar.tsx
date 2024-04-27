@@ -85,6 +85,7 @@ const FilteringBar = ({
       >
         {Categories.map((category, index) => (
           <Menu.Item
+            disabled={disabled}
             leadingIcon={CategoryIcons[category]}
             key={index}
             titleStyle={styles.menuItem}
