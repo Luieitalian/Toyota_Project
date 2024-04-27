@@ -7,7 +7,7 @@ const useHeaderStyle = (theme: MD3Theme) => {
     () =>
       StyleSheet.create({
         header: {
-          flex: 0.08,
+          flex: 1,
           alignItems: 'center',
           flexDirection: 'row',
           justifyContent: 'flex-end',
