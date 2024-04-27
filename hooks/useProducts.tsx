@@ -6,8 +6,8 @@ import {ProductModel} from '../models/ProductModel';
 
 const useProducts = (
   isOnline: boolean,
-  optionalSearchText?: string,
-  optionalCategory?: string | undefined
+  optionalSearchText: string | undefined,
+  optionalCategory: string | undefined
 ) => {
   const [products, setProducts] = useState<ProductModel[]>([]);
   const [loadingProducts, setLoadingProducts] = useState<boolean>(true);
