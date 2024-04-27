@@ -1,4 +1,13 @@
 {
+  "service": {
+    "version": "1.29.2"
+  },
+  "users": [
+    {
+      "name": "berke",
+      "password": "1234"
+    }
+  ],
   "products": [
     {
       "name": "Nogger Paketi",
