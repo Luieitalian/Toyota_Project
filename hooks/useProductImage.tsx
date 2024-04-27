@@ -43,7 +43,7 @@ const useProductImage = (prod: ProductModel) => {
       });
     };
     tryURLVariations();
-  }, []);
+  }, [prod]);
 
   return {imageURL, loadingImageURL};
 };
