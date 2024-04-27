@@ -6,5 +6,16 @@
   "english": "English",
   "username": "Username",
   "password": "Password",
-  "version": "Version"
+  "version": "Version",
+  "search_for_product": "Search for a Product",
+  "et_balik": "Meat & Fish",
+  "dondurma": "Gelato",
+  "ev_yasam": "Home & Living",
+  "firindan": "Baked Goods",
+  "fit_form": "Fit & Form",
+  "kahvalti": "Breakfast",
+  "meyve_sebze": "Fruits & Veg",
+  "su_icecek": "Beverages",
+  "sut_urunleri": "Milk & Dairy",
+  "teknoloji": "Electronics"
 }

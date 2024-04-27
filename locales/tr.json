@@ -6,5 +6,16 @@
   "english": "İngilizce",
   "username": "Kullanıcı Adı",
   "password": "Şifre",
-  "version": "Sürüm"
+  "version": "Sürüm",
+  "search_for_product": "Bir Ürün Arayın",
+  "et_balik": "Et, Tavuk & Balık",
+  "dondurma": "Dondurma",
+  "ev_yasam": "Ev & Yaşam",
+  "firindan": "Fırından",
+  "fit_form": "Fit & Form",
+  "kahvalti": "Kahvaltılık",
+  "meyve_sebze": "Meyve & Sebze",
+  "su_icecek": "Su & İçecek",
+  "sut_urunleri": "Süt Ürünleri",
+  "teknoloji": "Elektronik"
 }
