@@ -7,12 +7,12 @@ const useVersionStyle = (theme: MD3Theme) => {
     () =>
       StyleSheet.create({
         version: {
-          color: theme.colors.surfaceVariant,
-          fontFamily: 'Roboto-Medium',
+          color: theme.colors.onSecondaryContainer,
+          fontFamily: 'Roboto-Light',
         },
         loading: {
-          color: theme.colors.surfaceVariant,
-          fontFamily: 'Roboto-Medium',
+          color: theme.colors.onSecondaryContainer,
+          fontFamily: 'Roboto-Light',
         },
         versionView: {
           justifyContent: 'center',
@@ -21,7 +21,7 @@ const useVersionStyle = (theme: MD3Theme) => {
       }),
     [theme]
   );
-  return {styles, theme};
+  return {styles};
 };
 
 export default useVersionStyle;
