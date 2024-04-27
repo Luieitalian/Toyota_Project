@@ -1,9 +1,10 @@
-import React, {useContext, useState} from 'react';
+import React, {memo, useContext, useState} from 'react';
 import {Pressable, Text, View} from 'react-native';
 import useHeaderStyle from './styles/useHeaderStyle';
 import {Icon, MD3Theme, Menu} from 'react-native-paper';
 import {ThemeContext} from '../contexts/ThemeContext';
 import {changeLanguage, TFunction} from 'i18next';
+import {LanguageContext} from '../contexts/LanguageContext';
 
 type HeaderProps = {
   t: TFunction<'translation', undefined>;
@@ -14,6 +15,7 @@ const Header = ({t, theme}: HeaderProps) => {
   const [visibleLangMenu, setVisibleLangMenu] = useState(false);
   const {toggleTheme} = useContext(ThemeContext);
   const {styles} = useHeaderStyle(theme);
+  const languageContext = useContext(LanguageContext);
 
   const closeLangMenu = () => setVisibleLangMenu(false);
   const openLangMenu = () => setVisibleLangMenu(true);
@@ -22,7 +24,7 @@ const Header = ({t, theme}: HeaderProps) => {
     <View style={styles.header}>
       <Pressable
         android_ripple={{
-          color: theme.colors.onSecondary,
+          color: theme.colors.background,
           radius: 22,
           foreground: true,
         }}
@@ -41,7 +43,7 @@ const Header = ({t, theme}: HeaderProps) => {
         anchor={
           <Pressable
             android_ripple={{
-              color: theme.colors.onSecondary,
+              color: theme.colors.background,
               radius: 22,
               foreground: true,
             }}
@@ -57,16 +59,16 @@ const Header = ({t, theme}: HeaderProps) => {
         <Menu.Item
           titleStyle={styles.menuItem}
           title={t('turkish')}
-          onPress={() => changeLanguage('tr')}
+          onPress={() => languageContext.ChangeLanguage('tr')}
         />
         <Menu.Item
           titleStyle={styles.menuItem}
           title={t('english')}
-          onPress={() => changeLanguage('en')}
+          onPress={() => languageContext.ChangeLanguage('en')}
         />
       </Menu>
     </View>
   );
 };
 
-export default Header;
+export default memo(Header);
