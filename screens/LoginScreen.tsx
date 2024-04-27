@@ -28,12 +28,9 @@ const LoginScreen = ({route, navigation}: any) => {
         backgroundColor={theme.colors.background}
       />
       <Header theme={theme} t={t} />
-      <Divider style={styles.divider} theme={theme} bold={true} />
       <View style={styles.wrapper}>
         <View style={styles.contentWrapper}>
-          <View>
-            <Text style={styles.welcome}>{t('welcome_to_app')}</Text>
-          </View>
+          <Text style={styles.welcome}>{t('welcome_to_app')}</Text>
           <View style={styles.form}>
             <TextInput
               placeholderTextColor={theme.colors.onSurfaceVariant}
