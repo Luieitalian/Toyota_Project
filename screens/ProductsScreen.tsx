@@ -42,6 +42,7 @@ const ProductsScreen = ({route, navigation}: any) => {
   };
 
   const onChangeCategory = (category: string) => {
+    setSubmittedText(text);
     setCategory(category);
   };
 
