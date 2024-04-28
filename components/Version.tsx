@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {Text, View} from 'react-native';
 import useVersionStyle from './styles/useVersionStyle';
 import useServiceInfo from '../hooks/useServiceInfo';
@@ -27,4 +27,4 @@ const Version = ({t, theme}: VersionProps) => {
   );
 };
 
-export default Version;
+export default memo(Version);

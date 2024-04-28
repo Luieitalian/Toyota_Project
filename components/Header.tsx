@@ -25,13 +25,17 @@ const Header = ({t, theme}: HeaderProps) => {
       <Pressable
         android_ripple={{
           color: theme.colors.background,
-          radius: 22,
+          radius: styles.iconSize.width,
           foreground: true,
         }}
         style={styles.changeLanguage}
         onPress={toggleTheme}
       >
-        <Icon source="theme-light-dark" color={styles.icon.color} size={25} />
+        <Icon
+          source="theme-light-dark"
+          color={styles.icon.color}
+          size={styles.iconSize.width}
+        />
       </Pressable>
 
       <Menu
@@ -44,7 +48,7 @@ const Header = ({t, theme}: HeaderProps) => {
           <Pressable
             android_ripple={{
               color: theme.colors.background,
-              radius: 22,
+              radius: styles.iconSize.width,
               foreground: true,
             }}
             style={styles.changeLanguage}
@@ -52,7 +56,11 @@ const Header = ({t, theme}: HeaderProps) => {
               openLangMenu();
             }}
           >
-            <Icon source="translate" color={styles.icon.color} size={25} />
+            <Icon
+              source="translate"
+              color={styles.icon.color}
+              size={styles.iconSize.width}
+            />
           </Pressable>
         }
       >

@@ -1,43 +1,47 @@
 import {MD3Theme} from 'react-native-paper';
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, useWindowDimensions} from 'react-native';
 
 const useProductStyle = (theme: MD3Theme) => {
-  const styles = React.useMemo(
-    () =>
-      StyleSheet.create({
-        productContainer: {
-          padding: 8,
-          minHeight: 50,
-          width: '30%',
-          backgroundColor: 'white',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'space-evenly',
-          elevation: 5,
-          borderRadius: 5,
-        },
-        name: {
-          color: 'black',
-          textAlign: 'center',
-        },
-        price: {
-          fontFamily: 'Roboto-Bold',
-          color: theme.colors.primary,
-        },
-        amount_attribute: {
-          color: 'black',
-          opacity: 0.4,
-        },
-        image: {
-          flex: 1,
-          width: 100,
-          height: 100,
-          resizeMode: 'contain',
-        },
-      }),
-    [theme]
-  );
+  const {width, height} = useWindowDimensions();
+  const styles = React.useMemo(() => {
+    const isWide = width >= 900;
+
+    return StyleSheet.create({
+      productContainer: {
+        padding: 8,
+        minHeight: 50,
+        width: '30%',
+        backgroundColor: 'white',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+        elevation: 5,
+        borderRadius: 5,
+      },
+      name: {
+        fontSize: isWide ? 18 : 14,
+        color: 'black',
+        textAlign: 'center',
+      },
+      price: {
+        fontSize: isWide ? 20 : 14,
+        fontFamily: 'Roboto-Bold',
+        color: theme.colors.primary,
+      },
+      amount_attribute: {
+        fontSize: isWide ? 18 : 14,
+        color: 'black',
+        opacity: 0.4,
+      },
+      image: {
+        flex: 1,
+        width: isWide ? 150 : 100,
+        height: isWide ? 150 : 100,
+        resizeMode: 'contain',
+      },
+    });
+  }, [theme, width]);
   return {styles};
 };
 

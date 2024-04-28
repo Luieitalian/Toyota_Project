@@ -68,16 +68,14 @@ const FilteringBar = ({
             disabled={disabled}
             android_ripple={{
               color: theme.colors.background,
-              radius: 22,
+              radius: styles.icon.width,
               foreground: true,
             }}
             onPress={openCategoryMenu}
           >
             <Icon
-              color={
-                disabled ? theme.colors.outline : theme.colors.onBackground
-              }
-              size={26}
+              color={disabled ? styles.disabledIcon.color : styles.icon.color}
+              size={styles.icon.width}
               source="tune"
             />
           </Pressable>
