@@ -1,6 +1,5 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {Text, View, StatusBar, TextInput} from 'react-native';
-import {Divider} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import useLoginScreenStyle from './styles/useLoginScreenStyle';
@@ -12,6 +11,8 @@ const LoginScreen = ({route, navigation}: any) => {
   const {t, i18n} = useTranslation();
   const pwdRef = useRef<TextInput>(null); // A Ref for password textinput component
   const {styles, theme} = useLoginScreenStyle();
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
   //const NFCReader = useNFC();
 
@@ -19,10 +20,17 @@ const LoginScreen = ({route, navigation}: any) => {
     pwdRef.current?.focus();
   };
 
+  const onChangeUsername = (username: string) => {
+    setUsername(username);
+  };
+  const onChangePassword = (password: string) => {
+    setPassword(password);
+  };
+
   const validateUserCredentials = () => {};
 
   return (
-    <SafeAreaView style={styles.view}>
+    <SafeAreaView style={styles.screenView}>
       <StatusBar
         barStyle={theme.dark ? 'light-content' : 'dark-content'}
         backgroundColor={theme.colors.background}
@@ -32,20 +40,25 @@ const LoginScreen = ({route, navigation}: any) => {
         <View style={styles.contentWrapper}>
           <Text style={styles.welcome}>{t('welcome_to_app')}</Text>
           <View style={styles.form}>
-            <TextInput
+            <TextInput // username
+              autoCapitalize="none"
+              onSubmitEditing={focusOnPwd}
               placeholderTextColor={theme.colors.onSurfaceVariant}
               autoCorrect={false}
               inputMode="text"
-              onSubmitEditing={focusOnPwd}
+              value={username}
+              onChangeText={onChangeUsername}
               style={styles.textInput}
               placeholder={t('username')}
             />
-            <TextInput
+            <TextInput // password
               ref={pwdRef}
               secureTextEntry={true}
               placeholderTextColor={theme.colors.onSurfaceVariant}
               autoCorrect={false}
               inputMode="text"
+              value={password}
+              onChangeText={onChangePassword}
               style={styles.textInput}
               placeholder={t('password')}
             />
