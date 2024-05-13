@@ -7,8 +7,6 @@ const useHeaderStyle = (theme: MD3Theme) => {
 
   const styles = React.useMemo(() => {
     const isWide = width >= 900;
-    console.log('Width: ', width);
-    console.log('Height: ', height);
     return StyleSheet.create({
       header: {
         flex: 1,
