@@ -11,7 +11,7 @@ const useProductStyle = (theme: MD3Theme) => {
       productContainer: {
         padding: 8,
         minHeight: 50,
-        width: '30%',
+        width: isWide ? 260 : 120,
         backgroundColor: 'white',
         flexDirection: 'column',
         alignItems: 'center',
