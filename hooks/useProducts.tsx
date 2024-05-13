@@ -1,7 +1,7 @@
 import {useCallback, useEffect, useMemo, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
-import dev_local_products from '../db/db.json';
+import dev_local_db from '../db/db.json';
 import {ProductModel} from '../models/ProductModel';
 
 const useProducts = (
@@ -43,13 +43,12 @@ const useProducts = (
   const getProductsFromLocalDB = async () => {
     try {
       let filteredProds: ProductModel[];
-      await AsyncStorage.getItem('products') // if prods exist in local storage then simply get them
-        .then((local_data_string) => {
+      await AsyncStorage.getItem('database') // if prods exist in local storage then simply get them
+        .then((local_db_string) => {
           console.log('Getting products from local storage!');
 
-          filteredProds = JSON.parse(
-            local_data_string as string
-          ) as ProductModel[];
+          filteredProds = JSON.parse(local_db_string as string)
+            .products as ProductModel[];
 
           if (optionalSearchText !== undefined) {
             filteredProds = filteredProds.filter((prod: ProductModel) =>
@@ -67,17 +66,13 @@ const useProducts = (
           console.log('Local products is empty!');
           console.log('Adding products to async storage from local server!');
 
-          await AsyncStorage.setItem(
-            'products',
-            JSON.stringify(dev_local_products.products)
-          );
+          await AsyncStorage.setItem('database', JSON.stringify(dev_local_db));
 
           console.log('Getting products from local storage!');
-          let local_data_string = await AsyncStorage.getItem('products');
+          let local_db_string = await AsyncStorage.getItem('database');
 
-          filteredProds = JSON.parse(
-            local_data_string as string
-          ) as ProductModel[];
+          filteredProds = JSON.parse(local_db_string as string)
+            .products as ProductModel[];
 
           if (optionalSearchText !== undefined) {
             filteredProds = filteredProds.filter((prod: ProductModel) =>
