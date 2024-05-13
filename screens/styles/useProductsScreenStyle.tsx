@@ -24,6 +24,18 @@ const useProductsScreenStyle = () => {
         justifyContent: 'center',
         paddingHorizontal: 14,
       },
+      flatlistContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+      flatlist: {
+        gap: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 10,
+        paddingBottom: 10,
+      },
     });
   }, [theme, width]);
   return {styles, theme};

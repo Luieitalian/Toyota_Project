@@ -50,23 +50,40 @@ const useProducts = (
           filteredProds = JSON.parse(local_db_string as string)
             .products as ProductModel[];
 
-          // Filter for search text
           if (optionalSearchText !== undefined) {
             filteredProds = filteredProds.filter((prod: ProductModel) =>
               prod.name.toLocaleLowerCase('tr').includes(optionalSearchText)
             );
           }
-          // Filter for category
           if (optionalCategory !== undefined) {
             filteredProds = filteredProds.filter(
               (prod: ProductModel) => prod.category === optionalCategory
             );
           }
         })
-        .catch(async (e) => {
-          console.log(
-            'Local database is empty (Forgot to call setDatabase hook?)'
-          );
+        .catch(async () => {
+          // if local storage is empty then add prods and get them
+          console.log('Local products is empty!');
+          console.log('Adding products to async storage from local server!');
+
+          await AsyncStorage.setItem('database', JSON.stringify(dev_local_db));
+
+          console.log('Getting products from local storage!');
+          let local_db_string = await AsyncStorage.getItem('database');
+
+          filteredProds = JSON.parse(local_db_string as string)
+            .products as ProductModel[];
+
+          if (optionalSearchText !== undefined) {
+            filteredProds = filteredProds.filter((prod: ProductModel) =>
+              prod.name.toLocaleLowerCase('tr').includes(optionalSearchText)
+            );
+          }
+          if (optionalCategory !== undefined) {
+            filteredProds = filteredProds.filter(
+              (prod: ProductModel) => prod.category === optionalCategory
+            );
+          }
         })
         .finally(() => {
           // set products & set loading false

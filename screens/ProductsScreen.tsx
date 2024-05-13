@@ -9,12 +9,13 @@ import React, {useState} from 'react';
 import useProductsScreenStyle from './styles/useProductsScreenStyle';
 import useProducts from '../hooks/useProducts';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import Product from '../components/Product';
 import {useTranslation} from 'react-i18next';
 import {ActivityIndicator} from 'react-native-paper';
 import SearchBar from '../components/SearchBar';
+import {ProductModel} from '../models/ProductModel';
 import FilteringBar from '../components/FilteringBar';
 import Header from '../components/Header';
-import Products from '../components/Products';
 
 const ProductsScreen = ({route, navigation}: any) => {
   const {styles, theme} = useProductsScreenStyle();
@@ -46,6 +47,10 @@ const ProductsScreen = ({route, navigation}: any) => {
     setCategory(category);
   };
 
+  const renderItem = ({item}: ListRenderItemInfo<ProductModel>) => (
+    <Product key={item.id} prod={item} t={t} theme={theme} />
+  );
+
   return (
     <SafeAreaView style={styles.screenView}>
       <View style={styles.listHeader}>
@@ -68,7 +73,18 @@ const ProductsScreen = ({route, navigation}: any) => {
       {loadingProducts ? (
         <ActivityIndicator theme={theme} />
       ) : (
-        <Products t={t} theme={theme} products={products} />
+        <View style={styles.flatlistContainer}>
+          <FlatList
+            columnWrapperStyle={styles.flatlist}
+            numColumns={3}
+            maxToRenderPerBatch={1}
+            updateCellsBatchingPeriod={1000}
+            initialNumToRender={10}
+            removeClippedSubviews={true}
+            data={products}
+            renderItem={renderItem}
+          />
+        </View>
       )}
     </SafeAreaView>
   );
