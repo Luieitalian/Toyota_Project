@@ -18,7 +18,7 @@ const useProductsScreenStyle = () => {
         backgroundColor: theme.colors.background,
       },
       listHeader: {
-        flex: isWide ? 0.3 : 0.2,
+        flex: isWide ? 0.4 : 0.3,
         width: '100%',
         alignItems: 'flex-start',
         justifyContent: 'center',
