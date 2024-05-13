@@ -15,6 +15,7 @@ import {ActivityIndicator} from 'react-native-paper';
 import SearchBar from '../components/SearchBar';
 import {ProductModel} from '../models/ProductModel';
 import FilteringBar from '../components/FilteringBar';
+import Header from '../components/Header';
 
 const ProductsScreen = ({route, navigation}: any) => {
   const {styles, theme} = useProductsScreenStyle();
@@ -53,6 +54,7 @@ const ProductsScreen = ({route, navigation}: any) => {
   return (
     <SafeAreaView style={styles.screenView}>
       <View style={styles.listHeader}>
+        <Header t={t} theme={theme} />
         <SearchBar
           t={t}
           theme={theme}
