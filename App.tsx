@@ -1,15 +1,18 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {NavigationContainer, useTheme} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import LoginScreen from './screens/LoginScreen';
 import ProductsScreen from './screens/ProductsScreen';
+import SalesScreen from './screens/SalesScreen';
+import setDatabase from './hooks/setDatabase';
 
 const Stack = createNativeStackNavigator();
 
-function App(): React.JSX.Element {
+const App = () => {
+  setDatabase();
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="LoginScreen">
+      <Stack.Navigator initialRouteName="Products">
         <Stack.Screen
           name="LoginScreen"
           options={{headerShown: false}}
@@ -20,9 +23,14 @@ function App(): React.JSX.Element {
           options={{headerShown: false}}
           component={ProductsScreen}
         />
+        <Stack.Screen
+          name="SalesScreen"
+          options={{headerShown: false}}
+          component={SalesScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
-}
+};
 
 export default App;
