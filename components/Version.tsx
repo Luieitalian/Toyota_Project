@@ -12,7 +12,7 @@ type VersionProps = {
 
 const Version = ({t, theme}: VersionProps) => {
   const {styles} = useVersionStyle(theme);
-  const {serviceInfo, serviceLoading} = useServiceInfo();
+  const {serviceInfo, serviceLoading} = useServiceInfo(false);
 
   return (
     <View style={styles.versionView}>
