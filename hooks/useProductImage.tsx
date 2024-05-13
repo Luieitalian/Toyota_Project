@@ -6,20 +6,21 @@ const useProductImage = (prod: ProductModel) => {
   const [imageURL, setImageURL] = useState<string>();
   const [loadingImageURL, setLoadingImageURL] = useState<boolean>(true);
 
+  const getSetImageURL = async () => {
+    await axios
+      .get(prod.img)
+      .then(() => {
+        setImageURL(prod.img);
+        setLoadingImageURL(false);
+      })
+      .catch((e) => {
+        console.log(`Can't get ${prod.name} from ${prod.img}`);
+      });
+  };
+
   useEffect(() => {
-    const getSetImageURL = async () => {
-      await axios
-        .get(prod.img)
-        .then(() => {
-          setImageURL(prod.img);
-          setLoadingImageURL(false);
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-    };
     getSetImageURL();
-  }, [prod]);
+  }, []);
 
   return {imageURL, loadingImageURL};
 };
