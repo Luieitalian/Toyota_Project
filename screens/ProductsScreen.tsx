@@ -1,20 +1,18 @@
 import {
   View,
-  FlatList,
   NativeSyntheticEvent,
   TextInputSubmitEditingEventData,
-  ListRenderItemInfo,
 } from 'react-native';
 import React, {useState} from 'react';
 import useProductsScreenStyle from './styles/useProductsScreenStyle';
 import useProducts from '../hooks/useProducts';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useTranslation} from 'react-i18next';
-import {ActivityIndicator} from 'react-native-paper';
 import SearchBar from '../components/SearchBar';
 import FilteringBar from '../components/FilteringBar';
 import Header from '../components/Header';
 import Products from '../components/Products';
+import DebugNavigateScreen from '../components/DebugNavigateScreen';
 
 const ProductsScreen = ({route, navigation}: any) => {
   const {styles, theme} = useProductsScreenStyle();
@@ -49,7 +47,7 @@ const ProductsScreen = ({route, navigation}: any) => {
   return (
     <SafeAreaView style={styles.screenView}>
       <View style={styles.listHeader}>
-        <Header t={t} theme={theme} />
+        <DebugNavigateScreen screen="SalesScreen" navigation={navigation} />
         <SearchBar
           t={t}
           theme={theme}
@@ -65,11 +63,12 @@ const ProductsScreen = ({route, navigation}: any) => {
           theme={theme}
         />
       </View>
-      {loadingProducts ? (
-        <ActivityIndicator theme={theme} />
-      ) : (
-        <Products t={t} theme={theme} products={products} />
-      )}
+      <Products
+        t={t}
+        theme={theme}
+        loadingProducts={loadingProducts}
+        products={products}
+      />
     </SafeAreaView>
   );
 };
