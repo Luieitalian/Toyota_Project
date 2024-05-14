@@ -21,7 +21,7 @@ const Version = ({t, theme}: VersionProps) => {
       ) : (
         <Text
           style={styles.version}
-        >{`${t('version')} ${JSON.parse(serviceInfo).version}`}</Text>
+        >{`${t('version')} ${serviceInfo?.version}`}</Text>
       )}
     </View>
   );

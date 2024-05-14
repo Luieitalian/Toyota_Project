@@ -1,9 +1,10 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import {useEffect, useState} from 'react';
+import {ServiceInfoModel} from '../models/ServiceInfoModel';
 
 const useServiceInfo = (isOnline: boolean) => {
-  const [serviceInfo, setServiceInfo] = useState<string>('[]');
+  const [serviceInfo, setServiceInfo] = useState<ServiceInfoModel>();
   const [serviceLoading, setServiceLoading] = useState<boolean>(true);
 
   const getSetServiceInfoFromServer = async () => {
@@ -12,7 +13,7 @@ const useServiceInfo = (isOnline: boolean) => {
       .then((res) => {
         console.log('Getting service info!');
         const data = res.data;
-        setServiceInfo(JSON.stringify(data));
+        setServiceInfo(data);
         setServiceLoading(false);
       })
       .catch((e) => {
@@ -23,8 +24,8 @@ const useServiceInfo = (isOnline: boolean) => {
   const getSetServiceInfoFromLocalDB = async () => {
     const local_db_string = await AsyncStorage.getItem('database');
     const local_db = JSON.parse(local_db_string as string);
-    const version = local_db.service.version;
-    setServiceInfo(version);
+    const service = local_db.service;
+    setServiceInfo(service);
     setServiceLoading(false);
   };
 
