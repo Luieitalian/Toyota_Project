@@ -17,5 +17,6 @@
   "meyve_sebze": "Fruits & Veg",
   "su_icecek": "Beverages",
   "sut_urunleri": "Milk & Dairy",
-  "teknoloji": "Electronics"
+  "teknoloji": "Electronics",
+  "no_item_in_products": "Sorry, there is no product that matches your search filters."
 }
