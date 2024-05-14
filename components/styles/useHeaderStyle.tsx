@@ -35,7 +35,7 @@ const useHeaderStyle = (theme: MD3Theme) => {
         color: theme.colors.onBackground,
       },
       iconSize: {
-        width: isWide ? 40 : 30,
+        width: isWide ? 30 : 20,
       },
     });
   }, [theme, width]);
