@@ -10,6 +10,10 @@ import {ThemeContext} from './contexts/ThemeContext';
 import SystemNavigationBar from 'react-native-system-navigation-bar';
 import './i18n';
 import {LanguageContext} from './contexts/LanguageContext';
+import {ShoppingCartContext} from './contexts/ShoppingCartContext';
+import useShoppingCartContext from './hooks/useShoppingCartFunctions';
+import {ProductModel} from './models/ProductModel';
+import useShoppingCartFunctions from './hooks/useShoppingCartFunctions';
 
 const themes = {
   dark: {
@@ -25,6 +29,9 @@ const themes = {
 const AppMiddleWare = () => {
   const [isDark, setIsDark] = useState(true);
   const theme = isDark ? themes.dark : themes.light;
+  const [shoppingCart, setShoppingCart] = useState([]);
+  const {addToCart, removeFromCart, addOne, removeOne} =
+    useShoppingCartFunctions(setShoppingCart);
 
   SystemNavigationBar.setNavigationColor(theme.colors.background); // Set Navigation bar color to fit the app theme
   SystemNavigationBar.setBarMode(isDark ? 'light' : 'dark'); // Set Navigation bar button colors for visibility
@@ -41,16 +48,29 @@ const AppMiddleWare = () => {
     [toggleTheme, isDark]
   );
 
+  const shoppingCartContext = useMemo(
+    () => ({
+      addOne: addOne,
+      removeFromCart: removeFromCart,
+      removeOne: removeOne,
+      addToCart: addToCart,
+      cart: shoppingCart,
+    }),
+    [shoppingCart]
+  );
+
   const languageContext = useContext(LanguageContext);
 
   return (
     <ThemeContext.Provider value={themeContext}>
       <LanguageContext.Provider value={languageContext}>
-        <PaperProvider theme={theme}>
-          <SafeAreaProvider>
-            <App />
-          </SafeAreaProvider>
-        </PaperProvider>
+        <ShoppingCartContext.Provider value={shoppingCartContext}>
+          <PaperProvider theme={theme}>
+            <SafeAreaProvider>
+              <App />
+            </SafeAreaProvider>
+          </PaperProvider>
+        </ShoppingCartContext.Provider>
       </LanguageContext.Provider>
     </ThemeContext.Provider>
   );
