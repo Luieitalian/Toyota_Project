@@ -14,7 +14,7 @@ const useProductImage = (prod: ProductModel) => {
         setLoadingImageURL(false);
       })
       .catch((e) => {
-        console.log(`Can't get ${prod.name} from ${prod.img}`);
+        console.log(`Can't get '${prod.name}' from '${prod.img}'`);
       });
   };
 
