@@ -20,6 +20,15 @@ const useProductsStyle = (theme: MD3Theme) => {
         paddingTop: 10,
         paddingBottom: 20,
       },
+      listEmptyView: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+      listEmptyViewText: {
+        fontSize: isWide ? 24 : 12,
+        color: theme.colors.onBackground,
+      },
     });
   }, [theme, width]);
 
