@@ -18,5 +18,11 @@
   "su_icecek": "Beverages",
   "sut_urunleri": "Milk & Dairy",
   "teknoloji": "Electronics",
-  "no_item_in_products": "Sorry, there is no product that matches your search filters."
+  "no_item_in_products": "Sorry, there is no product that matches your search filters.",
+  "sub_total": "SubTotal",
+  "payment_total": "Payment Total",
+  "item_one": "item",
+  "item_other": "items",
+  "itemWithCount_one": "{{count}} item",
+  "itemWithCount_other": "{{count}} items"
 }

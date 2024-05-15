@@ -18,5 +18,11 @@
   "su_icecek": "Su & İçecek",
   "sut_urunleri": "Süt Ürünleri",
   "teknoloji": "Elektronik",
-  "no_item_in_products": "Üzgünüz, aradığınız kriterlere uygun ürün bulunamamıştır."
+  "no_item_in_products": "Üzgünüz, aradığınız kriterlere uygun ürün bulunamamıştır.",
+  "sub_total": "Ara Toplam",
+  "payment_total": "Genel Toplam",
+  "item_one": "ürün",
+  "item_other": "ürün",
+  "itemWithCount_one": "{{count}} ürün",
+  "itemWithCount_other": "{{count}} ürün"
 }
