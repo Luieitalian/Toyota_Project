@@ -22,9 +22,11 @@ const useCartItemStyle = (theme: MD3Theme) => {
         flexDirection: 'column',
       },
       amount: {
+        color: theme.colors.onBackground,
         fontSize: isWide ? 24 : 18,
       },
       name: {
+        color: theme.colors.onBackground,
         fontSize: isWide ? 24 : 16,
       },
       pricingText: {

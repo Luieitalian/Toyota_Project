@@ -13,6 +13,21 @@ const useSalesScreenStyle = () => {
         flex: 1,
         backgroundColor: theme.colors.background,
       },
+      container: {
+        flex: 1,
+        flexDirection: isWide ? 'row' : 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+      headerStyle: {
+        backgroundColor: theme.colors.background,
+      },
+      headerTitleStyle: {
+        color: theme.colors.onBackground,
+      },
+      headerTint: {
+        color: theme.colors.onBackground,
+      },
     });
   }, [theme, width]);
 
