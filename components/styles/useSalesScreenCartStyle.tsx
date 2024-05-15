@@ -21,41 +21,6 @@ const useSalesScreenCartStyle = (theme: MD3Theme) => {
       flatlist: {
         gap: 10,
       },
-      totalContainer: {
-        flexDirection: 'row',
-        borderTopWidth: 1,
-        borderTopColor: theme.colors.primaryContainer,
-      },
-      subTotalContainer: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRightWidth: 1,
-        borderRightColor: theme.colors.primaryContainer,
-      },
-      subTotalText: {
-        fontSize: isWide ? 18 : 14,
-      },
-      subTotalPriceText: {
-        fontSize: isWide ? 24 : 18,
-        color: theme.colors.onBackground,
-      },
-      paymentTotalContainer: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderLeftWidth: 2,
-        borderLeftColor: theme.colors.primaryContainer,
-      },
-      paymentTotalText: {
-        fontSize: isWide ? 18 : 14,
-      },
-      paymentTotalPriceText: {
-        fontSize: isWide ? 24 : 18,
-        color: theme.colors.onBackground,
-      },
     });
   }, [theme, width]);
   return {styles};
