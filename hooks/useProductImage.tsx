@@ -20,7 +20,7 @@ const useProductImage = (prod: ProductModel) => {
 
   useEffect(() => {
     getSetImageURL();
-  }, []);
+  }, [prod]);
 
   return {imageURL, loadingImageURL};
 };
