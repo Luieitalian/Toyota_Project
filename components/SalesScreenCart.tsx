@@ -12,6 +12,8 @@ import useSalesScreenCartStyle from './styles/useSalesScreenCartStyle';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext';
 import {CartProductModel} from '../models/CartProductModel';
 import CartItem from './CartItem';
+import currency from 'currency.js';
+import SalesScreenPricing from './SalesScreenPricing';
 
 type SalesScreenCartProps = {
   t: TFunction<'translation', undefined>;
@@ -34,16 +36,7 @@ const SalesScreenCart = ({t, theme}: SalesScreenCartProps) => {
         data={cart}
         renderItem={renderItem}
       />
-      <View style={styles.totalContainer}>
-        <View style={styles.subTotalContainer}>
-          <Text style={styles.subTotalText}>Ara Toplam</Text>
-          <Text style={styles.subTotalPriceText}>10 TL</Text>
-        </View>
-        <View style={styles.paymentTotalContainer}>
-          <Text style={styles.paymentTotalText}>Genel Toplam</Text>
-          <Text style={styles.paymentTotalPriceText}>15 TL</Text>
-        </View>
-      </View>
+      <SalesScreenPricing t={t} theme={theme} cart={cart} />
     </View>
   );
 };
