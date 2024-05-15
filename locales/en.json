@@ -19,10 +19,13 @@
   "sut_urunleri": "Milk & Dairy",
   "teknoloji": "Electronics",
   "no_item_in_products": "Sorry, there is no product that matches your search filters.",
-  "sub_total": "SubTotal",
+  "sub_total": "Subtotal",
   "payment_total": "Payment Total",
   "item_one": "item",
   "item_other": "items",
   "itemWithCount_one": "{{count}} item",
-  "itemWithCount_other": "{{count}} items"
+  "itemWithCount_other": "{{count}} items",
+  "pick_items": "Pick Items",
+  "scan_barcode": "Scan Bar Code",
+  "press_enter_id": "Press to Enter ID"
 }

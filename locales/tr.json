@@ -24,5 +24,8 @@
   "item_one": "ürün",
   "item_other": "ürün",
   "itemWithCount_one": "{{count}} ürün",
-  "itemWithCount_other": "{{count}} ürün"
+  "itemWithCount_other": "{{count}} ürün",
+  "pick_items": "Ürün Seç",
+  "scan_barcode": "Barkod Okut",
+  "press_enter_id": "Ürün ID'si girmek için basınız"
 }
