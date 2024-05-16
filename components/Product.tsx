@@ -1,35 +1,51 @@
-import React, {memo, Suspense} from 'react';
+import React, {memo, Suspense, useCallback, useContext} from 'react';
 import {Image, Text, View} from 'react-native';
 import useProductStyle from './styles/useProductStyle';
 import {TFunction} from 'i18next';
-import {ActivityIndicator, MD3Theme} from 'react-native-paper';
+import {ActivityIndicator, IconButton, MD3Theme} from 'react-native-paper';
 import {ProductModel} from '../models/ProductModel';
 import useProductImage from '../hooks/useProductImage';
-import ProductLoading from './ProductLoading';
+import {ShoppingCartContext} from '../contexts/ShoppingCartContext';
+import {CartProductModel} from '../models/CartProductModel';
 
 type ProductProps = {
   t: TFunction<'translation', undefined>;
   theme: MD3Theme;
   prod: ProductModel;
+  addToCart: (prod: CartProductModel) => void;
 };
 
-const Product = ({t, theme, prod}: ProductProps) => {
+const Product = ({t, theme, prod, addToCart}: ProductProps) => {
   const {styles} = useProductStyle(theme);
   const {imageURL, loadingImageURL} = useProductImage(prod);
 
+  const onPress = useCallback(() => {
+    console.log(`Adding product with id '${prod.id}' to the cart.`);
+    addToCart({prod: prod, _cart_amount: 1});
+  }, []);
+
   return (
-    <Suspense fallback={<ProductLoading theme={theme} />}>
-      <View style={styles.productContainer}>
-        {loadingImageURL ? (
-          <ActivityIndicator theme={theme} />
-        ) : (
+    <View style={styles.productContainer}>
+      {loadingImageURL ? (
+        <ActivityIndicator theme={theme} />
+      ) : (
+        <>
           <Image style={styles.image} source={{uri: imageURL}} />
-        )}
-        <Text style={styles.price}>{prod.price}</Text>
-        <Text style={styles.name}>{prod.name}</Text>
-        <Text style={styles.amount_attribute}>{prod.amount_attribute}</Text>
-      </View>
-    </Suspense>
+          <Text style={styles.price}>{prod.price}</Text>
+          <Text style={styles.name}>{prod.name}</Text>
+          <Text style={styles.amount_attribute}>{prod.amount_attribute}</Text>
+          <IconButton
+            iconColor={styles.addButtonColors.color}
+            containerColor={styles.addButtonColors.backgroundColor}
+            icon="plus"
+            mode="outlined"
+            onPress={onPress}
+            size={styles.addButtonSize.width}
+            style={styles.addButton}
+          />
+        </>
+      )}
+    </View>
   );
 };
 

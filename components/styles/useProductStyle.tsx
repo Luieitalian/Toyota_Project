@@ -40,6 +40,18 @@ const useProductStyle = (theme: MD3Theme) => {
         height: isWide ? 150 : 100,
         resizeMode: 'contain',
       },
+      addButton: {
+        position: 'absolute',
+        left: 0,
+        top: 0,
+      },
+      addButtonColors: {
+        color: theme.colors.primary,
+        backgroundColor: theme.colors.onPrimary,
+      },
+      addButtonSize: {
+        width: isWide ? 40 : 24,
+      },
     });
   }, [theme, width]);
   return {styles};
