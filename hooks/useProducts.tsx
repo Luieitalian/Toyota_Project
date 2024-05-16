@@ -1,13 +1,14 @@
 import {useCallback, useEffect, useMemo, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
-import dev_local_db from '../db/db.json';
 import {ProductModel} from '../models/ProductModel';
+import setDatabase from './setDatabase';
 
 const useProducts = (
   isOnline: boolean,
-  optionalSearchText: string | undefined,
-  optionalCategory: string | undefined
+  optionalSearchText?: string | undefined,
+  optionalCategory?: string | undefined,
+  optionalID?: string | undefined
 ) => {
   const [products, setProducts] = useState<ProductModel[]>([]);
   const [loadingProducts, setLoadingProducts] = useState<boolean>(true);
@@ -20,20 +21,30 @@ const useProducts = (
 
         let filteredProds = res.data as ProductModel[];
 
+        // Filter for search text
         if (optionalSearchText !== undefined) {
           filteredProds = filteredProds.filter((prod: ProductModel) =>
             prod.name.toLocaleLowerCase('tr').includes(optionalSearchText)
           );
         }
 
+        // Filter for category
         if (optionalCategory !== undefined) {
           filteredProds = filteredProds.filter(
             (prod: ProductModel) => prod.category === optionalCategory
           );
         }
 
+        // Filter for ID
+        if (optionalID !== undefined) {
+          filteredProds = filteredProds.filter(
+            (prod: ProductModel) => prod.id === optionalID
+          );
+        }
+
         setProducts(filteredProds);
         setLoadingProducts(false);
+        AsyncStorage.flushGetRequests();
       })
       .catch((error) => {
         console.log(error);
@@ -41,41 +52,46 @@ const useProducts = (
   };
 
   const getProductsFromLocalDB = async () => {
-    try {
-      let filteredProds: ProductModel[];
-      await AsyncStorage.getItem('database') // if prods exist in local storage then simply get them
-        .then((local_db_string) => {
-          console.log('Getting products from local storage!');
+    let filteredProds: ProductModel[];
+    await AsyncStorage.getItem('database') // if prods exist in local storage then simply get them
+      .then((local_db_string) => {
+        console.log('Getting products from local storage!');
 
-          filteredProds = JSON.parse(local_db_string as string)
-            .products as ProductModel[];
+        filteredProds = JSON.parse(local_db_string as string)
+          .products as ProductModel[];
 
-          // Filter for search text
-          if (optionalSearchText !== undefined) {
-            filteredProds = filteredProds.filter((prod: ProductModel) =>
-              prod.name.toLocaleLowerCase('tr').includes(optionalSearchText)
-            );
-          }
-          // Filter for category
-          if (optionalCategory !== undefined) {
-            filteredProds = filteredProds.filter(
-              (prod: ProductModel) => prod.category === optionalCategory
-            );
-          }
-        })
-        .catch(async (e) => {
-          console.log(
-            'Local database is empty (Forgot to call setDatabase hook?)'
+        // Filter for search text
+        if (optionalSearchText !== undefined) {
+          filteredProds = filteredProds.filter((prod: ProductModel) =>
+            prod.name.toLocaleLowerCase('tr').includes(optionalSearchText)
           );
-        })
-        .finally(() => {
-          // set products & set loading false
-          setProducts(filteredProds);
-          setLoadingProducts(false);
-        });
-    } catch (error) {
-      console.log(error);
-    }
+        }
+
+        // Filter for category
+        if (optionalCategory !== undefined) {
+          filteredProds = filteredProds.filter(
+            (prod: ProductModel) => prod.category === optionalCategory
+          );
+        }
+
+        // Filter for ID
+        if (optionalID !== undefined) {
+          filteredProds = filteredProds.filter(
+            (prod: ProductModel) => prod.id === optionalID
+          );
+        }
+        // set products & set loading false
+        setProducts(filteredProds);
+        setLoadingProducts(false);
+        AsyncStorage.flushGetRequests();
+      })
+      .catch(async (e) => {
+        //console.log(await AsyncStorage.removeItem('database'));
+        console.log(
+          'Local database is empty (Forgot to call setDatabase hook?)',
+          e
+        );
+      });
   };
 
   useEffect(() => {
