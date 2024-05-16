@@ -17,7 +17,7 @@ const useItemIDInputStyle = (theme: MD3Theme) => {
         borderRadius: 10,
         margin: 10,
         textAlign: 'center',
-        fontSize: isWide ? 14 : 10,
+        fontSize: isWide ? 20 : 16,
         color: theme.colors.onSecondary,
       },
       textInputPlaceholder: {
