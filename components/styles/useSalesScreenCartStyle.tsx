@@ -18,9 +18,6 @@ const useSalesScreenCartStyle = (theme: MD3Theme) => {
         borderWidth: 2,
         borderRadius: 10,
       },
-      flatlist: {
-        gap: 10,
-      },
     });
   }, [theme, width]);
   return {styles};
