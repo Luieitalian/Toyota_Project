@@ -30,7 +30,7 @@ const AppMiddleWare = () => {
   const [isDark, setIsDark] = useState(true);
   const theme = isDark ? themes.dark : themes.light;
   const [shoppingCart, setShoppingCart] = useState([]);
-  const {addToCart, removeFromCart, addOne, removeOne} =
+  const {addToCart, removeFromCart, addOne, removeOne, clearCart} =
     useShoppingCartFunctions(setShoppingCart);
 
   SystemNavigationBar.setNavigationColor(theme.colors.background); // Set Navigation bar color to fit the app theme
@@ -54,6 +54,7 @@ const AppMiddleWare = () => {
       removeFromCart: removeFromCart,
       removeOne: removeOne,
       addToCart: addToCart,
+      clearCart: clearCart,
       cart: shoppingCart,
     }),
     [shoppingCart]

@@ -20,7 +20,7 @@ const useShoppingCartFunctions = (
     });
   }, []);
 
-  const removeFromCart = useCallback((prod_id: number) => {
+  const removeFromCart = useCallback((prod_id: string) => {
     setShoppingCart((c) => {
       const new_cart = c.filter(
         (cart_prod: CartProductModel) => cart_prod.prod.id !== prod_id
@@ -34,7 +34,7 @@ const useShoppingCartFunctions = (
     });
   }, []);
 
-  const addOne = useCallback((prod_id: number) => {
+  const addOne = useCallback((prod_id: string) => {
     setShoppingCart((c) => {
       const cart_without_prod = c.filter(
         (cart_prod: CartProductModel) => cart_prod.prod.id !== prod_id
@@ -60,7 +60,7 @@ const useShoppingCartFunctions = (
     });
   }, []);
 
-  const removeOne = useCallback((prod_id: number) => {
+  const removeOne = useCallback((prod_id: string) => {
     setShoppingCart((c) => {
       const cart_without_prod = c.filter(
         (cart_prod: CartProductModel) => cart_prod.prod.id !== prod_id
@@ -94,7 +94,11 @@ const useShoppingCartFunctions = (
     });
   }, []);
 
-  return {addToCart, removeFromCart, addOne, removeOne};
+  const clearCart = useCallback(() => {
+    setShoppingCart([]);
+  }, []);
+
+  return {addToCart, removeFromCart, addOne, removeOne, clearCart};
 };
 
 export default useShoppingCartFunctions;
