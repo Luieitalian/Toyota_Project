@@ -15,6 +15,8 @@ const useSalesScreenStyle = () => {
       },
       container: {
         flex: 1,
+        margin: 20,
+        gap: 10,
         flexDirection: isWide ? 'row' : 'column',
         justifyContent: 'center',
         alignItems: 'center',
