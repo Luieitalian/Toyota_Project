@@ -5,6 +5,7 @@ import {MD3Theme} from 'react-native-paper';
 import usePickItemsStyle from './styles/usePickItemsStyle';
 import useLookUpPriceStyle from './styles/useLookUpPriceStyle';
 import useCreditCardSelectStyle from './styles/useCreditCardSelectStyle';
+import CustomButton from './CustomButton';
 
 type CreditCardSelectProps = {
   t: TFunction<'translation', undefined>;
@@ -19,16 +20,9 @@ const CreditCardSelect = ({t, theme}: CreditCardSelectProps) => {
   };
 
   return (
-    <Pressable
-      android_ripple={{
-        color: theme.colors.onSecondary,
-        foreground: true,
-      }}
-      style={styles.container}
-      onPress={onPress}
-    >
-      <Text style={styles.text}>{t('credit_cart')}</Text>
-    </Pressable>
+    <CustomButton theme={theme} styles={styles} onPress={onPress}>
+      {t('credit_card_select')}
+    </CustomButton>
   );
 };
 

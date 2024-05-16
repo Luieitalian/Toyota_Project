@@ -3,6 +3,7 @@ import React, {memo} from 'react';
 import {Pressable, Text, View} from 'react-native';
 import {MD3Theme} from 'react-native-paper';
 import useCashSelectStyle from './styles/useCashSelectStyle';
+import CustomButton from './CustomButton';
 
 type CashSelectProps = {
   t: TFunction<'translation', undefined>;
@@ -17,16 +18,9 @@ const CashSelect = ({t, theme}: CashSelectProps) => {
   };
 
   return (
-    <Pressable
-      android_ripple={{
-        color: theme.colors.onSecondary,
-        foreground: true,
-      }}
-      style={styles.container}
-      onPress={onPress}
-    >
-      <Text style={styles.text}>{t('cash_select')}</Text>
-    </Pressable>
+    <CustomButton onPress={onPress} styles={styles} theme={theme}>
+      {t('cash_select')}
+    </CustomButton>
   );
 };
 

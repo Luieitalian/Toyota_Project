@@ -3,6 +3,7 @@ import React, {memo, useContext, useState} from 'react';
 import {Pressable, Text, View} from 'react-native';
 import {MD3Theme} from 'react-native-paper';
 import useLookUpPriceStyle from './styles/useLookUpPriceStyle';
+import CustomButton from './CustomButton';
 
 type LookUpPriceProps = {
   t: TFunction<'translation', undefined>;
@@ -17,16 +18,9 @@ const LookUpPrice = ({t, theme}: LookUpPriceProps) => {
   };
 
   return (
-    <Pressable
-      android_ripple={{
-        color: theme.colors.onSecondary,
-        foreground: true,
-      }}
-      style={styles.container}
-      onPress={onPress}
-    >
-      <Text style={styles.text}>{t('look_up_price')}</Text>
-    </Pressable>
+    <CustomButton theme={theme} styles={styles} onPress={onPress}>
+      {t('look_up_price')}
+    </CustomButton>
   );
 };
 

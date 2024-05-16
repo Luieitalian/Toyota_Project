@@ -3,6 +3,7 @@ import React, {memo, useContext, useState} from 'react';
 import {Pressable, Text, View} from 'react-native';
 import {MD3Theme} from 'react-native-paper';
 import useScanBarcodeStyle from './styles/useScanBarcodeStyle';
+import CustomButton from './CustomButton';
 
 type ScanBarcodeProps = {
   t: TFunction<'translation', undefined>;
@@ -17,16 +18,9 @@ const ScanBarcode = ({t, theme}: ScanBarcodeProps) => {
   };
 
   return (
-    <Pressable
-      android_ripple={{
-        color: theme.colors.onSecondary,
-        foreground: true,
-      }}
-      style={styles.container}
-      onPress={onPress}
-    >
-      <Text style={styles.text}>{t('scan_barcode')}</Text>
-    </Pressable>
+    <CustomButton onPress={onPress} styles={styles} theme={theme}>
+      {t('scan_barcode')}
+    </CustomButton>
   );
 };
 

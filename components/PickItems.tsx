@@ -3,6 +3,9 @@ import React, {memo, useContext, useState} from 'react';
 import {Pressable, Text, View} from 'react-native';
 import {MD3Theme} from 'react-native-paper';
 import usePickItemsStyle from './styles/usePickItemsStyle';
+import CustomButton from './CustomButton';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 type PickItemsProps = {
   t: TFunction<'translation', undefined>;
@@ -11,22 +14,17 @@ type PickItemsProps = {
 
 const PickItems = ({t, theme}: PickItemsProps) => {
   const {styles} = usePickItemsStyle(theme);
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   const onPress = () => {
     console.log('pick items');
+    navigation.navigate('ProductsScreen');
   };
 
   return (
-    <Pressable
-      android_ripple={{
-        color: theme.colors.onSecondary,
-        foreground: true,
-      }}
-      style={styles.container}
-      onPress={onPress}
-    >
-      <Text style={styles.text}>{t('pick_items')}</Text>
-    </Pressable>
+    <CustomButton onPress={onPress} styles={styles} theme={theme}>
+      {t('pick_items')}
+    </CustomButton>
   );
 };
 

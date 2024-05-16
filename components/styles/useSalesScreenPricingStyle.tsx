@@ -24,6 +24,7 @@ const useSalesScreenPricingStyle = (theme: MD3Theme) => {
       },
       subTotalText: {
         fontSize: isWide ? 18 : 14,
+        color: theme.colors.outline,
       },
       subTotalPriceText: {
         fontSize: isWide ? 24 : 18,
@@ -39,6 +40,7 @@ const useSalesScreenPricingStyle = (theme: MD3Theme) => {
       },
       paymentTotalText: {
         fontSize: isWide ? 18 : 14,
+        color: theme.colors.outline,
       },
       paymentTotalPriceText: {
         fontSize: isWide ? 24 : 18,

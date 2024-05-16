@@ -3,6 +3,7 @@ import React, {memo} from 'react';
 import {Pressable, Text, View} from 'react-native';
 import {MD3Theme} from 'react-native-paper';
 import usePickOfferStyle from './styles/usePickOfferStyle';
+import CustomButton from './CustomButton';
 
 type PickOfferProps = {
   t: TFunction<'translation', undefined>;
@@ -17,16 +18,9 @@ const PickOffer = ({t, theme}: PickOfferProps) => {
   };
 
   return (
-    <Pressable
-      android_ripple={{
-        color: theme.colors.onSecondary,
-        foreground: true,
-      }}
-      style={styles.container}
-      onPress={onPress}
-    >
-      <Text style={styles.text}>{t('pick_offer')}</Text>
-    </Pressable>
+    <CustomButton onPress={onPress} styles={styles} theme={theme}>
+      {t('pick_offer')}
+    </CustomButton>
   );
 };
 

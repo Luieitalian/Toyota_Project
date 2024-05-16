@@ -3,6 +3,7 @@ import React, {memo} from 'react';
 import {Pressable, Text, View} from 'react-native';
 import {MD3Theme} from 'react-native-paper';
 import useReceiptMailStyle from './styles/useReceiptMailStyle';
+import CustomButton from './CustomButton';
 
 type ReceiptMailProps = {
   t: TFunction<'translation', undefined>;
@@ -17,16 +18,9 @@ const ReceiptMail = ({t, theme}: ReceiptMailProps) => {
   };
 
   return (
-    <Pressable
-      android_ripple={{
-        color: theme.colors.onSecondary,
-        foreground: true,
-      }}
-      style={styles.container}
-      onPress={onPress}
-    >
-      <Text style={styles.text}>{t('receipt_mail')}</Text>
-    </Pressable>
+    <CustomButton theme={theme} styles={styles} onPress={onPress}>
+      {t('receipt_mail')}
+    </CustomButton>
   );
 };
 

@@ -8,20 +8,8 @@ const useLookUpPriceStyle = (theme: MD3Theme) => {
   const styles = React.useMemo(() => {
     const isWide = width >= 900;
     return StyleSheet.create({
-      container: {
-        flex: 1,
-        elevation: 4,
-        justifyContent: 'center',
-        backgroundColor: theme.colors.secondary,
-        borderRadius: 10,
-        padding: 10,
-        margin: 10,
-      },
-      text: {
-        fontSize: isWide ? 24 : 18,
-        textAlign: 'center',
-        color: theme.colors.onSecondary,
-      },
+      container: {},
+      text: {},
     });
   }, [theme, width]);
   return {styles};
