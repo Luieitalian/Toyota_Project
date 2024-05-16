@@ -10,21 +10,16 @@ const useSalesScreenOptionsStyle = (theme: MD3Theme, isWide: boolean) => {
           flex: 1,
           height: '100%',
           borderWidth: 3,
-          borderColor: 'red',
+          borderColor: theme.colors.secondaryContainer,
           borderRadius: 10,
-          padding: 10,
           justifyContent: 'space-evenly',
         },
         flexRow: {
           flex: 1,
-          borderColor: 'red',
-          borderWidth: 2,
           flexDirection: 'row',
         },
         flexCol: {
           flex: 1,
-          borderColor: 'blue',
-          borderWidth: 2,
           flexDirection: 'column',
         },
         flex2: {
@@ -43,19 +38,15 @@ const useSalesScreenOptionsStyle = (theme: MD3Theme, isWide: boolean) => {
           flex: 1,
           width: '100%',
           borderWidth: 3,
-          borderColor: 'red',
+          borderColor: theme.colors.secondaryContainer,
           borderRadius: 10,
         },
         flexRow: {
           flex: 1,
-          borderColor: 'red',
-          borderWidth: 2,
           flexDirection: 'row',
         },
         flexCol: {
           flex: 1,
-          borderColor: 'blue',
-          borderWidth: 2,
           flexDirection: 'column',
         },
         flex2: {

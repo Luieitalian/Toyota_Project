@@ -13,6 +13,7 @@ import CashSelect from './CashSelect';
 import ReceiptMail from './ReceiptMail';
 import PickOffer from './PickOffer';
 import Pay from './Pay';
+import ClearCart from './ClearCart';
 
 type SalesScreenOptionsProps = {
   t: TFunction<'translation', undefined>;
@@ -34,7 +35,10 @@ const SalesScreenOptions = ({t, theme}: SalesScreenOptionsProps) => {
         <ScanBarcode t={t} theme={theme} />
         <PickItems t={t} theme={theme} />
       </View>
-      <LookUpPrice t={t} theme={theme} />
+      <View style={styles.flexRow}>
+        <LookUpPrice t={t} theme={theme} />
+        <ClearCart t={t} theme={theme} />
+      </View>
       <View style={styles.flexRow}>
         <CreditCardSelect t={t} theme={theme} />
         <CashSelect t={t} theme={theme} />
@@ -53,12 +57,14 @@ const SalesScreenOptions = ({t, theme}: SalesScreenOptionsProps) => {
     <View style={styles.container}>
       <View style={[styles.flexRow, styles.flex2]}>
         <View style={[styles.flexCol, styles.flex2]}>
-          <View style={[styles.flexRow, styles.flex3]}>
-            <ItemIDInput t={t} theme={theme} />
+          <View style={[styles.flexRow, styles.flex2]}>
             <AddProductWithID t={t} theme={theme} />
           </View>
           <ScanBarcode t={t} theme={theme} />
-          <LookUpPrice t={t} theme={theme} />
+          <View style={styles.flexRow}>
+            <LookUpPrice t={t} theme={theme} />
+            <ClearCart t={t} theme={theme} />
+          </View>
         </View>
         <PickItems t={t} theme={theme} />
       </View>
