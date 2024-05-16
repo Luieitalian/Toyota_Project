@@ -22,12 +22,12 @@ type SalesScreenOptionsProps = {
 const SalesScreenOptions = ({t, theme}: SalesScreenOptionsProps) => {
   const {width} = useWindowDimensions();
   const isWide = width >= 900;
+
   const {styles} = useSalesScreenOptionsStyle(theme, isWide);
 
   return isWide ? (
     <View style={styles.container}>
       <View style={styles.flexRow}>
-        <ItemIDInput t={t} theme={theme} />
         <AddProductWithID t={t} theme={theme} />
       </View>
       <View style={styles.flexRow}>
@@ -44,7 +44,9 @@ const SalesScreenOptions = ({t, theme}: SalesScreenOptionsProps) => {
           <ReceiptMail t={t} theme={theme} />
           <PickOffer t={t} theme={theme} />
         </View>
-        <Pay t={t} theme={theme} />
+        <View style={styles.flexRow}>
+          <Pay t={t} theme={theme} />
+        </View>
       </View>
     </View>
   ) : (
