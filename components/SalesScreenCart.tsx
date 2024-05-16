@@ -31,7 +31,7 @@ const SalesScreenCart = ({t, theme}: SalesScreenCartProps) => {
   return (
     <View style={styles.container}>
       <FlatList
-        contentContainerStyle={styles.flatlist}
+        keyboardShouldPersistTaps="handled"
         numColumns={1}
         data={cart}
         renderItem={renderItem}
