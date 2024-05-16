@@ -15,17 +15,18 @@ type SalesScreenPricingProps = {
 const SalesScreenPricing = ({t, theme, cart}: SalesScreenPricingProps) => {
   const {styles} = useSalesScreenPricingStyle(theme);
 
-  const subTotal = currency(
-    cart.reduce(
-      (acc, curr) =>
-        currency(curr.prod.price, {separator: '.', decimal: ','}).multiply(
-          curr._cart_amount
-        ).value,
-      0
-    )
-  ).value;
+  const subTotalMap = cart.map(
+    (cart_item: CartProductModel) =>
+      currency(cart_item.prod.price, {
+        separator: '.',
+        decimal: ',',
+      }).multiply(cart_item._cart_amount).value
+  );
+
+  const subTotal = subTotalMap.reduce((acc, curr) => acc + curr, 0);
 
   const selectedSpecialOffer = () => 0;
+
   const paymentTotal = subTotal - selectedSpecialOffer();
 
   const subTotalText = currency(subTotal).format({
