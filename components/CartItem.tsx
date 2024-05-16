@@ -1,7 +1,7 @@
-import React, {memo, useContext, useEffect} from 'react';
-import {Text, View} from 'react-native';
+import React, {memo, useCallback, useContext, useEffect} from 'react';
+import {Button, Text, View} from 'react-native';
 import {TFunction} from 'i18next';
-import {MD3Theme} from 'react-native-paper';
+import {IconButton, MD3Theme} from 'react-native-paper';
 import {CartProductModel} from '../models/CartProductModel';
 import useCartItemStyle from './styles/useCartItemStyle';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext';
@@ -16,6 +16,12 @@ type CartItemProps = {
 const CartItem = ({t, theme, cart_item}: CartItemProps) => {
   const {styles} = useCartItemStyle(theme);
 
+  const {removeOne} = useContext(ShoppingCartContext);
+
+  const onPress = useCallback(() => {
+    removeOne(cart_item.prod.id);
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.nameAndAmount}>
@@ -26,7 +32,7 @@ const CartItem = ({t, theme, cart_item}: CartItemProps) => {
         </Text>
         <Text style={styles.name}>{cart_item.prod.name}</Text>
       </View>
-      <View>
+      <View style={styles.priceAndRemove}>
         <Text style={styles.pricingText}>
           {'₺ ' +
             currency(cart_item.prod.price, {
@@ -34,6 +40,17 @@ const CartItem = ({t, theme, cart_item}: CartItemProps) => {
               decimal: ',',
             }).multiply(cart_item._cart_amount)}
         </Text>
+        <View>
+          <IconButton
+            onPress={onPress}
+            size={styles.removeButton.width}
+            iconColor={styles.removeButton.color}
+            containerColor={styles.removeButton.backgroundColor}
+            rippleColor={styles.removeButton.color}
+            icon="minus-circle"
+            mode="contained"
+          />
+        </View>
       </View>
     </View>
   );

@@ -33,6 +33,16 @@ const useCartItemStyle = (theme: MD3Theme) => {
         fontSize: isWide ? 24 : 18,
         color: theme.colors.onPrimaryContainer,
       },
+      removeButton: {
+        backgroundColor: theme.colors.onError,
+        color: theme.colors.error,
+        width: isWide ? 32 : 24,
+      },
+      priceAndRemove: {
+        gap: 10,
+        flexDirection: 'row',
+        alignItems: 'center',
+      },
     });
   }, [theme, width]);
   return {styles};
