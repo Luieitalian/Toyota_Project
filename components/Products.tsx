@@ -1,4 +1,11 @@
-import React, {memo, useCallback, useContext, useMemo} from 'react';
+import React, {
+  memo,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import {FlatList, ListRenderItemInfo, Text, View} from 'react-native';
 import {ProductModel} from '../models/ProductModel';
 import useProductsStyle from './styles/useProductsStyle';
@@ -7,22 +14,23 @@ import {MD3Theme, ActivityIndicator} from 'react-native-paper';
 import Product from './Product';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext';
 import {ProductsContext} from '../contexts/ProductsContext';
-import useProducts from '../hooks/useProducts';
 
 type ProductsProps = {
   t: TFunction<'translation', undefined>;
   theme: MD3Theme;
   category: string | undefined;
   submittedText: string | undefined;
-  //loadingProducts: boolean;
-  //products: ProductModel[];
 };
 
 const Products = ({t, theme, category, submittedText}: ProductsProps) => {
   const {styles} = useProductsStyle(theme);
 
   const {addToCart} = useContext(ShoppingCartContext);
-  const {products, loadingProducts} = useProducts({isOnline: false});
+  const {products, loadingProducts} = useContext(ProductsContext);
+  const [pageOffset, setPageOffset] = useState<number>(2);
+  const [productsShown, setProductsShown] = useState<ProductModel[]>([]);
+
+  let initialLoadNumber = 20;
 
   const filterProducts = () => {
     let filteredProducts: ProductModel[] = products;
@@ -61,10 +69,15 @@ const Products = ({t, theme, category, submittedText}: ProductsProps) => {
     );
   };
 
-  const getItemLayout = useCallback(
-    (data: any, index: number) => ({length: 50, offset: 50 * index, index}),
-    []
-  );
+  const onEndReached = () => {
+    console.log('onEndReached ', pageOffset);
+    setPageOffset((offset) => offset + 1);
+    setProductsShown(filterProducts().slice(0, pageOffset * initialLoadNumber));
+  };
+
+  useEffect(() => {
+    setProductsShown(filterProducts().slice(0, initialLoadNumber));
+  }, [products]);
 
   return (
     <View style={styles.flatlistContainer}>
@@ -74,14 +87,15 @@ const Products = ({t, theme, category, submittedText}: ProductsProps) => {
         <FlatList
           columnWrapperStyle={styles.flatlist}
           numColumns={4}
-          maxToRenderPerBatch={2}
+          maxToRenderPerBatch={1}
           updateCellsBatchingPeriod={1000}
-          initialNumToRender={10}
+          initialNumToRender={initialLoadNumber}
           removeClippedSubviews={true}
-          data={products}
+          data={productsShown}
+          onEndReached={onEndReached}
+          onEndReachedThreshold={0.2}
           renderItem={renderItem}
           ListEmptyComponent={ListEmptyComponent}
-          getItemLayout={getItemLayout}
         />
       )}
     </View>
