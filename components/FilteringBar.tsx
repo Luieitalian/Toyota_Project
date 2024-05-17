@@ -33,14 +33,14 @@ const CategoryIcons: {[char: string]: string} = {
 type FilteringBarProps = {
   t: TFunction<'translation', undefined>;
   theme: MD3Theme;
-  disabled: boolean;
+  disabled?: boolean;
   onChangeCategory: (category: string) => void;
 };
 
 const FilteringBar = ({
   t,
   theme,
-  disabled,
+  disabled = false,
   onChangeCategory,
 }: FilteringBarProps) => {
   const {styles} = useFilteringBarStyle(theme);

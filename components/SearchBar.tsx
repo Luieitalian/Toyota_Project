@@ -8,7 +8,7 @@ type SearchBarProps = {
   t: TFunction<'translation', undefined>;
   theme: MD3Theme;
   text: string;
-  disabled: boolean;
+  disabled?: boolean;
   onChangeText: (text: string) => void;
   onSubmitEditing: (nativeEvent: any) => void;
 };
@@ -17,7 +17,7 @@ const SearchBar = ({
   t,
   theme,
   text,
-  disabled,
+  disabled = false,
   onChangeText,
   onSubmitEditing,
 }: SearchBarProps) => {
