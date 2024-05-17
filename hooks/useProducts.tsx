@@ -4,12 +4,11 @@ import axios from 'axios';
 import {ProductModel} from '../models/ProductModel';
 import setDatabase from './setDatabase';
 
-const useProducts = (
-  isOnline: boolean,
-  optionalSearchText?: string | undefined,
-  optionalCategory?: string | undefined,
-  optionalID?: string | undefined
-) => {
+type useProductsArgs = {
+  isOnline: boolean;
+};
+
+const useProducts = ({isOnline}: useProductsArgs) => {
   const [products, setProducts] = useState<ProductModel[]>([]);
   const [loadingProducts, setLoadingProducts] = useState<boolean>(true);
 
@@ -19,31 +18,12 @@ const useProducts = (
       .then((res) => {
         console.log('Getting products from server!');
 
-        let filteredProds = res.data as ProductModel[];
+        const _products = res.data as ProductModel[];
 
-        // Filter for search text
-        if (optionalSearchText !== undefined) {
-          filteredProds = filteredProds.filter((prod: ProductModel) =>
-            prod.name.toLocaleLowerCase('tr').includes(optionalSearchText)
-          );
-        }
-
-        // Filter for category
-        if (optionalCategory !== undefined) {
-          filteredProds = filteredProds.filter(
-            (prod: ProductModel) => prod.category === optionalCategory
-          );
-        }
-
-        // Filter for ID
-        if (optionalID !== undefined) {
-          filteredProds = filteredProds.filter(
-            (prod: ProductModel) => prod.id === optionalID
-          );
-        }
-
-        setProducts(filteredProds);
+        // set _products & set loading false
+        setProducts(_products);
         setLoadingProducts(false);
+
         AsyncStorage.flushGetRequests();
       })
       .catch((error) => {
@@ -52,37 +32,17 @@ const useProducts = (
   };
 
   const getProductsFromLocalDB = async () => {
-    let filteredProds: ProductModel[];
     await AsyncStorage.getItem('database') // if prods exist in local storage then simply get them
       .then((local_db_string) => {
         console.log('Getting products from local storage!');
 
-        filteredProds = JSON.parse(local_db_string as string)
+        const _products = JSON.parse(local_db_string as string)
           .products as ProductModel[];
 
-        // Filter for search text
-        if (optionalSearchText !== undefined) {
-          filteredProds = filteredProds.filter((prod: ProductModel) =>
-            prod.name.toLocaleLowerCase('tr').includes(optionalSearchText)
-          );
-        }
-
-        // Filter for category
-        if (optionalCategory !== undefined) {
-          filteredProds = filteredProds.filter(
-            (prod: ProductModel) => prod.category === optionalCategory
-          );
-        }
-
-        // Filter for ID
-        if (optionalID !== undefined) {
-          filteredProds = filteredProds.filter(
-            (prod: ProductModel) => prod.id === optionalID
-          );
-        }
-        // set products & set loading false
-        setProducts(filteredProds);
+        // set _products & set loading false
+        setProducts(_products);
         setLoadingProducts(false);
+
         AsyncStorage.flushGetRequests();
       })
       .catch(async (e) => {
@@ -102,7 +62,7 @@ const useProducts = (
       getProductsFromLocalDB();
     }
     return () => console.log('returning from effect');
-  }, [optionalSearchText, optionalCategory]);
+  }, [isOnline]);
 
   return {products, loadingProducts};
 };

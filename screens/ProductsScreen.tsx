@@ -3,9 +3,8 @@ import {
   NativeSyntheticEvent,
   TextInputSubmitEditingEventData,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import useProductsScreenStyle from './styles/useProductsScreenStyle';
-import useProducts from '../hooks/useProducts';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useTranslation} from 'react-i18next';
 import SearchBar from '../components/SearchBar';
@@ -13,6 +12,8 @@ import FilteringBar from '../components/FilteringBar';
 import Header from '../components/Header';
 import Products from '../components/Products';
 import DebugNavigateScreen from '../components/DebugNavigateScreen';
+import {ProductsContext} from '../contexts/ProductsContext';
+import {ProductModel} from '../models/ProductModel';
 
 const ProductsScreen = ({route, navigation}: any) => {
   const {styles, theme} = useProductsScreenStyle();
@@ -21,13 +22,7 @@ const ProductsScreen = ({route, navigation}: any) => {
   const [submittedText, setSubmittedText] = useState<string | undefined>(
     undefined
   );
-  const {t, i18n} = useTranslation();
-
-  const {products, loadingProducts} = useProducts(
-    false,
-    submittedText?.trim().toLocaleLowerCase('tr'),
-    category
-  );
+  const {t} = useTranslation();
 
   const onSubmitEditing = (
     event: NativeSyntheticEvent<TextInputSubmitEditingEventData>
@@ -47,27 +42,20 @@ const ProductsScreen = ({route, navigation}: any) => {
   return (
     <SafeAreaView style={styles.screenView}>
       <View style={styles.listHeader}>
-        <DebugNavigateScreen screen="SalesScreen" navigation={navigation} />
         <SearchBar
           t={t}
           theme={theme}
           text={text}
-          disabled={loadingProducts}
           onChangeText={onChangeText}
           onSubmitEditing={onSubmitEditing}
         />
-        <FilteringBar
-          disabled={loadingProducts}
-          onChangeCategory={onChangeCategory}
-          t={t}
-          theme={theme}
-        />
+        <FilteringBar onChangeCategory={onChangeCategory} t={t} theme={theme} />
       </View>
       <Products
+        submittedText={submittedText}
+        category={category}
         t={t}
         theme={theme}
-        loadingProducts={loadingProducts}
-        products={products}
       />
     </SafeAreaView>
   );

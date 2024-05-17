@@ -14,6 +14,8 @@ import {ShoppingCartContext} from './contexts/ShoppingCartContext';
 import useShoppingCartContext from './hooks/useShoppingCartFunctions';
 import {ProductModel} from './models/ProductModel';
 import useShoppingCartFunctions from './hooks/useShoppingCartFunctions';
+import useProducts from './hooks/useProducts';
+import {ProductsContext} from './contexts/ProductsContext';
 
 const themes = {
   dark: {
@@ -32,6 +34,8 @@ const AppMiddleWare = () => {
   const [shoppingCart, setShoppingCart] = useState([]);
   const {addToCart, removeFromCart, addOne, removeOne, clearCart} =
     useShoppingCartFunctions(setShoppingCart);
+
+  const {products, loadingProducts} = useProducts({isOnline: false});
 
   SystemNavigationBar.setNavigationColor(theme.colors.background); // Set Navigation bar color to fit the app theme
   SystemNavigationBar.setBarMode(isDark ? 'light' : 'dark'); // Set Navigation bar button colors for visibility
@@ -60,18 +64,25 @@ const AppMiddleWare = () => {
     [shoppingCart]
   );
 
+  const productsContext = useMemo(
+    () => ({products: products, loadingProducts: loadingProducts}),
+    [products, loadingProducts]
+  );
+
   const languageContext = useContext(LanguageContext);
 
   return (
     <ThemeContext.Provider value={themeContext}>
       <LanguageContext.Provider value={languageContext}>
-        <ShoppingCartContext.Provider value={shoppingCartContext}>
-          <PaperProvider theme={theme}>
-            <SafeAreaProvider>
-              <App />
-            </SafeAreaProvider>
-          </PaperProvider>
-        </ShoppingCartContext.Provider>
+        <ProductsContext.Provider value={productsContext}>
+          <ShoppingCartContext.Provider value={shoppingCartContext}>
+            <PaperProvider theme={theme}>
+              <SafeAreaProvider>
+                <App />
+              </SafeAreaProvider>
+            </PaperProvider>
+          </ShoppingCartContext.Provider>
+        </ProductsContext.Provider>
       </LanguageContext.Provider>
     </ThemeContext.Provider>
   );

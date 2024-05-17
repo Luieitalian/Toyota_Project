@@ -8,6 +8,7 @@ import {ShoppingCartContext} from '../contexts/ShoppingCartContext';
 import useProducts from '../hooks/useProducts';
 import {ProductModel} from '../models/ProductModel';
 import {CartProductModel} from '../models/CartProductModel';
+import {ProductsContext} from '../contexts/ProductsContext';
 
 type AddProductWithIDProps = {
   t: TFunction<'translation', undefined>;
@@ -20,7 +21,7 @@ const AddProductWithID = ({t, theme}: AddProductWithIDProps) => {
   const {styles} = useAddProductWithIDStyle(theme);
 
   const {cart, addToCart, addOne} = useContext(ShoppingCartContext);
-  const {products, loadingProducts} = useProducts(false);
+  const {products, loadingProducts} = useContext(ProductsContext);
 
   const onSubmitEditing = () => {
     // if the product with the same id exists in the cart then add one

@@ -7,6 +7,7 @@ import {ProductModel} from '../models/ProductModel';
 import useProductImage from '../hooks/useProductImage';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext';
 import {CartProductModel} from '../models/CartProductModel';
+import FastImage from 'react-native-fast-image';
 
 type ProductProps = {
   t: TFunction<'translation', undefined>;
@@ -30,7 +31,7 @@ const Product = ({t, theme, prod, addToCart}: ProductProps) => {
         <ActivityIndicator theme={theme} />
       ) : (
         <>
-          <Image style={styles.image} source={{uri: imageURL}} />
+          <FastImage style={styles.image} source={{uri: imageURL}} />
           <Text style={styles.price}>{prod.price}</Text>
           <Text style={styles.name}>{prod.name}</Text>
           <Text style={styles.amount_attribute}>{prod.amount_attribute}</Text>
@@ -49,4 +50,11 @@ const Product = ({t, theme, prod, addToCart}: ProductProps) => {
   );
 };
 
-export default memo(Product);
+const arePropsEqual = (
+  prev: Readonly<ProductProps>,
+  next: Readonly<ProductProps>
+) => {
+  return prev.prod.id === next.prod.id;
+};
+
+export default memo(Product, arePropsEqual);

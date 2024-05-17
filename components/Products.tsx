@@ -6,18 +6,42 @@ import {TFunction} from 'i18next';
 import {MD3Theme, ActivityIndicator} from 'react-native-paper';
 import Product from './Product';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext';
+import {ProductsContext} from '../contexts/ProductsContext';
+import useProducts from '../hooks/useProducts';
 
 type ProductsProps = {
   t: TFunction<'translation', undefined>;
   theme: MD3Theme;
-  loadingProducts: boolean;
-  products: ProductModel[];
+  category: string | undefined;
+  submittedText: string | undefined;
+  //loadingProducts: boolean;
+  //products: ProductModel[];
 };
 
-const Products = ({t, theme, loadingProducts, products}: ProductsProps) => {
+const Products = ({t, theme, category, submittedText}: ProductsProps) => {
   const {styles} = useProductsStyle(theme);
 
   const {addToCart} = useContext(ShoppingCartContext);
+  const {products, loadingProducts} = useProducts({isOnline: false});
+
+  const filterProducts = () => {
+    let filteredProducts: ProductModel[] = products;
+
+    if (submittedText !== undefined) {
+      filteredProducts = filteredProducts.filter((prod: ProductModel) =>
+        prod.name
+          .trim()
+          .toLocaleLowerCase('tr')
+          .includes(submittedText.trim().toLocaleLowerCase('tr'))
+      );
+    }
+    if (category !== undefined) {
+      filteredProducts = filteredProducts.filter(
+        (prod: ProductModel) => prod.category === category
+      );
+    }
+    return filteredProducts;
+  };
 
   const renderItem = ({item}: ListRenderItemInfo<ProductModel>) => (
     <Product
@@ -50,7 +74,7 @@ const Products = ({t, theme, loadingProducts, products}: ProductsProps) => {
         <FlatList
           columnWrapperStyle={styles.flatlist}
           numColumns={4}
-          maxToRenderPerBatch={1}
+          maxToRenderPerBatch={2}
           updateCellsBatchingPeriod={1000}
           initialNumToRender={10}
           removeClippedSubviews={true}
