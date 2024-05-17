@@ -27,25 +27,26 @@ const Product = ({t, theme, prod, addToCart}: ProductProps) => {
 
   return (
     <View style={styles.productContainer}>
-      {loadingImageURL ? (
-        <ActivityIndicator theme={theme} />
-      ) : (
-        <>
+      <>
+        {loadingImageURL ? (
+          <ActivityIndicator theme={theme} />
+        ) : (
           <FastImage style={styles.image} source={{uri: imageURL}} />
-          <Text style={styles.price}>{prod.price}</Text>
-          <Text style={styles.name}>{prod.name}</Text>
-          <Text style={styles.amount_attribute}>{prod.amount_attribute}</Text>
-          <IconButton
-            iconColor={styles.addButtonColors.color}
-            containerColor={styles.addButtonColors.backgroundColor}
-            icon="plus"
-            mode="outlined"
-            onPress={onPress}
-            size={styles.addButtonSize.width}
-            style={styles.addButton}
-          />
-        </>
-      )}
+        )}
+
+        <Text style={styles.price}>{prod.price}</Text>
+        <Text style={styles.name}>{prod.name}</Text>
+        <Text style={styles.amount_attribute}>{prod.amount_attribute}</Text>
+        <IconButton
+          iconColor={styles.addButtonColors.color}
+          containerColor={styles.addButtonColors.backgroundColor}
+          icon="plus"
+          mode="outlined"
+          onPress={onPress}
+          size={styles.addButtonSize.width}
+          style={styles.addButton}
+        />
+      </>
     </View>
   );
 };
