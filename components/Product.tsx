@@ -22,7 +22,7 @@ const Product = ({t, theme, prod, addToCart}: ProductProps) => {
 
   const onPress = useCallback(() => {
     addToCart({prod: prod, _cart_amount: 1});
-  }, []);
+  }, [prod, addToCart]);
 
   return (
     <View style={styles.productContainer}>

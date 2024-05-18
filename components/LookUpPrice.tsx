@@ -1,6 +1,12 @@
 import {TFunction} from 'i18next';
 import React, {memo, useContext, useState} from 'react';
-import {Pressable, Text, View} from 'react-native';
+import {
+  NativeSyntheticEvent,
+  Pressable,
+  Text,
+  TextInputSubmitEditingEventData,
+  View,
+} from 'react-native';
 import {Dialog, MD3Theme, Modal, Portal, TextInput} from 'react-native-paper';
 import useLookUpPriceStyle from './styles/useLookUpPriceStyle';
 import CustomButton from './CustomButton';
@@ -36,16 +42,20 @@ const LookUpPrice = ({t, theme}: LookUpPriceProps) => {
   };
 
   const onChangeText = (text: string) => {
-    setIDText(text);
+    setIDText((oldText) => {
+      console.log('idtext submit:', text);
+      const product = products.filter(
+        (prod: ProductModel) => prod.id === text
+      )[0];
+      setProductShown(product);
+      return text;
+    });
   };
 
-  const onSubmitEditing = () => {
-    const product = products.filter(
-      (prod: ProductModel) => prod.id === IDText
-    )[0];
-    setProductShown(product);
-    if (product !== undefined) {
-    }
+  const onSubmitEditing = (
+    event: NativeSyntheticEvent<TextInputSubmitEditingEventData>
+  ) => {
+    onChangeText(event.nativeEvent.text);
   };
 
   return (
@@ -58,11 +68,11 @@ const LookUpPrice = ({t, theme}: LookUpPriceProps) => {
         >
           <TextInput
             inputMode="numeric"
-            onSubmitEditing={onSubmitEditing}
             style={styles.textInput}
             placeholder={t('press_enter_id')}
             value={IDText}
             onChangeText={onChangeText}
+            onSubmitEditing={onSubmitEditing}
           />
           {productShown !== undefined && modalVisible ? (
             <Product
