@@ -4,7 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import LoginScreen from './screens/LoginScreen';
 import ProductsScreen from './screens/ProductsScreen';
 import SalesScreen from './screens/SalesScreen';
-import setDatabase from './hooks/setDatabase';
+import clearSetDatabase from './hooks/clearSetDatabase';
 import useProductsScreenStyle from './screens/styles/useProductsScreenStyle';
 import useSalesScreenStyle from './screens/styles/useSalesScreenStyle';
 
@@ -13,8 +13,6 @@ const Stack = createNativeStackNavigator();
 const App = () => {
   const productsScreenStyle = useProductsScreenStyle();
   const salesScreenStyle = useSalesScreenStyle();
-
-  setDatabase();
 
   return (
     <NavigationContainer>
