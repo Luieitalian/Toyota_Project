@@ -16,8 +16,8 @@ const useSalesScreenCartStyle = (theme: MD3Theme) => {
         justifyContent: 'space-between',
         flexDirection: 'column',
         borderColor: theme.colors.primaryContainer,
-        borderWidth: 2,
-        borderRadius: 10,
+        borderRightWidth: isWide ? 2 : 0,
+        borderBottomWidth: isWide ? 0 : 2,
       },
     });
   }, [theme, width]);

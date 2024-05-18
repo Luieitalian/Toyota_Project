@@ -9,9 +9,6 @@ const useSalesScreenOptionsStyle = (theme: MD3Theme, isWide: boolean) => {
         container: {
           flex: 1,
           height: '100%',
-          borderWidth: 3,
-          borderColor: theme.colors.secondaryContainer,
-          borderRadius: 10,
           justifyContent: 'space-evenly',
         },
         flexRow: {
@@ -37,9 +34,7 @@ const useSalesScreenOptionsStyle = (theme: MD3Theme, isWide: boolean) => {
         container: {
           flex: 1,
           width: '100%',
-          borderWidth: 3,
-          borderColor: theme.colors.secondaryContainer,
-          borderRadius: 10,
+          justifyContent: 'space-evenly',
         },
         flexRow: {
           flex: 1,

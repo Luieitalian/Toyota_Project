@@ -12,7 +12,7 @@ const useSalesScreenPricingStyle = (theme: MD3Theme) => {
     return StyleSheet.create({
       container: {
         flexDirection: 'row',
-        borderTopWidth: 3,
+        borderTopWidth: 2,
         borderTopColor: theme.colors.primaryContainer,
       },
       subTotalContainer: {
@@ -36,7 +36,7 @@ const useSalesScreenPricingStyle = (theme: MD3Theme) => {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        borderLeftWidth: 2,
+        borderLeftWidth: 1,
         borderLeftColor: theme.colors.primaryContainer,
       },
       paymentTotalText: {
