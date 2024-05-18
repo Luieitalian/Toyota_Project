@@ -10,7 +10,7 @@ const useFilteringBarStyle = (theme: MD3Theme) => {
       filteringBarContainer: {
         flex: 1,
         width: '100%',
-        alignItems: 'flex-end',
+        alignItems: 'center',
         justifyContent: 'center',
         marginTop: isWide ? 20 : 0,
         marginBottom: isWide ? 20 : 0,

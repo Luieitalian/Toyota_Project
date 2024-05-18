@@ -1,10 +1,11 @@
 import React, {memo, useContext, useState} from 'react';
-import {Pressable, Text, View} from 'react-native';
+import {Pressable, ScrollView, Text, View} from 'react-native';
 import useFilteringBarStyle from './styles/useFilteringBarStyle';
-import {Icon, MD3Theme, Menu} from 'react-native-paper';
+import {Icon, MD3Theme, Menu, SegmentedButtons} from 'react-native-paper';
 import {changeLanguage, TFunction} from 'i18next';
 
-const Categories = [
+const ButtonCategories = [
+  'show_all',
   'et_balik',
   'dondurma',
   'ev_yasam',
@@ -17,7 +18,8 @@ const Categories = [
   'teknoloji',
 ];
 
-const CategoryIcons: {[char: string]: string} = {
+const ButtonCategoryIcons: {[char: string]: string} = {
+  show_all: 'view-headline',
   et_balik: 'food-drumstick',
   dondurma: 'ice-cream',
   ev_yasam: 'home',
@@ -33,6 +35,7 @@ const CategoryIcons: {[char: string]: string} = {
 type FilteringBarProps = {
   t: TFunction<'translation', undefined>;
   theme: MD3Theme;
+  category: string | undefined;
   disabled?: boolean;
   onChangeCategory: (category: string) => void;
 };
@@ -40,6 +43,7 @@ type FilteringBarProps = {
 const FilteringBar = ({
   t,
   theme,
+  category,
   disabled = false,
   onChangeCategory,
 }: FilteringBarProps) => {
@@ -57,7 +61,23 @@ const FilteringBar = ({
 
   return (
     <View style={styles.filteringBarContainer}>
-      <Menu
+      <ScrollView horizontal={true}>
+        <SegmentedButtons
+          multiSelect={false}
+          theme={theme}
+          onValueChange={onChangeCategoryMiddleWare}
+          value={category ? category : 'show_all'}
+          buttons={[
+            ...ButtonCategories.map((cat: string) => ({
+              value: cat,
+              label: t(cat),
+              icon: ButtonCategoryIcons[cat],
+              style: {height: 40},
+            })),
+          ]}
+        />
+      </ScrollView>
+      {/* <Menu
         visible={visibleCategoryMenu}
         onDismiss={closeCategoryMenu}
         anchorPosition="bottom"
@@ -91,7 +111,7 @@ const FilteringBar = ({
             onPress={() => onChangeCategoryMiddleWare(category)}
           />
         ))}
-      </Menu>
+      </Menu> */}
     </View>
   );
 };
