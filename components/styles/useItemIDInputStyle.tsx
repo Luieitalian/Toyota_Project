@@ -20,6 +20,7 @@ const useItemIDInputStyle = (theme: MD3Theme) => {
         textAlign: 'center',
         fontSize: isWide ? 20 : 16,
         color: theme.colors.onSecondary,
+        opacity: 0.5,
       },
       textInputPlaceholder: {
         color: theme.colors.onSecondary,

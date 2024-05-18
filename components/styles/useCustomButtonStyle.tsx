@@ -17,11 +17,13 @@ const useCustomButtonStyle = (theme: MD3Theme) => {
         backgroundColor: theme.colors.secondary,
         borderRadius: 10,
         margin: 10,
+        paddingHorizontal: 2,
       },
       text: {
         fontSize: isWide ? 20 : 12,
         textAlign: 'center',
         color: theme.colors.onSecondary,
+        fontWeight: '500',
       },
       androidRipple: {
         color: theme.colors.onSecondary,

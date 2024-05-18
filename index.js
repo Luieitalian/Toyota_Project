@@ -11,8 +11,6 @@ import SystemNavigationBar from 'react-native-system-navigation-bar';
 import './i18n';
 import {LanguageContext} from './contexts/LanguageContext';
 import {ShoppingCartContext} from './contexts/ShoppingCartContext';
-import useShoppingCartContext from './hooks/useShoppingCartFunctions';
-import {ProductModel} from './models/ProductModel';
 import useShoppingCartFunctions from './hooks/useShoppingCartFunctions';
 import useProducts from './hooks/useProducts';
 import {ProductsContext} from './contexts/ProductsContext';
