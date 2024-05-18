@@ -8,6 +8,26 @@
       "password": "1234"
     }
   ],
+  "special_offers": [
+    {
+      "id": "1",
+      "name": "buy_two_pay_one",
+      "applicable_products": {"all": false, "products": ["1", "2", "3"]},
+      "type": {"name": "buy_n_pay_n-1"}
+    },
+    {
+      "id": "2",
+      "name": "buy_three_pay_one",
+      "applicable_products": {"all": false, "products": ["4", "5", "6"]},
+      "type": {"name": "buy_n_pay_n-2"}
+    },
+    {
+      "id": "3",
+      "name": "100_discount_over_1000",
+      "applicable_products": {"all": true},
+      "type": {"name": "n_discount_over_m"}
+    }
+  ],
   "products": [
     {
       "name": "Nogger Paketi",
