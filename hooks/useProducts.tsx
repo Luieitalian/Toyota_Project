@@ -2,7 +2,6 @@ import {useCallback, useEffect, useMemo, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios, {AxiosError} from 'axios';
 import {ProductModel} from '../models/ProductModel';
-import setDatabase from './setDatabase';
 
 type useProductsArgs = {
   isOnline: boolean;
@@ -31,10 +30,10 @@ const useProducts = ({isOnline}: useProductsArgs) => {
   };
 
   const getProductsFromLocalDB = async () => {
-    console.log(`Trying to get products from local!`);
+    console.log(`Trying to get products from local database!`);
     await AsyncStorage.getItem('database') // if prods exist in local storage then simply get them
       .then((local_db_string) => {
-        console.log('Getting products from local storage!');
+        console.log('Getting products from local database!');
 
         const _products = JSON.parse(local_db_string as string)
           .products as ProductModel[];
