@@ -1,12 +1,13 @@
 import React from 'react';
 import {StyleSheet, useWindowDimensions} from 'react-native';
 import {useTheme} from 'react-native-paper';
+import {breakPoint} from '../../globals/style';
 
 const useProductsScreenStyle = () => {
   const theme = useTheme();
   const {width, height} = useWindowDimensions();
   const styles = React.useMemo(() => {
-    const isWide = width >= 900;
+    const isWide = width >= breakPoint;
     return StyleSheet.create({
       screenView: {
         flex: 1,

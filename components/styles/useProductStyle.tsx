@@ -1,11 +1,12 @@
 import {MD3Theme} from 'react-native-paper';
 import React from 'react';
 import {StyleSheet, useWindowDimensions} from 'react-native';
+import {breakPoint} from '../../globals/style';
 
 const useProductStyle = (theme: MD3Theme) => {
   const {width, height} = useWindowDimensions();
   const styles = React.useMemo(() => {
-    const isWide = width >= 900;
+    const isWide = width >= breakPoint;
 
     return StyleSheet.create({
       productContainer: {
