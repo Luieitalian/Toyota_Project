@@ -37,5 +37,6 @@
   "cash_select": "NAKİT SEÇ",
   "receipt_mail": "E-MAİL İLE FATURA GÖNDER",
   "pick_offer": "KAMPANYA SEÇ",
-  "pay": "ÖDE"
+  "pay": "ÖDE",
+  "please_enter_a_valid_id": "Lütfen geçerli bir id giriniz."
 }

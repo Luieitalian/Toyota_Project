@@ -37,5 +37,6 @@
   "cash_select": "SELECT CASH",
   "receipt_mail": "SEND RECEIPT VIA E-MAIL",
   "pick_offer": "PICK OFFER",
-  "pay": "PAY"
+  "pay": "PAY",
+  "please_enter_a_valid_id": "Please enter a valid id."
 }
