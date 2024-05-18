@@ -21,7 +21,6 @@ const Product = ({t, theme, prod, addToCart}: ProductProps) => {
   const {imageURL, loadingImageURL} = useProductImage(prod);
 
   const onPress = useCallback(() => {
-    console.log(`Adding product with id '${prod.id}' to the cart.`);
     addToCart({prod: prod, _cart_amount: 1});
   }, []);
 
@@ -31,7 +30,11 @@ const Product = ({t, theme, prod, addToCart}: ProductProps) => {
         {loadingImageURL ? (
           <ActivityIndicator theme={theme} />
         ) : (
-          <FastImage style={styles.image} source={{uri: imageURL}} />
+          <FastImage
+            resizeMode="contain"
+            style={styles.image}
+            source={{uri: imageURL}}
+          />
         )}
 
         <Text style={styles.price}>{prod.price}</Text>

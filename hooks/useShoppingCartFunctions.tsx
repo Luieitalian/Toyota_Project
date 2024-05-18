@@ -15,6 +15,7 @@ const useShoppingCartFunctions = (
         );
         return c;
       } else {
+        console.log(`Adding product with id '${prod.prod.id}' to the cart.`);
         return [...c, prod];
       }
     });
