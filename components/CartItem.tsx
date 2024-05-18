@@ -1,7 +1,7 @@
 import React, {memo, useCallback, useContext, useEffect} from 'react';
 import {Button, Text, View} from 'react-native';
 import {TFunction} from 'i18next';
-import {IconButton, MD3Theme, Surface} from 'react-native-paper';
+import {IconButton, MD3Theme} from 'react-native-paper';
 import {CartProductModel} from '../models/CartProductModel';
 import useCartItemStyle from './styles/useCartItemStyle';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext';
@@ -23,7 +23,7 @@ const CartItem = ({t, theme, cart_item}: CartItemProps) => {
   }, []);
 
   return (
-    <Surface elevation={2} style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.nameAndAmount}>
         <Text style={styles.amount}>
           {cart_item._cart_amount > 1
@@ -34,7 +34,7 @@ const CartItem = ({t, theme, cart_item}: CartItemProps) => {
       </View>
       <View style={styles.priceAndRemove}>
         <Text style={styles.pricingText}>
-          {'₺' +
+          {'₺ ' +
             currency(cart_item.prod.price, {
               separator: '.',
               decimal: ',',
@@ -52,7 +52,7 @@ const CartItem = ({t, theme, cart_item}: CartItemProps) => {
           />
         </View>
       </View>
-    </Surface>
+    </View>
   );
 };
 

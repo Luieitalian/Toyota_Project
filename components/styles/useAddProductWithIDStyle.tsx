@@ -5,9 +5,7 @@ import {MD3Theme} from 'react-native-paper';
 const useAddProductWithIDStyle = (theme: MD3Theme) => {
   const styles = React.useMemo(() => {
     return StyleSheet.create({
-      container: {
-        paddingHorizontal: 5,
-      },
+      container: {},
       text: {},
     });
   }, [theme]);
