@@ -24,19 +24,19 @@ const useCartItemStyle = (theme: MD3Theme) => {
       },
       amount: {
         color: theme.colors.onBackground,
-        fontSize: isWide ? 24 : 18,
+        fontSize: isWide ? 20 : 16,
       },
       name: {
         color: theme.colors.onBackground,
-        fontSize: isWide ? 24 : 16,
+        fontSize: isWide ? 20 : 16,
       },
       pricingText: {
-        fontSize: isWide ? 24 : 18,
+        fontSize: isWide ? 20 : 16,
         color: theme.colors.onPrimaryContainer,
       },
       removeButton: {
-        backgroundColor: theme.colors.onError,
-        color: theme.colors.error,
+        backgroundColor: theme.colors.error,
+        color: theme.colors.onError,
         width: isWide ? 32 : 24,
       },
       priceAndRemove: {

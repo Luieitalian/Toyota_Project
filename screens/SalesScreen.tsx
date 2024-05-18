@@ -5,6 +5,7 @@ import useSalesScreenStyle from './styles/useSalesScreenStyle';
 import {useTranslation} from 'react-i18next';
 import SalesScreenCart from '../components/SalesScreenCart';
 import SalesScreenOptions from '../components/SalesScreenOptions';
+import Header from '../components/Header';
 
 const SalesScreen = ({route, navigation}: any) => {
   const {styles, theme} = useSalesScreenStyle();

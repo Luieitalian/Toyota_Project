@@ -11,7 +11,7 @@ const useProductStyle = (theme: MD3Theme) => {
     return StyleSheet.create({
       productContainer: {
         padding: 8,
-        minHeight: 50,
+        minHeight: 250,
         width: isWide ? 260 : 120,
         backgroundColor: 'white',
         flexDirection: 'column',
