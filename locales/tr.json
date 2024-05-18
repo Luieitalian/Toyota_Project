@@ -25,7 +25,17 @@
   "item_other": "ürün",
   "itemWithCount_one": "{{count}} ürün",
   "itemWithCount_other": "{{count}} ürün",
-  "pick_items": "Ürün Seç",
-  "scan_barcode": "Barkod Okut",
-  "press_enter_id": "Ürün ID'si girmek için basınız"
+  "pick_items": "ÜRÜN SEÇ",
+  "scan_barcode": "BARKOD OKUT",
+  "press_enter_id": "Ürün ID'si girmek için basınız",
+  "show_all": "All",
+  "please_wait": "Lütfen Bekleyiniz",
+  "add_product_with_id": "ID İLE ÜRÜN EKLE",
+  "look_up_price": "ÜRÜN FİYATI ÖĞREN",
+  "clear_cart": "SEPETİ TEMİZLE",
+  "credit_card_select": "KREDİ KARTI SEÇ",
+  "cash_select": "NAKİT SEÇ",
+  "receipt_mail": "E-MAİL İLE FATURA GÖNDER",
+  "pick_offer": "KAMPANYA SEÇ",
+  "pay": "ÖDE"
 }
