@@ -14,6 +14,7 @@ import ReceiptMail from './ReceiptMail';
 import PickOffer from './PickOffer';
 import Pay from './Pay';
 import ClearCart from './ClearCart';
+import {breakPoint} from '../globals/style';
 
 type SalesScreenOptionsProps = {
   t: TFunction<'translation', undefined>;
@@ -22,7 +23,7 @@ type SalesScreenOptionsProps = {
 
 const SalesScreenOptions = ({t, theme}: SalesScreenOptionsProps) => {
   const {width} = useWindowDimensions();
-  const isWide = width >= 900;
+  const isWide = width >= breakPoint;
 
   const {styles} = useSalesScreenOptionsStyle(theme, isWide);
 

@@ -1,18 +1,11 @@
 import React, {memo, useContext} from 'react';
-import {
-  FlatList,
-  ListRenderItemInfo,
-  Text,
-  useWindowDimensions,
-  View,
-} from 'react-native';
+import {FlatList, ListRenderItemInfo, View} from 'react-native';
 import {TFunction} from 'i18next';
 import {MD3Theme} from 'react-native-paper';
 import useSalesScreenCartStyle from './styles/useSalesScreenCartStyle';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext';
 import {CartProductModel} from '../models/CartProductModel';
 import CartItem from './CartItem';
-import currency from 'currency.js';
 import SalesScreenPricing from './SalesScreenPricing';
 
 type SalesScreenCartProps = {

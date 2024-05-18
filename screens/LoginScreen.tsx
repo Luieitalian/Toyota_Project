@@ -6,6 +6,7 @@ import useLoginScreenStyle from './styles/useLoginScreenStyle';
 import Version from '../components/Version';
 import Header from '../components/Header';
 import useNFC from '../hooks/useNFC';
+import DebugNavigateScreen from '../components/DebugNavigateScreen';
 
 const LoginScreen = ({route, navigation}: any) => {
   const {t, i18n} = useTranslation();
@@ -36,6 +37,7 @@ const LoginScreen = ({route, navigation}: any) => {
         backgroundColor={theme.colors.background}
       />
       <Header theme={theme} t={t} />
+      <DebugNavigateScreen navigation={navigation} screen={'SalesScreen'} />
       <View style={styles.wrapper}>
         <View style={styles.contentWrapper}>
           <Text style={styles.welcome}>{t('welcome_to_app')}</Text>

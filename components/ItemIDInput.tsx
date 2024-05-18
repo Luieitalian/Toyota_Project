@@ -28,17 +28,27 @@ const ItemIDInput = ({
   onSubmitEditing,
 }: ItemIDInputProps) => {
   const {styles} = useItemIDInputStyle(theme);
+  const [opacity, setOpacity] = useState(0.5);
 
   const onChangeText = (input: string) => {
     setIDText(input);
   };
 
+  const onFocus = () => {
+    setOpacity(1);
+  };
+  const onBlur = () => {
+    setOpacity(0.5);
+  };
+
   return (
     <TextInput
+      onFocus={onFocus}
+      onBlur={onBlur}
       editable={!disabled}
       cursorColor={styles.textInput.color}
       placeholder={t('press_enter_id')}
-      style={styles.textInput}
+      style={[styles.textInput, {opacity: opacity}]}
       value={text}
       onSubmitEditing={onSubmitEditing}
       onChangeText={onChangeText}

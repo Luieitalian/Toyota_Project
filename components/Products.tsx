@@ -39,9 +39,11 @@ const Products = ({
   const {products} = useContext(ProductsContext);
 
   const [pageOffset, setPageOffset] = useState<number>(1);
-  const [productsShown, setProductsShown] = useState<ProductModel[]>([]);
+  const [productsShown, setProductsShown] = useState<ProductModel[]>(
+    products.slice(0, 12)
+  );
 
-  const initialLoadNumber = 20;
+  const initialLoadNumber = 16;
 
   const filterProducts = useCallback(() => {
     let filteredProducts: ProductModel[] = products;
