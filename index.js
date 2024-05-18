@@ -14,6 +14,7 @@ import {ShoppingCartContext} from './contexts/ShoppingCartContext';
 import useShoppingCartFunctions from './hooks/useShoppingCartFunctions';
 import useProducts from './hooks/useProducts';
 import {ProductsContext} from './contexts/ProductsContext';
+import {StatusContext} from './contexts/StatusContext';
 
 const themes = {
   dark: {
@@ -33,10 +34,24 @@ const AppMiddleWare = () => {
   const {addToCart, removeFromCart, addOne, removeOne, clearCart} =
     useShoppingCartFunctions(setShoppingCart);
 
-  const {products, loadingProducts} = useProducts({isOnline: false});
+  const [isOnline, setIsOnline] = useState(true);
 
   SystemNavigationBar.setNavigationColor(theme.colors.background); // Set Navigation bar color to fit the app theme
   SystemNavigationBar.setBarMode(isDark ? 'light' : 'dark'); // Set Navigation bar button colors for visibility
+
+  const setOnlineStatus = useCallback(
+    (val) => {
+      return setIsOnline(val);
+    },
+    [isOnline]
+  );
+
+  const statusContext = useMemo(
+    () => ({isOnline: isOnline, setOnlineStatus: setOnlineStatus}),
+    [isOnline, setOnlineStatus]
+  );
+
+  const {products, loadingProducts} = useProducts({isOnline: isOnline});
 
   const toggleTheme = useCallback(() => {
     return setIsDark(!isDark);
@@ -70,19 +85,21 @@ const AppMiddleWare = () => {
   const languageContext = useContext(LanguageContext);
 
   return (
-    <ThemeContext.Provider value={themeContext}>
-      <LanguageContext.Provider value={languageContext}>
-        <ProductsContext.Provider value={productsContext}>
-          <ShoppingCartContext.Provider value={shoppingCartContext}>
-            <PaperProvider theme={theme}>
-              <SafeAreaProvider>
-                <App />
-              </SafeAreaProvider>
-            </PaperProvider>
-          </ShoppingCartContext.Provider>
-        </ProductsContext.Provider>
-      </LanguageContext.Provider>
-    </ThemeContext.Provider>
+    <StatusContext.Provider value={statusContext}>
+      <ThemeContext.Provider value={themeContext}>
+        <LanguageContext.Provider value={languageContext}>
+          <ProductsContext.Provider value={productsContext}>
+            <ShoppingCartContext.Provider value={shoppingCartContext}>
+              <PaperProvider theme={theme}>
+                <SafeAreaProvider>
+                  <App />
+                </SafeAreaProvider>
+              </PaperProvider>
+            </ShoppingCartContext.Provider>
+          </ProductsContext.Provider>
+        </LanguageContext.Provider>
+      </ThemeContext.Provider>
+    </StatusContext.Provider>
   );
 };
 
