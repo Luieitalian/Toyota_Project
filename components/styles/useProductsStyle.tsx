@@ -17,7 +17,7 @@ const useProductsStyle = (theme: MD3Theme) => {
         gap: 10,
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop: 10,
+        paddingHorizontal: 10,
         paddingBottom: 20,
       },
       listEmptyView: {
@@ -26,7 +26,10 @@ const useProductsStyle = (theme: MD3Theme) => {
         alignItems: 'center',
       },
       listEmptyViewText: {
-        fontSize: isWide ? 24 : 12,
+        fontSize: isWide ? 24 : 18,
+        color: theme.colors.onBackground,
+      },
+      pleaseWait: {
         color: theme.colors.onBackground,
       },
     });

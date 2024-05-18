@@ -1,4 +1,5 @@
 import React, {
+  Dispatch,
   memo,
   useCallback,
   useContext,
@@ -18,21 +19,31 @@ import {ProductsContext} from '../contexts/ProductsContext';
 type ProductsProps = {
   t: TFunction<'translation', undefined>;
   theme: MD3Theme;
-  category: string | undefined;
-  submittedText: string | undefined;
+  category?: string | undefined;
+  submittedText?: string | undefined;
+  loading: boolean;
+  setLoading: Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Products = ({t, theme, category, submittedText}: ProductsProps) => {
+const Products = ({
+  t,
+  theme,
+  category,
+  submittedText,
+  loading,
+  setLoading,
+}: ProductsProps) => {
   const {styles} = useProductsStyle(theme);
 
   const {addToCart} = useContext(ShoppingCartContext);
-  const {products, loadingProducts} = useContext(ProductsContext);
-  const [pageOffset, setPageOffset] = useState<number>(2);
+  const {products} = useContext(ProductsContext);
+
+  const [pageOffset, setPageOffset] = useState<number>(1);
   const [productsShown, setProductsShown] = useState<ProductModel[]>([]);
 
-  let initialLoadNumber = 20;
+  const initialLoadNumber = 20;
 
-  const filterProducts = () => {
+  const filterProducts = useCallback(() => {
     let filteredProducts: ProductModel[] = products;
 
     if (submittedText !== undefined) {
@@ -43,23 +54,21 @@ const Products = ({t, theme, category, submittedText}: ProductsProps) => {
           .includes(submittedText.trim().toLocaleLowerCase('tr'))
       );
     }
-    if (category !== undefined) {
+    if (category !== undefined && category !== 'show_all') {
       filteredProducts = filteredProducts.filter(
         (prod: ProductModel) => prod.category === category
       );
     }
+    console.log('category: ', category);
+    console.log('submittedText: ', submittedText);
     return filteredProducts;
-  };
+  }, [submittedText, category]);
 
   const renderItem = ({item}: ListRenderItemInfo<ProductModel>) => (
-    <Product
-      addToCart={addToCart}
-      key={item.id}
-      prod={item}
-      t={t}
-      theme={theme}
-    />
+    <Product addToCart={addToCart} prod={item} t={t} theme={theme} />
   );
+
+  const keyExtractor = (item: ProductModel) => item.id;
 
   const ListEmptyComponent = () => {
     return (
@@ -71,30 +80,38 @@ const Products = ({t, theme, category, submittedText}: ProductsProps) => {
 
   const onEndReached = () => {
     console.log('onEndReached ', pageOffset);
-    setPageOffset((offset) => offset + 1);
-    setProductsShown(filterProducts().slice(0, pageOffset * initialLoadNumber));
+    setPageOffset((o) => o + 1);
   };
 
   useEffect(() => {
-    setProductsShown(filterProducts().slice(0, initialLoadNumber));
-  }, [products]);
+    setPageOffset((o) => o + 1);
+  }, [submittedText, category]);
+
+  useEffect(() => {
+    setProductsShown(filterProducts().slice(0, pageOffset * initialLoadNumber));
+    setLoading(false);
+  }, [pageOffset]);
 
   return (
     <View style={styles.flatlistContainer}>
-      {loadingProducts ? (
-        <ActivityIndicator theme={theme} />
+      {loading ? (
+        <>
+          <Text style={styles.pleaseWait}>{t('please_wait')}</Text>
+          <ActivityIndicator theme={theme} />
+        </>
       ) : (
         <FlatList
           columnWrapperStyle={styles.flatlist}
           numColumns={4}
           maxToRenderPerBatch={1}
           updateCellsBatchingPeriod={1000}
-          initialNumToRender={initialLoadNumber}
-          removeClippedSubviews={true}
+          initialNumToRender={3}
+          removeClippedSubviews={false}
           data={productsShown}
           onEndReached={onEndReached}
           onEndReachedThreshold={0.2}
           renderItem={renderItem}
+          keyExtractor={keyExtractor}
           ListEmptyComponent={ListEmptyComponent}
         />
       )}

@@ -3,17 +3,13 @@ import {
   NativeSyntheticEvent,
   TextInputSubmitEditingEventData,
 } from 'react-native';
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import useProductsScreenStyle from './styles/useProductsScreenStyle';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useTranslation} from 'react-i18next';
 import SearchBar from '../components/SearchBar';
 import FilteringBar from '../components/FilteringBar';
-import Header from '../components/Header';
 import Products from '../components/Products';
-import DebugNavigateScreen from '../components/DebugNavigateScreen';
-import {ProductsContext} from '../contexts/ProductsContext';
-import {ProductModel} from '../models/ProductModel';
 
 const ProductsScreen = ({route, navigation}: any) => {
   const {styles, theme} = useProductsScreenStyle();
@@ -22,6 +18,8 @@ const ProductsScreen = ({route, navigation}: any) => {
   const [submittedText, setSubmittedText] = useState<string | undefined>(
     undefined
   );
+  const [loading, setLoading] = useState(true);
+
   const {t} = useTranslation();
 
   const onSubmitEditing = (
@@ -31,11 +29,15 @@ const ProductsScreen = ({route, navigation}: any) => {
   };
 
   const onChangeText = (text: string) => {
+    setLoading(true);
     setText(text);
   };
 
   const onChangeCategory = (category: string) => {
-    setSubmittedText(text);
+    setLoading(true);
+    if (text !== undefined) {
+      setSubmittedText(text);
+    }
     setCategory(category);
   };
 
@@ -49,9 +51,16 @@ const ProductsScreen = ({route, navigation}: any) => {
           onChangeText={onChangeText}
           onSubmitEditing={onSubmitEditing}
         />
-        <FilteringBar onChangeCategory={onChangeCategory} t={t} theme={theme} />
+        <FilteringBar
+          category={category}
+          onChangeCategory={onChangeCategory}
+          t={t}
+          theme={theme}
+        />
       </View>
       <Products
+        loading={loading}
+        setLoading={setLoading}
         submittedText={submittedText}
         category={category}
         t={t}
