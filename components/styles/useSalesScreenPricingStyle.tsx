@@ -12,16 +12,16 @@ const useSalesScreenPricingStyle = (theme: MD3Theme) => {
     return StyleSheet.create({
       container: {
         flexDirection: 'row',
-        borderTopWidth: 2,
-        borderTopColor: theme.colors.primaryContainer,
+        borderTopWidth: 0.5,
+        borderTopColor: theme.colors.outlineVariant,
       },
       subTotalContainer: {
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        borderRightWidth: 1,
-        borderRightColor: theme.colors.primaryContainer,
+        borderRightWidth: 0.25,
+        borderRightColor: theme.colors.outlineVariant,
       },
       subTotalText: {
         fontSize: isWide ? 18 : 14,
@@ -36,8 +36,8 @@ const useSalesScreenPricingStyle = (theme: MD3Theme) => {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        borderLeftWidth: 1,
-        borderLeftColor: theme.colors.primaryContainer,
+        borderLeftWidth: 0.25,
+        borderLeftColor: theme.colors.outlineVariant,
       },
       paymentTotalText: {
         fontSize: isWide ? 18 : 14,

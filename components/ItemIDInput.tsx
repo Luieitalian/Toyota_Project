@@ -6,8 +6,8 @@ import React, {
   useContext,
   useState,
 } from 'react';
-import {Pressable, Text, View, TextInput} from 'react-native';
-import {MD3Theme} from 'react-native-paper';
+import {Pressable, Text, View} from 'react-native';
+import {MD3Theme, TextInput} from 'react-native-paper';
 import useItemIDInputStyle from './styles/useItemIDInputStyle';
 
 type ItemIDInputProps = {
@@ -47,6 +47,8 @@ const ItemIDInput = ({
       onBlur={onBlur}
       editable={!disabled}
       cursorColor={styles.textInput.color}
+      underlineColor={styles.outline.color}
+      activeUnderlineColor={styles.outline.color}
       placeholder={t('press_enter_id')}
       style={[styles.textInput, {opacity: opacity}]}
       value={text}
@@ -56,6 +58,7 @@ const ItemIDInput = ({
       placeholderTextColor={styles.textInputPlaceholder.color}
       autoCorrect={false}
       inputMode="numeric"
+      mode="flat"
     />
   );
 };

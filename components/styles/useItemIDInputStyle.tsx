@@ -12,17 +12,20 @@ const useItemIDInputStyle = (theme: MD3Theme) => {
     return StyleSheet.create({
       textInput: {
         flex: 1,
+        height: 100,
         elevation: 4,
         justifyContent: 'center',
-        backgroundColor: theme.colors.secondary,
-        borderRadius: 10,
+        backgroundColor: theme.colors.onSecondary,
         margin: 10,
         textAlign: 'center',
-        fontSize: isWide ? 20 : 16,
-        color: theme.colors.onSecondary,
+        fontSize: isWide ? 20 : 14,
+        color: theme.colors.secondary,
       },
       textInputPlaceholder: {
-        color: theme.colors.onSecondary,
+        color: theme.colors.secondary,
+      },
+      outline: {
+        color: theme.colors.secondary,
       },
     });
   }, [theme, width]);
