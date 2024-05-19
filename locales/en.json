@@ -29,6 +29,7 @@
   "scan_barcode": "SCAN BAR CODE",
   "press_enter_id": "Press to Enter ID",
   "show_all": "All",
+  "all": "All",
   "please_wait": "Please Wait",
   "add_product_with_id": "ADD PRODUCT WITH ID",
   "look_up_price": "LOOK UP PRICE",
@@ -38,5 +39,14 @@
   "receipt_mail": "SEND RECEIPT VIA E-MAIL",
   "pick_offer": "PICK OFFER",
   "pay": "PAY",
-  "please_enter_a_valid_id": "Please enter a valid id."
+  "please_enter_a_valid_id": "Please enter a valid id.",
+  "warning": "Warning!",
+  "applicable_products": "Applicable products",
+  "100_discount_over_1000": "₺100 discount for carts over ₺1000",
+  "buy_two_pay_one": "Buy two pay one",
+  "you_picked_offer": "You picked \"{{offer}}\" offer",
+  "done": "Done",
+  "buy_three_pay_one": "Buy three pay one",
+  "cancel": "Cancel",
+  "special_offers": "Special Offers"
 }

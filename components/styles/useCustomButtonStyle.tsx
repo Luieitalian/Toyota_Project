@@ -20,7 +20,7 @@ const useCustomButtonStyle = (theme: MD3Theme) => {
         paddingHorizontal: 2,
       },
       text: {
-        fontSize: isWide ? 20 : 12,
+        fontSize: isWide ? 20 : 10,
         textAlign: 'center',
         color: theme.colors.onSecondary,
         fontWeight: '500',
