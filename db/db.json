@@ -13,13 +13,13 @@
       "id": "1",
       "name": "buy_two_pay_one",
       "applicable_products": {"all": false, "products": ["1", "2", "3"]},
-      "type": {"name": "buy_n_pay_n-1"}
+      "type": {"name": "buy_n_pay_m"}
     },
     {
       "id": "2",
       "name": "buy_three_pay_one",
       "applicable_products": {"all": false, "products": ["4", "5", "6"]},
-      "type": {"name": "buy_n_pay_n-2"}
+      "type": {"name": "buy_n_pay_m"}
     },
     {
       "id": "3",

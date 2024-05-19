@@ -7,7 +7,7 @@ export const ShoppingCartContext = createContext({
   addOne: (prod_id: string) => {},
   removeOne: (prod_id: string) => {},
   clearCart: () => {},
-  selectedOffer: undefined,
-  setSelectedOffer: (() => {}) as Dispatch<SetStateAction<string | undefined>>,
+  selectedOfferID: undefined,
+  setSelectedOfferID: (offer_id: string | undefined) => {},
   cart: [] as CartProductModel[],
 });

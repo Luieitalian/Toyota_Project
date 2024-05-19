@@ -34,11 +34,12 @@ const CartItem = ({t, theme, cart_item}: CartItemProps) => {
       </View>
       <View style={styles.priceAndRemove}>
         <Text style={styles.pricingText}>
-          {'₺' +
-            currency(cart_item.prod.price, {
-              separator: '.',
-              decimal: ',',
-            }).multiply(cart_item._cart_amount)}
+          {currency(cart_item.prod.price, {
+            separator: '.',
+            decimal: ',',
+          })
+            .multiply(cart_item._cart_amount)
+            .format({symbol: '₺', separator: '.', decimal: ','})}
         </Text>
         <View>
           <IconButton

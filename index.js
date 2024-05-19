@@ -5,14 +5,7 @@ import {MD3DarkTheme, MD3LightTheme, PaperProvider} from 'react-native-paper';
 import LightTheme from './themes/LightTheme.json';
 import DarkTheme from './themes/DarkTheme.json';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {
-  useState,
-  useCallback,
-  useMemo,
-  StrictMode,
-  useContext,
-  useEffect,
-} from 'react';
+import {useState, useCallback, useMemo, useContext} from 'react';
 import {ThemeContext} from './contexts/ThemeContext';
 import SystemNavigationBar from 'react-native-system-navigation-bar';
 import './i18n';
@@ -22,8 +15,6 @@ import useShoppingCartFunctions from './hooks/useShoppingCartFunctions';
 import useProducts from './hooks/useProducts';
 import {ProductsContext} from './contexts/ProductsContext';
 import {StatusContext} from './contexts/StatusContext';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import clearSetDatabase from './hooks/clearSetDatabase';
 
 const themes = {
   dark: {
@@ -39,11 +30,13 @@ const themes = {
 const AppMiddleWare = () => {
   const [isDark, setIsDark] = useState(false);
   const theme = isDark ? themes.dark : themes.light;
+
   const [shoppingCart, setShoppingCart] = useState([]);
   const {addToCart, removeFromCart, addOne, removeOne, clearCart} =
     useShoppingCartFunctions(setShoppingCart);
 
   const [isOnline, setIsOnline] = useState(false);
+  const [selectedOfferID, setSelectedOfferID] = useState(undefined);
 
   SystemNavigationBar.setNavigationColor(theme.colors.background); // Set Navigation bar color to fit the app theme
   SystemNavigationBar.setBarMode(isDark ? 'light' : 'dark'); // Set Navigation bar button colors for visibility
@@ -83,9 +76,11 @@ const AppMiddleWare = () => {
       removeOne: removeOne,
       addToCart: addToCart,
       clearCart: clearCart,
+      selectedOfferID: selectedOfferID,
+      setSelectedOfferID: setSelectedOfferID,
       cart: shoppingCart,
     }),
-    [shoppingCart]
+    [shoppingCart, selectedOfferID]
   );
 
   const productsContext = useMemo(

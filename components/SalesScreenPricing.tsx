@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import React, {memo, useContext} from 'react';
 import {Text, View} from 'react-native';
 import {TFunction} from 'i18next';
 import {MD3Theme} from 'react-native-paper';
@@ -16,9 +16,15 @@ type SalesScreenPricingProps = {
 const SalesScreenPricing = ({t, theme, cart}: SalesScreenPricingProps) => {
   const {styles} = useSalesScreenPricingStyle(theme);
 
-  const {subTotal} = useCartPricing(cart);
+  const {subTotal, paymentTotal} = useCartPricing(cart);
 
   const subTotalText = currency(subTotal).format({
+    symbol: '₺',
+    separator: '.',
+    decimal: ',',
+  });
+
+  const paymentTotalText = currency(paymentTotal).format({
     symbol: '₺',
     separator: '.',
     decimal: ',',
@@ -32,7 +38,7 @@ const SalesScreenPricing = ({t, theme, cart}: SalesScreenPricingProps) => {
       </View>
       <View style={styles.paymentTotalContainer}>
         <Text style={styles.paymentTotalText}>{t('payment_total')}</Text>
-        <Text style={styles.paymentTotalPriceText}>15 TL</Text>
+        <Text style={styles.paymentTotalPriceText}>{paymentTotalText}</Text>
       </View>
     </View>
   );

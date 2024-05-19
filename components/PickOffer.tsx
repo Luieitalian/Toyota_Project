@@ -1,5 +1,5 @@
 import {TFunction} from 'i18next';
-import React, {memo, useContext, useState} from 'react';
+import React, {memo, useContext, useEffect, useState} from 'react';
 import {Pressable, ScrollView, Text, View} from 'react-native';
 import {
   Button,
@@ -25,8 +25,9 @@ type PickOfferProps = {
 const PickOffer = ({t, theme}: PickOfferProps) => {
   const {styles} = usePickOfferStyle(theme);
 
-  const [modalVisible, setModalVisible] = useState<boolean>(true);
-  const {selectedOffer, setSelectedOffer} = useContext(ShoppingCartContext);
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const {selectedOfferID, setSelectedOfferID} = useContext(ShoppingCartContext);
+  const {cart} = useContext(ShoppingCartContext);
 
   const {specialOffers, offersLoading} = useSpecialOffers();
   const {isApplicable} = useIsOfferApplicable();
@@ -40,7 +41,7 @@ const PickOffer = ({t, theme}: PickOfferProps) => {
   };
 
   const onCancel = () => {
-    setSelectedOffer(undefined);
+    setSelectedOfferID(undefined);
     setModalVisible(false);
   };
 
@@ -50,13 +51,17 @@ const PickOffer = ({t, theme}: PickOfferProps) => {
 
   const onSelect = (offer: SpecialOfferModel) => {
     console.log(`'${offer.name}' with id '${offer.id}' is selected!`);
-    setSelectedOffer(offer.id);
+    setSelectedOfferID(offer.id);
   };
 
   const onPress = () => {
     showModal();
     console.log('pick_offer');
   };
+
+  useEffect(() => {
+    setSelectedOfferID(undefined);
+  }, [cart]);
 
   return (
     <>
@@ -73,7 +78,7 @@ const PickOffer = ({t, theme}: PickOfferProps) => {
             <ScrollView contentContainerStyle={styles.offersContainer}>
               {specialOffers?.map((offer: SpecialOfferModel) => (
                 <SpecialOfferItem
-                  selected={selectedOffer === offer.id && true}
+                  selected={selectedOfferID === offer.id && true}
                   applicable={isApplicable(offer)}
                   onSelect={onSelect}
                   offer={offer}
