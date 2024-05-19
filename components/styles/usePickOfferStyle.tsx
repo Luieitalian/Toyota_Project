@@ -59,6 +59,7 @@ const usePickOfferStyle = (theme: MD3Theme) => {
       snackbar: {padding: 10, zIndex: 2, elevation: 2},
       buttonGroup: {
         flex: 1,
+        minHeight: 50,
         width: '100%',
         flexDirection: 'row',
         alignItems: 'center',
