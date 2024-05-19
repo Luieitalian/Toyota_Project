@@ -16,7 +16,7 @@ const ClearCart = ({t, theme}: ClearCartProps) => {
   const {clearCart} = useContext(ShoppingCartContext);
 
   const onPress = () => {
-    console.log('Clearing Cart!');
+    console.log('Clearing shopping cart!');
     clearCart();
   };
 

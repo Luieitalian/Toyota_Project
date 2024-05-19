@@ -20,26 +20,20 @@ const AddProductWithID = ({t, theme}: AddProductWithIDProps) => {
 
   const {styles} = useAddProductWithIDStyle(theme);
 
-  const {cart, addToCart, addOne} = useContext(ShoppingCartContext);
+  const {cart, addToCart} = useContext(ShoppingCartContext);
   const {products, loadingProducts} = useContext(ProductsContext);
 
   const onSubmitEditing = () => {
-    // if the product with the same id exists in the cart then add one
-    if (cart.some((prod: CartProductModel) => prod.prod.id === IDText)) {
-      addOne(IDText);
-    } else {
-      const desired_prod = products.filter(
-        (prod: ProductModel) => prod.id === IDText
-      )[0];
+    const desired_prod = products.filter(
+      (prod: ProductModel) => prod.id === IDText
+    )[0];
 
-      if (desired_prod !== undefined) {
-        console.log(desired_prod);
-        addToCart({prod: desired_prod, _cart_amount: 1});
-      } else {
-        console.log(
-          `There were no products with the id '${IDText}' to be added to the cart.`
-        );
-      }
+    if (desired_prod !== undefined) {
+      addToCart({prod: desired_prod, _cart_amount: 1});
+    } else {
+      console.log(
+        `There were no products with the id '${IDText}' to be added to the cart.`
+      );
     }
   };
 

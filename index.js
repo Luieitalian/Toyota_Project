@@ -32,7 +32,7 @@ const AppMiddleWare = () => {
   const theme = isDark ? themes.dark : themes.light;
 
   const [shoppingCart, setShoppingCart] = useState([]);
-  const {addToCart, removeFromCart, addOne, removeOne, clearCart} =
+  const {addToCart, removeFromCart, removeOne, clearCart} =
     useShoppingCartFunctions(setShoppingCart);
 
   const [isOnline, setIsOnline] = useState(false);
@@ -71,10 +71,9 @@ const AppMiddleWare = () => {
 
   const shoppingCartContext = useMemo(
     () => ({
-      addOne: addOne,
+      addToCart: addToCart,
       removeFromCart: removeFromCart,
       removeOne: removeOne,
-      addToCart: addToCart,
       clearCart: clearCart,
       selectedOfferID: selectedOfferID,
       setSelectedOfferID: setSelectedOfferID,

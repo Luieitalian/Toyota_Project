@@ -9,11 +9,28 @@ const useShoppingCartFunctions = (
       if (
         c.some((product: CartProductModel) => product.prod.id === prod.prod.id)
       ) {
-        // if there is already a product with the same id, then do nothing
-        console.log(
-          `There were already a product with the id '${prod.prod.id}', product was not added to the cart.`
+        const cart_without_prod = c.filter(
+          (cart_prod: CartProductModel) => cart_prod.prod.id !== prod.prod.id
         );
-        return c;
+
+        const old_cart_prod = c.filter(
+          (cart_prod: CartProductModel) => cart_prod.prod.id === prod.prod.id
+        )[0];
+
+        if (old_cart_prod === undefined) {
+          console.log(
+            `There were no products that matches the id '${prod.prod.id}' to call 'addToCart' on.`
+          );
+          return c;
+        }
+
+        const new_prod = {
+          ...old_cart_prod,
+          _cart_amount: old_cart_prod._cart_amount + 1,
+        };
+
+        console.log(`Adding product with id '${prod.prod.id}' to the cart.`);
+        return [...cart_without_prod, new_prod];
       } else {
         console.log(`Adding product with id '${prod.prod.id}' to the cart.`);
         return [...c, prod];
@@ -32,32 +49,6 @@ const useShoppingCartFunctions = (
         );
       }
       return new_cart;
-    });
-  }, []);
-
-  const addOne = useCallback((prod_id: string) => {
-    setShoppingCart((c) => {
-      const cart_without_prod = c.filter(
-        (cart_prod: CartProductModel) => cart_prod.prod.id !== prod_id
-      );
-
-      const old_cart_prod = c.filter(
-        (cart_prod: CartProductModel) => cart_prod.prod.id === prod_id
-      )[0];
-
-      if (old_cart_prod === undefined) {
-        console.log(
-          `There were no products that matches the id '${prod_id}' to call 'addOne' on.`
-        );
-        return c;
-      }
-
-      const new_prod = {
-        ...old_cart_prod,
-        _cart_amount: old_cart_prod._cart_amount + 1,
-      };
-
-      return [...cart_without_prod, new_prod];
     });
   }, []);
 
@@ -99,7 +90,7 @@ const useShoppingCartFunctions = (
     setShoppingCart([]);
   }, []);
 
-  return {addToCart, removeFromCart, addOne, removeOne, clearCart};
+  return {addToCart, removeFromCart, removeOne, clearCart};
 };
 
 export default useShoppingCartFunctions;
