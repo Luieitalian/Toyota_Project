@@ -46,5 +46,7 @@
   "buy_two_pay_one": "Buy two pay one",
   "you_picked_offer": "You picked \"{{offer}}\" offer",
   "done": "Done",
-  "buy_three_pay_one": "Buy three pay one"
+  "buy_three_pay_one": "Buy three pay one",
+  "cancel": "Cancel",
+  "special_offers": "Special Offers"
 }

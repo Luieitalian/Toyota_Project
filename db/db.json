@@ -26,6 +26,12 @@
       "name": "100_discount_over_1000",
       "applicable_products": {"all": true},
       "type": {"name": "n_discount_over_m"}
+    },
+    {
+      "id": "4",
+      "name": "100_discount_over_500",
+      "applicable_products": {"all": true},
+      "type": {"name": "n_discount_over_m"}
     }
   ],
   "products": [

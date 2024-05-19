@@ -3,11 +3,12 @@ import {StyleSheet, useWindowDimensions} from 'react-native';
 import {MD3Theme} from 'react-native-paper';
 import {breakPoint} from '../../globals/style';
 
-const useSpecialOfferItemStyles = (theme: MD3Theme) => {
+const useSpecialOfferItemStyles = (theme: MD3Theme, selected: boolean) => {
   const {width} = useWindowDimensions();
 
   const styles = React.useMemo(() => {
     const isWide = width >= breakPoint;
+
     return StyleSheet.create({
       itemContainer: {
         width: '100%',
@@ -16,6 +17,9 @@ const useSpecialOfferItemStyles = (theme: MD3Theme) => {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
+        backgroundColor: selected
+          ? theme.colors.primary
+          : theme.colors.onPrimary,
       },
       group: {
         width: '70%',
@@ -25,12 +29,14 @@ const useSpecialOfferItemStyles = (theme: MD3Theme) => {
         width: 32,
       },
       applicableProductsText: {
-        flex: 1,
-        flexWrap: 'wrap',
-        color: theme.colors.outline,
+        color: selected ? theme.colors.outlineVariant : theme.colors.outline,
+      },
+      offerName: {
+        color: selected ? theme.colors.onPrimary : theme.colors.primary,
+        fontSize: isWide ? 18 : 16,
       },
     });
-  }, [theme, width]);
+  }, [theme, width, selected]);
   return {styles};
 };
 

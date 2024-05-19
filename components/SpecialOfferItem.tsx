@@ -13,30 +13,36 @@ type SpecialOfferItemProps = {
   offer: SpecialOfferModel;
   onSelect: (offer: SpecialOfferModel) => void;
   selected: boolean;
+  applicable: boolean;
 };
 
 const SpecialOfferItem = ({
   offer,
   selected,
+  applicable,
   onSelect,
   t,
   theme,
 }: SpecialOfferItemProps) => {
-  const {styles} = useSpecialOfferItemStyles(theme);
+  const {styles} = useSpecialOfferItemStyles(theme, selected);
   const {products} = useContext(ProductsContext);
 
   const onPress = () => {
     if (offer) {
       onSelect(offer);
     }
+    console.log('applicable?', applicable);
   };
 
   return (
     <Surface elevation={2} style={styles.itemContainer}>
       <View style={styles.group}>
-        <Text>{t(offer.name)}</Text>
+        <Text style={styles.offerName}>{t(offer.name)}</Text>
         <Text>
-          {`${t('applicable_products')}:`}{' '}
+          <Text style={styles.applicableProductsText}>
+            {`${t('applicable_products')}: `}
+          </Text>
+
           {offer.applicable_products.all ? (
             <Text style={styles.applicableProductsText}>{t('all')}</Text>
           ) : (
@@ -50,11 +56,11 @@ const SpecialOfferItem = ({
         </Text>
       </View>
       <IconButton
-        disabled={selected}
+        disabled={!applicable}
         size={styles.iconButtonSize.width}
         mode="contained"
         onPress={onPress}
-        icon="check"
+        icon={applicable ? 'check' : 'close'}
       />
     </Surface>
   );

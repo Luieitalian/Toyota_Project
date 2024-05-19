@@ -45,7 +45,7 @@ const useSpecialOffers = () => {
     } else {
       getSetSpecialOffersFromLocalDB();
     }
-  }, []);
+  }, [isOnline]);
 
   return {specialOffers, offersLoading};
 };

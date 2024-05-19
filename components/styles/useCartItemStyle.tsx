@@ -14,7 +14,7 @@ const useCartItemStyle = (theme: MD3Theme) => {
         justifyContent: 'space-between',
         alignItems: 'center',
         flexDirection: 'row',
-        backgroundColor: theme.colors.primaryContainer,
+        backgroundColor: theme.colors.onPrimary,
         paddingHorizontal: isWide ? 24 : 12,
         borderRadius: 10,
         margin: isWide ? 10 : 5,
