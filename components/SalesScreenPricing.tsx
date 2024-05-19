@@ -5,6 +5,7 @@ import {MD3Theme} from 'react-native-paper';
 import useSalesScreenPricingStyle from './styles/useSalesScreenPricingStyle';
 import {CartProductModel} from '../models/CartProductModel';
 import currency from 'currency.js';
+import useCartPricing from '../hooks/useCartPricing';
 
 type SalesScreenPricingProps = {
   t: TFunction<'translation', undefined>;
@@ -15,19 +16,7 @@ type SalesScreenPricingProps = {
 const SalesScreenPricing = ({t, theme, cart}: SalesScreenPricingProps) => {
   const {styles} = useSalesScreenPricingStyle(theme);
 
-  const subTotalMap = cart.map(
-    (cart_item: CartProductModel) =>
-      currency(cart_item.prod.price, {
-        separator: '.',
-        decimal: ',',
-      }).multiply(cart_item._cart_amount).value
-  );
-
-  const subTotal = subTotalMap.reduce((acc, curr) => acc + curr, 0);
-
-  const selectedSpecialOffer = () => 0;
-
-  const paymentTotal = subTotal - selectedSpecialOffer();
+  const {subTotal} = useCartPricing(cart);
 
   const subTotalText = currency(subTotal).format({
     symbol: '₺',
