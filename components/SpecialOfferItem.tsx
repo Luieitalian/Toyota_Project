@@ -1,7 +1,14 @@
 import {TFunction} from 'i18next';
-import React, {memo, useContext} from 'react';
+import React, {memo, useContext, useState} from 'react';
 import {View} from 'react-native';
-import {IconButton, MD3Theme, Surface, Text} from 'react-native-paper';
+import {
+  IconButton,
+  MD3Theme,
+  Portal,
+  Snackbar,
+  Surface,
+  Text,
+} from 'react-native-paper';
 import {SpecialOfferModel} from '../models/SpecialOfferModel';
 import useSpecialOfferItemStyles from './styles/useSpecialOfferItemStyles';
 import {ProductsContext} from '../contexts/ProductsContext';
@@ -24,13 +31,18 @@ const SpecialOfferItem = ({
   t,
   theme,
 }: SpecialOfferItemProps) => {
-  const {styles} = useSpecialOfferItemStyles(theme, selected);
+  const {styles} = useSpecialOfferItemStyles(theme, selected, applicable);
   const {products} = useContext(ProductsContext);
 
+  const [snackbarVisible, setSnackbarVisible] = useState<boolean>(false);
+
+  const onSnackbarDismiss = () => {
+    setSnackbarVisible(false);
+  };
+
   const onPress = () => {
-    if (offer) {
-      onSelect(offer);
-    }
+    setSnackbarVisible(true);
+    onSelect(offer);
     console.log('applicable?', applicable);
   };
 
@@ -62,6 +74,20 @@ const SpecialOfferItem = ({
         onPress={onPress}
         icon={applicable ? 'check' : 'close'}
       />
+      <Portal>
+        <Snackbar
+          duration={5000}
+          wrapperStyle={styles.snackbar}
+          visible={snackbarVisible}
+          onDismiss={onSnackbarDismiss}
+        >
+          {offer && (
+            <Text style={styles.warningText}>
+              {t('you_picked_offer', {offer: t(offer.name)})}
+            </Text>
+          )}
+        </Snackbar>
+      </Portal>
     </Surface>
   );
 };

@@ -48,15 +48,11 @@ const usePickOfferStyle = (theme: MD3Theme) => {
         fontSize: isWide ? 20 : 18,
         fontWeight: '500',
       },
-      warningText: {
-        color: theme.colors.outlineVariant,
-        fontSize: isWide ? 20 : 16,
-      },
+
       doneText: {
         color: theme.colors.onPrimary,
         fontSize: isWide ? 18 : 16,
       },
-      snackbar: {padding: 10, zIndex: 2, elevation: 2},
       buttonGroup: {
         flex: 1,
         minHeight: 50,

@@ -26,10 +26,7 @@ const PickOffer = ({t, theme}: PickOfferProps) => {
   const {styles} = usePickOfferStyle(theme);
 
   const [modalVisible, setModalVisible] = useState<boolean>(true);
-  const [snackbarVisible, setSnackbarVisible] = useState<boolean>(false);
-  const [selectedOffer, setSelectedOffer] = useState<string | undefined>(
-    undefined
-  );
+  const {selectedOffer, setSelectedOffer} = useContext(ShoppingCartContext);
 
   const {specialOffers, offersLoading} = useSpecialOffers();
   const {isApplicable} = useIsOfferApplicable();
@@ -45,7 +42,6 @@ const PickOffer = ({t, theme}: PickOfferProps) => {
   const onCancel = () => {
     setSelectedOffer(undefined);
     setModalVisible(false);
-    setSnackbarVisible(false);
   };
 
   const onDone = () => {
@@ -54,16 +50,7 @@ const PickOffer = ({t, theme}: PickOfferProps) => {
 
   const onSelect = (offer: SpecialOfferModel) => {
     console.log(`'${offer.name}' with id '${offer.id}' is selected!`);
-    setSelectedOffer(offer.name);
-    setSnackbarVisible(true);
-  };
-
-  const onDialogDismiss = () => {
-    setSnackbarVisible(false);
-  };
-
-  const closeDialog = () => {
-    setSnackbarVisible(false);
+    setSelectedOffer(offer.id);
   };
 
   const onPress = () => {
@@ -86,7 +73,7 @@ const PickOffer = ({t, theme}: PickOfferProps) => {
             <ScrollView contentContainerStyle={styles.offersContainer}>
               {specialOffers?.map((offer: SpecialOfferModel) => (
                 <SpecialOfferItem
-                  selected={selectedOffer === offer.name && true}
+                  selected={selectedOffer === offer.id && true}
                   applicable={isApplicable(offer)}
                   onSelect={onSelect}
                   offer={offer}
@@ -116,23 +103,6 @@ const PickOffer = ({t, theme}: PickOfferProps) => {
             </Button>
           </View>
         </Modal>
-      </Portal>
-
-      <Portal>
-        <Snackbar
-          duration={5000}
-          wrapperStyle={styles.snackbar}
-          icon="alert"
-          onIconPress={() => {}}
-          visible={snackbarVisible}
-          onDismiss={onDialogDismiss}
-        >
-          {selectedOffer && (
-            <Text style={styles.warningText}>
-              {t('you_picked_offer', {offer: t(selectedOffer!)})}
-            </Text>
-          )}
-        </Snackbar>
       </Portal>
 
       <CustomButton onPress={onPress} styles={styles} theme={theme}>

@@ -1,4 +1,4 @@
-import {createContext} from 'react';
+import {createContext, Dispatch, SetStateAction} from 'react';
 import {CartProductModel} from '../models/CartProductModel';
 
 export const ShoppingCartContext = createContext({
@@ -7,5 +7,7 @@ export const ShoppingCartContext = createContext({
   addOne: (prod_id: string) => {},
   removeOne: (prod_id: string) => {},
   clearCart: () => {},
+  selectedOffer: undefined,
+  setSelectedOffer: (() => {}) as Dispatch<SetStateAction<string | undefined>>,
   cart: [] as CartProductModel[],
 });

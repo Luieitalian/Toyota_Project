@@ -3,7 +3,11 @@ import {StyleSheet, useWindowDimensions} from 'react-native';
 import {MD3Theme} from 'react-native-paper';
 import {breakPoint} from '../../globals/style';
 
-const useSpecialOfferItemStyles = (theme: MD3Theme, selected: boolean) => {
+const useSpecialOfferItemStyles = (
+  theme: MD3Theme,
+  selected: boolean,
+  applicable: boolean
+) => {
   const {width} = useWindowDimensions();
 
   const styles = React.useMemo(() => {
@@ -20,6 +24,10 @@ const useSpecialOfferItemStyles = (theme: MD3Theme, selected: boolean) => {
         backgroundColor: selected
           ? theme.colors.primary
           : theme.colors.onPrimary,
+        borderColor: applicable
+          ? theme.colors.primary
+          : theme.colors.onBackground,
+        borderWidth: applicable ? 2 : 0,
       },
       group: {
         width: '70%',
@@ -35,6 +43,11 @@ const useSpecialOfferItemStyles = (theme: MD3Theme, selected: boolean) => {
         color: selected ? theme.colors.onPrimary : theme.colors.primary,
         fontSize: isWide ? 18 : 16,
       },
+      warningText: {
+        color: theme.colors.outlineVariant,
+        fontSize: isWide ? 20 : 16,
+      },
+      snackbar: {padding: 10, zIndex: 2, elevation: 2},
     });
   }, [theme, width, selected]);
   return {styles};
