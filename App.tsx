@@ -4,7 +4,6 @@ import {NavigationContainer} from '@react-navigation/native';
 import LoginScreen from './screens/LoginScreen';
 import ProductsScreen from './screens/ProductsScreen';
 import SalesScreen from './screens/SalesScreen';
-import clearSetDatabase from './hooks/clearSetDatabase';
 import useProductsScreenStyle from './screens/styles/useProductsScreenStyle';
 import useSalesScreenStyle from './screens/styles/useSalesScreenStyle';
 
