@@ -15,6 +15,7 @@ import useShoppingCartFunctions from './hooks/useShoppingCartFunctions';
 import useProducts from './hooks/useProducts';
 import {ProductsContext} from './contexts/ProductsContext';
 import {StatusContext} from './contexts/StatusContext';
+import setDatabase from './hooks/setDatabase';
 import useFavoriteProducts from './hooks/useFavoriteProducts';
 
 const themes = {
@@ -41,6 +42,8 @@ const AppMiddleWare = () => {
 
   SystemNavigationBar.setNavigationColor(theme.colors.background); // Set Navigation bar color to fit the app theme
   SystemNavigationBar.setBarMode(isDark ? 'light' : 'dark'); // Set Navigation bar button colors for visibility
+
+  setDatabase();
 
   const setOnlineStatus = useCallback(
     (val) => {
