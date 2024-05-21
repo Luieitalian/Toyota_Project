@@ -38,5 +38,16 @@
   "receipt_mail": "E-MAİL İLE FATURA GÖNDER",
   "pick_offer": "KAMPANYA SEÇ",
   "pay": "ÖDE",
-  "please_enter_a_valid_id": "Lütfen geçerli bir id giriniz."
+  "please_enter_a_valid_id": "Lütfen geçerli bir id giriniz.",
+  "warning": "Uyarı!",
+  "applicable_products": "Uygulanabilir ürünler",
+  "100_discount_over_1000": "₺1000 ve üzeri sepete ₺100 indirim",
+  "100_discount_over_500": "₺500 ve üzeri sepete ₺100 indirim",
+  "buy_two_pay_one": "2 al 1 öde",
+  "you_picked_offer": "\"{{offer}}\" kampanyasını seçtiniz",
+  "done": "Tamam",
+  "buy_three_pay_one": "3 al 1 öde",
+  "cancel": "İptal",
+  "special_offers": "Kampanyalar",
+  "special_offers_loading": "Kampanyalar yükleniyor"
 }
