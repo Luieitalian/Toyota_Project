@@ -14,7 +14,7 @@ import Products from '../components/Products';
 const ProductsScreen = ({route, navigation}: any) => {
   const {styles, theme} = useProductsScreenStyle();
   const [text, setText] = useState<string>('');
-  const [category, setCategory] = useState<string | undefined>(undefined);
+  const [category, setCategory] = useState<string | undefined>('favorites');
   const [submittedText, setSubmittedText] = useState<string | undefined>(
     undefined
   );
