@@ -4,7 +4,7 @@ import {StyleSheet, useWindowDimensions} from 'react-native';
 import {breakPoint} from '../../globals/style';
 
 const useProductStyle = (theme: MD3Theme) => {
-  const {width, height} = useWindowDimensions();
+  const {width} = useWindowDimensions();
   const styles = React.useMemo(() => {
     const isWide = width >= breakPoint;
 
@@ -51,6 +51,18 @@ const useProductStyle = (theme: MD3Theme) => {
         backgroundColor: theme.colors.onPrimary,
       },
       addButtonSize: {
+        width: isWide ? 40 : 24,
+      },
+      favoriteButton: {
+        position: 'absolute',
+        right: 0,
+        top: 0,
+      },
+      favoriteButtonColors: {
+        color: theme.colors.secondary,
+        backgroundColor: theme.colors.onSecondary,
+      },
+      favoriteButtonSize: {
         width: isWide ? 40 : 24,
       },
     });

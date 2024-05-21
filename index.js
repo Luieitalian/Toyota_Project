@@ -15,6 +15,7 @@ import useShoppingCartFunctions from './hooks/useShoppingCartFunctions';
 import useProducts from './hooks/useProducts';
 import {ProductsContext} from './contexts/ProductsContext';
 import {StatusContext} from './contexts/StatusContext';
+import useFavoriteProducts from './hooks/useFavoriteProducts';
 
 const themes = {
   dark: {
@@ -28,7 +29,7 @@ const themes = {
 };
 
 const AppMiddleWare = () => {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
   const theme = isDark ? themes.dark : themes.light;
 
   const [shoppingCart, setShoppingCart] = useState([]);
@@ -40,8 +41,6 @@ const AppMiddleWare = () => {
 
   SystemNavigationBar.setNavigationColor(theme.colors.background); // Set Navigation bar color to fit the app theme
   SystemNavigationBar.setBarMode(isDark ? 'light' : 'dark'); // Set Navigation bar button colors for visibility
-
-  //clearSetDatabase();
 
   const setOnlineStatus = useCallback(
     (val) => {
@@ -56,6 +55,8 @@ const AppMiddleWare = () => {
   );
 
   const {products, loadingProducts} = useProducts({isOnline: isOnline});
+  const {favorites, loadingFavorites, setFavoriteToLocalDBs} =
+    useFavoriteProducts();
 
   const toggleTheme = useCallback(() => {
     return setIsDark(!isDark);
@@ -83,7 +84,18 @@ const AppMiddleWare = () => {
   );
 
   const productsContext = useMemo(
-    () => ({products: products, loadingProducts: loadingProducts}),
+    () => ({
+      products: products,
+      loadingProducts: loadingProducts,
+    }),
+    [products, loadingProducts]
+  );
+
+  const favoritesContext = useMemo(
+    () => ({
+      favorites: favorites,
+      load: loadingProducts,
+    }),
     [products, loadingProducts]
   );
 
