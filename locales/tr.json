@@ -49,5 +49,8 @@
   "buy_three_pay_one": "3 al 1 öde",
   "cancel": "İptal",
   "special_offers": "Kampanyalar",
-  "special_offers_loading": "Kampanyalar yükleniyor"
+  "special_offers_loading": "Kampanyalar yükleniyor",
+  "we_have_received_your_mail": "E-mail'inizi aldık",
+  "we_have_not_received_your_mail": "E-mail'inizi ALAMADIK",
+  "please_enter_email": "Lütfen bir e-mail giriniz"
 }
