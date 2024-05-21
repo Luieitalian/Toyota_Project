@@ -1,4 +1,11 @@
-import React, {memo, Suspense, useCallback, useContext, useMemo} from 'react';
+import React, {
+  memo,
+  Suspense,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from 'react';
 import {Image, Text, View} from 'react-native';
 import useProductStyle from './styles/useProductStyle';
 import {TFunction} from 'i18next';
@@ -8,7 +15,7 @@ import useProductImage from '../hooks/useProductImage';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext';
 import {CartProductModel} from '../models/CartProductModel';
 import FastImage from 'react-native-fast-image';
-import useFavoriteProducts from '../hooks/useFavoriteProducts';
+import {FavoritesContext} from '../contexts/FavoritesContext';
 
 type ProductProps = {
   t: TFunction<'translation', undefined>;
@@ -16,21 +23,36 @@ type ProductProps = {
   prod: ProductModel;
   isFavorite: boolean;
   addToCart: (prod: CartProductModel) => void;
+  addToFavorites: (prod_id: string) => void;
+  removeFromFavorites: (prod_id: string) => void;
 };
 
-const Product = ({t, theme, prod, isFavorite, addToCart}: ProductProps) => {
+const Product = ({
+  t,
+  theme,
+  prod,
+  isFavorite,
+  addToCart,
+  addToFavorites,
+  removeFromFavorites,
+}: ProductProps) => {
   const {styles} = useProductStyle(theme);
   const {imageURL, loadingImageURL} = useProductImage(prod);
+  const [isStarred, setIsStarred] = useState<boolean>(isFavorite);
 
   const onAddPress = useCallback(() => {
     addToCart({prod: prod, _cart_amount: 1});
   }, [prod, addToCart]);
 
-  const onStarPress = useCallback(() => {
-    setFavoriteToLocalDB(prod.id);
-  }, [prod]);
-
-  const {setFavoriteToLocalDB} = useFavoriteProducts();
+  const onStarPress = () => {
+    if (isStarred) {
+      setIsStarred(false);
+      removeFromFavorites(prod.id);
+    } else {
+      addToFavorites(prod.id);
+      setIsStarred(true);
+    }
+  };
 
   return (
     <View style={styles.productContainer}>
@@ -60,7 +82,7 @@ const Product = ({t, theme, prod, isFavorite, addToCart}: ProductProps) => {
         <IconButton
           iconColor={styles.favoriteButtonColors.color}
           containerColor={styles.favoriteButtonColors.backgroundColor}
-          icon={isFavorite ? 'star' : 'star-outline'}
+          icon={isStarred ? 'star' : 'star-outline'}
           mode="outlined"
           onPress={onStarPress}
           size={styles.favoriteButtonSize.width}

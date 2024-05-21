@@ -4,7 +4,6 @@ import React, {
   useCallback,
   useContext,
   useEffect,
-  useMemo,
   useState,
 } from 'react';
 import {FlatList, ListRenderItemInfo, Text, View} from 'react-native';
@@ -15,6 +14,7 @@ import {MD3Theme, ActivityIndicator} from 'react-native-paper';
 import Product from './Product';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext';
 import {ProductsContext} from '../contexts/ProductsContext';
+import {FavoritesContext} from '../contexts/FavoritesContext';
 
 type ProductsProps = {
   t: TFunction<'translation', undefined>;
@@ -37,10 +37,15 @@ const Products = ({
 
   const {addToCart} = useContext(ShoppingCartContext);
   const {products} = useContext(ProductsContext);
+  const {favorites, addToFavorites, removeFromFavorites} =
+    useContext(FavoritesContext);
 
   const [pageOffset, setPageOffset] = useState<number>(1);
-  const [productsShown, setProductsShown] = useState<ProductModel[]>(
-    products.slice(0, 12)
+  const [productsShown, setProductsShown] = useState<ProductModel[]>([]);
+
+  const isFavorite = useCallback(
+    (item: ProductModel) => favorites.includes(item.id),
+    [favorites]
   );
 
   const initialLoadNumber = 16;
@@ -56,18 +61,36 @@ const Products = ({
           .includes(submittedText.trim().toLocaleLowerCase('tr'))
       );
     }
-    if (category !== undefined && category !== 'show_all') {
+
+    if (category === 'favorites') {
+      filteredProducts = filteredProducts.filter((prod: ProductModel) => {
+        if (favorites.length <= 0) {
+          return false;
+        } else {
+          return favorites.includes(prod.id);
+        }
+      });
+    } else if (category !== 'show_all') {
       filteredProducts = filteredProducts.filter(
         (prod: ProductModel) => prod.category === category
       );
     }
+
     console.log('category: ', category);
     console.log('submittedText: ', submittedText);
     return filteredProducts;
   }, [submittedText, category]);
 
   const renderItem = ({item}: ListRenderItemInfo<ProductModel>) => (
-    <Product addToCart={addToCart} prod={item} t={t} theme={theme} />
+    <Product
+      addToFavorites={addToFavorites}
+      removeFromFavorites={removeFromFavorites}
+      isFavorite={isFavorite(item)}
+      addToCart={addToCart}
+      prod={item}
+      t={t}
+      theme={theme}
+    />
   );
 
   const keyExtractor = (item: ProductModel) => item.id;
@@ -87,12 +110,12 @@ const Products = ({
 
   useEffect(() => {
     setPageOffset((o) => o + 1);
-  }, [submittedText, category]);
+  }, [category]);
 
   useEffect(() => {
     setProductsShown(filterProducts().slice(0, pageOffset * initialLoadNumber));
     setLoading(false);
-  }, [pageOffset]);
+  }, [filterProducts, pageOffset]);
 
   return (
     <View style={styles.flatlistContainer}>

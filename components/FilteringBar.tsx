@@ -6,6 +6,7 @@ import {changeLanguage, TFunction} from 'i18next';
 
 const ButtonCategories = [
   'show_all',
+  'favorites',
   'et_balik',
   'dondurma',
   'ev_yasam',
@@ -20,6 +21,7 @@ const ButtonCategories = [
 
 const ButtonCategoryIcons: {[char: string]: string} = {
   show_all: 'view-headline',
+  favorites: 'star',
   et_balik: 'food-drumstick',
   dondurma: 'ice-cream',
   ev_yasam: 'home',
@@ -66,7 +68,7 @@ const FilteringBar = ({
           multiSelect={false}
           theme={theme}
           onValueChange={onChangeCategoryMiddleWare}
-          value={category ? category : 'show_all'}
+          value={category ? category : 'favorites'}
           buttons={[
             ...ButtonCategories.map((cat: string) => ({
               value: cat,
@@ -77,41 +79,6 @@ const FilteringBar = ({
           ]}
         />
       </ScrollView>
-      {/* <Menu
-        visible={visibleCategoryMenu}
-        onDismiss={closeCategoryMenu}
-        anchorPosition="bottom"
-        theme={theme}
-        contentStyle={styles.categoryMenu}
-        anchor={
-          <Pressable
-            disabled={disabled}
-            android_ripple={{
-              color: theme.colors.background,
-              radius: styles.icon.width,
-              foreground: true,
-            }}
-            onPress={openCategoryMenu}
-          >
-            <Icon
-              color={disabled ? styles.disabledIcon.color : styles.icon.color}
-              size={styles.icon.width}
-              source="tune"
-            />
-          </Pressable>
-        }
-      >
-        {Categories.map((category, index) => (
-          <Menu.Item
-            disabled={disabled}
-            leadingIcon={CategoryIcons[category]}
-            key={index}
-            titleStyle={styles.menuItem}
-            title={t(`${category}`)}
-            onPress={() => onChangeCategoryMiddleWare(category)}
-          />
-        ))}
-      </Menu> */}
     </View>
   );
 };
