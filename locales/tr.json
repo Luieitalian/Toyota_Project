@@ -52,5 +52,10 @@
   "special_offers_loading": "Kampanyalar yükleniyor",
   "we_have_received_your_mail": "E-mail'inizi aldık",
   "we_have_not_received_your_mail": "E-mail'inizi ALAMADIK",
-  "please_enter_email": "Lütfen bir e-mail giriniz"
+  "please_enter_email": "Lütfen bir e-mail giriniz",
+  "favorites": "Favoriler",
+  "online": "ÇEVRİMİÇİ",
+  "offline": "ÇEVRİMDIŞI",
+  "shop_is_online": "Mağaza {{status}}",
+  "debug_toggle_online_status": "toggle_online_status"
 }

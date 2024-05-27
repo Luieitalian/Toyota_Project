@@ -5,14 +5,13 @@ import {breakPoint} from '../../globals/style';
 
 const useProductsScreenStyle = () => {
   const theme = useTheme();
-  const {width, height} = useWindowDimensions();
+  const {width} = useWindowDimensions();
   const styles = React.useMemo(() => {
     const isWide = width >= breakPoint;
     return StyleSheet.create({
       screenView: {
         flex: 1,
         flexDirection: 'column',
-        alignItems: 'center',
         justifyContent: 'flex-start',
         paddingTop: 5,
         gap: 5,
@@ -24,6 +23,9 @@ const useProductsScreenStyle = () => {
         alignItems: 'flex-start',
         justifyContent: 'center',
         paddingHorizontal: 14,
+      },
+      productsContainer: {
+        flex: 1,
       },
       headerTitleStyle: {
         color: theme.colors.onBackground,

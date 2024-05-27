@@ -16,7 +16,6 @@ import useProducts from './hooks/useProducts';
 import {ProductsContext} from './contexts/ProductsContext';
 import {StatusContext} from './contexts/StatusContext';
 import setDatabase from './hooks/setDatabase';
-//import useFavoriteProducts from './hooks/useFavoriteProducts';
 import useFavoriteProductsFunctions from './hooks/useFavoriteProductsFunctions';
 import {FavoritesContext} from './contexts/FavoritesContext';
 
@@ -32,7 +31,7 @@ const themes = {
 };
 
 const AppMiddleWare = () => {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
   const [shoppingCart, setShoppingCart] = useState([]);
   const [isOnline, setIsOnline] = useState(false);
   const [selectedOfferID, setSelectedOfferID] = useState(undefined);
@@ -50,12 +49,9 @@ const AppMiddleWare = () => {
 
   const {products, loadingProducts} = useProducts({isOnline: isOnline});
 
-  const setOnlineStatus = useCallback(
-    (val) => {
-      return setIsOnline(val);
-    },
-    [isOnline]
-  );
+  const toggleOnlineStatus = useCallback(() => {
+    return setIsOnline(!isOnline);
+  }, [isOnline]);
 
   const toggleTheme = useCallback(() => {
     return setIsDark(!isDark);
@@ -71,8 +67,8 @@ const AppMiddleWare = () => {
   );
 
   const statusContext = useMemo(
-    () => ({isOnline: isOnline, setOnlineStatus: setOnlineStatus}),
-    [isOnline, setOnlineStatus]
+    () => ({isOnline: isOnline, toggleOnlineStatus: toggleOnlineStatus}),
+    [isOnline, toggleOnlineStatus]
   );
 
   const shoppingCartContext = useMemo(

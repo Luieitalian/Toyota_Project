@@ -4,6 +4,7 @@ import React, {
   useCallback,
   useContext,
   useEffect,
+  useMemo,
   useState,
 } from 'react';
 import {FlatList, ListRenderItemInfo, Text, View} from 'react-native';
@@ -21,18 +22,11 @@ type ProductsProps = {
   theme: MD3Theme;
   category?: string | undefined;
   submittedText?: string | undefined;
-  loading: boolean;
-  setLoading: Dispatch<React.SetStateAction<boolean>>;
+  // loading: boolean;
+  // setLoading: Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Products = ({
-  t,
-  theme,
-  category,
-  submittedText,
-  loading,
-  setLoading,
-}: ProductsProps) => {
+const Products = ({t, theme, category, submittedText}: ProductsProps) => {
   const {styles} = useProductsStyle(theme);
 
   const {addToCart} = useContext(ShoppingCartContext);
@@ -42,6 +36,7 @@ const Products = ({
 
   const [pageOffset, setPageOffset] = useState<number>(1);
   const [productsShown, setProductsShown] = useState<ProductModel[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const isFavorite = useCallback(
     (item: ProductModel) => favorites.includes(item.id),
@@ -50,7 +45,7 @@ const Products = ({
 
   const initialLoadNumber = 16;
 
-  const filterProducts = useCallback(() => {
+  const filterProducts = useMemo(() => {
     let filteredProducts: ProductModel[] = products;
 
     if (submittedText !== undefined) {
@@ -109,11 +104,15 @@ const Products = ({
   };
 
   useEffect(() => {
-    setPageOffset((o) => o + 1);
+    setLoading(true);
+  }, [category, submittedText]);
+
+  useEffect(() => {
+    setPageOffset(1);
   }, [category]);
 
   useEffect(() => {
-    setProductsShown(filterProducts().slice(0, pageOffset * initialLoadNumber));
+    setProductsShown(filterProducts.slice(0, pageOffset * initialLoadNumber));
     setLoading(false);
   }, [filterProducts, pageOffset]);
 

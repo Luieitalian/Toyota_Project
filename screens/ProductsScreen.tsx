@@ -10,6 +10,7 @@ import {useTranslation} from 'react-i18next';
 import SearchBar from '../components/SearchBar';
 import FilteringBar from '../components/FilteringBar';
 import Products from '../components/Products';
+import Footer from '../components/Footer';
 
 const ProductsScreen = ({route, navigation}: any) => {
   const {styles, theme} = useProductsScreenStyle();
@@ -18,7 +19,6 @@ const ProductsScreen = ({route, navigation}: any) => {
   const [submittedText, setSubmittedText] = useState<string | undefined>(
     undefined
   );
-  const [loading, setLoading] = useState(true);
 
   const {t} = useTranslation();
 
@@ -29,12 +29,10 @@ const ProductsScreen = ({route, navigation}: any) => {
   };
 
   const onChangeText = (text: string) => {
-    setLoading(true);
     setText(text);
   };
 
   const onChangeCategory = (category: string) => {
-    setLoading(true);
     if (text !== undefined) {
       setSubmittedText(text);
     }
@@ -58,14 +56,15 @@ const ProductsScreen = ({route, navigation}: any) => {
           theme={theme}
         />
       </View>
-      <Products
-        loading={loading}
-        setLoading={setLoading}
-        submittedText={submittedText}
-        category={category}
-        t={t}
-        theme={theme}
-      />
+      <View style={styles.productsContainer}>
+        <Products
+          submittedText={submittedText}
+          category={category}
+          t={t}
+          theme={theme}
+        />
+      </View>
+      <Footer t={t} theme={theme} />
     </SafeAreaView>
   );
 };
