@@ -14,7 +14,7 @@ const ProductLoading = ({theme}: ProductLoadingProps) => {
 
   return (
     <View style={styles.productLoadingContainer}>
-      <ActivityIndicator theme={theme} />
+      <ActivityIndicator />
     </View>
   );
 };

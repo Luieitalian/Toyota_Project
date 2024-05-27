@@ -1,5 +1,4 @@
 import React, {
-  Dispatch,
   memo,
   useCallback,
   useContext,
@@ -10,38 +9,32 @@ import React, {
 import {FlatList, ListRenderItemInfo, Text, View} from 'react-native';
 import {ProductModel} from '../models/ProductModel';
 import useProductsStyle from './styles/useProductsStyle';
-import {TFunction} from 'i18next';
-import {MD3Theme, ActivityIndicator} from 'react-native-paper';
+import {ActivityIndicator, useTheme} from 'react-native-paper';
 import Product from './Product';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext';
 import {ProductsContext} from '../contexts/ProductsContext';
 import {FavoritesContext} from '../contexts/FavoritesContext';
+import {useTranslation} from 'react-i18next';
 
 type ProductsProps = {
-  t: TFunction<'translation', undefined>;
-  theme: MD3Theme;
   category?: string | undefined;
   submittedText?: string | undefined;
-  // loading: boolean;
-  // setLoading: Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Products = ({t, theme, category, submittedText}: ProductsProps) => {
+const Products = ({category, submittedText}: ProductsProps) => {
+  const {t} = useTranslation();
+  const theme = useTheme();
+
   const {styles} = useProductsStyle(theme);
 
   const {addToCart} = useContext(ShoppingCartContext);
   const {products} = useContext(ProductsContext);
-  const {favorites, addToFavorites, removeFromFavorites} =
+  const {favorites, isFavorite, addToFavorites, removeFromFavorites} =
     useContext(FavoritesContext);
 
   const [pageOffset, setPageOffset] = useState<number>(1);
   const [productsShown, setProductsShown] = useState<ProductModel[]>([]);
   const [loading, setLoading] = useState(true);
-
-  const isFavorite = useCallback(
-    (item: ProductModel) => favorites.includes(item.id),
-    [favorites]
-  );
 
   const initialLoadNumber = 16;
 
@@ -83,8 +76,6 @@ const Products = ({t, theme, category, submittedText}: ProductsProps) => {
       isFavorite={isFavorite(item)}
       addToCart={addToCart}
       prod={item}
-      t={t}
-      theme={theme}
     />
   );
 
@@ -121,7 +112,7 @@ const Products = ({t, theme, category, submittedText}: ProductsProps) => {
       {loading ? (
         <>
           <Text style={styles.pleaseWait}>{t('please_wait')}</Text>
-          <ActivityIndicator theme={theme} />
+          <ActivityIndicator />
         </>
       ) : (
         <FlatList

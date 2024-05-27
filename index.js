@@ -18,6 +18,7 @@ import {StatusContext} from './contexts/StatusContext';
 import setDatabase from './hooks/setDatabase';
 import useFavoriteProductsFunctions from './hooks/useFavoriteProductsFunctions';
 import {FavoritesContext} from './contexts/FavoritesContext';
+import ProductModel from './models/ProductModel';
 
 const themes = {
   dark: {
@@ -56,6 +57,11 @@ const AppMiddleWare = () => {
   const toggleTheme = useCallback(() => {
     return setIsDark(!isDark);
   }, [isDark]);
+
+  const isFavorite = useCallback(
+    (item) => favorites.includes(item.id),
+    [favorites]
+  );
 
   //  ------CONTEXTS------
   const themeContext = useMemo(
@@ -97,8 +103,9 @@ const AppMiddleWare = () => {
       favorites: favorites,
       addToFavorites: addToFavorites,
       removeFromFavorites: removeFromFavorites,
+      isFavorite: isFavorite,
     }),
-    [favorites, addToFavorites, removeFromFavorites]
+    [favorites, isFavorite, addToFavorites, removeFromFavorites]
   );
 
   const languageContext = useContext(LanguageContext);

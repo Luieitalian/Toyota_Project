@@ -1,16 +1,13 @@
-import {TFunction} from 'i18next';
-import React, {memo, useContext, useState} from 'react';
-import {Pressable, Text, View} from 'react-native';
-import {MD3Theme} from 'react-native-paper';
+import React, {memo} from 'react';
+import {useTheme} from 'react-native-paper';
 import useScanBarcodeStyle from './styles/useScanBarcodeStyle';
 import CustomButton from './CustomButton';
+import {useTranslation} from 'react-i18next';
 
-type ScanBarcodeProps = {
-  t: TFunction<'translation', undefined>;
-  theme: MD3Theme;
-};
+const ScanBarcode = () => {
+  const {t} = useTranslation();
+  const theme = useTheme();
 
-const ScanBarcode = ({t, theme}: ScanBarcodeProps) => {
   const {styles} = useScanBarcodeStyle(theme);
 
   const onPress = () => {
@@ -18,7 +15,7 @@ const ScanBarcode = ({t, theme}: ScanBarcodeProps) => {
   };
 
   return (
-    <CustomButton onPress={onPress} styles={styles} theme={theme}>
+    <CustomButton onPress={onPress} styles={styles}>
       {t('scan_barcode')}
     </CustomButton>
   );

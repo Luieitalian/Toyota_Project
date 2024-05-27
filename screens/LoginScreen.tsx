@@ -9,7 +9,7 @@ import useNFC from '../hooks/useNFC';
 import DebugNavigateScreen from '../components/DebugNavigateScreen';
 
 const LoginScreen = ({route, navigation}: any) => {
-  const {t, i18n} = useTranslation();
+  const {t} = useTranslation();
   const pwdRef = useRef<TextInput>(null); // A Ref for password textinput component
   const {styles, theme} = useLoginScreenStyle();
   const [username, setUsername] = useState<string>('');
@@ -36,7 +36,7 @@ const LoginScreen = ({route, navigation}: any) => {
         barStyle={theme.dark ? 'light-content' : 'dark-content'}
         backgroundColor={theme.colors.background}
       />
-      <Header theme={theme} t={t} />
+      <Header />
       <DebugNavigateScreen navigation={navigation} screen={'SalesScreen'} />
       <View style={styles.wrapper}>
         <View style={styles.contentWrapper}>
@@ -66,7 +66,7 @@ const LoginScreen = ({route, navigation}: any) => {
             />
           </View>
         </View>
-        <Version theme={theme} t={t} />
+        <Version />
       </View>
     </SafeAreaView>
   );

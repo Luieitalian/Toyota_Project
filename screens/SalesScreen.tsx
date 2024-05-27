@@ -15,11 +15,11 @@ const SalesScreen = ({route, navigation}: any) => {
   return (
     <SafeAreaView style={styles.screenView}>
       <View style={styles.container}>
-        {/* <Header t={t} theme={theme} /> */}
-        <SalesScreenCart t={t} theme={theme} />
-        <SalesScreenOptions t={t} theme={theme} />
+        {/* <Header   /> */}
+        <SalesScreenCart />
+        <SalesScreenOptions />
       </View>
-      <Footer t={t} theme={theme} />
+      <Footer />
     </SafeAreaView>
   );
 };
