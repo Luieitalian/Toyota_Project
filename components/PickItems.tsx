@@ -1,18 +1,15 @@
-import {TFunction} from 'i18next';
-import React, {memo, useContext, useState} from 'react';
-import {Pressable, Text, View} from 'react-native';
-import {MD3Theme} from 'react-native-paper';
+import React, {memo} from 'react';
+import {useTheme} from 'react-native-paper';
 import usePickItemsStyle from './styles/usePickItemsStyle';
 import CustomButton from './CustomButton';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {useTranslation} from 'react-i18next';
 
-type PickItemsProps = {
-  t: TFunction<'translation', undefined>;
-  theme: MD3Theme;
-};
+const PickItems = () => {
+  const {t} = useTranslation();
+  const theme = useTheme();
 
-const PickItems = ({t, theme}: PickItemsProps) => {
   const {styles} = usePickItemsStyle(theme);
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
@@ -22,7 +19,7 @@ const PickItems = ({t, theme}: PickItemsProps) => {
   };
 
   return (
-    <CustomButton onPress={onPress} styles={styles} theme={theme}>
+    <CustomButton onPress={onPress} styles={styles}>
       {t('pick_items')}
     </CustomButton>
   );

@@ -1,22 +1,18 @@
-import {TFunction} from 'i18next';
 import React, {useContext, useState} from 'react';
-import {MD3Theme} from 'react-native-paper';
+import {useTheme} from 'react-native-paper';
 import useAddProductWithIDStyle from './styles/useAddProductWithIDStyle';
 import CustomButton from './CustomButton';
 import ItemIDInput from './ItemIDInput';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext';
-import useProducts from '../hooks/useProducts';
 import {ProductModel} from '../models/ProductModel';
-import {CartProductModel} from '../models/CartProductModel';
 import {ProductsContext} from '../contexts/ProductsContext';
+import {useTranslation} from 'react-i18next';
 
-type AddProductWithIDProps = {
-  t: TFunction<'translation', undefined>;
-  theme: MD3Theme;
-};
-
-const AddProductWithID = ({t, theme}: AddProductWithIDProps) => {
+const AddProductWithID = () => {
   const [IDText, setIDText] = useState<string>('');
+
+  const {t} = useTranslation();
+  const theme = useTheme();
 
   const {styles} = useAddProductWithIDStyle(theme);
 
@@ -44,12 +40,9 @@ const AddProductWithID = ({t, theme}: AddProductWithIDProps) => {
         onSubmitEditing={onSubmitEditing}
         setIDText={setIDText}
         text={IDText}
-        t={t}
-        theme={theme}
       />
       <CustomButton
         disabled={loadingProducts}
-        theme={theme}
         styles={styles}
         onPress={onSubmitEditing}
       >

@@ -1,11 +1,9 @@
 import React, {memo} from 'react';
-import {ScrollView, Text, useWindowDimensions, View} from 'react-native';
-import {TFunction} from 'i18next';
-import {MD3Theme} from 'react-native-paper';
+import {useWindowDimensions, View} from 'react-native';
+import {useTheme} from 'react-native-paper';
 import useSalesScreenOptionsStyle from './styles/useSalesScreenOptionsStyle';
 import PickItems from './PickItems';
 import ScanBarcode from './ScanBarcode';
-import ItemIDInput from './ItemIDInput';
 import AddProductWithID from './AddProductWithID';
 import LookUpPrice from './LookUpPrice';
 import CreditCardSelect from './CreditCardSelect';
@@ -15,13 +13,12 @@ import PickOffer from './PickOffer';
 import Pay from './Pay';
 import ClearCart from './ClearCart';
 import {breakPoint} from '../globals/style';
+import {useTranslation} from 'react-i18next';
 
-type SalesScreenOptionsProps = {
-  t: TFunction<'translation', undefined>;
-  theme: MD3Theme;
-};
+const SalesScreenOptions = () => {
+  const {t} = useTranslation();
+  const theme = useTheme();
 
-const SalesScreenOptions = ({t, theme}: SalesScreenOptionsProps) => {
   const {width} = useWindowDimensions();
   const isWide = width >= breakPoint;
 
@@ -30,27 +27,27 @@ const SalesScreenOptions = ({t, theme}: SalesScreenOptionsProps) => {
   return isWide ? (
     <View style={styles.container}>
       <View style={styles.flexRow}>
-        <AddProductWithID t={t} theme={theme} />
+        <AddProductWithID />
       </View>
       <View style={styles.flexRow}>
-        <ScanBarcode t={t} theme={theme} />
-        <PickItems t={t} theme={theme} />
+        <ScanBarcode />
+        <PickItems />
       </View>
       <View style={styles.flexRow}>
-        <LookUpPrice t={t} theme={theme} />
-        <ClearCart t={t} theme={theme} />
+        <LookUpPrice />
+        <ClearCart />
       </View>
       <View style={styles.flexRow}>
-        <CreditCardSelect t={t} theme={theme} />
-        <CashSelect t={t} theme={theme} />
+        <CreditCardSelect />
+        <CashSelect />
       </View>
       <View style={styles.flexRow}>
         <View style={styles.flexCol}>
-          <ReceiptMail t={t} theme={theme} />
-          <PickOffer t={t} theme={theme} />
+          <ReceiptMail />
+          <PickOffer />
         </View>
         <View style={styles.flexRow}>
-          <Pay t={t} theme={theme} />
+          <Pay />
         </View>
       </View>
     </View>
@@ -59,30 +56,30 @@ const SalesScreenOptions = ({t, theme}: SalesScreenOptionsProps) => {
       <View style={[styles.flexRow, styles.flex2]}>
         <View style={[styles.flexCol, styles.flex2]}>
           <View style={[styles.flexRow, styles.flex2]}>
-            <AddProductWithID t={t} theme={theme} />
+            <AddProductWithID />
           </View>
-          <ScanBarcode t={t} theme={theme} />
+          <ScanBarcode />
           <View style={styles.flexRow}>
-            <LookUpPrice t={t} theme={theme} />
-            <ClearCart t={t} theme={theme} />
+            <LookUpPrice />
+            <ClearCart />
           </View>
         </View>
-        <PickItems t={t} theme={theme} />
+        <PickItems />
       </View>
 
       <View style={styles.flexRow}>
         <View style={[styles.flexCol, styles.flex2]}>
           <View style={styles.flexRow}>
-            <CreditCardSelect t={t} theme={theme} />
-            <CashSelect t={t} theme={theme} />
+            <CreditCardSelect />
+            <CashSelect />
           </View>
           <View style={styles.flexRow}>
-            <ReceiptMail t={t} theme={theme} />
-            <PickOffer t={t} theme={theme} />
+            <ReceiptMail />
+            <PickOffer />
           </View>
         </View>
 
-        <Pay t={t} theme={theme} />
+        <Pay />
       </View>
     </View>
   );

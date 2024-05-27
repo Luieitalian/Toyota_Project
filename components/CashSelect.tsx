@@ -1,16 +1,12 @@
-import {TFunction} from 'i18next';
 import React, {memo} from 'react';
-import {Pressable, Text, View} from 'react-native';
-import {MD3Theme} from 'react-native-paper';
+import {useTheme} from 'react-native-paper';
 import useCashSelectStyle from './styles/useCashSelectStyle';
 import CustomButton from './CustomButton';
+import {useTranslation} from 'react-i18next';
 
-type CashSelectProps = {
-  t: TFunction<'translation', undefined>;
-  theme: MD3Theme;
-};
-
-const CashSelect = ({t, theme}: CashSelectProps) => {
+const CashSelect = () => {
+  const theme = useTheme();
+  const {t} = useTranslation();
   const {styles} = useCashSelectStyle(theme);
 
   const onPress = () => {
@@ -18,7 +14,7 @@ const CashSelect = ({t, theme}: CashSelectProps) => {
   };
 
   return (
-    <CustomButton onPress={onPress} styles={styles} theme={theme}>
+    <CustomButton onPress={onPress} styles={styles}>
       {t('cash_select')}
     </CustomButton>
   );

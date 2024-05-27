@@ -43,28 +43,16 @@ const ProductsScreen = ({route, navigation}: any) => {
     <SafeAreaView style={styles.screenView}>
       <View style={styles.listHeader}>
         <SearchBar
-          t={t}
-          theme={theme}
           text={text}
           onChangeText={onChangeText}
           onSubmitEditing={onSubmitEditing}
         />
-        <FilteringBar
-          category={category}
-          onChangeCategory={onChangeCategory}
-          t={t}
-          theme={theme}
-        />
+        <FilteringBar category={category} onChangeCategory={onChangeCategory} />
       </View>
       <View style={styles.productsContainer}>
-        <Products
-          submittedText={submittedText}
-          category={category}
-          t={t}
-          theme={theme}
-        />
+        <Products submittedText={submittedText} category={category} />
       </View>
-      <Footer t={t} theme={theme} />
+      <Footer />
     </SafeAreaView>
   );
 };

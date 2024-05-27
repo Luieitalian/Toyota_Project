@@ -1,19 +1,20 @@
-import React, {memo, useContext} from 'react';
+import React, {memo} from 'react';
 import {Text, View} from 'react-native';
-import {TFunction} from 'i18next';
-import {MD3Theme} from 'react-native-paper';
+import {useTheme} from 'react-native-paper';
 import useSalesScreenPricingStyle from './styles/useSalesScreenPricingStyle';
 import {CartProductModel} from '../models/CartProductModel';
 import currency from 'currency.js';
 import useCartPricing from '../hooks/useCartPricing';
+import {useTranslation} from 'react-i18next';
 
 type SalesScreenPricingProps = {
-  t: TFunction<'translation', undefined>;
-  theme: MD3Theme;
   cart: CartProductModel[];
 };
 
-const SalesScreenPricing = ({t, theme, cart}: SalesScreenPricingProps) => {
+const SalesScreenPricing = ({cart}: SalesScreenPricingProps) => {
+  const {t} = useTranslation();
+  const theme = useTheme();
+
   const {styles} = useSalesScreenPricingStyle(theme);
 
   const {subTotal, paymentTotal} = useCartPricing(cart);

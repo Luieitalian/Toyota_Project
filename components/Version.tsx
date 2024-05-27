@@ -2,17 +2,15 @@ import React, {memo} from 'react';
 import {Text, View} from 'react-native';
 import useVersionStyle from './styles/useVersionStyle';
 import useServiceInfo from '../hooks/useServiceInfo';
-import {TFunction} from 'i18next';
-import {MD3Theme} from 'react-native-paper';
+import {useTheme} from 'react-native-paper';
+import {useTranslation} from 'react-i18next';
 
-type VersionProps = {
-  t: TFunction<'translation', undefined>;
-  theme: MD3Theme;
-};
+const Version = () => {
+  const {t} = useTranslation();
+  const theme = useTheme();
 
-const Version = ({t, theme}: VersionProps) => {
   const {styles} = useVersionStyle(theme);
-  const {serviceInfo, serviceLoading} = useServiceInfo(false);
+  const {serviceInfo, serviceLoading} = useServiceInfo();
 
   return (
     <View style={styles.versionView}>

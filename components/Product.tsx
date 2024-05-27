@@ -1,25 +1,14 @@
-import React, {
-  memo,
-  Suspense,
-  useCallback,
-  useContext,
-  useMemo,
-  useState,
-} from 'react';
-import {Image, Text, View} from 'react-native';
+import React, {memo, useCallback, useState} from 'react';
+import {Text, View} from 'react-native';
 import useProductStyle from './styles/useProductStyle';
-import {TFunction} from 'i18next';
-import {ActivityIndicator, IconButton, MD3Theme} from 'react-native-paper';
+import {ActivityIndicator, IconButton, useTheme} from 'react-native-paper';
 import {ProductModel} from '../models/ProductModel';
 import useProductImage from '../hooks/useProductImage';
-import {ShoppingCartContext} from '../contexts/ShoppingCartContext';
 import {CartProductModel} from '../models/CartProductModel';
 import FastImage from 'react-native-fast-image';
-import {FavoritesContext} from '../contexts/FavoritesContext';
+import {useTranslation} from 'react-i18next';
 
 type ProductProps = {
-  t: TFunction<'translation', undefined>;
-  theme: MD3Theme;
   prod: ProductModel;
   isFavorite: boolean;
   addToCart: (prod: CartProductModel) => void;
@@ -28,14 +17,15 @@ type ProductProps = {
 };
 
 const Product = ({
-  t,
-  theme,
   prod,
   isFavorite,
   addToCart,
   addToFavorites,
   removeFromFavorites,
 }: ProductProps) => {
+  const theme = useTheme();
+  const {t} = useTranslation();
+
   const {styles} = useProductStyle(theme);
   const {imageURL, loadingImageURL} = useProductImage(prod);
   const [isStarred, setIsStarred] = useState<boolean>(isFavorite);
@@ -58,7 +48,7 @@ const Product = ({
     <View style={styles.productContainer}>
       <>
         {loadingImageURL ? (
-          <ActivityIndicator theme={theme} />
+          <ActivityIndicator />
         ) : (
           <FastImage
             resizeMode="contain"

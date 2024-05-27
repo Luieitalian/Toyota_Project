@@ -1,26 +1,24 @@
-import {TFunction} from 'i18next';
 import React, {memo, useContext, useState} from 'react';
 import {
   NativeSyntheticEvent,
-  Pressable,
   Text,
   TextInputSubmitEditingEventData,
   View,
 } from 'react-native';
-import {Dialog, MD3Theme, Modal, Portal, TextInput} from 'react-native-paper';
+import {Modal, Portal, TextInput, useTheme} from 'react-native-paper';
 import useLookUpPriceStyle from './styles/useLookUpPriceStyle';
 import CustomButton from './CustomButton';
 import Product from './Product';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext';
 import {ProductsContext} from '../contexts/ProductsContext';
 import {ProductModel} from '../models/ProductModel';
+import {useTranslation} from 'react-i18next';
+import {FavoritesContext} from '../contexts/FavoritesContext';
 
-type LookUpPriceProps = {
-  t: TFunction<'translation', undefined>;
-  theme: MD3Theme;
-};
+const LookUpPrice = () => {
+  const theme = useTheme();
+  const {t} = useTranslation();
 
-const LookUpPrice = ({t, theme}: LookUpPriceProps) => {
   const {styles} = useLookUpPriceStyle(theme);
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [IDText, setIDText] = useState<string | undefined>(undefined);
@@ -28,6 +26,8 @@ const LookUpPrice = ({t, theme}: LookUpPriceProps) => {
     undefined
   );
 
+  const {addToFavorites, isFavorite, removeFromFavorites} =
+    useContext(FavoritesContext);
   const {addToCart} = useContext(ShoppingCartContext);
   const {products} = useContext(ProductsContext);
 
@@ -76,10 +76,11 @@ const LookUpPrice = ({t, theme}: LookUpPriceProps) => {
           />
           {productShown !== undefined && modalVisible ? (
             <Product
+              addToFavorites={addToFavorites}
+              removeFromFavorites={removeFromFavorites}
+              isFavorite={isFavorite(productShown)}
               prod={productShown}
               addToCart={addToCart}
-              t={t}
-              theme={theme}
             />
           ) : (
             <View>
@@ -90,7 +91,7 @@ const LookUpPrice = ({t, theme}: LookUpPriceProps) => {
           )}
         </Modal>
       </Portal>
-      <CustomButton theme={theme} styles={styles} onPress={showModal}>
+      <CustomButton styles={styles} onPress={showModal}>
         {t('look_up_price')}
       </CustomButton>
     </>
