@@ -1,17 +1,15 @@
 import React, {memo, useContext, useState} from 'react';
-import {Pressable, Text, View} from 'react-native';
+import {Pressable, View} from 'react-native';
 import useHeaderStyle from './styles/useHeaderStyle';
-import {Icon, MD3Theme, Menu} from 'react-native-paper';
+import {Icon, Menu, useTheme} from 'react-native-paper';
 import {ThemeContext} from '../contexts/ThemeContext';
-import {changeLanguage, TFunction} from 'i18next';
 import {LanguageContext} from '../contexts/LanguageContext';
+import {useTranslation} from 'react-i18next';
 
-type HeaderProps = {
-  t: TFunction<'translation', undefined>;
-  theme: MD3Theme;
-};
+const Header = () => {
+  const theme = useTheme();
+  const {t} = useTranslation();
 
-const Header = ({t, theme}: HeaderProps) => {
   const [visibleLangMenu, setVisibleLangMenu] = useState(false);
   const {toggleTheme} = useContext(ThemeContext);
   const {styles} = useHeaderStyle(theme);
@@ -42,7 +40,6 @@ const Header = ({t, theme}: HeaderProps) => {
         visible={visibleLangMenu}
         onDismiss={closeLangMenu}
         anchorPosition="bottom"
-        theme={theme}
         contentStyle={styles.menu}
         anchor={
           <Pressable

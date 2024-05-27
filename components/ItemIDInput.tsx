@@ -1,18 +1,9 @@
-import {TFunction} from 'i18next';
-import React, {
-  Dispatch,
-  memo,
-  SetStateAction,
-  useContext,
-  useState,
-} from 'react';
-import {Pressable, Text, View} from 'react-native';
-import {MD3Theme, TextInput} from 'react-native-paper';
+import React, {Dispatch, memo, SetStateAction, useState} from 'react';
+import {TextInput, useTheme} from 'react-native-paper';
 import useItemIDInputStyle from './styles/useItemIDInputStyle';
+import {useTranslation} from 'react-i18next';
 
 type ItemIDInputProps = {
-  t: TFunction<'translation', undefined>;
-  theme: MD3Theme;
   setIDText: Dispatch<SetStateAction<string>>;
   onSubmitEditing: any;
   text: string;
@@ -20,13 +11,14 @@ type ItemIDInputProps = {
 };
 
 const ItemIDInput = ({
-  t,
-  theme,
   text,
   setIDText,
   disabled,
   onSubmitEditing,
 }: ItemIDInputProps) => {
+  const theme = useTheme();
+  const {t} = useTranslation();
+
   const {styles} = useItemIDInputStyle(theme);
   const [opacity, setOpacity] = useState(0.5);
 

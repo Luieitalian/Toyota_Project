@@ -1,12 +1,10 @@
 import React, {memo} from 'react';
 import {View} from 'react-native';
-import {TFunction} from 'i18next';
-import {Icon, MD3Theme, TextInput} from 'react-native-paper';
+import {TextInput, useTheme} from 'react-native-paper';
 import useSearchBarStyle from './styles/useSearchBarStyle';
+import {useTranslation} from 'react-i18next';
 
 type SearchBarProps = {
-  t: TFunction<'translation', undefined>;
-  theme: MD3Theme;
   text: string;
   disabled?: boolean;
   onChangeText: (text: string) => void;
@@ -14,13 +12,14 @@ type SearchBarProps = {
 };
 
 const SearchBar = ({
-  t,
-  theme,
   text,
   disabled = false,
   onChangeText,
   onSubmitEditing,
 }: SearchBarProps) => {
+  const {t} = useTranslation();
+  const theme = useTheme();
+
   const {styles} = useSearchBarStyle(theme);
 
   return (

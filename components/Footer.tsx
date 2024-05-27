@@ -1,17 +1,14 @@
 import React, {useContext} from 'react';
 import {Text, View} from 'react-native';
 import useFooterStyle from './styles/useFooterStyle';
-import {TFunction} from 'i18next';
-import {Button, Icon, MD3Theme, Menu} from 'react-native-paper';
+import {Button, Icon, useTheme} from 'react-native-paper';
 import {StatusContext} from '../contexts/StatusContext';
+import {useTranslation} from 'react-i18next';
 
-type FooterProps = {
-  t: TFunction<'translation', undefined>;
-  theme: MD3Theme;
-};
-
-const Footer = ({t, theme}: FooterProps) => {
+const Footer = () => {
   const {isOnline, toggleOnlineStatus} = useContext(StatusContext);
+  const theme = useTheme();
+  const {t} = useTranslation();
 
   const {styles} = useFooterStyle({theme, isOnline});
 

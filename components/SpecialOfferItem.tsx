@@ -1,22 +1,20 @@
-import {TFunction} from 'i18next';
 import React, {memo, useContext, useState} from 'react';
 import {View} from 'react-native';
 import {
   IconButton,
-  MD3Theme,
   Portal,
   Snackbar,
   Surface,
   Text,
+  useTheme,
 } from 'react-native-paper';
 import {SpecialOfferModel} from '../models/SpecialOfferModel';
 import useSpecialOfferItemStyles from './styles/useSpecialOfferItemStyles';
 import {ProductsContext} from '../contexts/ProductsContext';
 import {ProductModel} from '../models/ProductModel';
+import {useTranslation} from 'react-i18next';
 
 type SpecialOfferItemProps = {
-  t: TFunction<'translation', undefined>;
-  theme: MD3Theme;
   offer: SpecialOfferModel;
   onSelect: (offer: SpecialOfferModel) => void;
   selected: boolean;
@@ -28,9 +26,10 @@ const SpecialOfferItem = ({
   selected,
   applicable,
   onSelect,
-  t,
-  theme,
 }: SpecialOfferItemProps) => {
+  const {t} = useTranslation();
+  const theme = useTheme();
+
   const {styles} = useSpecialOfferItemStyles(theme, selected, applicable);
   const {products} = useContext(ProductsContext);
 

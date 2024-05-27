@@ -1,14 +1,6 @@
-import {TFunction} from 'i18next';
 import React, {memo, useContext, useEffect, useState} from 'react';
-import {Pressable, ScrollView, Text, View} from 'react-native';
-import {
-  Button,
-  Dialog,
-  MD3Theme,
-  Modal,
-  Portal,
-  Snackbar,
-} from 'react-native-paper';
+import {ScrollView, Text, View} from 'react-native';
+import {Button, Modal, Portal, useTheme} from 'react-native-paper';
 import usePickOfferStyle from './styles/usePickOfferStyle';
 import CustomButton from './CustomButton';
 import useSpecialOffers from '../hooks/useSpecialOffers';
@@ -16,13 +8,12 @@ import {SpecialOfferModel} from '../models/SpecialOfferModel';
 import SpecialOfferItem from './SpecialOfferItem';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext';
 import useIsOfferApplicable from '../hooks/useIsOfferApplicable';
+import {useTranslation} from 'react-i18next';
 
-type PickOfferProps = {
-  t: TFunction<'translation', undefined>;
-  theme: MD3Theme;
-};
+const PickOffer = () => {
+  const theme = useTheme();
+  const {t} = useTranslation();
 
-const PickOffer = ({t, theme}: PickOfferProps) => {
   const {styles} = usePickOfferStyle(theme);
 
   const [modalVisible, setModalVisible] = useState<boolean>(false);
@@ -83,8 +74,6 @@ const PickOffer = ({t, theme}: PickOfferProps) => {
                   onSelect={onSelect}
                   offer={offer}
                   key={offer.id}
-                  t={t}
-                  theme={theme}
                 />
               ))}
             </ScrollView>
@@ -110,7 +99,7 @@ const PickOffer = ({t, theme}: PickOfferProps) => {
         </Modal>
       </Portal>
 
-      <CustomButton onPress={onPress} styles={styles} theme={theme}>
+      <CustomButton onPress={onPress} styles={styles}>
         {t('pick_offer')}
       </CustomButton>
     </>

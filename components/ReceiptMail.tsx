@@ -1,23 +1,21 @@
-import {TFunction} from 'i18next';
 import React, {memo, useState} from 'react';
-import {Pressable, Text, View} from 'react-native';
+import {View} from 'react-native';
 import {
   Button,
-  MD3Theme,
   Modal,
   Portal,
   Snackbar,
   TextInput,
+  useTheme,
 } from 'react-native-paper';
 import useReceiptMailStyle from './styles/useReceiptMailStyle';
 import CustomButton from './CustomButton';
+import {useTranslation} from 'react-i18next';
 
-type ReceiptMailProps = {
-  t: TFunction<'translation', undefined>;
-  theme: MD3Theme;
-};
+const ReceiptMail = () => {
+  const {t} = useTranslation();
+  const theme = useTheme();
 
-const ReceiptMail = ({t, theme}: ReceiptMailProps) => {
   const {styles} = useReceiptMailStyle(theme);
 
   const [modalVisible, setModalVisible] = useState<boolean>(false);
@@ -119,7 +117,7 @@ const ReceiptMail = ({t, theme}: ReceiptMailProps) => {
           {t('we_have_not_received_your_mail')}
         </Snackbar>
       </Portal>
-      <CustomButton theme={theme} styles={styles} onPress={onPress}>
+      <CustomButton styles={styles} onPress={onPress}>
         {t('receipt_mail')}
       </CustomButton>
     </>
