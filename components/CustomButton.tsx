@@ -27,6 +27,7 @@ const CustomButton = ({
       android_ripple={{
         color: buttonStyles.androidRipple.color,
         foreground: true,
+        borderless: true,
       }}
       style={[buttonStyles.container, overridingStyles.container]}
       onPress={onPress}
