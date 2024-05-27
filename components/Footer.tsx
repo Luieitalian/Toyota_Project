@@ -22,7 +22,12 @@ const Footer = ({t, theme}: FooterProps) => {
   return (
     <View style={styles.footerContainer}>
       <View style={styles.menuContainer}>
-        <Button onPress={onPress} compact mode="contained">
+        <Button
+          style={styles.button}
+          onPress={onPress}
+          compact
+          mode="contained"
+        >
           {t('debug_toggle_online_status')}
         </Button>
       </View>

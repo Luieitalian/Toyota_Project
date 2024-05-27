@@ -32,6 +32,9 @@ const useFooterStyle = ({theme, isOnline}: useFooterStyleProps) => {
         flexDirection: 'row',
         gap: 10,
       },
+      button: {
+        margin: 10,
+      },
       text: {
         color: theme.colors.onBackground,
       },
