@@ -18,7 +18,6 @@ const ProductsScreen = ({route, navigation}: any) => {
   const [submittedText, setSubmittedText] = useState<string | undefined>(
     undefined
   );
-  const [loading, setLoading] = useState(true);
 
   const {t} = useTranslation();
 
@@ -29,12 +28,10 @@ const ProductsScreen = ({route, navigation}: any) => {
   };
 
   const onChangeText = (text: string) => {
-    setLoading(true);
     setText(text);
   };
 
   const onChangeCategory = (category: string) => {
-    setLoading(true);
     if (text !== undefined) {
       setSubmittedText(text);
     }
@@ -59,8 +56,6 @@ const ProductsScreen = ({route, navigation}: any) => {
         />
       </View>
       <Products
-        loading={loading}
-        setLoading={setLoading}
         submittedText={submittedText}
         category={category}
         t={t}
