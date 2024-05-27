@@ -6,6 +6,7 @@ import {useTranslation} from 'react-i18next';
 import SalesScreenCart from '../components/SalesScreenCart';
 import SalesScreenOptions from '../components/SalesScreenOptions';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const SalesScreen = ({route, navigation}: any) => {
   const {styles, theme} = useSalesScreenStyle();
@@ -18,6 +19,7 @@ const SalesScreen = ({route, navigation}: any) => {
         <SalesScreenCart t={t} theme={theme} />
         <SalesScreenOptions t={t} theme={theme} />
       </View>
+      <Footer t={t} theme={theme} />
     </SafeAreaView>
   );
 };
