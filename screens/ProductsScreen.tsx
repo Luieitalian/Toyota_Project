@@ -10,6 +10,7 @@ import {useTranslation} from 'react-i18next';
 import SearchBar from '../components/SearchBar';
 import FilteringBar from '../components/FilteringBar';
 import Products from '../components/Products';
+import Footer from '../components/Footer';
 
 const ProductsScreen = ({route, navigation}: any) => {
   const {styles, theme} = useProductsScreenStyle();
@@ -55,12 +56,15 @@ const ProductsScreen = ({route, navigation}: any) => {
           theme={theme}
         />
       </View>
-      <Products
-        submittedText={submittedText}
-        category={category}
-        t={t}
-        theme={theme}
-      />
+      <View style={styles.productsContainer}>
+        <Products
+          submittedText={submittedText}
+          category={category}
+          t={t}
+          theme={theme}
+        />
+      </View>
+      <Footer t={t} theme={theme} />
     </SafeAreaView>
   );
 };
