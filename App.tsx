@@ -6,6 +6,8 @@ import ProductsScreen from './screens/ProductsScreen';
 import SalesScreen from './screens/SalesScreen';
 import useProductsScreenStyle from './screens/styles/useProductsScreenStyle';
 import useSalesScreenStyle from './screens/styles/useSalesScreenStyle';
+import HomeScreen from './screens/HomeScreen';
+import {useTranslation} from 'react-i18next';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,13 +15,26 @@ const App = () => {
   const productsScreenStyle = useProductsScreenStyle();
   const salesScreenStyle = useSalesScreenStyle();
 
+  const {t} = useTranslation();
+
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="SalesScreen">
+      <Stack.Navigator initialRouteName="HomeScreen">
         <Stack.Screen
           name="LoginScreen"
           options={{headerShown: false}}
           component={LoginScreen}
+        />
+        <Stack.Screen
+          name="HomeScreen"
+          options={{
+            headerTitle: t('home_screen'),
+            headerShown: true,
+            headerStyle: productsScreenStyle.styles.headerStyle,
+            headerTitleStyle: productsScreenStyle.styles.headerTitleStyle,
+            headerTintColor: productsScreenStyle.styles.headerTint.color,
+          }}
+          component={HomeScreen}
         />
         <Stack.Screen
           name="ProductsScreen"
