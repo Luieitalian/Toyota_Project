@@ -83,7 +83,7 @@ const useCartPricing = (cart: CartProductModel[]) => {
 
   const paymentTotal = subTotal - discountTotal;
 
-  return {subTotal, paymentTotal};
+  return {subTotal, paymentTotal, discountTotal};
 };
 
 export default useCartPricing;

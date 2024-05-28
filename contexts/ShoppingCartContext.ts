@@ -1,4 +1,4 @@
-import {createContext, Dispatch, SetStateAction} from 'react';
+import {createContext} from 'react';
 import {CartProductModel} from '../models/CartProductModel';
 
 export const ShoppingCartContext = createContext({
@@ -9,4 +9,6 @@ export const ShoppingCartContext = createContext({
   selectedOfferID: undefined,
   setSelectedOfferID: (offer_id: string | undefined) => {},
   cart: [] as CartProductModel[],
+  isCash: true as boolean,
+  setIsCash: (val: boolean) => {},
 });
