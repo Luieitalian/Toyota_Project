@@ -5,18 +5,32 @@ import {breakPoint} from '../../globals/style';
 
 const usePayStyle = (theme: MD3Theme) => {
   const {width} = useWindowDimensions();
+  const isWide = width >= breakPoint;
+
   const styles = React.useMemo(() => {
-    const isWide = width >= breakPoint;
     return StyleSheet.create({
       container: {
         backgroundColor: theme.colors.primary,
       },
       text: {
-        fontSize: isWide ? 32 : 20,
-        color: theme.colors.onPrimary,
+        fontSize: 20,
+      },
+      receiptText: {
+        fontSize: isWide ? 18 : 16,
+        color: theme.colors.background,
+      },
+      modal: {
+        flex: 1,
+        flexDirection: 'column',
+        gap: 20,
+        elevation: 5,
+        marginHorizontal: isWide ? 350 : 70,
+        marginVertical: isWide ? 30 : 60,
+        backgroundColor: 'white',
+        borderRadius: 10,
       },
     });
-  }, [theme]);
+  }, [theme, isWide]);
 
   return {styles};
 };

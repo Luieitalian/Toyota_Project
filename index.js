@@ -35,6 +35,7 @@ const AppMiddleWare = () => {
   const [isDark, setIsDark] = useState(true);
   const [shoppingCart, setShoppingCart] = useState([]);
   const [isOnline, setIsOnline] = useState(false);
+  const [isCash, setIsCash] = useState(true);
   const [selectedOfferID, setSelectedOfferID] = useState(undefined);
   const [favorites, setFavorites] = useState([]);
 
@@ -86,8 +87,10 @@ const AppMiddleWare = () => {
       selectedOfferID: selectedOfferID,
       setSelectedOfferID: setSelectedOfferID,
       cart: shoppingCart,
+      isCash: isCash,
+      setIsCash: setIsCash,
     }),
-    [shoppingCart, selectedOfferID]
+    [shoppingCart, isCash, selectedOfferID]
   );
 
   const productsContext = useMemo(

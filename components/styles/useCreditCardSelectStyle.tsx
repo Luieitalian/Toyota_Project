@@ -2,13 +2,23 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 import {MD3Theme} from 'react-native-paper';
 
-const useCreditCardSelectStyle = (theme: MD3Theme) => {
+type useCreditCardSelectStyleArgs = {
+  theme: MD3Theme;
+  isCash: boolean;
+};
+
+const useCreditCardSelectStyle = ({
+  theme,
+  isCash,
+}: useCreditCardSelectStyleArgs) => {
   const styles = React.useMemo(() => {
     return StyleSheet.create({
-      container: {},
+      container: {
+        backgroundColor: isCash ? theme.colors.secondary : theme.colors.primary,
+      },
       text: {},
     });
-  }, [theme]);
+  }, [theme, isCash]);
   return {styles};
 };
 
