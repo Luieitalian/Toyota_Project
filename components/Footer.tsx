@@ -19,6 +19,7 @@ const Footer = () => {
   return (
     <View style={styles.footerContainer}>
       <View style={styles.menuContainer}>
+        <Text style={styles.userText}>{`${t('cashier')}: ${'[user]'}`}</Text>
         <Button
           style={styles.button}
           onPress={onPress}

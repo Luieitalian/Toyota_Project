@@ -27,6 +27,11 @@ const useFooterStyle = ({theme, isOnline}: useFooterStyleProps) => {
       },
       menuContainer: {
         flexDirection: 'row',
+        alignItems: 'center',
+      },
+      userText: {
+        fontSize: isWide ? 14 : 12,
+        color: theme.colors.onBackground,
       },
       shopStatusContainer: {
         flexDirection: 'row',

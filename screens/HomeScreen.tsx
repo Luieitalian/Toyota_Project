@@ -8,6 +8,7 @@ import GoToSalesScreen from '../components/GoToSalesScreen';
 import GoToSettingsScreen from '../components/GoToSettingsScreen';
 import GoToReportsScreen from '../components/GoToReportsScreen';
 import LogOut from '../components/LogOut';
+import Footer from '../components/Footer';
 
 const HomeScreen = ({route, navigation}: any) => {
   const {t, i18n} = useTranslation();
@@ -15,11 +16,14 @@ const HomeScreen = ({route, navigation}: any) => {
 
   return (
     <SafeAreaView style={styles.screenView}>
-      <GoToSalesScreen />
-      <GoToReportsScreen />
-      <GoToSettingsScreen />
-      <LogOut />
-      <Status />
+      <View style={styles.group}>
+        <GoToSalesScreen />
+        <GoToReportsScreen />
+        <GoToSettingsScreen />
+        <LogOut />
+        <Status />
+      </View>
+      <Footer />
     </SafeAreaView>
   );
 };
