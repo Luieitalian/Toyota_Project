@@ -3,17 +3,15 @@ import {Pressable, View} from 'react-native';
 import useHeaderStyle from './styles/useHeaderStyle';
 import {Icon, Menu, useTheme} from 'react-native-paper';
 import {ThemeContext} from '../contexts/ThemeContext';
-import {LanguageContext} from '../contexts/LanguageContext';
 import {useTranslation} from 'react-i18next';
 
 const Header = () => {
   const theme = useTheme();
-  const {t} = useTranslation();
+  const {t, i18n} = useTranslation();
 
   const [visibleLangMenu, setVisibleLangMenu] = useState(false);
   const {toggleTheme} = useContext(ThemeContext);
   const {styles} = useHeaderStyle(theme);
-  const languageContext = useContext(LanguageContext);
 
   const closeLangMenu = () => setVisibleLangMenu(false);
   const openLangMenu = () => setVisibleLangMenu(true);
@@ -64,12 +62,12 @@ const Header = () => {
         <Menu.Item
           titleStyle={styles.menuItem}
           title={t('turkish')}
-          onPress={() => languageContext.ChangeLanguage('tr')}
+          onPress={() => i18n.changeLanguage('tr')}
         />
         <Menu.Item
           titleStyle={styles.menuItem}
           title={t('english')}
-          onPress={() => languageContext.ChangeLanguage('en')}
+          onPress={() => i18n.changeLanguage('en')}
         />
       </Menu>
     </View>

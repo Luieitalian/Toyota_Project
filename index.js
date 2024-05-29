@@ -9,7 +9,6 @@ import {useState, useCallback, useMemo, useContext} from 'react';
 import {ThemeContext} from './contexts/ThemeContext';
 import SystemNavigationBar from 'react-native-system-navigation-bar';
 import './i18n';
-import {LanguageContext} from './contexts/LanguageContext';
 import {ShoppingCartContext} from './contexts/ShoppingCartContext';
 import useShoppingCartFunctions from './hooks/useShoppingCartFunctions';
 import useProducts from './hooks/useProducts';
@@ -120,26 +119,22 @@ const AppMiddleWare = () => {
     [unsentCartReceipts, setUnsentCartReceipts]
   );
 
-  const languageContext = useContext(LanguageContext);
-
   return (
     <StatusContext.Provider value={statusContext}>
       <ThemeContext.Provider value={themeContext}>
-        <LanguageContext.Provider value={languageContext}>
-          <ProductsContext.Provider value={productsContext}>
-            <FavoritesContext.Provider value={favoritesContext}>
-              <ShoppingCartContext.Provider value={shoppingCartContext}>
-                <UnsentCartsContext.Provider value={unsentCartsContext}>
-                  <PaperProvider theme={theme}>
-                    <SafeAreaProvider>
-                      <App />
-                    </SafeAreaProvider>
-                  </PaperProvider>
-                </UnsentCartsContext.Provider>
-              </ShoppingCartContext.Provider>
-            </FavoritesContext.Provider>
-          </ProductsContext.Provider>
-        </LanguageContext.Provider>
+        <ProductsContext.Provider value={productsContext}>
+          <FavoritesContext.Provider value={favoritesContext}>
+            <ShoppingCartContext.Provider value={shoppingCartContext}>
+              <UnsentCartsContext.Provider value={unsentCartsContext}>
+                <PaperProvider theme={theme}>
+                  <SafeAreaProvider>
+                    <App />
+                  </SafeAreaProvider>
+                </PaperProvider>
+              </UnsentCartsContext.Provider>
+            </ShoppingCartContext.Provider>
+          </FavoritesContext.Provider>
+        </ProductsContext.Provider>
       </ThemeContext.Provider>
     </StatusContext.Provider>
   );
