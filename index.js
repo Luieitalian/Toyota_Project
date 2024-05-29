@@ -18,7 +18,7 @@ import {StatusContext} from './contexts/StatusContext';
 import setDatabase from './hooks/setDatabase';
 import useFavoriteProductsFunctions from './hooks/useFavoriteProductsFunctions';
 import {FavoritesContext} from './contexts/FavoritesContext';
-import ProductModel from './models/ProductModel';
+import {UnsentCartsContext} from './contexts/UnsentCartsContext';
 
 const themes = {
   dark: {
@@ -38,6 +38,7 @@ const AppMiddleWare = () => {
   const [isCash, setIsCash] = useState(true);
   const [selectedOfferID, setSelectedOfferID] = useState(undefined);
   const [favorites, setFavorites] = useState([]);
+  const [unsentCartReceipts, setUnsentCartReceipts] = useState([]);
 
   const theme = isDark ? themes.dark : themes.light;
   SystemNavigationBar.setNavigationColor(theme.colors.background); // Set Navigation bar color to fit the app theme
@@ -111,6 +112,14 @@ const AppMiddleWare = () => {
     [favorites, isFavorite, addToFavorites, removeFromFavorites]
   );
 
+  const unsentCartsContext = useMemo(
+    () => ({
+      unsentCartReceipts: unsentCartReceipts,
+      setUnsentCartReceipts: setUnsentCartReceipts,
+    }),
+    [unsentCartReceipts, setUnsentCartReceipts]
+  );
+
   const languageContext = useContext(LanguageContext);
 
   return (
@@ -120,11 +129,13 @@ const AppMiddleWare = () => {
           <ProductsContext.Provider value={productsContext}>
             <FavoritesContext.Provider value={favoritesContext}>
               <ShoppingCartContext.Provider value={shoppingCartContext}>
-                <PaperProvider theme={theme}>
-                  <SafeAreaProvider>
-                    <App />
-                  </SafeAreaProvider>
-                </PaperProvider>
+                <UnsentCartsContext.Provider value={unsentCartsContext}>
+                  <PaperProvider theme={theme}>
+                    <SafeAreaProvider>
+                      <App />
+                    </SafeAreaProvider>
+                  </PaperProvider>
+                </UnsentCartsContext.Provider>
               </ShoppingCartContext.Provider>
             </FavoritesContext.Provider>
           </ProductsContext.Provider>
