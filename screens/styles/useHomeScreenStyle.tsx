@@ -12,6 +12,9 @@ const useHomeScreenStyle = () => {
     return StyleSheet.create({
       screenView: {
         flex: 1,
+        paddingHorizontal: isWide ? 60 : 20,
+        flexDirection: 'column',
+        justifyContent: 'space-evenly',
         backgroundColor: theme.colors.background,
       },
     });

@@ -3,7 +3,7 @@ import {StyleSheet, useWindowDimensions} from 'react-native';
 import {MD3Theme} from 'react-native-paper';
 import {breakPoint} from '../../globals/style';
 
-const useSpecialOfferItemStyles = (
+const useSpecialOfferItemStyle = (
   theme: MD3Theme,
   selected: boolean,
   applicable: boolean
@@ -53,4 +53,4 @@ const useSpecialOfferItemStyles = (
   return {styles};
 };
 
-export default useSpecialOfferItemStyles;
+export default useSpecialOfferItemStyle;

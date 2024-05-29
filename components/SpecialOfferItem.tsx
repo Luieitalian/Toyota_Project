@@ -9,7 +9,7 @@ import {
   useTheme,
 } from 'react-native-paper';
 import {SpecialOfferModel} from '../models/SpecialOfferModel';
-import useSpecialOfferItemStyles from './styles/useSpecialOfferItemStyles';
+import useSpecialOfferItemStyle from './styles/useSpecialOfferItemStyle';
 import {ProductsContext} from '../contexts/ProductsContext';
 import {ProductModel} from '../models/ProductModel';
 import {useTranslation} from 'react-i18next';
@@ -30,7 +30,7 @@ const SpecialOfferItem = ({
   const {t} = useTranslation();
   const theme = useTheme();
 
-  const {styles} = useSpecialOfferItemStyles(theme, selected, applicable);
+  const {styles} = useSpecialOfferItemStyle(theme, selected, applicable);
   const {products} = useContext(ProductsContext);
 
   const [snackbarVisible, setSnackbarVisible] = useState<boolean>(false);
