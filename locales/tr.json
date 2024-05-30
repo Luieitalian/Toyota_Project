@@ -69,5 +69,12 @@
   "go_to_sales_screen": "Satış Ekranı",
   "go_to_reports_screen": "Raporlar",
   "go_to_settings_screen": "Ayarlar",
-  "log_out": "Çıkış yap"
+  "log_out": "Çıkış yap",
+  "show_past_sales": "Geçmiş Satışlar",
+  "login": "Kullanıcı Girişi",
+  "products": "Ürünler",
+  "sales": "Satış",
+  "settings": "Ayarlar",
+  "reports": "Raporlar",
+  "past_sales_empty": "Geçmiş satış mevcut değil."
 }

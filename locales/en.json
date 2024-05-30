@@ -66,9 +66,16 @@
   "shop_no": "Shop No",
   "cash_register_no": "Cash Register No",
   "cashier": "Cashier",
-  "home_screen": "Home",
   "go_to_sales_screen": "Go to POS",
   "go_to_reports_screen": "Go to Reports",
   "go_to_settings_screen": "Settings",
-  "log_out": "Log out"
+  "log_out": "Log out",
+  "home": "Home",
+  "show_past_sales": "Show Past Sales",
+  "login": "Log-in",
+  "products": "Products",
+  "sales": "Point of Sale",
+  "settings": "Settings",
+  "reports": "Reports",
+  "past_sales_empty": "There is no past sales"
 }
