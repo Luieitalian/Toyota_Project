@@ -1,11 +1,11 @@
-import {AppRegistry} from 'react-native';
+import {AppRegistry, Text, View} from 'react-native';
 import App from './App';
 import {name as appName} from './app.json';
 import {MD3DarkTheme, MD3LightTheme, PaperProvider} from 'react-native-paper';
 import LightTheme from './themes/LightTheme.json';
 import DarkTheme from './themes/DarkTheme.json';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {useState, useCallback, useMemo, useContext} from 'react';
+import {useState, useCallback, useMemo, useContext, useEffect} from 'react';
 import {ThemeContext} from './contexts/ThemeContext';
 import SystemNavigationBar from 'react-native-system-navigation-bar';
 import './i18n';
@@ -18,6 +18,7 @@ import setDatabase from './hooks/setDatabase';
 import useFavoriteProductsFunctions from './hooks/useFavoriteProductsFunctions';
 import {FavoritesContext} from './contexts/FavoritesContext';
 import {UnsentCartsContext} from './contexts/UnsentCartsContext';
+import {useTranslation} from 'react-i18next';
 
 const themes = {
   dark: {
@@ -38,18 +39,30 @@ const AppMiddleWare = () => {
   const [selectedOfferID, setSelectedOfferID] = useState(undefined);
   const [favorites, setFavorites] = useState([]);
   const [unsentCartReceipts, setUnsentCartReceipts] = useState([]);
+  const [isDatabaseInitialized, setIsDatabaseInitialized] = useState(false);
 
   const theme = isDark ? themes.dark : themes.light;
   SystemNavigationBar.setNavigationColor(theme.colors.background); // Set Navigation bar color to fit the app theme
   SystemNavigationBar.setBarMode(isDark ? 'light' : 'dark'); // Set Navigation bar button colors for visibility
-  setDatabase();
+
+  useEffect(() => {
+    const initializeDatabase = async () => {
+      await setDatabase();
+      setIsDatabaseInitialized(true);
+    };
+
+    initializeDatabase();
+  }, [isOnline]);
 
   const {addToCart, removeFromCart, removeOne, clearCart} =
     useShoppingCartFunctions(setShoppingCart);
   const {addToFavorites, removeFromFavorites} =
     useFavoriteProductsFunctions(setFavorites);
 
-  const {products, loadingProducts} = useProducts({isOnline: isOnline});
+  const {products, loadingProducts} = useProducts({
+    isOnline: isOnline,
+    isDatabaseInitialized: isDatabaseInitialized,
+  });
 
   const toggleOnlineStatus = useCallback(() => {
     return setIsOnline(!isOnline);
@@ -118,6 +131,14 @@ const AppMiddleWare = () => {
     }),
     [unsentCartReceipts, setUnsentCartReceipts]
   );
+
+  if (!isDatabaseInitialized) {
+    return (
+      <View>
+        <Text>Loading</Text>
+      </View>
+    );
+  }
 
   return (
     <StatusContext.Provider value={statusContext}>

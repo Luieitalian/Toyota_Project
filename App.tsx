@@ -8,9 +8,9 @@ import useProductsScreenStyle from './screens/styles/useProductsScreenStyle';
 import useSalesScreenStyle from './screens/styles/useSalesScreenStyle';
 import HomeScreen from './screens/HomeScreen';
 import {useTranslation} from 'react-i18next';
-import SettingsScreen from './screens/SettingsScreen';
 import useHomeScreenStyle from './screens/styles/useHomeScreenStyle';
 import useSettingsScreenStyle from './screens/styles/useSettingsScreenStyle';
+import SettingsScreen from './screens/SettingsScreen';
 
 const Stack = createNativeStackNavigator();
 
