@@ -2,6 +2,7 @@ import {
   View,
   NativeSyntheticEvent,
   TextInputSubmitEditingEventData,
+  StatusBar,
 } from 'react-native';
 import React, {useState} from 'react';
 import useProductsScreenStyle from './styles/useProductsScreenStyle';
@@ -41,6 +42,10 @@ const ProductsScreen = ({route, navigation}: any) => {
 
   return (
     <SafeAreaView style={styles.screenView}>
+      <StatusBar
+        barStyle={theme.dark ? 'light-content' : 'dark-content'}
+        backgroundColor={theme.colors.background}
+      />
       <View style={styles.listHeader}>
         <SearchBar
           text={text}

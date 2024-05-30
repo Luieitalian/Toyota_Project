@@ -48,7 +48,7 @@ const useFooterStyle = ({theme, isOnline}: useFooterStyleProps) => {
         width: 18,
       },
     });
-  }, [theme, isOnline]);
+  }, [theme, width, isOnline]);
 
   return {styles};
 };

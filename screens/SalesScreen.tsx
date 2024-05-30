@@ -1,4 +1,4 @@
-import {Button, Text, View} from 'react-native';
+import {Button, StatusBar, Text, View} from 'react-native';
 import React, {useContext} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import useSalesScreenStyle from './styles/useSalesScreenStyle';
@@ -14,6 +14,10 @@ const SalesScreen = ({route, navigation}: any) => {
 
   return (
     <SafeAreaView style={styles.screenView}>
+      <StatusBar
+        barStyle={theme.dark ? 'light-content' : 'dark-content'}
+        backgroundColor={theme.colors.background}
+      />
       <View style={styles.container}>
         {/* <Header   /> */}
         <SalesScreenCart />

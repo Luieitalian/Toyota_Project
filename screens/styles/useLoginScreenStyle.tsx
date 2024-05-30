@@ -52,6 +52,15 @@ const useLoginScreenStyle = () => {
         color: theme.colors.onBackground,
         paddingHorizontal: 15,
       },
+      headerTitleStyle: {
+        color: theme.colors.onBackground,
+      },
+      headerStyle: {
+        backgroundColor: theme.colors.background,
+      },
+      headerTint: {
+        color: theme.colors.onBackground,
+      },
     });
   }, [theme, width]);
   return {styles, theme};

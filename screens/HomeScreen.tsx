@@ -16,6 +16,10 @@ const HomeScreen = ({route, navigation}: any) => {
 
   return (
     <SafeAreaView style={styles.screenView}>
+      <StatusBar
+        barStyle={theme.dark ? 'light-content' : 'dark-content'}
+        backgroundColor={theme.colors.background}
+      />
       <View style={styles.group}>
         <GoToSalesScreen />
         <GoToReportsScreen />

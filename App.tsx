@@ -8,12 +8,17 @@ import useProductsScreenStyle from './screens/styles/useProductsScreenStyle';
 import useSalesScreenStyle from './screens/styles/useSalesScreenStyle';
 import HomeScreen from './screens/HomeScreen';
 import {useTranslation} from 'react-i18next';
+import SettingsScreen from './screens/SettingsScreen';
+import useHomeScreenStyle from './screens/styles/useHomeScreenStyle';
+import useSettingsScreenStyle from './screens/styles/useSettingsScreenStyle';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   const productsScreenStyle = useProductsScreenStyle();
   const salesScreenStyle = useSalesScreenStyle();
+  const homeScreenStyle = useHomeScreenStyle();
+  const settingsScreenStyle = useSettingsScreenStyle();
 
   const {t} = useTranslation();
 
@@ -30,9 +35,9 @@ const App = () => {
           options={{
             headerTitle: t('home_screen'),
             headerShown: true,
-            headerStyle: productsScreenStyle.styles.headerStyle,
-            headerTitleStyle: productsScreenStyle.styles.headerTitleStyle,
-            headerTintColor: productsScreenStyle.styles.headerTint.color,
+            headerStyle: homeScreenStyle.styles.headerStyle,
+            headerTitleStyle: homeScreenStyle.styles.headerTitleStyle,
+            headerTintColor: homeScreenStyle.styles.headerTint.color,
           }}
           component={HomeScreen}
         />
@@ -55,6 +60,16 @@ const App = () => {
             headerTintColor: salesScreenStyle.styles.headerTint.color,
           }}
           component={SalesScreen}
+        />
+        <Stack.Screen
+          name="SettingsScreen"
+          options={{
+            headerShown: true,
+            headerStyle: settingsScreenStyle.styles.headerStyle,
+            headerTitleStyle: settingsScreenStyle.styles.headerTitleStyle,
+            headerTintColor: settingsScreenStyle.styles.headerTint.color,
+          }}
+          component={SettingsScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
