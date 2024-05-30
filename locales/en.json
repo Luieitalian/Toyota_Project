@@ -59,5 +59,8 @@
   "offline": "OFFLINE",
   "loading": "Loading",
   "shop_is_online": "Shop is {{status}}",
-  "debug_toggle_online_status": "toggle_online_status"
+  "debug_toggle_online_status": "toggle_online_status",
+  "dark": "Dark",
+  "light": "Light",
+  "dark_mode": "Dark Mode"
 }

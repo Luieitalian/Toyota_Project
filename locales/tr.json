@@ -56,6 +56,10 @@
   "favorites": "Favoriler",
   "online": "ÇEVRİMİÇİ",
   "offline": "ÇEVRİMDIŞI",
+  "loading": "Yükleniyor",
   "shop_is_online": "Mağaza {{status}}",
-  "debug_toggle_online_status": "toggle_online_status"
+  "debug_toggle_online_status": "toggle_online_status",
+  "dark": "Karanlık",
+  "light": "Aydınlık",
+  "dark_mode": "Karanlık Modu"
 }
