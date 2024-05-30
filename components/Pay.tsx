@@ -11,6 +11,7 @@ import {StatusContext} from '../contexts/StatusContext';
 import currency from 'currency.js';
 import {CartProductModel} from '../models/CartProductModel';
 import useCartPricing from '../hooks/useCartPricing';
+import {PastSalesContext} from '../contexts/PastSalesContext';
 
 const receipt = require('receipt');
 
@@ -30,6 +31,7 @@ const Pay = () => {
 
   const {setUnsentCartReceipts} = useContext(UnsentCartsContext);
   const {isOnline} = useContext(StatusContext);
+  const {setPastSalesReceipts} = useContext(PastSalesContext);
 
   const showModal = () => {
     setModalVisible(true);
@@ -102,6 +104,8 @@ const Pay = () => {
 
   const onPress = () => {
     if (cart.length !== 0) {
+      setPastSalesReceipts((receipts: string[]) => [...receipts, receipt_str]);
+
       if (!isOnline) {
         setUnsentCartReceipts((receipts: string[]) => {
           console.log([...receipts, receipt_str]);
