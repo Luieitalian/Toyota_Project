@@ -3,15 +3,19 @@ import {useTheme} from 'react-native-paper';
 import CustomButton from './CustomButton';
 import {useTranslation} from 'react-i18next';
 import useGoToSalesScreenStyle from './styles/useGoToSalesScreenStyle';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 const GoToSalesScreen = () => {
   const {t} = useTranslation();
   const theme = useTheme();
 
   const {styles} = useGoToSalesScreenStyle(theme);
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   const onPress = () => {
     console.log('go to sales screen');
+    navigation.navigate('SalesScreen');
   };
 
   return (
