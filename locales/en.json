@@ -77,5 +77,7 @@
   "sales": "Point of Sale",
   "settings": "Settings",
   "reports": "Reports",
-  "past_sales_empty": "There is no past sales"
+  "past_sales_empty": "There is no past sales.",
+  "receipts_synchronized": "{{receipts}} receipts synchronized!",
+  "synchronize_unsent_receipts": "Synchronize Unsent Receipts"
 }

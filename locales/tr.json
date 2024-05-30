@@ -76,5 +76,7 @@
   "sales": "Satış",
   "settings": "Ayarlar",
   "reports": "Raporlar",
-  "past_sales_empty": "Geçmiş satış mevcut değil."
+  "past_sales_empty": "Geçmiş satış mevcut değil.",
+  "receipts_synchronized": "{{receipts}} sipariş senkronize edildi!",
+  "synchronize_unsent_receipts": "Gönderilmeyen Siparişleri Senkronize Et"
 }

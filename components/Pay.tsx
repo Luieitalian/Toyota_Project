@@ -108,7 +108,6 @@ const Pay = () => {
 
       if (!isOnline) {
         setUnsentCartReceipts((receipts: string[]) => {
-          console.log([...receipts, receipt_str]);
           return [...receipts, receipt_str];
         });
       }

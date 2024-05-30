@@ -6,6 +6,7 @@ import Status from '../components/Status';
 import Footer from '../components/Footer';
 import useReportsScreenStyle from './styles/useReportsScreenStyle';
 import ShowPastSales from '../components/ShowPastSales';
+import SynchronizeUnsentCarts from '../components/SynchronizeUnsentCarts';
 
 const ReportsScreen = ({route, navigation}: any) => {
   const {t, i18n} = useTranslation();
@@ -19,6 +20,7 @@ const ReportsScreen = ({route, navigation}: any) => {
       />
       <View style={styles.group}>
         <ShowPastSales />
+        <SynchronizeUnsentCarts />
         <Status />
       </View>
       <Footer />
