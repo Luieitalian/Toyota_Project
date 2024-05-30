@@ -12,6 +12,7 @@ import useHomeScreenStyle from './screens/styles/useHomeScreenStyle';
 import useSettingsScreenStyle from './screens/styles/useSettingsScreenStyle';
 import SettingsScreen from './screens/SettingsScreen';
 import useLoginScreenStyle from './screens/styles/useLoginScreenStyle';
+import ReportsScreen from './screens/ReportsScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -82,7 +83,7 @@ const App = () => {
           }}
           component={SettingsScreen}
         />
-        {/* <Stack.Screen
+        <Stack.Screen
           name="ReportsScreen"
           options={{
             headerTitle: t('reports'),
@@ -91,8 +92,8 @@ const App = () => {
             headerTitleStyle: settingsScreenStyle.styles.headerTitleStyle,
             headerTintColor: settingsScreenStyle.styles.headerTint.color,
           }}
-          component={SettingsScreen}
-        /> */}
+          component={ReportsScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

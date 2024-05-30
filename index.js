@@ -1,11 +1,17 @@
-import {AppRegistry, Text, View} from 'react-native';
+import {AppRegistry, StyleSheet, Text, View} from 'react-native';
 import App from './App';
 import {name as appName} from './app.json';
 import {MD3DarkTheme, MD3LightTheme, PaperProvider} from 'react-native-paper';
 import LightTheme from './themes/LightTheme.json';
 import DarkTheme from './themes/DarkTheme.json';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {useState, useCallback, useMemo, useContext, useEffect} from 'react';
+import React, {
+  useState,
+  useCallback,
+  useMemo,
+  useContext,
+  useEffect,
+} from 'react';
 import {ThemeContext} from './contexts/ThemeContext';
 import SystemNavigationBar from 'react-native-system-navigation-bar';
 import './i18n';
@@ -142,6 +148,19 @@ const AppMiddleWare = () => {
     [pastSalesReceipts, setPastSalesReceipts]
   );
 
+  //  ------STYLES FOR THE SAFE AREA PROVIDER------
+  const styles = React.useMemo(
+    () =>
+      StyleSheet.create({
+        safeAreaProvider: {
+          backgroundColor: theme.colors.background,
+        },
+      }),
+    [theme]
+  );
+  // These styles prevent flashing when navigating between screens.
+  //  ------STYLES FOR THE SAFE AREA PROVIDER------
+
   if (!isDatabaseInitialized) {
     return (
       <View>
@@ -159,7 +178,7 @@ const AppMiddleWare = () => {
               <UnsentCartsContext.Provider value={unsentCartsContext}>
                 <PastSalesContext.Provider value={pastSalesContext}>
                   <PaperProvider theme={theme}>
-                    <SafeAreaProvider>
+                    <SafeAreaProvider style={styles.safeAreaProvider}>
                       <App />
                     </SafeAreaProvider>
                   </PaperProvider>
