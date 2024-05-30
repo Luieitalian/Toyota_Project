@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {Text, View} from 'react-native';
 import useFooterStyle from './styles/useFooterStyle';
 import {Button, Icon, useTheme} from 'react-native-paper';
@@ -7,6 +7,9 @@ import {useTranslation} from 'react-i18next';
 
 const Footer = () => {
   const {isOnline, toggleOnlineStatus} = useContext(StatusContext);
+
+  const [isButtonHiding, setIsButtonHiding] = useState<boolean>(false);
+
   const theme = useTheme();
   const {t} = useTranslation();
 
@@ -16,18 +19,27 @@ const Footer = () => {
     toggleOnlineStatus();
   };
 
+  const onLongPress = () => {
+    setIsButtonHiding(true);
+  };
+
   return (
     <View style={styles.footerContainer}>
       <View style={styles.menuContainer}>
         <Text style={styles.userText}>{`${t('cashier')}: ${'[user]'}`}</Text>
-        <Button
-          style={styles.button}
-          onPress={onPress}
-          compact
-          mode="contained"
-        >
-          {t('debug_toggle_online_status')}
-        </Button>
+        {isButtonHiding ? (
+          <></>
+        ) : (
+          <Button
+            style={styles.button}
+            onPress={onPress}
+            onLongPress={onLongPress}
+            compact
+            mode="contained"
+          >
+            {t('debug_toggle_online_status')}
+          </Button>
+        )}
       </View>
       <View style={styles.shopStatusContainer}>
         <Text style={styles.text}>

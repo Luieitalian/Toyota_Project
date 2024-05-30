@@ -11,6 +11,7 @@ import {useTranslation} from 'react-i18next';
 import useHomeScreenStyle from './screens/styles/useHomeScreenStyle';
 import useSettingsScreenStyle from './screens/styles/useSettingsScreenStyle';
 import SettingsScreen from './screens/SettingsScreen';
+import useLoginScreenStyle from './screens/styles/useLoginScreenStyle';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,7 @@ const App = () => {
   const salesScreenStyle = useSalesScreenStyle();
   const homeScreenStyle = useHomeScreenStyle();
   const settingsScreenStyle = useSettingsScreenStyle();
+  const loginScreenStyle = useLoginScreenStyle();
 
   const {t} = useTranslation();
 
@@ -27,13 +29,19 @@ const App = () => {
       <Stack.Navigator initialRouteName="HomeScreen">
         <Stack.Screen
           name="LoginScreen"
-          options={{headerShown: false}}
+          options={{
+            headerTitle: t('login'),
+            headerShown: true,
+            headerStyle: loginScreenStyle.styles.headerStyle,
+            headerTitleStyle: loginScreenStyle.styles.headerTitleStyle,
+            headerTintColor: loginScreenStyle.styles.headerTint.color,
+          }}
           component={LoginScreen}
         />
         <Stack.Screen
           name="HomeScreen"
           options={{
-            headerTitle: t('home_screen'),
+            headerTitle: t('home'),
             headerShown: true,
             headerStyle: homeScreenStyle.styles.headerStyle,
             headerTitleStyle: homeScreenStyle.styles.headerTitleStyle,
@@ -44,6 +52,7 @@ const App = () => {
         <Stack.Screen
           name="ProductsScreen"
           options={{
+            headerTitle: t('products'),
             headerShown: true,
             headerStyle: productsScreenStyle.styles.headerStyle,
             headerTitleStyle: productsScreenStyle.styles.headerTitleStyle,
@@ -54,6 +63,7 @@ const App = () => {
         <Stack.Screen
           name="SalesScreen"
           options={{
+            headerTitle: t('sales'),
             headerShown: true,
             headerStyle: salesScreenStyle.styles.headerStyle,
             headerTitleStyle: salesScreenStyle.styles.headerTitleStyle,
@@ -64,6 +74,7 @@ const App = () => {
         <Stack.Screen
           name="SettingsScreen"
           options={{
+            headerTitle: t('settings'),
             headerShown: true,
             headerStyle: settingsScreenStyle.styles.headerStyle,
             headerTitleStyle: settingsScreenStyle.styles.headerTitleStyle,
@@ -71,6 +82,17 @@ const App = () => {
           }}
           component={SettingsScreen}
         />
+        {/* <Stack.Screen
+          name="ReportsScreen"
+          options={{
+            headerTitle: t('reports'),
+            headerShown: true,
+            headerStyle: settingsScreenStyle.styles.headerStyle,
+            headerTitleStyle: settingsScreenStyle.styles.headerTitleStyle,
+            headerTintColor: settingsScreenStyle.styles.headerTint.color,
+          }}
+          component={SettingsScreen}
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
