@@ -3,7 +3,7 @@ import {useTheme} from 'react-native-paper';
 import useCreditCardSelectStyle from './styles/useCreditCardSelectStyle';
 import CustomButton from './CustomButton';
 import {useTranslation} from 'react-i18next';
-import {ShoppingCartContext} from '../contexts/ShoppingCartContext';
+import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';
 
 const CreditCardSelect = () => {
   const theme = useTheme();

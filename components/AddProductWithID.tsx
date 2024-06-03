@@ -3,10 +3,10 @@ import {useTheme} from 'react-native-paper';
 import useAddProductWithIDStyle from './styles/useAddProductWithIDStyle';
 import CustomButton from './CustomButton';
 import ItemIDInput from './ItemIDInput';
-import {ShoppingCartContext} from '../contexts/ShoppingCartContext';
 import {ProductModel} from '../models/ProductModel';
 import {ProductsContext} from '../contexts/ProductsContext';
 import {useTranslation} from 'react-i18next';
+import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';
 
 const AddProductWithID = () => {
   const [IDText, setIDText] = useState<string>('');

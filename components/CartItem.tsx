@@ -3,9 +3,9 @@ import {Text, View} from 'react-native';
 import {IconButton, Surface, useTheme} from 'react-native-paper';
 import {CartProductModel} from '../models/CartProductModel';
 import useCartItemStyle from './styles/useCartItemStyle';
-import {ShoppingCartContext} from '../contexts/ShoppingCartContext';
 import currency from 'currency.js';
 import {useTranslation} from 'react-i18next';
+import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';
 
 type CartItemProps = {
   cart_item: CartProductModel;

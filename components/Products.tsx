@@ -11,10 +11,10 @@ import {ProductModel} from '../models/ProductModel';
 import useProductsStyle from './styles/useProductsStyle';
 import {ActivityIndicator, useTheme} from 'react-native-paper';
 import Product from './Product';
-import {ShoppingCartContext} from '../contexts/ShoppingCartContext';
 import {ProductsContext} from '../contexts/ProductsContext';
 import {FavoritesContext} from '../contexts/FavoritesContext';
 import {useTranslation} from 'react-i18next';
+import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';
 
 type ProductsProps = {
   category?: string | undefined;

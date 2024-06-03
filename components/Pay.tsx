@@ -5,13 +5,13 @@ import {useTranslation} from 'react-i18next';
 import {Modal, Portal, useTheme} from 'react-native-paper';
 import {ScrollView} from 'react-native';
 import Receipt from './Receipt';
-import {ShoppingCartContext} from '../contexts/ShoppingCartContext';
 import {UnsentCartsContext} from '../contexts/UnsentCartsContext';
 import {StatusContext} from '../contexts/StatusContext';
 import currency from 'currency.js';
 import {CartProductModel} from '../models/CartProductModel';
 import useCartPricing from '../hooks/useCartPricing';
 import {PastSalesContext} from '../contexts/PastSalesContext';
+import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';
 
 const receipt = require('receipt');
 

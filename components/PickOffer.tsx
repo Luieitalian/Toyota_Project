@@ -6,9 +6,9 @@ import CustomButton from './CustomButton';
 import useSpecialOffers from '../hooks/useSpecialOffers';
 import {SpecialOfferModel} from '../models/SpecialOfferModel';
 import SpecialOfferItem from './SpecialOfferItem';
-import {ShoppingCartContext} from '../contexts/ShoppingCartContext';
 import useIsOfferApplicable from '../hooks/useIsOfferApplicable';
 import {useTranslation} from 'react-i18next';
+import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';
 
 const PickOffer = () => {
   const theme = useTheme();

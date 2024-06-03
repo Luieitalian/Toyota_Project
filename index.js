@@ -31,6 +31,7 @@ import {FavoritesContext} from './contexts/FavoritesContext';
 import {UnsentCartsContext} from './contexts/UnsentCartsContext';
 import {useTranslation} from 'react-i18next';
 import {PastSalesContext} from './contexts/PastSalesContext';
+import ShoppingCartContextProvider from './contexts/ShoppingCartContext/ShoppingCartContextProvider';
 
 const themes = {
   dark: {
@@ -45,10 +46,7 @@ const themes = {
 
 const AppMiddleWare = () => {
   const [isDark, setIsDark] = useState(true);
-  const [shoppingCart, setShoppingCart] = useState([]);
   const [isOnline, setIsOnline] = useState(false);
-  const [isCash, setIsCash] = useState(true);
-  const [selectedOfferID, setSelectedOfferID] = useState(undefined);
   const [favorites, setFavorites] = useState([]);
   const [unsentCartReceipts, setUnsentCartReceipts] = useState([]);
   const [isDatabaseInitialized, setIsDatabaseInitialized] = useState(false);
@@ -67,8 +65,6 @@ const AppMiddleWare = () => {
     initializeDatabase();
   }, [isOnline]);
 
-  const {addToCart, removeFromCart, removeOne, clearCart} =
-    useShoppingCartFunctions(setShoppingCart);
   const {addToFavorites, removeFromFavorites} =
     useFavoriteProductsFunctions(setFavorites);
 
@@ -102,21 +98,6 @@ const AppMiddleWare = () => {
   const statusContext = useMemo(
     () => ({isOnline: isOnline, toggleOnlineStatus: toggleOnlineStatus}),
     [isOnline, toggleOnlineStatus]
-  );
-
-  const shoppingCartContext = useMemo(
-    () => ({
-      addToCart: addToCart,
-      removeFromCart: removeFromCart,
-      removeOne: removeOne,
-      clearCart: clearCart,
-      selectedOfferID: selectedOfferID,
-      setSelectedOfferID: setSelectedOfferID,
-      cart: shoppingCart,
-      isCash: isCash,
-      setIsCash: setIsCash,
-    }),
-    [shoppingCart, isCash, selectedOfferID]
   );
 
   const productsContext = useMemo(
@@ -179,7 +160,7 @@ const AppMiddleWare = () => {
       <ThemeContext.Provider value={themeContext}>
         <ProductsContext.Provider value={productsContext}>
           <FavoritesContext.Provider value={favoritesContext}>
-            <ShoppingCartContext.Provider value={shoppingCartContext}>
+            <ShoppingCartContextProvider>
               <UnsentCartsContext.Provider value={unsentCartsContext}>
                 <PastSalesContext.Provider value={pastSalesContext}>
                   <PaperProvider theme={theme}>
@@ -189,7 +170,7 @@ const AppMiddleWare = () => {
                   </PaperProvider>
                 </PastSalesContext.Provider>
               </UnsentCartsContext.Provider>
-            </ShoppingCartContext.Provider>
+            </ShoppingCartContextProvider>
           </FavoritesContext.Provider>
         </ProductsContext.Provider>
       </ThemeContext.Provider>
