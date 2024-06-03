@@ -12,9 +12,9 @@ import useProductsStyle from './styles/useProductsStyle';
 import {ActivityIndicator, useTheme} from 'react-native-paper';
 import Product from './Product';
 import {ProductsContext} from '../contexts/ProductsContext';
-import {FavoritesContext} from '../contexts/FavoritesContext';
 import {useTranslation} from 'react-i18next';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';
+import {FavoritesContext} from '../contexts/FavoritesContext/FavoritesContext';
 
 type ProductsProps = {
   category?: string | undefined;

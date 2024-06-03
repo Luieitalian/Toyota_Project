@@ -1,4 +1,4 @@
-import {AppRegistry, StyleSheet, Text, View} from 'react-native';
+import {AppRegistry, StyleSheet, View} from 'react-native';
 import App from './App';
 import {name as appName} from './app.json';
 import {
@@ -10,28 +10,18 @@ import {
 import LightTheme from './themes/LightTheme.json';
 import DarkTheme from './themes/DarkTheme.json';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import React, {
-  useState,
-  useCallback,
-  useMemo,
-  useContext,
-  useEffect,
-} from 'react';
+import React, {useState, useCallback, useMemo, useEffect} from 'react';
 import {ThemeContext} from './contexts/ThemeContext';
 import SystemNavigationBar from 'react-native-system-navigation-bar';
 import './i18n';
-import {ShoppingCartContext} from './contexts/ShoppingCartContext';
-import useShoppingCartFunctions from './hooks/useShoppingCartFunctions';
 import useProducts from './hooks/useProducts';
 import {ProductsContext} from './contexts/ProductsContext';
 import {StatusContext} from './contexts/StatusContext';
 import setDatabase from './hooks/setDatabase';
-import useFavoriteProductsFunctions from './hooks/useFavoriteProductsFunctions';
-import {FavoritesContext} from './contexts/FavoritesContext';
 import {UnsentCartsContext} from './contexts/UnsentCartsContext';
-import {useTranslation} from 'react-i18next';
 import {PastSalesContext} from './contexts/PastSalesContext';
 import ShoppingCartContextProvider from './contexts/ShoppingCartContext/ShoppingCartContextProvider';
+import {FavoritesContextProvider} from './contexts/FavoritesContext/FavoritesContextProvider';
 
 const themes = {
   dark: {
@@ -47,7 +37,6 @@ const themes = {
 const AppMiddleWare = () => {
   const [isDark, setIsDark] = useState(true);
   const [isOnline, setIsOnline] = useState(false);
-  const [favorites, setFavorites] = useState([]);
   const [unsentCartReceipts, setUnsentCartReceipts] = useState([]);
   const [isDatabaseInitialized, setIsDatabaseInitialized] = useState(false);
   const [pastSalesReceipts, setPastSalesReceipts] = useState([]);
@@ -65,9 +54,6 @@ const AppMiddleWare = () => {
     initializeDatabase();
   }, [isOnline]);
 
-  const {addToFavorites, removeFromFavorites} =
-    useFavoriteProductsFunctions(setFavorites);
-
   const {products, loadingProducts} = useProducts({
     isOnline: isOnline,
     isDatabaseInitialized: isDatabaseInitialized,
@@ -80,11 +66,6 @@ const AppMiddleWare = () => {
   const toggleTheme = useCallback(() => {
     return setIsDark(!isDark);
   }, [isDark]);
-
-  const isFavorite = useCallback(
-    (item) => favorites.includes(item.id),
-    [favorites]
-  );
 
   //  ------CONTEXTS------
   const themeContext = useMemo(
@@ -106,16 +87,6 @@ const AppMiddleWare = () => {
       loadingProducts: loadingProducts,
     }),
     [products, loadingProducts]
-  );
-
-  const favoritesContext = useMemo(
-    () => ({
-      favorites: favorites,
-      addToFavorites: addToFavorites,
-      removeFromFavorites: removeFromFavorites,
-      isFavorite: isFavorite,
-    }),
-    [favorites, isFavorite, addToFavorites, removeFromFavorites]
   );
 
   const unsentCartsContext = useMemo(
@@ -159,7 +130,7 @@ const AppMiddleWare = () => {
     <StatusContext.Provider value={statusContext}>
       <ThemeContext.Provider value={themeContext}>
         <ProductsContext.Provider value={productsContext}>
-          <FavoritesContext.Provider value={favoritesContext}>
+          <FavoritesContextProvider>
             <ShoppingCartContextProvider>
               <UnsentCartsContext.Provider value={unsentCartsContext}>
                 <PastSalesContext.Provider value={pastSalesContext}>
@@ -171,7 +142,7 @@ const AppMiddleWare = () => {
                 </PastSalesContext.Provider>
               </UnsentCartsContext.Provider>
             </ShoppingCartContextProvider>
-          </FavoritesContext.Provider>
+          </FavoritesContextProvider>
         </ProductsContext.Provider>
       </ThemeContext.Provider>
     </StatusContext.Provider>

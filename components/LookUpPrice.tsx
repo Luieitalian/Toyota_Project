@@ -12,8 +12,8 @@ import Product from './Product';
 import {ProductsContext} from '../contexts/ProductsContext';
 import {ProductModel} from '../models/ProductModel';
 import {useTranslation} from 'react-i18next';
-import {FavoritesContext} from '../contexts/FavoritesContext';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';
+import {FavoritesContext} from '../contexts/FavoritesContext/FavoritesContext';
 
 const LookUpPrice = () => {
   const theme = useTheme();
