@@ -1,4 +1,4 @@
-import React, {useCallback, useMemo, useState} from 'react';
+import React, {memo, useCallback, useMemo, useState} from 'react';
 import {FavoritesContext} from './FavoritesContext';
 import useFavoriteProductsFunctions from '../../hooks/useFavoriteProductsFunctions';
 import {ProductModel} from '../../models/ProductModel';
@@ -7,7 +7,7 @@ type FavoritesContextProviderProps = {
   children: React.ReactNode;
 };
 
-export const FavoritesContextProvider = ({
+const FavoritesContextProvider = ({
   children,
 }: FavoritesContextProviderProps) => {
   const [favorites, setFavorites] = useState<string[]>([]);
@@ -40,3 +40,5 @@ export const FavoritesContextProvider = ({
     </FavoritesContext.Provider>
   );
 };
+
+export default memo(FavoritesContextProvider);

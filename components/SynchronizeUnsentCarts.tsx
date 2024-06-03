@@ -11,7 +11,7 @@ import {
 import {useTranslation} from 'react-i18next';
 import useServiceInfo from '../hooks/useServiceInfo';
 import CustomButton from './CustomButton';
-import {UnsentCartsContext} from '../contexts/UnsentCartsContext';
+import {UnsentCartsContext} from '../contexts/UnsentCartsContext/UnsentCartsContext';
 import useSynchronizeUnsentCartsStyle from './styles/useSynchronizeUnsentCartsStyle';
 
 const SynchronizeUnsentCarts = () => {

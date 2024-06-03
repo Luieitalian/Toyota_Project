@@ -11,7 +11,7 @@ import {ProductModel} from '../models/ProductModel';
 import useProductsStyle from './styles/useProductsStyle';
 import {ActivityIndicator, useTheme} from 'react-native-paper';
 import Product from './Product';
-import {ProductsContext} from '../contexts/ProductsContext';
+import {ProductsContext} from '../contexts/ProductsContext/ProductsContext';
 import {useTranslation} from 'react-i18next';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';
 import {FavoritesContext} from '../contexts/FavoritesContext/FavoritesContext';

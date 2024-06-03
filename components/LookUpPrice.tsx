@@ -9,7 +9,7 @@ import {Modal, Portal, TextInput, useTheme} from 'react-native-paper';
 import useLookUpPriceStyle from './styles/useLookUpPriceStyle';
 import CustomButton from './CustomButton';
 import Product from './Product';
-import {ProductsContext} from '../contexts/ProductsContext';
+import {ProductsContext} from '../contexts/ProductsContext/ProductsContext';
 import {ProductModel} from '../models/ProductModel';
 import {useTranslation} from 'react-i18next';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';

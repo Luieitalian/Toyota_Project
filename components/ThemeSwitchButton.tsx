@@ -2,7 +2,7 @@ import React, {memo, useContext} from 'react';
 import {Text, View} from 'react-native';
 import {Switch, useTheme} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
-import {ThemeContext} from '../contexts/ThemeContext';
+import {ThemeContext} from '../contexts/ThemeContext/ThemeContext';
 import useThemeSwitchButtonStyle from './styles/useThemeSwitchButtonStyle';
 
 const ThemeSwitchButton = () => {

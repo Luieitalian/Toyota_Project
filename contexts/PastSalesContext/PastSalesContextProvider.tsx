@@ -1,11 +1,11 @@
-import React, {useMemo, useState} from 'react';
+import React, {memo, useMemo, useState} from 'react';
 import {PastSalesContext} from './PastSalesContext';
 
 type PastSalesContextProviderProps = {
   children: React.ReactNode;
 };
 
-export const PastSalesContextProvider = ({
+const PastSalesContextProvider = ({
   children,
 }: PastSalesContextProviderProps) => {
   const [pastSalesReceipts, setPastSalesReceipts] = useState<string[]>([]);
@@ -28,3 +28,5 @@ export const PastSalesContextProvider = ({
     </PastSalesContext.Provider>
   );
 };
+
+export default memo(PastSalesContextProvider);

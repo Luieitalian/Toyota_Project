@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react';
 import {Text, View} from 'react-native';
 import useFooterStyle from './styles/useFooterStyle';
 import {Button, Icon, useTheme} from 'react-native-paper';
-import {StatusContext} from '../contexts/StatusContext';
+import {StatusContext} from '../contexts/StatusContext/StatusContext';
 import {useTranslation} from 'react-i18next';
 
 const Footer = () => {

@@ -2,7 +2,7 @@ import axios from 'axios';
 import {useContext, useEffect, useState} from 'react';
 import {SpecialOfferModel} from '../models/SpecialOfferModel';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {StatusContext} from '../contexts/StatusContext';
+import {StatusContext} from '../contexts/StatusContext/StatusContext';
 
 const useSpecialOffers = () => {
   const [specialOffers, setSpecialOffers] = useState<SpecialOfferModel[]>();
