@@ -10,7 +10,7 @@ import {StatusContext} from '../contexts/StatusContext';
 import currency from 'currency.js';
 import {CartProductModel} from '../models/CartProductModel';
 import useCartPricing from '../hooks/useCartPricing';
-import {PastSalesContext} from '../contexts/PastSalesContext';
+import {PastSalesContext} from '../contexts/PastSalesContext/PastSalesContext';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';
 
 const receipt = require('receipt');

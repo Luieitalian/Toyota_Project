@@ -4,7 +4,7 @@ import CustomButton from './CustomButton';
 import {useTranslation} from 'react-i18next';
 import {Modal, Portal, useTheme} from 'react-native-paper';
 import useShowPastSalesStyle from './styles/useShowPastSalesStyle';
-import {PastSalesContext} from '../contexts/PastSalesContext';
+import {PastSalesContext} from '../contexts/PastSalesContext/PastSalesContext';
 import Receipt from './Receipt';
 
 const ShowPastSales = () => {

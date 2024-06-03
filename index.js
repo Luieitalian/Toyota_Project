@@ -19,9 +19,10 @@ import {ProductsContext} from './contexts/ProductsContext';
 import {StatusContext} from './contexts/StatusContext';
 import setDatabase from './hooks/setDatabase';
 import {UnsentCartsContext} from './contexts/UnsentCartsContext';
-import {PastSalesContext} from './contexts/PastSalesContext';
+import {PastSalesContext} from './contexts/PastSalesContext/PastSalesContext';
 import ShoppingCartContextProvider from './contexts/ShoppingCartContext/ShoppingCartContextProvider';
 import {FavoritesContextProvider} from './contexts/FavoritesContext/FavoritesContextProvider';
+import {PastSalesContextProvider} from './contexts/PastSalesContext/PastSalesContextProvider';
 
 const themes = {
   dark: {
@@ -39,7 +40,6 @@ const AppMiddleWare = () => {
   const [isOnline, setIsOnline] = useState(false);
   const [unsentCartReceipts, setUnsentCartReceipts] = useState([]);
   const [isDatabaseInitialized, setIsDatabaseInitialized] = useState(false);
-  const [pastSalesReceipts, setPastSalesReceipts] = useState([]);
 
   const theme = isDark ? themes.dark : themes.light;
   SystemNavigationBar.setNavigationColor(theme.colors.background); // Set Navigation bar color to fit the app theme
@@ -97,14 +97,6 @@ const AppMiddleWare = () => {
     [unsentCartReceipts, setUnsentCartReceipts]
   );
 
-  const pastSalesContext = useMemo(
-    () => ({
-      pastSalesReceipts: pastSalesReceipts,
-      setPastSalesReceipts: setPastSalesReceipts,
-    }),
-    [pastSalesReceipts, setPastSalesReceipts]
-  );
-
   //  ------STYLES FOR THE SAFE AREA PROVIDER------
   const styles = React.useMemo(
     () =>
@@ -132,15 +124,15 @@ const AppMiddleWare = () => {
         <ProductsContext.Provider value={productsContext}>
           <FavoritesContextProvider>
             <ShoppingCartContextProvider>
-              <UnsentCartsContext.Provider value={unsentCartsContext}>
-                <PastSalesContext.Provider value={pastSalesContext}>
+              <PastSalesContextProvider>
+                <UnsentCartsContext.Provider value={unsentCartsContext}>
                   <PaperProvider theme={theme}>
                     <SafeAreaProvider style={styles.safeAreaProvider}>
                       <App />
                     </SafeAreaProvider>
                   </PaperProvider>
-                </PastSalesContext.Provider>
-              </UnsentCartsContext.Provider>
+                </UnsentCartsContext.Provider>
+              </PastSalesContextProvider>
             </ShoppingCartContextProvider>
           </FavoritesContextProvider>
         </ProductsContext.Provider>
