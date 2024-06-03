@@ -10,12 +10,12 @@ const useVersionStyle = (theme: MD3Theme) => {
     const isWide = width >= breakPoint;
     return StyleSheet.create({
       version: {
-        color: theme.colors.onPrimary,
+        color: theme.colors.onSecondary,
         fontFamily: 'Roboto-Light',
         fontSize: isWide ? 24 : 18,
       },
       loading: {
-        color: theme.colors.onPrimary,
+        color: theme.colors.onSecondary,
         fontFamily: 'Roboto-Light',
         fontSize: isWide ? 24 : 18,
       },

@@ -8,13 +8,12 @@ const useHeaderStyle = (theme: MD3Theme) => {
 
   const styles = React.useMemo(() => {
     const isWide = width >= breakPoint;
+
     return StyleSheet.create({
       header: {
-        flex: 1,
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'flex-end',
-        width: '100%',
         gap: isWide ? 30 : 20,
         paddingHorizontal: 20,
         backgroundColor: theme.colors.background,
@@ -36,7 +35,7 @@ const useHeaderStyle = (theme: MD3Theme) => {
         color: theme.colors.onBackground,
       },
       iconSize: {
-        width: isWide ? 30 : 20,
+        width: isWide ? 28 : 22,
       },
     });
   }, [theme, width]);

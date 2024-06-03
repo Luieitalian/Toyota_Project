@@ -7,6 +7,8 @@ import Version from '../components/Version';
 import Header from '../components/Header';
 import useNFC from '../hooks/useNFC';
 import DebugNavigateScreen from '../components/DebugNavigateScreen';
+import UsernameInput from '../components/UsernameInput';
+import PasswordInput from '../components/PasswordInput';
 
 const LoginScreen = ({route, navigation}: any) => {
   const {t} = useTranslation();
@@ -15,13 +17,14 @@ const LoginScreen = ({route, navigation}: any) => {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
-  //const NFCReader = useNFC();
+  const readNFC = useNFC();
 
   const focusOnPwd = () => {
     pwdRef.current?.focus();
   };
 
   const onChangeUsername = (username: string) => {
+    //readNFC();
     setUsername(username);
   };
   const onChangePassword = (password: string) => {
@@ -36,33 +39,19 @@ const LoginScreen = ({route, navigation}: any) => {
         barStyle={theme.dark ? 'light-content' : 'dark-content'}
         backgroundColor={theme.colors.background}
       />
-      <Header />
-      <DebugNavigateScreen navigation={navigation} screen={'SalesScreen'} />
       <View style={styles.wrapper}>
         <View style={styles.contentWrapper}>
           <Text style={styles.welcome}>{t('welcome_to_app')}</Text>
           <View style={styles.form}>
-            <TextInput // username
-              autoCapitalize="none"
-              onSubmitEditing={focusOnPwd}
-              placeholderTextColor={theme.colors.onSurfaceVariant}
-              autoCorrect={false}
-              inputMode="text"
-              value={username}
-              onChangeText={onChangeUsername}
-              style={styles.textInput}
-              placeholder={t('username')}
+            <UsernameInput
+              onChangeUsername={onChangeUsername}
+              focusOnPwd={focusOnPwd}
+              username={username}
             />
-            <TextInput // password
-              ref={pwdRef}
-              secureTextEntry={true}
-              placeholderTextColor={theme.colors.onSurfaceVariant}
-              autoCorrect={false}
-              inputMode="text"
-              value={password}
-              onChangeText={onChangePassword}
-              style={styles.textInput}
-              placeholder={t('password')}
+            <PasswordInput
+              password={password}
+              onChangePassword={onChangePassword}
+              pwdRef={pwdRef}
             />
           </View>
         </View>

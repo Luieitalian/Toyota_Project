@@ -13,6 +13,7 @@ import useSettingsScreenStyle from './screens/styles/useSettingsScreenStyle';
 import SettingsScreen from './screens/SettingsScreen';
 import useLoginScreenStyle from './screens/styles/useLoginScreenStyle';
 import ReportsScreen from './screens/ReportsScreen';
+import Header from './components/Header';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,7 +28,7 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="HomeScreen">
+      <Stack.Navigator initialRouteName="LoginScreen">
         <Stack.Screen
           name="LoginScreen"
           options={{
@@ -36,6 +37,7 @@ const App = () => {
             headerStyle: loginScreenStyle.styles.headerStyle,
             headerTitleStyle: loginScreenStyle.styles.headerTitleStyle,
             headerTintColor: loginScreenStyle.styles.headerTint.color,
+            headerRight: () => <Header />,
           }}
           component={LoginScreen}
         />

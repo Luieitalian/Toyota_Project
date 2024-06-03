@@ -23,7 +23,7 @@ const useLoginScreenStyle = () => {
         marginBottom: 12,
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: theme.colors.primary,
+        backgroundColor: theme.colors.secondary,
         borderRadius: 12,
         padding: 40,
         paddingBottom: 10,
@@ -38,20 +38,12 @@ const useLoginScreenStyle = () => {
         fontSize: isWide ? 72 : 46,
         fontFamily: 'Roboto-Regular',
         textAlign: 'center',
-        color: theme.colors.onPrimary,
+        color: theme.colors.onSecondary,
       },
       form: {
         gap: isWide ? 24 : 16,
       },
-      textInput: {
-        minWidth: '100%',
-        minHeight: 70,
-        fontSize: isWide ? 22 : 18,
-        backgroundColor: theme.colors.background,
-        borderRadius: 10,
-        color: theme.colors.onBackground,
-        paddingHorizontal: 15,
-      },
+
       headerTitleStyle: {
         color: theme.colors.onBackground,
       },
