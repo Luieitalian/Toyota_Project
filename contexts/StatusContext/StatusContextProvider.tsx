@@ -9,7 +9,7 @@ const StatusContextProvider = ({children}: StatusContextProviderProps) => {
   const [isOnline, setIsOnline] = useState(false);
 
   const toggleOnlineStatus = useCallback(() => {
-    return setIsOnline(!isOnline);
+    return setIsOnline((s) => !s);
   }, []);
 
   const statusContext = useMemo(

@@ -2,7 +2,7 @@ import {createContext, Dispatch} from 'react';
 
 interface StatusContextType {
   isOnline: boolean;
-  toggleOnlineStatus: Dispatch<React.SetStateAction<boolean>>;
+  toggleOnlineStatus: () => void;
 }
 
 export const StatusContext = createContext<StatusContextType>(
