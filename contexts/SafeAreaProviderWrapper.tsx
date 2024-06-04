@@ -19,6 +19,7 @@ const SafeAreaProviderWrapper = ({children}: SafeAreaProviderWrapperProps) => {
       }),
     [theme]
   );
+
   return (
     <SafeAreaProvider style={styles.SafeAreaProvider}>
       {children}
