@@ -10,16 +10,14 @@ import './i18n';
 const AppMiddleWare = () => {
   const [isDatabaseInitialized, setIsDatabaseInitialized] = useState(false);
 
-  useEffect(
-    useCallback(() => {
-      const initializeDatabase = async () => {
-        await setDatabase();
-        setIsDatabaseInitialized(true);
-      };
+  useEffect(() => {
+    const initializeDatabase = async () => {
+      await setDatabase();
+      setIsDatabaseInitialized(true);
+    };
 
-      initializeDatabase();
-    }, [])
-  );
+    initializeDatabase();
+  }, []);
 
   if (!isDatabaseInitialized) {
     return (

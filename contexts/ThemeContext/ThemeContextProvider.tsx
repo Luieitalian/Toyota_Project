@@ -1,32 +1,24 @@
 import React, {memo, useCallback, useMemo, useState} from 'react';
 import {ThemeContext} from './ThemeContext';
-import {themes} from '../../globals/theme';
-import SystemNavigationBar from 'react-native-system-navigation-bar';
 
 type ThemeContextProviderProps = {
   children: React.ReactNode;
 };
 
 const ThemeContextProvider = ({children}: ThemeContextProviderProps) => {
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(false);
 
-  const theme = isDark ? themes.dark : themes.light;
-
-  // Set Navigation bar color to fit the app theme
-  SystemNavigationBar.setNavigationColor(theme.colors.background);
-  // Set Navigation bar button colors for visibility
-  SystemNavigationBar.setBarMode(isDark ? 'light' : 'dark');
-
-  const toggleTheme = useCallback(() => {
-    return setIsDark(!isDark);
-  }, []);
+  const toggleTheme = () => {
+    console.log('heloo');
+    return setIsDark((prevIsDark) => !prevIsDark);
+  };
 
   const themeContext = useMemo(
     () => ({
-      toggleTheme,
       isDark,
+      toggleTheme,
     }),
-    [toggleTheme, isDark]
+    [isDark, toggleTheme]
   );
 
   if (!themeContext) {

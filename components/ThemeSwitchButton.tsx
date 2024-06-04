@@ -19,7 +19,7 @@ const ThemeSwitchButton = () => {
       <Switch
         style={styles.switch}
         value={isDark}
-        onValueChange={toggleTheme}
+        onValueChange={() => toggleTheme()}
       />
     </View>
   );
