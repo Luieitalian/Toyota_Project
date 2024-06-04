@@ -1,6 +1,5 @@
 import React, {memo, useCallback, useMemo, useState} from 'react';
 import {ThemeContext} from './ThemeContext';
-import {PaperProvider} from 'react-native-paper';
 import {themes} from '../../globals/theme';
 import SystemNavigationBar from 'react-native-system-navigation-bar';
 
@@ -36,7 +35,7 @@ const ThemeContextProvider = ({children}: ThemeContextProviderProps) => {
 
   return (
     <ThemeContext.Provider value={themeContext}>
-      <PaperProvider theme={theme}>{children}</PaperProvider>
+      {children}
     </ThemeContext.Provider>
   );
 };
