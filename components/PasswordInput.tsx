@@ -1,36 +1,55 @@
-import React, {memo, RefObject} from 'react';
+import React, {memo, RefObject, useMemo, useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {TextInput} from 'react-native';
-import {useTheme} from 'react-native-paper';
+import {useTheme, TextInput} from 'react-native-paper';
 import usePasswordInputStyle from './styles/usePasswordInputStyle';
 
 type PasswordInputProps = {
-  pwdRef: RefObject<TextInput>;
+  passwordRef: RefObject<any>;
   onChangePassword: (username: string) => void;
   password: string;
 };
 
 const PasswordInput = ({
-  pwdRef,
+  passwordRef,
   onChangePassword,
   password,
 }: PasswordInputProps) => {
   const {t} = useTranslation();
   const theme = useTheme();
+  const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
 
   const {styles} = usePasswordInputStyle(theme);
 
+  const onIconPress = () => {
+    setIsPasswordVisible((v) => !v);
+  };
+
+  const TextInputIcon = useMemo(
+    () => (
+      <TextInput.Icon
+        style={{marginTop: 15}}
+        icon={isPasswordVisible ? 'eye' : 'eye-off'}
+        onPress={onIconPress}
+      />
+    ),
+    [isPasswordVisible]
+  );
+
   return (
     <TextInput // password
-      ref={pwdRef}
-      secureTextEntry={true}
-      placeholderTextColor={styles.placeholderText.color}
+      ref={passwordRef}
+      label={t('password')}
+      mode="outlined"
+      secureTextEntry={!isPasswordVisible}
       autoCorrect={false}
       inputMode="text"
       value={password}
       onChangeText={onChangePassword}
       style={styles.textInput}
-      placeholder={t('password')}
+      outlineStyle={styles.textInputOutline}
+      activeOutlineColor={styles.textInputActiveOutline.color}
+      textColor={styles.textInputText.color}
+      right={TextInputIcon}
     />
   );
 };

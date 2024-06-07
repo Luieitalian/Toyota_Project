@@ -9,7 +9,6 @@ const ThemeContextProvider = ({children}: ThemeContextProviderProps) => {
   const [isDark, setIsDark] = useState(false);
 
   const toggleTheme = () => {
-    console.log('heloo');
     return setIsDark((prevIsDark) => !prevIsDark);
   };
 

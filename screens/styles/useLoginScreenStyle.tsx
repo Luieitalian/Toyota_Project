@@ -23,7 +23,7 @@ const useLoginScreenStyle = () => {
         marginBottom: 12,
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: theme.colors.secondary,
+        backgroundColor: theme.colors.onBackground,
         borderRadius: 12,
         padding: 40,
         paddingBottom: 10,

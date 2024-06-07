@@ -7,8 +7,8 @@ import Status from '../components/Status';
 import GoToSalesScreen from '../components/GoToSalesScreen';
 import GoToSettingsScreen from '../components/GoToSettingsScreen';
 import GoToReportsScreen from '../components/GoToReportsScreen';
-import LogOut from '../components/LogOut';
 import Footer from '../components/Footer';
+import Logout from '../components/Logout';
 
 const HomeScreen = ({route, navigation}: any) => {
   const {t, i18n} = useTranslation();
@@ -24,7 +24,7 @@ const HomeScreen = ({route, navigation}: any) => {
         <GoToSalesScreen />
         <GoToReportsScreen />
         <GoToSettingsScreen />
-        <LogOut />
+        <Logout />
         <Status />
       </View>
       <Footer />

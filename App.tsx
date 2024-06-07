@@ -14,6 +14,7 @@ import SettingsScreen from './screens/SettingsScreen';
 import useLoginScreenStyle from './screens/styles/useLoginScreenStyle';
 import ReportsScreen from './screens/ReportsScreen';
 import Header from './components/Header';
+import useReportsScreenStyle from './screens/styles/useReportsScreenStyle';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,7 @@ const App = () => {
   const salesScreenStyle = useSalesScreenStyle();
   const homeScreenStyle = useHomeScreenStyle();
   const settingsScreenStyle = useSettingsScreenStyle();
+  const reportsScreenStyle = useReportsScreenStyle();
   const loginScreenStyle = useLoginScreenStyle();
 
   const {t} = useTranslation();
@@ -90,9 +92,9 @@ const App = () => {
           options={{
             headerTitle: t('reports'),
             headerShown: true,
-            headerStyle: settingsScreenStyle.styles.headerStyle,
-            headerTitleStyle: settingsScreenStyle.styles.headerTitleStyle,
-            headerTintColor: settingsScreenStyle.styles.headerTint.color,
+            headerStyle: reportsScreenStyle.styles.headerStyle,
+            headerTitleStyle: reportsScreenStyle.styles.headerTitleStyle,
+            headerTintColor: reportsScreenStyle.styles.headerTint.color,
           }}
           component={ReportsScreen}
         />

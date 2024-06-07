@@ -2,14 +2,13 @@ import React, {memo} from 'react';
 import {useTranslation} from 'react-i18next';
 import {
   NativeSyntheticEvent,
-  TextInput,
   TextInputSubmitEditingEventData,
 } from 'react-native';
-import {useTheme} from 'react-native-paper';
+import {useTheme, TextInput} from 'react-native-paper';
 import useUsernameInputStyle from './styles/useUsernameInputStyle';
 
 type UsernameInputProps = {
-  focusOnPwd: (
+  focusOnPassword: (
     e: NativeSyntheticEvent<TextInputSubmitEditingEventData>
   ) => void;
   onChangeUsername: (username: string) => void;
@@ -17,7 +16,7 @@ type UsernameInputProps = {
 };
 
 const UsernameInput = ({
-  focusOnPwd,
+  focusOnPassword,
   onChangeUsername,
   username,
 }: UsernameInputProps) => {
@@ -28,15 +27,18 @@ const UsernameInput = ({
 
   return (
     <TextInput // username
+      label={t('username')}
+      mode="outlined"
       autoCapitalize="none"
-      onSubmitEditing={focusOnPwd}
-      placeholderTextColor={styles.placeholderText.color}
+      onSubmitEditing={focusOnPassword}
       autoCorrect={false}
       inputMode="text"
       value={username}
       onChangeText={onChangeUsername}
       style={styles.textInput}
-      placeholder={t('username')}
+      outlineStyle={styles.textInputOutline}
+      activeOutlineColor={styles.textInputActiveOutline.color}
+      textColor={styles.textInputText.color}
     />
   );
 };

@@ -3,7 +3,7 @@ import {StyleSheet, useWindowDimensions} from 'react-native';
 import {MD3Theme} from 'react-native-paper';
 import {breakPoint} from '../../globals/style';
 
-const useLogOutStyle = (theme: MD3Theme) => {
+const useLogoutStyle = (theme: MD3Theme) => {
   const {width} = useWindowDimensions();
 
   const styles = React.useMemo(() => {
@@ -22,4 +22,4 @@ const useLogOutStyle = (theme: MD3Theme) => {
   return {styles};
 };
 
-export default useLogOutStyle;
+export default useLogoutStyle;

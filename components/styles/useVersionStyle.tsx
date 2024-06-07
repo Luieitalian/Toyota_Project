@@ -12,12 +12,12 @@ const useVersionStyle = (theme: MD3Theme) => {
       version: {
         color: theme.colors.onSecondary,
         fontFamily: 'Roboto-Light',
-        fontSize: isWide ? 24 : 18,
+        fontSize: isWide ? 20 : 18,
       },
       loading: {
         color: theme.colors.onSecondary,
         fontFamily: 'Roboto-Light',
-        fontSize: isWide ? 24 : 18,
+        fontSize: isWide ? 20 : 18,
       },
       versionView: {
         justifyContent: 'center',

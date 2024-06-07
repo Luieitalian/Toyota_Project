@@ -9,18 +9,20 @@ import useNFC from '../hooks/useNFC';
 import DebugNavigateScreen from '../components/DebugNavigateScreen';
 import UsernameInput from '../components/UsernameInput';
 import PasswordInput from '../components/PasswordInput';
+import Login from '../components/Login';
 
 const LoginScreen = ({route, navigation}: any) => {
   const {t} = useTranslation();
-  const pwdRef = useRef<TextInput>(null); // A Ref for password textinput component
+  const passwordRef = useRef<TextInput>(null); // A Ref for password textinput component
   const {styles, theme} = useLoginScreenStyle();
+
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
-  const readNFC = useNFC();
+  //const readNFC = useNFC();
 
-  const focusOnPwd = () => {
-    pwdRef.current?.focus();
+  const focusOnPassword = () => {
+    passwordRef.current?.focus();
   };
 
   const onChangeUsername = (username: string) => {
@@ -45,14 +47,15 @@ const LoginScreen = ({route, navigation}: any) => {
           <View style={styles.form}>
             <UsernameInput
               onChangeUsername={onChangeUsername}
-              focusOnPwd={focusOnPwd}
+              focusOnPassword={focusOnPassword}
               username={username}
             />
             <PasswordInput
               password={password}
               onChangePassword={onChangePassword}
-              pwdRef={pwdRef}
+              passwordRef={passwordRef}
             />
+            <Login />
           </View>
         </View>
         <Version />
