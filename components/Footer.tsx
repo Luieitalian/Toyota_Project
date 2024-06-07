@@ -43,7 +43,7 @@ const Footer = () => {
       </View>
       <View style={styles.shopStatusContainer}>
         <Text style={styles.text}>
-          {t('shop_is_online', {status: isOnline ? t('online') : t('offline')})}
+          {t('shop_is_status', {status: isOnline ? t('online') : t('offline')})}
         </Text>
         <Icon
           color={styles.icon.color}

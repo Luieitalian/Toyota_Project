@@ -4,11 +4,11 @@ import {themes} from '../../globals/theme';
 import SystemNavigationBar from 'react-native-system-navigation-bar';
 import {ThemeContext} from '../ThemeContext/ThemeContext';
 
-type PaperProviderHOCProps = {
+type PaperProviderWrapperProps = {
   children: React.ReactNode;
 };
 
-const PaperProviderHOC = ({children}: PaperProviderHOCProps) => {
+const PaperProviderWrapper = ({children}: PaperProviderWrapperProps) => {
   const {isDark} = useContext(ThemeContext);
 
   const theme = useMemo(() => (isDark ? themes.dark : themes.light), [isDark]);
@@ -21,4 +21,4 @@ const PaperProviderHOC = ({children}: PaperProviderHOCProps) => {
   return <PaperProvider theme={theme}>{children}</PaperProvider>;
 };
 
-export default memo(PaperProviderHOC);
+export default memo(PaperProviderWrapper);

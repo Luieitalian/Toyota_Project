@@ -5,6 +5,7 @@ import {
   Button,
   Dialog,
   Portal,
+  Snackbar,
   Surface,
   useTheme,
 } from 'react-native-paper';
@@ -13,31 +14,41 @@ import useServiceInfo from '../hooks/useServiceInfo';
 import CustomButton from './CustomButton';
 import {UnsentCartsContext} from '../contexts/UnsentCartsContext/UnsentCartsContext';
 import useSynchronizeUnsentCartsStyle from './styles/useSynchronizeUnsentCartsStyle';
+import {StatusContext} from '../contexts/StatusContext/StatusContext';
 
 const SynchronizeUnsentCarts = () => {
   const {t} = useTranslation();
   const theme = useTheme();
 
   const [isDialogVisible, setIsDialogVisible] = useState(false);
+  const [isSnackBarVisible, setIsSnackBarVisible] = useState(false);
+
   const {unsentCartReceipts, setUnsentCartReceipts} =
     useContext(UnsentCartsContext);
+  const {isOnline} = useContext(StatusContext);
   const {styles} = useSynchronizeUnsentCartsStyle(theme);
 
-  const onPress = () => {
+  const onPressDialog = () => {
     console.log('syncronize');
-    if (unsentCartReceipts.length > 0) {
+    if (!isOnline) {
+      setIsSnackBarVisible(true);
+    } else if (unsentCartReceipts.length > 0) {
       setIsDialogVisible(true);
     }
   };
 
-  const onDismiss = () => {
+  const onDismissDialog = () => {
     setUnsentCartReceipts([]);
     setIsDialogVisible(false);
   };
 
+  const onDismissSnackbar = () => {
+    setIsSnackBarVisible(false);
+  };
+
   return (
     <View>
-      <CustomButton styles={styles} onPress={onPress}>
+      <CustomButton styles={styles} onPress={onPressDialog}>
         {t('synchronize_unsent_receipts')}
       </CustomButton>
       {unsentCartReceipts.length > 0 ? (
@@ -46,7 +57,7 @@ const SynchronizeUnsentCarts = () => {
         </Badge>
       ) : null}
       <Portal>
-        <Dialog onDismiss={onDismiss} visible={isDialogVisible}>
+        <Dialog onDismiss={onDismissDialog} visible={isDialogVisible}>
           <Dialog.Content>
             <Text style={styles.dialogText}>
               {t('receipts_synchronized', {
@@ -55,11 +66,18 @@ const SynchronizeUnsentCarts = () => {
             </Text>
           </Dialog.Content>
           <Dialog.Actions>
-            <Button onPress={onDismiss}>
+            <Button onPress={onDismissDialog}>
               <Text style={styles.dialogText}>OK</Text>
             </Button>
           </Dialog.Actions>
         </Dialog>
+        <Snackbar
+          visible={isSnackBarVisible}
+          onDismiss={onDismissSnackbar}
+          duration={2000}
+        >
+          {t('shop_is_status', {status: isOnline ? t('online') : t('offline')})}
+        </Snackbar>
       </Portal>
     </View>
   );

@@ -3,11 +3,11 @@ import {StyleSheet} from 'react-native';
 import {useTheme} from 'react-native-paper';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
-type SafeAreaProviderHOCProps = {
+type SafeAreaProviderWrapperProps = {
   children: React.ReactNode;
 };
 
-const SafeAreaProviderHOC = ({children}: SafeAreaProviderHOCProps) => {
+const SafeAreaProviderWrapper = ({children}: SafeAreaProviderWrapperProps) => {
   const theme = useTheme();
 
   const styles = React.useMemo(
@@ -27,4 +27,4 @@ const SafeAreaProviderHOC = ({children}: SafeAreaProviderHOCProps) => {
   );
 };
 
-export default memo(SafeAreaProviderHOC);
+export default memo(SafeAreaProviderWrapper);

@@ -15,7 +15,7 @@ const useCashSelectStyle = ({theme, isCash}: useCashSelectStyleArgs) => {
       },
       text: {},
     });
-  }, [theme]);
+  }, [isCash, theme]);
 
   return {styles};
 };

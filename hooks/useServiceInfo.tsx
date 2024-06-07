@@ -50,7 +50,7 @@ const useServiceInfo = () => {
     } else {
       getSetServiceInfoFromLocalDB();
     }
-  }, []);
+  }, [isOnline]);
 
   return {serviceInfo, serviceLoading};
 };
