@@ -1,3 +1,24 @@
+# `SalesScreen` Component Documentation
+
+## Overview
+
+The `SalesScreen` component is a screen in the HızlıPos React Native application responsible for displaying sales-related information and options. It provides a cart section (`SalesScreenCart`) for managing selected products and options section (`SalesScreenOptions`) for configuring sales settings.
+
+## Dependencies
+
+- `react`
+- `react-native`
+- `react-native-safe-area-context`
+- `./styles/useSalesScreenStyle`
+- `../components/SalesScreenCart`
+- `../components/SalesScreenOptions`
+- `../components/Footer`
+- `../contexts/FavoritesContext/FavoritesContext`
+- `@react-navigation/native`
+
+## Component Definition
+
+```javascript
 import {StatusBar, View} from 'react-native';
 import React, {useCallback, useContext} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -27,7 +48,6 @@ const SalesScreen = ({route, navigation}: any) => {
         backgroundColor={theme.colors.background}
       />
       <View style={styles.container}>
-        {/* <Header   /> */}
         <SalesScreenCart />
         <SalesScreenOptions />
       </View>
@@ -36,3 +56,11 @@ const SalesScreen = ({route, navigation}: any) => {
   );
 };
 export default SalesScreen;
+```
+
+## Usage
+
+### Props
+
+- `route`: Route object containing the route's information.
+- `navigation`: Navigation object providing functions to navigate to different screens.

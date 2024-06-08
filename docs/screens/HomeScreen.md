@@ -1,3 +1,26 @@
+# `HomeScreen` Component Documentation
+
+## Overview
+
+The `HomeScreen` component is a screen in the HızlıPos React Native application. It provides a user interface for navigating to different sections of the application, such as sales, reports, settings, and logout. It also displays the user's status and a footer.
+
+## Dependencies
+
+- `react`
+- `react-native`
+- `react-i18next`
+- `react-native-safe-area-context`
+- `./styles/useHomeScreenStyle`
+- `../components/Status`
+- `../components/GoToSalesScreen`
+- `../components/GoToSettingsScreen`
+- `../components/GoToReportsScreen`
+- `../components/Logout`
+- `../components/Footer`
+
+## Component Definition
+
+```js
 import React from 'react';
 import {View, StatusBar} from 'react-native';
 import {useTranslation} from 'react-i18next';
@@ -33,3 +56,11 @@ const HomeScreen = ({route, navigation}: any) => {
 };
 
 export default HomeScreen;
+```
+
+## Usage
+
+### Props
+
+- `route`: Route object containing the route's information.
+- `navigation`: Navigation object providing functions to navigate to different screens.
