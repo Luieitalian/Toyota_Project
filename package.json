@@ -29,7 +29,7 @@
     "react-native-screens": "^3.29.0",
     "react-native-system-navigation-bar": "^2.6.4",
     "react-native-vector-icons": "^10.0.3",
-    "receipt": "^1.4.0"
+    "round-to": "^6.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

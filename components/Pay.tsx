@@ -13,7 +13,7 @@ import useCartPricing from '../hooks/useCartPricing';
 import {PastSalesContext} from '../contexts/PastSalesContext/PastSalesContext';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';
 
-const receipt = require('receipt');
+import receipt from '../receipt/index';
 
 receipt.config.currency = '₺';
 receipt.config.ruler = '-';
