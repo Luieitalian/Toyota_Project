@@ -1,10 +1,10 @@
-import React, {memo, useContext} from 'react';
+import React, {memo} from 'react';
 import {useTheme} from 'react-native-paper';
 import CustomButton from './CustomButton';
 import {useTranslation} from 'react-i18next';
-import useLogoutStyle from './styles/useLogoutStyle';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import useLogoutStyle from './styles/useLogOutStyle';
 
 const Logout = () => {
   const {t} = useTranslation();

@@ -1,13 +1,13 @@
 import {useCallback, useContext, useMemo} from 'react';
 import {CartProductModel} from '../models/CartProductModel';
 import currency from 'currency.js';
-import useSpecialOffers from './useSpecialOffers';
 import {SpecialOfferModel} from '../models/SpecialOfferModel';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';
+import {SpecialOffersContext} from '../contexts/SpecialOffersContext/SpecialOffersContext';
 
 const useCartPricing = (cart: CartProductModel[]) => {
   const {selectedOfferID} = useContext(ShoppingCartContext);
-  const {specialOffers} = useSpecialOffers();
+  const {specialOffers} = useContext(SpecialOffersContext);
 
   const selected_offer = useMemo(
     () =>

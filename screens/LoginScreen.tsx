@@ -32,12 +32,12 @@ const LoginScreen = ({route, navigation}: any) => {
   };
 
   const onLoginSubmit = async () => {
-    await readNFC();
     const {user} = validateUser(username, password, users);
     if (user) {
       setUser(user);
       navigation.replace('HomeScreen');
     } else {
+      await readNFC();
       setSnackbarVisible(true);
     }
   };

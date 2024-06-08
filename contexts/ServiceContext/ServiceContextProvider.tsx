@@ -16,7 +16,7 @@ const ServiceContextProvider = ({children}: ServiceContextProviderProps) => {
     [serviceInfo, serviceLoading]
   );
 
-  if (serviceLoading) return <>{children}</>;
+  if (!serviceContext) return <>{children}</>;
 
   return (
     <ServiceContext.Provider value={serviceContext}>

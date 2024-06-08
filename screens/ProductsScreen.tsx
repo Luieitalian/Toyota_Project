@@ -7,7 +7,6 @@ import {
 import React, {useState} from 'react';
 import useProductsScreenStyle from './styles/useProductsScreenStyle';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {useTranslation} from 'react-i18next';
 import SearchBar from '../components/SearchBar';
 import FilteringBar from '../components/FilteringBar';
 import Products from '../components/Products';
@@ -20,8 +19,6 @@ const ProductsScreen = ({route, navigation}: any) => {
   const [submittedText, setSubmittedText] = useState<string | undefined>(
     undefined
   );
-
-  const {t} = useTranslation();
 
   const onSubmitEditing = (
     event: NativeSyntheticEvent<TextInputSubmitEditingEventData>

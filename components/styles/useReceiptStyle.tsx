@@ -9,7 +9,7 @@ const useReceiptStyle = (theme: MD3Theme) => {
 
   const baseStyle = React.useMemo(() => {
     return {
-      fontSize: isWide ? 15 : 12,
+      fontSize: isWide ? 15 : 11,
       color: 'black',
     };
   }, [theme, isWide]);

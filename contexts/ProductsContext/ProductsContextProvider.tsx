@@ -34,7 +34,7 @@ const ProductsContextProvider = ({children}: ProductsContextProviderProps) => {
     [products, loadingProducts]
   );
 
-  if (loadingProducts) {
+  if (!productsContext) {
     return <>{children}</>;
   }
 

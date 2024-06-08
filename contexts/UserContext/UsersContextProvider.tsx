@@ -15,7 +15,7 @@ const UsersContextProvider = ({children}: UsersContextProviderProps) => {
     [users, user, setUser]
   );
 
-  if (loadingUsers) return <>{children}</>;
+  if (!usersContext) return <>{children}</>;
 
   return (
     <UsersContext.Provider value={usersContext}>

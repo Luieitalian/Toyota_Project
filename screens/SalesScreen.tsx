@@ -1,16 +1,26 @@
-import {Button, StatusBar, Text, View} from 'react-native';
-import React, {useContext} from 'react';
+import {StatusBar, View} from 'react-native';
+import React, {useCallback, useContext} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import useSalesScreenStyle from './styles/useSalesScreenStyle';
 import {useTranslation} from 'react-i18next';
 import SalesScreenCart from '../components/SalesScreenCart';
 import SalesScreenOptions from '../components/SalesScreenOptions';
-import Header from '../components/Header';
 import Footer from '../components/Footer';
+import {FavoritesContext} from '../contexts/FavoritesContext/FavoritesContext';
+import {useFocusEffect} from '@react-navigation/native';
+import setFavoritesToLocalDB from '../utils/setFavoritesToLocalDB';
 
 const SalesScreen = ({route, navigation}: any) => {
   const {styles, theme} = useSalesScreenStyle();
   const {t} = useTranslation();
+
+  const {favorites} = useContext(FavoritesContext);
+
+  useFocusEffect(
+    useCallback(() => {
+      setFavoritesToLocalDB(favorites);
+    }, [])
+  );
 
   return (
     <SafeAreaView style={styles.screenView}>

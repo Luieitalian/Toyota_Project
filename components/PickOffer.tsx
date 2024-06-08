@@ -3,12 +3,12 @@ import {ScrollView, Text, View} from 'react-native';
 import {Button, Modal, Portal, useTheme} from 'react-native-paper';
 import usePickOfferStyle from './styles/usePickOfferStyle';
 import CustomButton from './CustomButton';
-import useSpecialOffers from '../hooks/useSpecialOffers';
 import {SpecialOfferModel} from '../models/SpecialOfferModel';
 import SpecialOfferItem from './SpecialOfferItem';
 import useIsOfferApplicable from '../hooks/useIsOfferApplicable';
 import {useTranslation} from 'react-i18next';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';
+import {SpecialOffersContext} from '../contexts/SpecialOffersContext/SpecialOffersContext';
 
 const PickOffer = () => {
   const theme = useTheme();
@@ -17,10 +17,11 @@ const PickOffer = () => {
   const {styles} = usePickOfferStyle(theme);
 
   const [modalVisible, setModalVisible] = useState<boolean>(false);
+
   const {selectedOfferID, setSelectedOfferID} = useContext(ShoppingCartContext);
   const {cart} = useContext(ShoppingCartContext);
+  const {specialOffers, offersLoading} = useContext(SpecialOffersContext);
 
-  const {specialOffers, offersLoading} = useSpecialOffers();
   const {isApplicable} = useIsOfferApplicable();
 
   const showModal = () => {

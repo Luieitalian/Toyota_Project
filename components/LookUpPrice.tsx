@@ -31,8 +31,6 @@ const LookUpPrice = () => {
   const {addToCart} = useContext(ShoppingCartContext);
   const {products} = useContext(ProductsContext);
 
-  const onPress = () => {};
-
   const showModal = () => {
     setModalVisible(true);
   };
