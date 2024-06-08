@@ -1,9 +1,51 @@
-# Toyota 2023-2024 Mobil Projesi
+# Toyota 32-Bit 2023-2024 Mobil Projesi
 
-## Bizden İstenenler
+## Mobil Kasa Uygulaması
+- ### Gerekli Teknolojiler
+   - ReactNative 
+   - NodeJS + Node Package Manager
+   - Material UI (Component Design) 
+   - Async-storage(Local Storage)
+   - Axios (Rest Api)
+   - React Navigation
+   - Context Api (State Management)
+   - I18-next(lokalizasyon yönetimi)
 
-Mobil Kasa Uygulaması
-
+- ### Dikkat Edilecek Hususlar
+   - Responsive Design
+   - Reusable Components
+   - React Hooks - Custom Hooks
+   - Çoklu Dil Desteği
+   - UI Blocking
+   - Context API
+   - Sayfalama, Sıralama, Filtreleme
+   - Mock Servisler
+   - Readme.md
+   - Git Kullanımı
+ 
+## Kullanılan Teknolojiler
+- React v18.2.0
+- react-native-async-storage/async-storage v1.23.1
+- react-navigation/native v6.1.12
+- react-navigation/native-stack v6.9.20
+- axios v1.6.8
+- currency.js v2.0.4
+- "i18next": "^23.11.2",
+- "json-server": "^1.0.0-alpha.23",
+- "react": "18.2.0",
+- "react-i18next": "^14.1.0",
+- "react-native": "^0.73.7",
+- "react-native-asset": "^2.1.1",
+- "react-native-fast-image": "^8.6.3",
+- "react-native-nfc-manager": "^3.14.14",
+- "react-native-paper": "^5.12.3",
+- "react-native-render-html": "^6.3.4",
+- "react-native-safe-area-context": "^4.9.0",
+- "react-native-screens": "^3.29.0",
+- "react-native-system-navigation-bar": "^2.6.4",
+- "react-native-vector-icons": "^10.0.3",
+- "round-to": "^6.0.0"
+- 
 # Getting Started
 
 > **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
