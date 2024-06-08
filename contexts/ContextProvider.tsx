@@ -9,6 +9,7 @@ import UnsentCartsContextProvider from './UnsentCartsContext/UnsentCartsContextP
 import SafeAreaProviderWrapper from './SafeAreaProviderWrapper/SafeAreaProviderWrapper';
 import PaperProviderWrapper from './PaperProviderWrapper/PaperProviderWrapper';
 import UsersContextProvider from './UserContext/UsersContextProvider';
+import ServiceContextProvider from './ServiceContext/ServiceContextProvider';
 
 type ContextProviderProps = {
   children: React.ReactNode;
@@ -23,13 +24,15 @@ const ContextProvider = ({children}: ContextProviderProps) => {
             <PastSalesContextProvider>
               <UnsentCartsContextProvider>
                 <UsersContextProvider>
-                  <ThemeContextProvider>
-                    <PaperProviderWrapper>
-                      <SafeAreaProviderWrapper>
-                        {children}
-                      </SafeAreaProviderWrapper>
-                    </PaperProviderWrapper>
-                  </ThemeContextProvider>
+                  <ServiceContextProvider>
+                    <ThemeContextProvider>
+                      <PaperProviderWrapper>
+                        <SafeAreaProviderWrapper>
+                          {children}
+                        </SafeAreaProviderWrapper>
+                      </PaperProviderWrapper>
+                    </ThemeContextProvider>
+                  </ServiceContextProvider>
                 </UsersContextProvider>
               </UnsentCartsContextProvider>
             </PastSalesContextProvider>

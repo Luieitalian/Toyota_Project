@@ -18,8 +18,8 @@ const usePickOfferStyle = (theme: MD3Theme) => {
         alignItems: 'center',
         gap: 20,
         elevation: 5,
-        marginHorizontal: isWide ? 300 : 60,
-        marginVertical: isWide ? 30 : 60,
+        marginHorizontal: isWide ? 300 : 30,
+        marginVertical: isWide ? 30 : 40,
         padding: 20,
         backgroundColor: theme.colors.background,
         borderRadius: 10,
@@ -62,7 +62,7 @@ const usePickOfferStyle = (theme: MD3Theme) => {
         justifyContent: 'space-evenly',
       },
     });
-  }, [theme]);
+  }, [theme, width]);
   return {styles};
 };
 

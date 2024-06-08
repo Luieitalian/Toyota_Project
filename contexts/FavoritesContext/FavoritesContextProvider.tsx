@@ -31,7 +31,7 @@ const FavoritesContextProvider = ({
   );
 
   if (!favoritesContext) {
-    throw new Error('favoritesContext does not exist.');
+    return <>{children}</>;
   }
 
   return (

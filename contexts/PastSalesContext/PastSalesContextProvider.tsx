@@ -19,7 +19,7 @@ const PastSalesContextProvider = ({
   );
 
   if (!pastSalesContext) {
-    throw new Error('pastSalesContext does not exist.');
+    return <>{children}</>;
   }
 
   return (

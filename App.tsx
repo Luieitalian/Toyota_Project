@@ -46,7 +46,7 @@ const App = () => {
         <Stack.Screen
           name="HomeScreen"
           options={{
-            headerTitle: t('home'),
+            headerTitle: t('home_screen'),
             headerShown: true,
             headerStyle: homeScreenStyle.styles.headerStyle,
             headerTitleStyle: homeScreenStyle.styles.headerTitleStyle,

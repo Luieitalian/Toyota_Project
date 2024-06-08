@@ -15,11 +15,7 @@ const UsersContextProvider = ({children}: UsersContextProviderProps) => {
     [users, user, setUser]
   );
 
-  if (!usersContext) {
-    throw new Error('unsentCartsContext does not exist.');
-  }
-
-  if (loadingUsers) return <></>;
+  if (loadingUsers) return <>{children}</>;
 
   return (
     <UsersContext.Provider value={usersContext}>

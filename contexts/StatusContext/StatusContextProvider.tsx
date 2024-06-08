@@ -18,7 +18,7 @@ const StatusContextProvider = ({children}: StatusContextProviderProps) => {
   );
 
   if (!statusContext) {
-    throw new Error('statusContext does not exist.');
+    return <>{children}</>;
   }
 
   return (

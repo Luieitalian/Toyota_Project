@@ -21,6 +21,9 @@ const useProductsStyle = (theme: MD3Theme) => {
         paddingHorizontal: 10,
         paddingBottom: 20,
       },
+      numColumns: {
+        width: isWide ? 4 : 3,
+      },
       listEmptyView: {
         flex: 1,
         justifyContent: 'center',

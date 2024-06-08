@@ -1,4 +1,4 @@
-import React, {useContext, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import {Text, View, StatusBar, TextInput} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -11,6 +11,7 @@ import Login from '../components/Login';
 import validateUser from '../utils/validateUser';
 import {UsersContext} from '../contexts/UserContext/UsersContext';
 import {Portal, Snackbar} from 'react-native-paper';
+import nfcManager from 'react-native-nfc-manager';
 
 const LoginScreen = ({route, navigation}: any) => {
   const {t} = useTranslation();
@@ -24,13 +25,14 @@ const LoginScreen = ({route, navigation}: any) => {
 
   const {users, setUser} = useContext(UsersContext);
 
-  //const readNFC = useNFC();
+  const readNFC = useNFC();
 
   const focusOnPassword = () => {
     passwordRef.current?.focus();
   };
 
-  const onLoginSubmit = () => {
+  const onLoginSubmit = async () => {
+    await readNFC();
     const {user} = validateUser(username, password, users);
     if (user) {
       setUser(user);

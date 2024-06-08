@@ -21,7 +21,7 @@ const ThemeContextProvider = ({children}: ThemeContextProviderProps) => {
   );
 
   if (!themeContext) {
-    throw new Error('themeContext does not exist.');
+    return <>{children}</>;
   }
 
   return (

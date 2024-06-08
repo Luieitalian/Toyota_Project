@@ -18,7 +18,6 @@ const ProductsContextProvider = ({children}: ProductsContextProviderProps) => {
       await setDatabase();
       setIsDatabaseInitialized(true);
     };
-    console.log('effect run');
     initializeDatabase();
   }, []);
 
@@ -35,8 +34,8 @@ const ProductsContextProvider = ({children}: ProductsContextProviderProps) => {
     [products, loadingProducts]
   );
 
-  if (!productsContext) {
-    throw new Error('productsContext does not exist.');
+  if (loadingProducts) {
+    return <>{children}</>;
   }
 
   return (
