@@ -7,12 +7,14 @@ type PasswordInputProps = {
   passwordRef: RefObject<any>;
   onChangePassword: (username: string) => void;
   password: string;
+  onSubmitPassword: () => void;
 };
 
 const PasswordInput = ({
   passwordRef,
   onChangePassword,
   password,
+  onSubmitPassword,
 }: PasswordInputProps) => {
   const {t} = useTranslation();
   const theme = useTheme();
@@ -45,6 +47,7 @@ const PasswordInput = ({
       inputMode="text"
       value={password}
       onChangeText={onChangePassword}
+      onSubmitEditing={onSubmitPassword}
       style={styles.textInput}
       outlineStyle={styles.textInputOutline}
       activeOutlineColor={styles.textInputActiveOutline.color}

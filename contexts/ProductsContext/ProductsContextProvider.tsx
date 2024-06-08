@@ -1,7 +1,8 @@
-import React, {memo, useEffect, useMemo, useState} from 'react';
+import React, {memo, useContext, useEffect, useMemo, useState} from 'react';
 import useProducts from '../../hooks/useProducts';
 import {ProductsContext} from './ProductsContext';
 import setDatabase from '../../utils/setDatabase';
+import {StatusContext} from '../StatusContext/StatusContext';
 
 type ProductsContextProviderProps = {
   children: React.ReactNode;
@@ -9,7 +10,9 @@ type ProductsContextProviderProps = {
 
 const ProductsContextProvider = ({children}: ProductsContextProviderProps) => {
   const [isDatabaseInitialized, setIsDatabaseInitialized] = useState(false);
+  const {isOnline} = useContext(StatusContext);
 
+  // TODO move this logic to another component
   useEffect(() => {
     const initializeDatabase = async () => {
       await setDatabase();
@@ -20,7 +23,7 @@ const ProductsContextProvider = ({children}: ProductsContextProviderProps) => {
   }, []);
 
   const {products, loadingProducts} = useProducts({
-    isOnline: false, // TODO
+    isOnline: isOnline, // TODO
     isDatabaseInitialized: isDatabaseInitialized, // TODO
   });
 
