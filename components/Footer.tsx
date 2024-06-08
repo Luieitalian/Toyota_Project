@@ -4,11 +4,14 @@ import useFooterStyle from './styles/useFooterStyle';
 import {Button, Icon, useTheme} from 'react-native-paper';
 import {StatusContext} from '../contexts/StatusContext/StatusContext';
 import {useTranslation} from 'react-i18next';
+import {UsersContext} from '../contexts/UserContext/UsersContext';
 
 const Footer = () => {
   const {isOnline, toggleOnlineStatus} = useContext(StatusContext);
 
   const [isButtonHiding, setIsButtonHiding] = useState<boolean>(false);
+
+  const {user} = useContext(UsersContext);
 
   const theme = useTheme();
   const {t} = useTranslation();
@@ -26,7 +29,7 @@ const Footer = () => {
   return (
     <View style={styles.footerContainer}>
       <View style={styles.menuContainer}>
-        <Text style={styles.userText}>{`${t('cashier')}: ${'[user]'}`}</Text>
+        <Text style={styles.userText}>{`${t('cashier')}: ${user}`}</Text>
         {isButtonHiding ? (
           <></>
         ) : (

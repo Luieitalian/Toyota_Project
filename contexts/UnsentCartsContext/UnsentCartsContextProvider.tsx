@@ -19,7 +19,7 @@ const UnsentCartsContextProvider = ({
   );
 
   if (!unsentCartsContext) {
-    throw new Error('unsentCartsContext does not exist.');
+    return <>{children}</>;
   }
 
   return (

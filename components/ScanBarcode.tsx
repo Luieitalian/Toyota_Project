@@ -3,14 +3,17 @@ import {useTheme} from 'react-native-paper';
 import useScanBarcodeStyle from './styles/useScanBarcodeStyle';
 import CustomButton from './CustomButton';
 import {useTranslation} from 'react-i18next';
+import useNFC from '../hooks/useNFC';
 
 const ScanBarcode = () => {
   const {t} = useTranslation();
   const theme = useTheme();
 
   const {styles} = useScanBarcodeStyle(theme);
+  const readNFC = useNFC();
 
-  const onPress = () => {
+  const onPress = async () => {
+    await readNFC();
     console.log('scan barcode');
   };
 

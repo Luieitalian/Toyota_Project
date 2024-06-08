@@ -9,7 +9,6 @@ const ThemeContextProvider = ({children}: ThemeContextProviderProps) => {
   const [isDark, setIsDark] = useState(false);
 
   const toggleTheme = () => {
-    console.log('heloo');
     return setIsDark((prevIsDark) => !prevIsDark);
   };
 
@@ -22,7 +21,7 @@ const ThemeContextProvider = ({children}: ThemeContextProviderProps) => {
   );
 
   if (!themeContext) {
-    throw new Error('themeContext does not exist.');
+    return <>{children}</>;
   }
 
   return (

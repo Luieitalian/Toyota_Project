@@ -33,7 +33,7 @@ const ShoppingCartContextProvider = ({
   );
 
   if (!shoppingCartContext) {
-    throw new Error('shopping cart context does not exist.');
+    return <>{children}</>;
   }
 
   return (

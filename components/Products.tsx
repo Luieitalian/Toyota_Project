@@ -117,7 +117,7 @@ const Products = ({category, submittedText}: ProductsProps) => {
       ) : (
         <FlatList
           columnWrapperStyle={styles.flatlist}
-          numColumns={4}
+          numColumns={styles.numColumns.width}
           maxToRenderPerBatch={1}
           updateCellsBatchingPeriod={1000}
           initialNumToRender={3}

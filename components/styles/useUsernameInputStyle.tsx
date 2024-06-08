@@ -5,25 +5,31 @@ import {breakPoint} from '../../globals/style';
 
 const useUsernameInputStyle = (theme: MD3Theme) => {
   const {width} = useWindowDimensions();
+  const isWide = width >= breakPoint;
 
   const styles = React.useMemo(() => {
-    const isWide = width >= breakPoint;
-
     return StyleSheet.create({
       textInput: {
-        minWidth: '100%',
-        minHeight: 70,
-        fontSize: isWide ? 22 : 18,
-        backgroundColor: theme.colors.background,
+        minWidth: isWide ? '60%' : '100%',
+        height: 60,
+        fontSize: isWide ? 20 : 18,
+        backgroundColor: theme.colors.onBackground,
         borderRadius: 10,
         color: theme.colors.onBackground,
         paddingHorizontal: 15,
       },
-      placeholderText: {
-        color: theme.colors.onSurfaceVariant,
+      textInputOutline: {
+        borderRadius: 10,
+        borderColor: theme.colors.background,
+      },
+      textInputActiveOutline: {
+        color: theme.colors.background,
+      },
+      textInputText: {
+        color: theme.colors.background,
       },
     });
-  }, [theme, width]);
+  }, [theme, isWide]);
 
   return {styles};
 };

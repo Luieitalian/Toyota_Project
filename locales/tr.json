@@ -58,7 +58,7 @@
   "offline": "ÇEVRİMDIŞI",
   "loading": "Yükleniyor",
   "shop_is_status": "Mağaza {{status}}",
-  "debug_toggle_online_status": "toggle_online_status",
+  "debug_toggle_online_status": "toggle_online",
   "dark": "Karanlık",
   "light": "Aydınlık",
   "dark_mode": "Karanlık Modu",
@@ -71,12 +71,13 @@
   "go_to_settings_screen": "Ayarlar",
   "log_out": "Çıkış yap",
   "show_past_sales": "Geçmiş Satışlar",
-  "login": "Kullanıcı Girişi",
+  "login": "Giriş",
   "products": "Ürünler",
   "sales": "Satış",
   "settings": "Ayarlar",
   "reports": "Raporlar",
   "past_sales_empty": "Geçmiş satış mevcut değil.",
   "receipts_synchronized": "{{receipts}} sipariş senkronize edildi!",
-  "synchronize_unsent_receipts": "Gönderilmeyen Siparişleri Senkronize Et"
+  "synchronize_unsent_receipts": "Gönderilmeyen Siparişleri Senkronize Et",
+  "wrong_username_or_password": "Yanlış kullanıcı adı veya şifre!"
 }

@@ -59,7 +59,7 @@
   "offline": "OFFLINE",
   "loading": "Loading",
   "shop_is_status": "Shop is {{status}}",
-  "debug_toggle_online_status": "toggle_online_status",
+  "debug_toggle_online_status": "toggle_online",
   "dark": "Dark",
   "light": "Light",
   "dark_mode": "Dark Mode",
@@ -69,8 +69,8 @@
   "go_to_sales_screen": "POS",
   "go_to_reports_screen": "Reports",
   "go_to_settings_screen": "Settings",
-  "log_out": "Log out",
-  "home": "Home",
+  "log_out": "Log-out",
+  "home_screen": "Home",
   "show_past_sales": "Show Past Sales",
   "login": "Log-in",
   "products": "Products",
@@ -79,5 +79,6 @@
   "reports": "Reports",
   "past_sales_empty": "There is no past sales.",
   "receipts_synchronized": "{{receipts}} receipts synchronized!",
-  "synchronize_unsent_receipts": "Synchronize Unsent Receipts"
+  "synchronize_unsent_receipts": "Synchronize Unsent Receipts",
+  "wrong_username_or_password": "Wrong username or password!"
 }

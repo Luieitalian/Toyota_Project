@@ -4,6 +4,7 @@ import useHeaderStyle from './styles/useHeaderStyle';
 import {Icon, Menu, useTheme} from 'react-native-paper';
 import {ThemeContext} from '../contexts/ThemeContext/ThemeContext';
 import {useTranslation} from 'react-i18next';
+import {changeLanguage} from 'i18next';
 
 const Header = () => {
   const theme = useTheme();
@@ -15,6 +16,11 @@ const Header = () => {
 
   const closeLangMenu = () => setVisibleLangMenu(false);
   const openLangMenu = () => setVisibleLangMenu(true);
+
+  const onMenuItemPress = (lang: string) => {
+    changeLanguage(lang);
+    closeLangMenu();
+  };
 
   return (
     <View style={styles.header}>
@@ -62,12 +68,12 @@ const Header = () => {
         <Menu.Item
           titleStyle={styles.menuItem}
           title={t('turkish')}
-          onPress={() => i18n.changeLanguage('tr')}
+          onPress={() => onMenuItemPress('tr')}
         />
         <Menu.Item
           titleStyle={styles.menuItem}
           title={t('english')}
-          onPress={() => i18n.changeLanguage('en')}
+          onPress={() => onMenuItemPress('en')}
         />
       </Menu>
     </View>

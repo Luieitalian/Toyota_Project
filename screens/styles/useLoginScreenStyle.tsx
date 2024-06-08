@@ -5,7 +5,7 @@ import {breakPoint} from '../../globals/style';
 
 const useLoginScreenStyle = () => {
   const theme = useTheme();
-  const {width, height} = useWindowDimensions();
+  const {width} = useWindowDimensions();
 
   const styles = React.useMemo(() => {
     const isWide = width >= breakPoint;
@@ -19,18 +19,18 @@ const useLoginScreenStyle = () => {
       },
       wrapper: {
         flex: 10,
-        marginTop: 12,
-        marginBottom: 12,
+        marginTop: 40,
+        marginBottom: 100,
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: theme.colors.secondary,
+        backgroundColor: theme.colors.onBackground,
         borderRadius: 12,
         padding: 40,
         paddingBottom: 10,
         width: '80%',
       },
       contentWrapper: {
-        flex: 0.6,
+        gap: 40,
         alignItems: 'center',
         justifyContent: 'space-around',
       },
@@ -38,12 +38,11 @@ const useLoginScreenStyle = () => {
         fontSize: isWide ? 72 : 46,
         fontFamily: 'Roboto-Regular',
         textAlign: 'center',
-        color: theme.colors.onSecondary,
+        color: theme.colors.background,
       },
       form: {
         gap: isWide ? 24 : 16,
       },
-
       headerTitleStyle: {
         color: theme.colors.onBackground,
       },
