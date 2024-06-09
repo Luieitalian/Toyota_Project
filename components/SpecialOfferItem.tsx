@@ -42,7 +42,7 @@ const SpecialOfferItem = ({
   const onPress = () => {
     setSnackbarVisible(true);
     onSelect(offer);
-    console.log('applicable?', applicable);
+    console.log('Applicable?', applicable);
   };
 
   return (

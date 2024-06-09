@@ -53,7 +53,6 @@ const useProducts = ({isOnline, isDatabaseInitialized}: useProductsArgs) => {
     } else {
       getProductsFromLocalDB();
     }
-    return () => console.log('Cleaning up effect');
   }, [isOnline, isDatabaseInitialized]);
 
   return {products, loadingProducts};

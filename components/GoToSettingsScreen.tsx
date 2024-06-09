@@ -14,7 +14,7 @@ const GoToSettingsScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   const onPress = () => {
-    console.log('go to settings');
+    console.log('Go to settings');
     navigation.navigate('SettingsScreen');
   };
 

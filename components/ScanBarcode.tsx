@@ -14,7 +14,7 @@ const ScanBarcode = () => {
 
   const onPress = async () => {
     await readNFC();
-    console.log('scan barcode');
+    console.log('Scan barcode');
   };
 
   return (

@@ -14,7 +14,7 @@ const GoToReportsScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   const onPress = () => {
-    console.log('go to reports screen');
+    console.log('Go to reports screen');
     navigation.navigate('ReportsScreen');
   };
 

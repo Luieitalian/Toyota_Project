@@ -41,7 +41,7 @@ const LookUpPrice = () => {
 
   const onChangeText = (text: string) => {
     setIDText((oldText) => {
-      console.log('idtext submit:', text);
+      console.log('IDtext submit:', text);
       const product = products.filter(
         (prod: ProductModel) => prod.id === text
       )[0];

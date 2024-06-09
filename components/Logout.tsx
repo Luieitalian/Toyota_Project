@@ -14,7 +14,7 @@ const Logout = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   const onPress = () => {
-    console.log('log out');
+    console.log(t('logout'));
     navigation.replace('LoginScreen');
   };
 

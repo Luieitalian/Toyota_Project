@@ -1,5 +1,11 @@
 import React, {useContext, useRef, useState} from 'react';
-import {Text, View, StatusBar, TextInput} from 'react-native';
+import {
+  Text,
+  View,
+  StatusBar,
+  TextInput,
+  KeyboardAvoidingView,
+} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import useLoginScreenStyle from './styles/useLoginScreenStyle';
@@ -59,7 +65,7 @@ const LoginScreen = ({route, navigation}: any) => {
         barStyle={theme.dark ? 'light-content' : 'dark-content'}
         backgroundColor={theme.colors.background}
       />
-      <View style={styles.wrapper}>
+      <KeyboardAvoidingView behavior="padding" style={styles.wrapper}>
         <View style={styles.contentWrapper}>
           <Text style={styles.welcome}>{t('welcome_to_app')}</Text>
           <View style={styles.form}>
@@ -78,7 +84,7 @@ const LoginScreen = ({route, navigation}: any) => {
           </View>
         </View>
         <Version />
-      </View>
+      </KeyboardAvoidingView>
       <Portal>
         <Snackbar
           duration={2000}

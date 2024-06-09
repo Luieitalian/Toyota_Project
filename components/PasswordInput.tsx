@@ -5,7 +5,7 @@ import usePasswordInputStyle from './styles/usePasswordInputStyle';
 
 type PasswordInputProps = {
   passwordRef: RefObject<any>;
-  onChangePassword: (username: string) => void;
+  onChangePassword: (password: string) => void;
   password: string;
   onSubmitPassword: () => void;
 };

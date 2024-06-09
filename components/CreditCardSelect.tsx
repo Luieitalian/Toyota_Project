@@ -14,7 +14,7 @@ const CreditCardSelect = () => {
   const {styles} = useCreditCardSelectStyle({theme, isCash});
 
   const onPress = () => {
-    console.log('Credi card Select');
+    console.log('Credit card Select');
     setIsCash(false);
   };
 

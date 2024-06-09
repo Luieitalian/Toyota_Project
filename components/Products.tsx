@@ -90,7 +90,7 @@ const Products = ({category, submittedText}: ProductsProps) => {
   };
 
   const onEndReached = () => {
-    console.log('onEndReached ', pageOffset);
+    console.log('onEndReached: ', pageOffset);
     setPageOffset((o) => o + 1);
   };
 

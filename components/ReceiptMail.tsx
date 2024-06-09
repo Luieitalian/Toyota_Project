@@ -27,7 +27,7 @@ const ReceiptMail = () => {
 
   const onPress = () => {
     showModal();
-    console.log('Receipt Mail');
+    console.log('Receipt mail');
   };
 
   const showModal = () => {

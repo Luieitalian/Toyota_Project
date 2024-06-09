@@ -14,7 +14,7 @@ const PickItems = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   const onPress = () => {
-    console.log('pick items');
+    console.log('Pick items');
     navigation.navigate('ProductsScreen');
   };
 

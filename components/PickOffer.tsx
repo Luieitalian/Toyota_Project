@@ -48,7 +48,7 @@ const PickOffer = () => {
 
   const onPress = () => {
     showModal();
-    console.log('pick_offer');
+    console.log('Pick offer');
   };
 
   useEffect(() => {

@@ -28,7 +28,7 @@ const SynchronizeUnsentCarts = () => {
   const {styles} = useSynchronizeUnsentCartsStyle(theme);
 
   const onPressDialog = () => {
-    console.log('syncronize');
+    console.log('Synchronize past sales!');
     if (!isOnline) {
       setIsSnackBarVisible(true);
     } else if (unsentCartReceipts.length > 0) {

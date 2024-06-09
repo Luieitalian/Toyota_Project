@@ -17,7 +17,7 @@ const ShowPastSales = () => {
   const {styles} = useShowPastSalesStyle(theme);
 
   const onPress = () => {
-    console.log('show past sales');
+    console.log('Show past sales');
     showModal();
   };
 
