@@ -24,7 +24,7 @@ const useShowPastSalesStyle = (theme: MD3Theme) => {
         gap: 20,
         elevation: 5,
         marginHorizontal: isWide ? 100 : 25,
-        marginVertical: isWide ? 200 : 100,
+        marginVertical: isWide ? 100 : 100,
         padding: 20,
         backgroundColor: 'white',
         borderRadius: 10,
