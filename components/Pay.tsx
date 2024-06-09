@@ -50,57 +50,59 @@ const Pay = () => {
     };
   });
 
-  const receipt_str = useMemo(
-    () =>
-      receipt.create([
-        {type: 'empty'},
-        {type: 'empty'},
-        {
-          type: 'text',
-          value: ['HızlıPOS', 'hizlipos@magaza.com', 'www.hizlipos.com'],
-          align: 'center',
-        },
-        {type: 'empty'},
-        {type: 'empty'},
-        {
-          type: 'properties',
-          lines: [
-            {name: 'Order Number', value: '1004850027'},
-            {name: 'Date', value: '28/05/2024 13:20'},
-          ],
-        },
-        {type: 'empty'},
-        {type: 'empty'},
-        {
-          type: 'table',
-          lines: productLines,
-        },
-        {type: 'empty'},
-        {type: 'empty'},
-        {
-          type: 'text',
-          align: 'center',
-          value: `${isCash ? 'Cash' : 'Credit Card'} is selected.`,
-        },
-        {type: 'empty'},
-        {type: 'empty'},
-        {
-          type: 'properties',
-          lines: [
-            {name: 'Subtotal', value: currency(subTotal).value},
-            {name: 'Discount', value: currency(discountTotal).value},
-            {name: 'Payment Total', value: currency(paymentTotal).value},
-          ],
-        },
-        {type: 'empty'},
-        {type: 'empty'},
-        {
-          type: 'text',
-          value: 'Thank you for shopping, have a great day!',
-        },
-      ]),
-    [productLines]
-  );
+  const receipt_str = useMemo(() => {
+    let today = new Date();
+    return receipt.create([
+      {type: 'empty'},
+      {type: 'empty'},
+      {
+        type: 'text',
+        value: ['HızlıPOS', 'hizlipos@magaza.com', 'www.hizlipos.com'],
+        align: 'center',
+      },
+      {type: 'empty'},
+      {type: 'empty'},
+      {
+        type: 'properties',
+        lines: [
+          {name: 'Order Number', value: '1004850027'},
+          {
+            name: 'Date',
+            value: `${today.toLocaleDateString('tr-TR')} ${today.toLocaleTimeString('tr-TR')}`,
+          },
+        ],
+      },
+      {type: 'empty'},
+      {type: 'empty'},
+      {
+        type: 'table',
+        lines: productLines,
+      },
+      {type: 'empty'},
+      {type: 'empty'},
+      {
+        type: 'text',
+        align: 'center',
+        value: `${isCash ? 'Cash' : 'Credit Card'} is selected.`,
+      },
+      {type: 'empty'},
+      {type: 'empty'},
+      {
+        type: 'properties',
+        lines: [
+          {name: 'Subtotal', value: currency(subTotal).value},
+          {name: 'Discount', value: currency(discountTotal).value},
+          {name: 'Payment Total', value: currency(paymentTotal).value},
+        ],
+      },
+      {type: 'empty'},
+      {type: 'empty'},
+      {
+        type: 'text',
+        value: 'Thank you for shopping, have a great day!',
+      },
+    ]);
+  }, [productLines]);
 
   const onPress = () => {
     if (cart.length !== 0) {
