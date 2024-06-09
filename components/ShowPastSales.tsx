@@ -39,7 +39,9 @@ const ShowPastSales = () => {
     return idx.toString();
   };
 
-  const ListEmptyComponent = () => <Text>{t('past_sales_empty')}</Text>;
+  const ListEmptyComponent = () => (
+    <Text style={styles.emptySalesText}>{t('past_sales_empty')}</Text>
+  );
 
   return (
     <>

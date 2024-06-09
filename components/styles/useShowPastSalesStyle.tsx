@@ -36,6 +36,9 @@ const useShowPastSalesStyle = (theme: MD3Theme) => {
         padding: 5,
         marginBottom: 10,
       },
+      emptySalesText: {
+        color: theme.colors.outline,
+      },
     });
   }, [theme, width]);
 
