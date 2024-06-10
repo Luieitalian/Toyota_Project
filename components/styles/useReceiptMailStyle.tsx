@@ -52,7 +52,7 @@ const useReceiptMailStyle = (theme: MD3Theme) => {
         fontSize: isWide ? 18 : 16,
       },
     });
-  }, [theme]);
+  }, [theme, width]);
   return {styles};
 };
 

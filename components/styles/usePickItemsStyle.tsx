@@ -13,7 +13,7 @@ const usePickItemsStyle = (theme: MD3Theme) => {
         fontSize: isWide ? 20 : 20,
       },
     });
-  }, [theme]);
+  }, [theme, width]);
 
   return {styles};
 };
