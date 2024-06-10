@@ -31,35 +31,10 @@ const usePickOfferStyle = (theme: MD3Theme) => {
         gap: 30,
         padding: 10,
       },
-      cancelButton: {
-        backgroundColor: theme.colors.error,
-        borderRadius: 10,
-      },
-      doneButton: {
-        backgroundColor: theme.colors.primary,
-        borderRadius: 10,
-      },
-      cancelText: {
-        color: theme.colors.onError,
-        fontSize: isWide ? 18 : 16,
-      },
       title: {
         color: theme.colors.onBackground,
         fontSize: isWide ? 20 : 18,
         fontWeight: '500',
-      },
-
-      doneText: {
-        color: theme.colors.onPrimary,
-        fontSize: isWide ? 18 : 16,
-      },
-      buttonGroup: {
-        flex: 1,
-        minHeight: 50,
-        width: '100%',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-evenly',
       },
     });
   }, [theme, width]);

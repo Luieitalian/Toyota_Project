@@ -9,6 +9,7 @@ import useIsOfferApplicable from '../hooks/useIsOfferApplicable';
 import {useTranslation} from 'react-i18next';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';
 import {SpecialOffersContext} from '../contexts/SpecialOffersContext/SpecialOffersContext';
+import CancelDoneButtonGroup from './CancelDoneButtonGroup';
 
 const PickOffer = () => {
   const theme = useTheme();
@@ -79,27 +80,9 @@ const PickOffer = () => {
               ))}
             </ScrollView>
           )}
-          <View style={styles.buttonGroup}>
-            <Button
-              onPress={onCancel}
-              mode="elevated"
-              style={styles.cancelButton}
-              labelStyle={styles.cancelText}
-            >
-              {t('cancel')}
-            </Button>
-            <Button
-              onPress={onDone}
-              mode="elevated"
-              style={styles.doneButton}
-              labelStyle={styles.doneText}
-            >
-              {t('done')}
-            </Button>
-          </View>
+          <CancelDoneButtonGroup onCancel={onCancel} onDone={onDone} />
         </Modal>
       </Portal>
-
       <CustomButton onPress={onPress} styles={styles}>
         {t('pick_offer')}
       </CustomButton>
