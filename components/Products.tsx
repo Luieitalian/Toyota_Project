@@ -15,9 +15,11 @@ import {ProductsContext} from '../contexts/ProductsContext/ProductsContext';
 import {useTranslation} from 'react-i18next';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';
 import {FavoritesContext} from '../contexts/FavoritesContext/FavoritesContext';
+import {Categories} from '../globals/categories';
+import useFilteredProducts from '../hooks/useFilteredProducts';
 
 type ProductsProps = {
-  category?: string | undefined;
+  category: string;
   submittedText?: string | undefined;
 };
 
@@ -28,9 +30,9 @@ const Products = ({category, submittedText}: ProductsProps) => {
   const {styles} = useProductsStyle(theme);
 
   const {addToCart} = useContext(ShoppingCartContext);
-  const {products} = useContext(ProductsContext);
   const {favorites, isFavorite, addToFavorites, removeFromFavorites} =
     useContext(FavoritesContext);
+  const {products} = useContext(ProductsContext);
 
   const [pageOffset, setPageOffset] = useState<number>(1);
   const [productsShown, setProductsShown] = useState<ProductModel[]>([]);
@@ -38,36 +40,12 @@ const Products = ({category, submittedText}: ProductsProps) => {
 
   const initialLoadNumber = 16;
 
-  const filterProducts = useMemo(() => {
-    let filteredProducts: ProductModel[] = products;
-
-    if (submittedText !== undefined) {
-      filteredProducts = filteredProducts.filter((prod: ProductModel) =>
-        prod.name
-          .trim()
-          .toLocaleLowerCase('tr')
-          .includes(submittedText.trim().toLocaleLowerCase('tr'))
-      );
-    }
-
-    if (category === 'favorites') {
-      filteredProducts = filteredProducts.filter((prod: ProductModel) => {
-        if (favorites.length <= 0) {
-          return false;
-        } else {
-          return favorites.includes(prod.id);
-        }
-      });
-    } else if (category !== 'show_all') {
-      filteredProducts = filteredProducts.filter(
-        (prod: ProductModel) => prod.category === category
-      );
-    }
-
-    console.log('category: ', category);
-    console.log('submittedText: ', submittedText);
-    return filteredProducts;
-  }, [submittedText, category]);
+  const filteredProducts = useFilteredProducts({
+    submittedText,
+    products,
+    favorites,
+    category,
+  });
 
   const renderItem = ({item}: ListRenderItemInfo<ProductModel>) => (
     <Product
@@ -103,9 +81,9 @@ const Products = ({category, submittedText}: ProductsProps) => {
   }, [category]);
 
   useEffect(() => {
-    setProductsShown(filterProducts.slice(0, pageOffset * initialLoadNumber));
+    setProductsShown(filteredProducts.slice(0, pageOffset * initialLoadNumber));
     setLoading(false);
-  }, [filterProducts, pageOffset]);
+  }, [filteredProducts, pageOffset]);
 
   return (
     <View style={styles.flatlistContainer}>
@@ -116,6 +94,7 @@ const Products = ({category, submittedText}: ProductsProps) => {
         </>
       ) : (
         <FlatList
+          key={styles.numColumns.width} // to force a fresh render on change numcolumns
           columnWrapperStyle={styles.flatlist}
           numColumns={styles.numColumns.width}
           maxToRenderPerBatch={1}
@@ -124,7 +103,7 @@ const Products = ({category, submittedText}: ProductsProps) => {
           removeClippedSubviews={false}
           data={productsShown}
           onEndReached={onEndReached}
-          onEndReachedThreshold={0.2}
+          onEndReachedThreshold={0.4}
           renderItem={renderItem}
           keyExtractor={keyExtractor}
           ListEmptyComponent={ListEmptyComponent}
