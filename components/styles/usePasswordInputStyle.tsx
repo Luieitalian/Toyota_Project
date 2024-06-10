@@ -28,6 +28,9 @@ const usePasswordInputStyle = (theme: MD3Theme) => {
       textInputText: {
         color: theme.colors.background,
       },
+      textInputIcon: {
+        marginTop: 15,
+      },
     });
   }, [theme, isWide]);
 

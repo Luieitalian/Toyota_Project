@@ -29,7 +29,7 @@ const PasswordInput = ({
   const TextInputIcon = useMemo(
     () => (
       <TextInput.Icon
-        style={{marginTop: 15}}
+        style={styles.textInputIcon}
         icon={isPasswordVisible ? 'eye' : 'eye-off'}
         onPress={onIconPress}
       />
