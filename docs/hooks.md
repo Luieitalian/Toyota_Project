@@ -12,3 +12,4 @@ An extensive hooks api
 - [useShoppingCartFunctions](hooks/useShoppingCartFunctions.md)
 - [useSpecialOffers](hooks/useSpecialOffers.md)
 - [useUsers](hooks/useUsers.md)
+- [useFilteredProducts](hooks/useFilteredProducts.md)

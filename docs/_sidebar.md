@@ -19,6 +19,7 @@
     - [useShoppingCartFunctions](hooks/useShoppingCartFunctions.md)
     - [useSpecialOffers](hooks/useSpecialOffers.md)
     - [useUsers](hooks/useUsers.md)
+    - [useFilteredProducts](hooks/useFilteredProducts.md)
   - [Contexts](contexts.md)
     - [FavoritesContext](contexts/FavoritesContext.md)
     - [PaperProviderWrapper](contexts/PaperProviderWrapper.md)
