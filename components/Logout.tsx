@@ -14,13 +14,12 @@ const Logout = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   const onPress = () => {
-    console.log(t('logout'));
     navigation.replace('LoginScreen');
   };
 
   return (
     <CustomButton styles={styles} onPress={onPress}>
-      {t('log_out')}
+      {t('logout')}
     </CustomButton>
   );
 };
