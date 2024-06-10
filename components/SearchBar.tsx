@@ -5,7 +5,7 @@ import useSearchBarStyle from './styles/useSearchBarStyle';
 import {useTranslation} from 'react-i18next';
 
 type SearchBarProps = {
-  text: string;
+  text: string | undefined;
   disabled?: boolean;
   onChangeText: (text: string) => void;
   onSubmitEditing: (nativeEvent: any) => void;
@@ -27,7 +27,7 @@ const SearchBar = ({
       <TextInput
         disabled={disabled}
         style={styles.textInput}
-        value={text}
+        value={text === undefined ? '' : text}
         blurOnSubmit={false}
         onChangeText={onChangeText}
         onSubmitEditing={onSubmitEditing}

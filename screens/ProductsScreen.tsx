@@ -14,8 +14,8 @@ import Footer from '../components/Footer';
 
 const ProductsScreen = ({route, navigation}: any) => {
   const {styles, theme} = useProductsScreenStyle();
-  const [text, setText] = useState<string>('');
-  const [category, setCategory] = useState<string | undefined>('favorites');
+  const [text, setText] = useState<string | undefined>();
+  const [category, setCategory] = useState<string>('favorites');
   const [submittedText, setSubmittedText] = useState<string | undefined>(
     undefined
   );
@@ -23,17 +23,23 @@ const ProductsScreen = ({route, navigation}: any) => {
   const onSubmitEditing = (
     event: NativeSyntheticEvent<TextInputSubmitEditingEventData>
   ) => {
-    setSubmittedText(event.nativeEvent.text);
+    if (event.nativeEvent.text.length === 0) {
+      setSubmittedText(undefined);
+    } else {
+      setSubmittedText(event.nativeEvent.text);
+    }
   };
 
   const onChangeText = (text: string) => {
-    setText(text);
+    if (text.length === 0) {
+      setText(undefined);
+    } else if (text.length >= 1) {
+      setText(text);
+    }
   };
 
   const onChangeCategory = (category: string) => {
-    if (text !== undefined) {
-      setSubmittedText(text);
-    }
+    setSubmittedText(text);
     setCategory(category);
   };
 
