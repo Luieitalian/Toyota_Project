@@ -11,7 +11,6 @@ const useCancelDoneButtonGroupStyle = (theme: MD3Theme) => {
 
     return StyleSheet.create({
       buttonGroup: {
-        flex: 1,
         minHeight: 50,
         width: '100%',
         flexDirection: 'row',

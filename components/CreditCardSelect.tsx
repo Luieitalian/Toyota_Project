@@ -47,8 +47,13 @@ const CreditCardSelect = () => {
     creditCardCVVInputRef.current?.focus();
   };
 
-  const onCancel = () => {};
-  const onDone = () => {};
+  const onCancel = () => {
+    hideModal();
+  };
+  const onDone = () => {
+    console.log('Received your request!');
+    hideModal();
+  };
 
   return (
     <>
@@ -80,9 +85,9 @@ const CreditCardSelect = () => {
                   creditCardCVVInputRef={creditCardCVVInputRef}
                 />
               </View>
-              <CancelDoneButtonGroup onCancel={onCancel} onDone={onDone} />
             </View>
           </KeyboardAvoidingView>
+          <CancelDoneButtonGroup onCancel={onCancel} onDone={onDone} />
         </Modal>
       </Portal>
     </>

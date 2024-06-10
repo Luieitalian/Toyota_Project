@@ -10,7 +10,9 @@ const useCreditCardNumberInputStyle = (theme: MD3Theme) => {
     const isWide = width >= breakPoint;
 
     return StyleSheet.create({
-      cardNumberTextInput: {},
+      cardNumberTextInput: {
+        fontSize: isWide ? 24 : 18,
+      },
       cardNumberTextInputOutline: {
         borderRadius: 10,
         borderColor: theme.colors.onBackground,
@@ -22,7 +24,7 @@ const useCreditCardNumberInputStyle = (theme: MD3Theme) => {
         color: theme.colors.onBackground,
       },
     });
-  }, [theme]);
+  }, [theme, width]);
   return {styles};
 };
 

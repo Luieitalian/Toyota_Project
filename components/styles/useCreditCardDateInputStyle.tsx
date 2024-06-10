@@ -10,7 +10,10 @@ const useCreditCardDateInputStyle = (theme: MD3Theme) => {
     const isWide = width >= breakPoint;
 
     return StyleSheet.create({
-      cardDateTextInput: {},
+      cardDateTextInput: {
+        flex: 1,
+        fontSize: isWide ? 24 : 18,
+      },
       cardDateTextInputOutline: {
         borderRadius: 10,
         borderColor: theme.colors.onBackground,
@@ -22,7 +25,7 @@ const useCreditCardDateInputStyle = (theme: MD3Theme) => {
         color: theme.colors.onBackground,
       },
     });
-  }, [theme]);
+  }, [theme, width]);
   return {styles};
 };
 

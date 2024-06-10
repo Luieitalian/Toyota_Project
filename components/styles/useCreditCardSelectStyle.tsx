@@ -44,7 +44,11 @@ const useCreditCardSelectStyle = ({
         flexDirection: 'column',
         gap: 30,
       },
-      dateCVVGroup: {flexDirection: 'row', justifyContent: 'space-between'},
+      dateCVVGroup: {
+        gap: 20,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+      },
     });
   }, [theme, isCash]);
   return {styles};

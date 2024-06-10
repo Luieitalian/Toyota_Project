@@ -79,5 +79,9 @@
   "past_sales_empty": "Geçmiş satış mevcut değil.",
   "receipts_synchronized": "{{receipts}} sipariş senkronize edildi!",
   "synchronize_unsent_receipts": "Gönderilmeyen Siparişleri Senkronize Et",
-  "wrong_username_or_password": "Yanlış kullanıcı adı veya şifre!"
+  "wrong_username_or_password": "Yanlış kullanıcı adı veya şifre!",
+  "credit_card_number": "Kart Numarası",
+  "credit_card_name": "Kartın Üstündeki İsim",
+  "credit_card_date": "Ay/Yıl",
+  "credit_card_CVV": "CVV"
 }

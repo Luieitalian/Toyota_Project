@@ -10,7 +10,10 @@ const useCreditCardCVVInputStyle = (theme: MD3Theme) => {
     const isWide = width >= breakPoint;
 
     return StyleSheet.create({
-      cardCVVTextInput: {},
+      cardCVVTextInput: {
+        flex: 1,
+        fontSize: isWide ? 24 : 18,
+      },
       cardCVVTextInputOutline: {
         borderRadius: 10,
         borderColor: theme.colors.onBackground,
@@ -22,7 +25,7 @@ const useCreditCardCVVInputStyle = (theme: MD3Theme) => {
         color: theme.colors.onBackground,
       },
     });
-  }, [theme]);
+  }, [theme, width]);
   return {styles};
 };
 
