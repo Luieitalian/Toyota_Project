@@ -53,8 +53,6 @@ const useFilteredProducts = ({
       );
     }
 
-    console.log('filteredproducts: ', filteredProducts.slice(0, 4));
-    //console.log('categoriesAndProducts: ', categoryAndProducts);
     console.log('category: ', category);
     console.log('submittedText: ', submittedText);
 

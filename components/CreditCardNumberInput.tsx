@@ -6,21 +6,19 @@ import {Masks, useMaskedInputProps} from 'react-native-mask-input';
 
 type CreditCardNumberInputProps = {
   focusOnNameInput: () => void;
+  onChangeNumber: (masked: string, unmasked: string) => void;
+  creditCardNumber: string | undefined;
 };
 
 const CreditCardNumberInput = ({
+  creditCardNumber,
+  onChangeNumber,
   focusOnNameInput,
 }: CreditCardNumberInputProps) => {
   const {t} = useTranslation();
   const theme = useTheme();
 
-  const [creditCardNumber, setCreditCardNumber] = useState<string>();
-
   const {styles} = useCreditCardNumberInputStyle(theme);
-
-  const onChangeNumber = (masked: string, unmasked: string) => {
-    setCreditCardNumber(masked);
-  };
 
   const onSubmitCardNumber = () => {
     focusOnNameInput();

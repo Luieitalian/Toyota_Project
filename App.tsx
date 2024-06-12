@@ -30,7 +30,7 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="LoginScreen">
+      <Stack.Navigator initialRouteName="SalesScreen">
         <Stack.Screen
           name="LoginScreen"
           options={{

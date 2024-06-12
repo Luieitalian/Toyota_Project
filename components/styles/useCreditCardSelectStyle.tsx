@@ -49,6 +49,7 @@ const useCreditCardSelectStyle = ({
         flexDirection: 'row',
         justifyContent: 'space-between',
       },
+      logo: {width: 100, resizeMode: 'contain', height: 100},
     });
   }, [theme, isCash]);
   return {styles};

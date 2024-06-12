@@ -1,10 +1,10 @@
-import React, {memo, useContext, useRef, useState} from 'react';
-import {Button, Modal, Portal, useTheme} from 'react-native-paper';
+import React, {memo, useContext, useMemo, useRef, useState} from 'react';
+import {Modal, Portal, useTheme} from 'react-native-paper';
 import useCreditCardSelectStyle from './styles/useCreditCardSelectStyle';
 import CustomButton from './CustomButton';
 import {useTranslation} from 'react-i18next';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';
-import {KeyboardAvoidingView, TextInput, View} from 'react-native';
+import {Image, KeyboardAvoidingView, TextInput, View} from 'react-native';
 import CreditCardNumberInput from './CreditCardNumberInput';
 import CreditCardNameInput from './CreditCardNameInput';
 import CreditCardDateInput from './CreditCardDateInput';
@@ -18,7 +18,12 @@ const CreditCardSelect = () => {
   const creditCardCVVInputRef = useRef<TextInput>(null);
   const creditCardNameInputRef = useRef<TextInput>(null);
   const creditCardDateInputRef = useRef<TextInput>(null);
+
   const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [creditCardNumber, setCreditCardNumber] = useState<
+    string | undefined
+  >();
+  const [creditCardLogo, setCreditCardLogo] = useState<string | undefined>();
 
   const {isCash, setIsCash} = useContext(ShoppingCartContext);
 
@@ -30,6 +35,40 @@ const CreditCardSelect = () => {
   const showModal = () => {
     setModalVisible(true);
   };
+
+  const onModalDismiss = () => {
+    hideModal();
+    resetCardData();
+  };
+
+  const checkAndSetCreditCardLogo = () => {
+    if (creditCardNumber?.startsWith('4')) {
+      setCreditCardLogo('visa');
+    } else if (creditCardNumber?.startsWith('3')) {
+      setCreditCardLogo('american_express');
+    } else if (creditCardNumber?.startsWith('5')) {
+      setCreditCardLogo('mastercard');
+    } else {
+      setCreditCardLogo(undefined);
+    }
+  };
+
+  const onChangeNumber = (masked: string, unmasked: string) => {
+    setCreditCardNumber(masked);
+    checkAndSetCreditCardLogo();
+  };
+
+  const logo = useMemo(() => {
+    if (creditCardLogo === 'mastercard') {
+      return require('../assets/credit_card_logos/mastercard.png');
+    } else if (creditCardLogo === 'visa') {
+      return require('../assets/credit_card_logos/visa.png');
+    } else if (creditCardLogo === 'american_express') {
+      return require('../assets/credit_card_logos/american_express.png');
+    } else {
+      return null;
+    }
+  }, [creditCardLogo]);
 
   const onPress = () => {
     console.log('Credit card Select');
@@ -47,12 +86,18 @@ const CreditCardSelect = () => {
     creditCardCVVInputRef.current?.focus();
   };
 
-  const onCancel = () => {
-    hideModal();
+  const resetCardData = () => {
+    setCreditCardNumber(undefined);
+    setCreditCardLogo(undefined);
   };
+
+  const onCancel = () => {
+    onModalDismiss();
+  };
+
   const onDone = () => {
-    console.log('Received your request!');
-    hideModal();
+    console.log('Received credit card info!');
+    onModalDismiss();
   };
 
   return (
@@ -63,7 +108,7 @@ const CreditCardSelect = () => {
       <Portal>
         <Modal
           visible={modalVisible}
-          onDismiss={hideModal}
+          onDismiss={onModalDismiss}
           contentContainerStyle={styles.modal}
         >
           <KeyboardAvoidingView
@@ -71,7 +116,11 @@ const CreditCardSelect = () => {
             style={styles.contentContainer}
           >
             <View style={styles.flexCol}>
-              <CreditCardNumberInput focusOnNameInput={focusOnNameInput} />
+              <CreditCardNumberInput
+                creditCardNumber={creditCardNumber}
+                onChangeNumber={onChangeNumber}
+                focusOnNameInput={focusOnNameInput}
+              />
               <CreditCardNameInput
                 focusOnDateInput={focusOnDateInput}
                 creditCardNameInputRef={creditCardNameInputRef}
@@ -85,6 +134,7 @@ const CreditCardSelect = () => {
                   creditCardCVVInputRef={creditCardCVVInputRef}
                 />
               </View>
+              {logo && <Image style={styles.logo} source={logo} />}
             </View>
           </KeyboardAvoidingView>
           <CancelDoneButtonGroup onCancel={onCancel} onDone={onDone} />
