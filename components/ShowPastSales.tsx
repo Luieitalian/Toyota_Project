@@ -2,10 +2,11 @@ import React, {useContext, useState} from 'react';
 import {FlatList, ListRenderItemInfo, Text, View} from 'react-native';
 import CustomButton from './CustomButton';
 import {useTranslation} from 'react-i18next';
-import {Modal, Portal, useTheme} from 'react-native-paper';
+import {useTheme} from 'react-native-paper';
 import useShowPastSalesStyle from './styles/useShowPastSalesStyle';
 import {PastSalesContext} from '../contexts/PastSalesContext/PastSalesContext';
 import Receipt from './Receipt';
+import CustomModal from './CustomModal';
 
 const ShowPastSales = () => {
   const {t} = useTranslation();
@@ -48,21 +49,19 @@ const ShowPastSales = () => {
       <CustomButton styles={styles} onPress={onPress}>
         {t('show_past_sales')}
       </CustomButton>
-      <Portal>
-        <Modal
-          visible={modalVisible}
-          onDismiss={hideModal}
-          contentContainerStyle={styles.modal}
-        >
-          <FlatList
-            numColumns={1}
-            ListEmptyComponent={ListEmptyComponent}
-            keyExtractor={keyExtractor}
-            renderItem={renderItem}
-            data={pastSalesReceipts}
-          />
-        </Modal>
-      </Portal>
+      <CustomModal
+        modalVisible={modalVisible}
+        onDismissModal={hideModal}
+        overridingStyles={styles}
+      >
+        <FlatList
+          numColumns={1}
+          ListEmptyComponent={ListEmptyComponent}
+          keyExtractor={keyExtractor}
+          renderItem={renderItem}
+          data={pastSalesReceipts}
+        />
+      </CustomModal>
     </>
   );
 };

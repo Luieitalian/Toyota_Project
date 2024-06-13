@@ -14,6 +14,7 @@ import {PastSalesContext} from '../contexts/PastSalesContext/PastSalesContext';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';
 
 import receipt from '../receipt/index';
+import CustomModal from './CustomModal';
 
 receipt.config.currency = '₺';
 receipt.config.ruler = '-';
@@ -122,22 +123,20 @@ const Pay = () => {
       <CustomButton styles={styles} onPress={onPress}>
         {t('pay')}
       </CustomButton>
-      <Portal>
-        <Modal
-          visible={modalVisible}
-          onDismiss={hideModal}
-          contentContainerStyle={styles.modal}
+      <CustomModal
+        modalVisible={modalVisible}
+        onDismissModal={hideModal}
+        overridingModalStyles={styles}
+      >
+        <ScrollView
+          contentContainerStyle={{
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
         >
-          <ScrollView
-            contentContainerStyle={{
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <Receipt receipt_str={receipt_str} />
-          </ScrollView>
-        </Modal>
-      </Portal>
+          <Receipt receipt_str={receipt_str} />
+        </ScrollView>
+      </CustomModal>
     </>
   );
 };

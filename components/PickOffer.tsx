@@ -1,6 +1,6 @@
 import React, {memo, useContext, useEffect, useState} from 'react';
-import {ScrollView, Text, View} from 'react-native';
-import {Button, Modal, Portal, useTheme} from 'react-native-paper';
+import {ScrollView, Text} from 'react-native';
+import {useTheme} from 'react-native-paper';
 import usePickOfferStyle from './styles/usePickOfferStyle';
 import CustomButton from './CustomButton';
 import {SpecialOfferModel} from '../models/SpecialOfferModel';
@@ -10,6 +10,7 @@ import {useTranslation} from 'react-i18next';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';
 import {SpecialOffersContext} from '../contexts/SpecialOffersContext/SpecialOffersContext';
 import CancelDoneButtonGroup from './CancelDoneButtonGroup';
+import CustomModal from './CustomModal';
 
 const PickOffer = () => {
   const theme = useTheme();
@@ -58,31 +59,30 @@ const PickOffer = () => {
 
   return (
     <>
-      <Portal>
-        <Modal
-          visible={modalVisible}
-          onDismiss={hideModal}
-          contentContainerStyle={styles.modal}
-        >
-          <Text style={styles.title}>{t('special_offers')}</Text>
-          {offersLoading ? (
-            <Text>{t('special_offers_loading')}</Text>
-          ) : (
-            <ScrollView contentContainerStyle={styles.offersContainer}>
-              {specialOffers?.map((offer: SpecialOfferModel) => (
-                <SpecialOfferItem
-                  selected={selectedOfferID === offer.id && true}
-                  applicable={isApplicable(offer)}
-                  onSelect={onSelect}
-                  offer={offer}
-                  key={offer.id}
-                />
-              ))}
-            </ScrollView>
-          )}
-          <CancelDoneButtonGroup onCancel={onCancel} onDone={onDone} />
-        </Modal>
-      </Portal>
+      <CustomModal
+        modalVisible={modalVisible}
+        onDismissModal={hideModal}
+        overridingModalStyles={styles}
+      >
+        <Text style={styles.title}>{t('special_offers')}</Text>
+        {offersLoading ? (
+          <Text>{t('special_offers_loading')}</Text>
+        ) : (
+          <ScrollView contentContainerStyle={styles.offersContainer}>
+            {specialOffers?.map((offer: SpecialOfferModel) => (
+              <SpecialOfferItem
+                selected={selectedOfferID === offer.id && true}
+                applicable={isApplicable(offer)}
+                onSelect={onSelect}
+                offer={offer}
+                key={offer.id}
+              />
+            ))}
+          </ScrollView>
+        )}
+        <CancelDoneButtonGroup onCancel={onCancel} onDone={onDone} />
+      </CustomModal>
+
       <CustomButton onPress={onPress} styles={styles}>
         {t('pick_offer')}
       </CustomButton>

@@ -22,18 +22,10 @@ const useCreditCardSelectStyle = ({
         backgroundColor: isCash ? theme.colors.secondary : theme.colors.primary,
       },
       text: {},
-      modal: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        gap: 20,
-        elevation: 5,
+      modalContainer: {
         marginHorizontal: isWide ? 300 : 30,
         marginVertical: isWide ? 100 : 100,
         padding: isWide ? 60 : 40,
-        backgroundColor: theme.colors.background,
-        borderRadius: 10,
       },
       contentContainer: {
         flex: 1,

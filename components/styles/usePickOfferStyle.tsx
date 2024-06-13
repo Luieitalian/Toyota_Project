@@ -11,18 +11,9 @@ const usePickOfferStyle = (theme: MD3Theme) => {
     return StyleSheet.create({
       container: {},
       text: {},
-      modal: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        gap: 20,
-        elevation: 5,
+      modalContainer: {
         marginHorizontal: isWide ? 300 : 30,
         marginVertical: isWide ? 30 : 40,
-        padding: 20,
-        backgroundColor: theme.colors.background,
-        borderRadius: 10,
       },
       offersContainer: {
         width: '100%',

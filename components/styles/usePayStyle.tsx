@@ -19,15 +19,10 @@ const usePayStyle = (theme: MD3Theme) => {
         fontSize: isWide ? 18 : 16,
         color: theme.colors.background,
       },
-      modal: {
-        flex: 1,
-        flexDirection: 'column',
-        gap: 20,
-        elevation: 5,
+      modalContainer: {
         marginHorizontal: isWide ? 350 : 30,
         marginVertical: isWide ? 30 : 30,
         backgroundColor: 'white',
-        borderRadius: 10,
       },
     });
   }, [theme, isWide]);

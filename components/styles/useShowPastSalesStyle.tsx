@@ -16,18 +16,9 @@ const useShowPastSalesStyle = (theme: MD3Theme) => {
       text: {
         fontSize: isWide ? 20 : 16,
       },
-      modal: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        gap: 20,
-        elevation: 5,
+      modalContainer: {
         marginHorizontal: isWide ? 100 : 25,
         marginVertical: isWide ? 100 : 100,
-        padding: 20,
-        backgroundColor: 'white',
-        borderRadius: 10,
       },
       receiptWrapper: {
         borderWidth: 1,

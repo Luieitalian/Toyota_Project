@@ -11,18 +11,9 @@ const useLookUpPriceStyle = (theme: MD3Theme) => {
     return StyleSheet.create({
       container: {},
       text: {},
-      modal: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        gap: 20,
-        elevation: 5,
+      modalContainer: {
         marginHorizontal: isWide ? 400 : 80,
         marginVertical: isWide ? 200 : 200,
-        padding: 20,
-        backgroundColor: theme.colors.background,
-        borderRadius: 10,
       },
       textInput: {
         width: '100%',

@@ -12,18 +12,10 @@ const useReceiptMailStyle = (theme: MD3Theme) => {
     return StyleSheet.create({
       container: {},
       text: {},
-      modal: {
-        flex: 1,
-        flexDirection: 'column',
+      modalContainer: {
         justifyContent: 'center',
-        alignItems: 'center',
-        gap: 20,
-        elevation: 5,
         marginHorizontal: isWide ? 400 : 80,
         marginVertical: isWide ? 300 : 300,
-        padding: 20,
-        backgroundColor: theme.colors.background,
-        borderRadius: 10,
       },
       textInput: {
         width: '100%',

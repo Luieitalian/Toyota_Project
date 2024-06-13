@@ -1,5 +1,5 @@
 import React, {memo, useContext, useMemo, useRef, useState} from 'react';
-import {Modal, Portal, useTheme} from 'react-native-paper';
+import {useTheme} from 'react-native-paper';
 import useCreditCardSelectStyle from './styles/useCreditCardSelectStyle';
 import CustomButton from './CustomButton';
 import {useTranslation} from 'react-i18next';
@@ -10,6 +10,7 @@ import CreditCardNameInput from './CreditCardNameInput';
 import CreditCardDateInput from './CreditCardDateInput';
 import CreditCardCVVInput from './CreditCardCVVInput';
 import CancelDoneButtonGroup from './CancelDoneButtonGroup';
+import CustomModal from './CustomModal';
 
 const CreditCardSelect = () => {
   const theme = useTheme();
@@ -38,7 +39,7 @@ const CreditCardSelect = () => {
 
   const onModalDismiss = () => {
     hideModal();
-    resetCardData();
+    resetCardInput();
   };
 
   const checkAndSetCreditCardLogo = () => {
@@ -86,7 +87,7 @@ const CreditCardSelect = () => {
     creditCardCVVInputRef.current?.focus();
   };
 
-  const resetCardData = () => {
+  const resetCardInput = () => {
     setCreditCardNumber(undefined);
     setCreditCardLogo(undefined);
   };
@@ -105,41 +106,39 @@ const CreditCardSelect = () => {
       <CustomButton styles={styles} onPress={onPress}>
         {t('credit_card_select')}
       </CustomButton>
-      <Portal>
-        <Modal
-          visible={modalVisible}
-          onDismiss={onModalDismiss}
-          contentContainerStyle={styles.modal}
+      <CustomModal
+        modalVisible={modalVisible}
+        onDismissModal={onModalDismiss}
+        overridingModalStyles={styles}
+      >
+        <KeyboardAvoidingView
+          behavior="padding"
+          style={styles.contentContainer}
         >
-          <KeyboardAvoidingView
-            behavior="padding"
-            style={styles.contentContainer}
-          >
-            <View style={styles.flexCol}>
-              <CreditCardNumberInput
-                creditCardNumber={creditCardNumber}
-                onChangeNumber={onChangeNumber}
-                focusOnNameInput={focusOnNameInput}
+          <View style={styles.flexCol}>
+            <CreditCardNumberInput
+              creditCardNumber={creditCardNumber}
+              onChangeNumber={onChangeNumber}
+              focusOnNameInput={focusOnNameInput}
+            />
+            <CreditCardNameInput
+              focusOnDateInput={focusOnDateInput}
+              creditCardNameInputRef={creditCardNameInputRef}
+            />
+            <View style={styles.dateCVVGroup}>
+              <CreditCardDateInput
+                focusOnCVVInput={focusOnCVVInput}
+                creditCardDateInputRef={creditCardDateInputRef}
               />
-              <CreditCardNameInput
-                focusOnDateInput={focusOnDateInput}
-                creditCardNameInputRef={creditCardNameInputRef}
+              <CreditCardCVVInput
+                creditCardCVVInputRef={creditCardCVVInputRef}
               />
-              <View style={styles.dateCVVGroup}>
-                <CreditCardDateInput
-                  focusOnCVVInput={focusOnCVVInput}
-                  creditCardDateInputRef={creditCardDateInputRef}
-                />
-                <CreditCardCVVInput
-                  creditCardCVVInputRef={creditCardCVVInputRef}
-                />
-              </View>
-              {logo && <Image style={styles.logo} source={logo} />}
             </View>
-          </KeyboardAvoidingView>
-          <CancelDoneButtonGroup onCancel={onCancel} onDone={onDone} />
-        </Modal>
-      </Portal>
+            {logo && <Image style={styles.logo} source={logo} />}
+          </View>
+        </KeyboardAvoidingView>
+        <CancelDoneButtonGroup onCancel={onCancel} onDone={onDone} />
+      </CustomModal>
     </>
   );
 };
