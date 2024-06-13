@@ -9,11 +9,11 @@ const useShowPastSalesStyle = (theme: MD3Theme) => {
   const styles = React.useMemo(() => {
     const isWide = width >= breakPoint;
     return StyleSheet.create({
-      container: {
+      buttonContainer: {
         flex: 0,
         minHeight: 100,
       },
-      text: {
+      buttonText: {
         fontSize: isWide ? 20 : 16,
       },
       modalContainer: {

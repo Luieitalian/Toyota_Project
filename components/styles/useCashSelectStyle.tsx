@@ -8,14 +8,15 @@ type useCashSelectStyleArgs = {
 };
 
 const useCashSelectStyle = ({theme, isCash}: useCashSelectStyleArgs) => {
+  const width = useWindowDimensions();
   const styles = React.useMemo(() => {
     return StyleSheet.create({
-      container: {
+      buttonContainer: {
         backgroundColor: isCash ? theme.colors.primary : theme.colors.secondary,
       },
-      text: {},
+      buttonText: {},
     });
-  }, [isCash, theme]);
+  }, [isCash, theme, width]);
 
   return {styles};
 };

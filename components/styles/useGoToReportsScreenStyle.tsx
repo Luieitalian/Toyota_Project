@@ -10,11 +10,11 @@ const useGoToReportsScreenStyle = (theme: MD3Theme) => {
     const isWide = width >= breakPoint;
 
     return StyleSheet.create({
-      container: {
+      buttonContainer: {
         flex: 0,
         minHeight: 100,
       },
-      text: {
+      buttonText: {
         fontSize: isWide ? 20 : 16,
       },
     });

@@ -18,7 +18,7 @@ const ScanBarcode = () => {
   };
 
   return (
-    <CustomButton onPress={onPress} styles={styles}>
+    <CustomButton onPress={onPress} overridingButtonStyles={styles}>
       {t('scan_barcode')}
     </CustomButton>
   );

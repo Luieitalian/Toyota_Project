@@ -1,16 +1,17 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, useWindowDimensions} from 'react-native';
 import {MD3Theme} from 'react-native-paper';
 
 const useAddProductWithIDStyle = (theme: MD3Theme) => {
+  const {width} = useWindowDimensions();
   const styles = React.useMemo(() => {
     return StyleSheet.create({
-      container: {
+      buttonContainer: {
         paddingHorizontal: 5,
       },
-      text: {},
+      buttonText: {},
     });
-  }, [theme]);
+  }, [theme, width]);
 
   return {styles};
 };

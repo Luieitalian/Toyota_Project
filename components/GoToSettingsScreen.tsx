@@ -19,7 +19,7 @@ const GoToSettingsScreen = () => {
   };
 
   return (
-    <CustomButton styles={styles} onPress={onPress}>
+    <CustomButton overridingButtonStyles={styles} onPress={onPress}>
       {t('go_to_settings_screen')}
     </CustomButton>
   );

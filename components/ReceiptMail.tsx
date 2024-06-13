@@ -118,7 +118,7 @@ const ReceiptMail = () => {
         </Snackbar>
       </Portal>
 
-      <CustomButton styles={styles} onPress={onPress}>
+      <CustomButton overridingButtonStyles={styles} onPress={onPress}>
         {t('receipt_mail')}
       </CustomButton>
     </>

@@ -9,8 +9,8 @@ const usePickOfferStyle = (theme: MD3Theme) => {
     const isWide = width >= breakPoint;
 
     return StyleSheet.create({
-      container: {},
-      text: {},
+      buttonContainer: {},
+      buttonText: {},
       modalContainer: {
         marginHorizontal: isWide ? 300 : 30,
         marginVertical: isWide ? 30 : 40,

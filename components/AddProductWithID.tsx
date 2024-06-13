@@ -40,7 +40,7 @@ const AddProductWithID = () => {
         setIDText={setIDText}
         text={IDText}
       />
-      <CustomButton styles={styles} onPress={onSubmitEditing}>
+      <CustomButton overridingButtonStyles={styles} onPress={onSubmitEditing}>
         {t('add_product_with_id')}
       </CustomButton>
     </>

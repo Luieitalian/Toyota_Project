@@ -19,7 +19,7 @@ const PickItems = () => {
   };
 
   return (
-    <CustomButton onPress={onPress} styles={styles}>
+    <CustomButton onPress={onPress} overridingButtonStyles={styles}>
       {t('pick_items')}
     </CustomButton>
   );

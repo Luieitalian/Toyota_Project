@@ -89,7 +89,7 @@ const LookUpPrice = () => {
           </View>
         )}
       </CustomModal>
-      <CustomButton styles={styles} onPress={showModal}>
+      <CustomButton overridingButtonStyles={styles} onPress={showModal}>
         {t('look_up_price')}
       </CustomButton>
     </>

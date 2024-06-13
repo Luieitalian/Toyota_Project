@@ -9,8 +9,8 @@ const useLookUpPriceStyle = (theme: MD3Theme) => {
   const styles = React.useMemo(() => {
     const isWide = width >= breakPoint;
     return StyleSheet.create({
-      container: {},
-      text: {},
+      buttonContainer: {},
+      buttonText: {},
       modalContainer: {
         marginHorizontal: isWide ? 400 : 80,
         marginVertical: isWide ? 200 : 200,

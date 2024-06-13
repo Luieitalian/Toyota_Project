@@ -5,14 +5,14 @@ import {breakPoint} from '../../globals/style';
 
 const usePayStyle = (theme: MD3Theme) => {
   const {width} = useWindowDimensions();
-  const isWide = width >= breakPoint;
 
   const styles = React.useMemo(() => {
+    const isWide = width >= breakPoint;
     return StyleSheet.create({
-      container: {
+      buttonContainer: {
         backgroundColor: theme.colors.primary,
       },
-      text: {
+      buttonText: {
         fontSize: 20,
       },
       receiptText: {
@@ -25,7 +25,7 @@ const usePayStyle = (theme: MD3Theme) => {
         backgroundColor: 'white',
       },
     });
-  }, [theme, isWide]);
+  }, [theme, width]);
 
   return {styles};
 };

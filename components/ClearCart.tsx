@@ -18,7 +18,7 @@ const ClearCart = () => {
   };
 
   return (
-    <CustomButton styles={styles} onPress={onPress}>
+    <CustomButton overridingButtonStyles={styles} onPress={onPress}>
       {t('clear_cart')}
     </CustomButton>
   );

@@ -46,13 +46,13 @@ const ShowPastSales = () => {
 
   return (
     <>
-      <CustomButton styles={styles} onPress={onPress}>
+      <CustomButton overridingButtonStyles={styles} onPress={onPress}>
         {t('show_past_sales')}
       </CustomButton>
       <CustomModal
         modalVisible={modalVisible}
         onDismissModal={hideModal}
-        overridingStyles={styles}
+        overridingModalStyles={styles}
       >
         <FlatList
           numColumns={1}

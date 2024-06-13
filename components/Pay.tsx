@@ -120,7 +120,7 @@ const Pay = () => {
 
   return (
     <>
-      <CustomButton styles={styles} onPress={onPress}>
+      <CustomButton overridingButtonStyles={styles} onPress={onPress}>
         {t('pay')}
       </CustomButton>
       <CustomModal

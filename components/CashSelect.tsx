@@ -18,7 +18,7 @@ const CashSelect = () => {
   };
 
   return (
-    <CustomButton onPress={onPress} styles={styles}>
+    <CustomButton onPress={onPress} overridingButtonStyles={styles}>
       {t('cash_select')}
     </CustomButton>
   );

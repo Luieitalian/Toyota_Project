@@ -18,10 +18,10 @@ const useCreditCardSelectStyle = ({
     const isWide = width >= breakPoint;
 
     return StyleSheet.create({
-      container: {
+      buttonContainer: {
         backgroundColor: isCash ? theme.colors.secondary : theme.colors.primary,
       },
-      text: {},
+      buttonText: {},
       modalContainer: {
         marginHorizontal: isWide ? 300 : 30,
         marginVertical: isWide ? 100 : 100,
@@ -43,7 +43,7 @@ const useCreditCardSelectStyle = ({
       },
       logo: {width: 100, resizeMode: 'contain', height: 100},
     });
-  }, [theme, isCash]);
+  }, [theme, width, isCash]);
   return {styles};
 };
 

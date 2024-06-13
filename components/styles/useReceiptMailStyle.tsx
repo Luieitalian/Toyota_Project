@@ -10,8 +10,8 @@ const useReceiptMailStyle = (theme: MD3Theme) => {
     const isWide = width >= breakPoint;
 
     return StyleSheet.create({
-      container: {},
-      text: {},
+      buttonContainer: {},
+      buttonText: {},
       modalContainer: {
         justifyContent: 'center',
         marginHorizontal: isWide ? 400 : 80,

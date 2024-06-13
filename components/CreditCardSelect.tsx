@@ -103,7 +103,7 @@ const CreditCardSelect = () => {
 
   return (
     <>
-      <CustomButton styles={styles} onPress={onPress}>
+      <CustomButton overridingButtonStyles={styles} onPress={onPress}>
         {t('credit_card_select')}
       </CustomButton>
       <CustomModal

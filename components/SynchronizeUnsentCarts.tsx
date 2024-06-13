@@ -47,7 +47,7 @@ const SynchronizeUnsentCarts = () => {
 
   return (
     <View>
-      <CustomButton styles={styles} onPress={onPressDialog}>
+      <CustomButton overridingButtonStyles={styles} onPress={onPressDialog}>
         {t('synchronize_unsent_receipts')}
       </CustomButton>
       {unsentCartReceipts.length > 0 ? (

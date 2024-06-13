@@ -10,7 +10,7 @@ const useCustomButtonStyle = (theme: MD3Theme) => {
     const isWide = width >= breakPoint;
 
     return StyleSheet.create({
-      container: {
+      buttonContainer: {
         flex: 1,
         elevation: 4,
         justifyContent: 'center',
@@ -19,7 +19,7 @@ const useCustomButtonStyle = (theme: MD3Theme) => {
         margin: 10,
         paddingHorizontal: 2,
       },
-      text: {
+      buttonText: {
         fontSize: isWide ? 20 : 10,
         textAlign: 'center',
         color: theme.colors.onSecondary,

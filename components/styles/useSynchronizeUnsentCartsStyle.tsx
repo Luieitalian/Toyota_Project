@@ -12,11 +12,11 @@ const useSynchronizeUnsentCartsStyle = (theme: MD3Theme) => {
       wrapper: {
         flex: 1,
       },
-      container: {
+      buttonContainer: {
         minHeight: 100,
         paddingHorizontal: 5,
       },
-      text: {
+      buttonText: {
         fontSize: isWide ? 20 : 16,
       },
       badgeView: {

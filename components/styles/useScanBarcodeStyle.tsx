@@ -1,14 +1,15 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, useWindowDimensions} from 'react-native';
 import {MD3Theme} from 'react-native-paper';
 
 const useScanBarcodeStyle = (theme: MD3Theme) => {
+  const {width} = useWindowDimensions();
   const styles = React.useMemo(() => {
     return StyleSheet.create({
-      container: {},
-      text: {},
+      buttonContainer: {},
+      buttonText: {},
     });
-  }, [theme]);
+  }, [theme, width]);
 
   return {styles};
 };
