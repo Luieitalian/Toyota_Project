@@ -7,62 +7,25 @@ import useShowPastSalesStyle from './styles/useShowPastSalesStyle';
 import {PastSalesContext} from '../contexts/PastSalesContext/PastSalesContext';
 import Receipt from './Receipt';
 import CustomModal from './CustomModal';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 const ShowPastSales = () => {
   const {t} = useTranslation();
   const theme = useTheme();
 
-  const [modalVisible, setModalVisible] = useState<boolean>(false);
-  const {pastSalesReceipts} = useContext(PastSalesContext);
-
   const {styles} = useShowPastSalesStyle(theme);
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   const onPress = () => {
     console.log('Show past sales');
-    showModal();
+    navigation.navigate('PastSalesScreen');
   };
-
-  const showModal = () => {
-    setModalVisible(true);
-  };
-
-  const hideModal = () => {
-    setModalVisible(false);
-  };
-
-  const renderItem = (receipt_str: ListRenderItemInfo<string>) => (
-    <View style={styles.receiptWrapper}>
-      <Receipt receipt_str={receipt_str.item} />
-    </View>
-  );
-
-  const keyExtractor = (receipt_str: string, idx: number) => {
-    return idx.toString();
-  };
-
-  const ListEmptyComponent = () => (
-    <Text style={styles.emptySalesText}>{t('past_sales_empty')}</Text>
-  );
 
   return (
-    <>
-      <CustomButton overridingButtonStyles={styles} onPress={onPress}>
-        {t('show_past_sales')}
-      </CustomButton>
-      <CustomModal
-        modalVisible={modalVisible}
-        onDismissModal={hideModal}
-        overridingModalStyles={styles}
-      >
-        <FlatList
-          numColumns={1}
-          ListEmptyComponent={ListEmptyComponent}
-          keyExtractor={keyExtractor}
-          renderItem={renderItem}
-          data={pastSalesReceipts}
-        />
-      </CustomModal>
-    </>
+    <CustomButton overridingButtonStyles={styles} onPress={onPress}>
+      {t('show_past_sales')}
+    </CustomButton>
   );
 };
 
