@@ -1,10 +1,12 @@
 import NfcManager, {NfcTech} from 'react-native-nfc-manager';
 
-NfcManager.start();
-
 const useNFC = () => {
   async function readNdef() {
     try {
+      if (!(await NfcManager.isSupported())) {
+        return;
+      }
+      NfcManager.start();
       // register for the NFC tag with NDEF in it
       await NfcManager.requestTechnology(NfcTech.Ndef);
       // the resolved tag object will contain `ndefMessage` property
