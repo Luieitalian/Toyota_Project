@@ -27,15 +27,6 @@ const useProductsScreenStyle = () => {
       productsContainer: {
         flex: 1,
       },
-      headerTitleStyle: {
-        color: theme.colors.onBackground,
-      },
-      headerStyle: {
-        backgroundColor: theme.colors.background,
-      },
-      headerTint: {
-        color: theme.colors.onBackground,
-      },
     });
   }, [theme, width]);
   return {styles, theme};

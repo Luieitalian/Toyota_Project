@@ -25,15 +25,6 @@ const useSalesScreenStyle = () => {
         justifyContent: 'center',
         alignItems: 'center',
       },
-      headerStyle: {
-        backgroundColor: theme.colors.background,
-      },
-      headerTitleStyle: {
-        color: theme.colors.onBackground,
-      },
-      headerTint: {
-        color: theme.colors.onBackground,
-      },
     });
   }, [theme, width]);
 

@@ -3,28 +3,25 @@ import {StyleSheet, useWindowDimensions} from 'react-native';
 import {useTheme} from 'react-native-paper';
 import {breakPoint} from '../../globals/style';
 
-const useHomeScreenStyle = () => {
+const useScreenHeaderStyle = () => {
   const theme = useTheme();
   const {width} = useWindowDimensions();
 
-  const styles = React.useMemo(() => {
+  const headerStyles = React.useMemo(() => {
     const isWide = width >= breakPoint;
     return StyleSheet.create({
-      screenView: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center',
+      headerTitleStyle: {
+        color: theme.colors.onBackground,
+      },
+      headerStyle: {
         backgroundColor: theme.colors.background,
       },
-      group: {
-        flex: 1,
-        paddingHorizontal: isWide ? 60 : 20,
-        flexDirection: 'column',
-        justifyContent: 'space-evenly',
+      headerTint: {
+        color: theme.colors.onBackground,
       },
     });
   }, [theme, width]);
-  return {styles, theme};
+  return {headerStyles, theme};
 };
 
-export default useHomeScreenStyle;
+export default useScreenHeaderStyle;
