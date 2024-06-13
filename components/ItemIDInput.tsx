@@ -10,12 +10,7 @@ type ItemIDInputProps = {
   disabled?: boolean;
 };
 
-const ItemIDInput = ({
-  text,
-  setIDText,
-  disabled,
-  onSubmitEditing,
-}: ItemIDInputProps) => {
+const ItemIDInput = ({text, setIDText, onSubmitEditing}: ItemIDInputProps) => {
   const theme = useTheme();
   const {t} = useTranslation();
 
@@ -37,7 +32,6 @@ const ItemIDInput = ({
     <TextInput
       onFocus={onFocus}
       onBlur={onBlur}
-      editable={!disabled}
       cursorColor={styles.textInput.color}
       underlineColor={styles.outline.color}
       activeUnderlineColor={styles.outline.color}

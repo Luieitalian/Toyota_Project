@@ -36,16 +36,11 @@ const AddProductWithID = () => {
   return (
     <>
       <ItemIDInput
-        disabled={loadingProducts}
         onSubmitEditing={onSubmitEditing}
         setIDText={setIDText}
         text={IDText}
       />
-      <CustomButton
-        disabled={loadingProducts}
-        styles={styles}
-        onPress={onSubmitEditing}
-      >
+      <CustomButton styles={styles} onPress={onSubmitEditing}>
         {t('add_product_with_id')}
       </CustomButton>
     </>
