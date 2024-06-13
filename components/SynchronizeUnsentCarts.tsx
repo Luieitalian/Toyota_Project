@@ -66,7 +66,7 @@ const SynchronizeUnsentCarts = () => {
           </Dialog.Content>
           <Dialog.Actions>
             <Button onPress={onDismissDialog}>
-              <Text style={styles.dialogText}>OK</Text>
+              <Text style={styles.dialogText}>{t('done')}</Text>
             </Button>
           </Dialog.Actions>
         </Dialog>
