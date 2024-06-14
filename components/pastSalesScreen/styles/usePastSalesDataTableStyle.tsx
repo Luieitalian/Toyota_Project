@@ -11,6 +11,7 @@ const usePastSalesDataTableStyle = (theme: MD3Theme) => {
 
     return StyleSheet.create({
       dataTable: {
+        flex: 1,
         borderColor: theme.colors.outlineVariant,
         borderWidth: 1,
       },
