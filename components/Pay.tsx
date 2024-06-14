@@ -13,7 +13,7 @@ import useCartPricing from '@/hooks/useCartPricing';
 import {PastSalesContext} from '@/contexts/PastSalesContext/PastSalesContext';
 import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
 
-import receipt from '@/receipt/index';
+const receipt = require('receipt');
 import CustomModal from './common/CustomModal';
 import {SaleModel} from '@/models/SaleModel';
 
