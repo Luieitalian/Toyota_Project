@@ -11,6 +11,7 @@ import useReceiptMailStyle from './styles/useReceiptMailStyle';
 import CustomButton from '../common/CustomButton';
 import {useTranslation} from 'react-i18next';
 import CustomModal from '../common/CustomModal';
+import CancelDoneButtonGroup from '../common/CancelDoneButtonGroup';
 
 const ReceiptMail = () => {
   const {t} = useTranslation();
@@ -82,24 +83,7 @@ const ReceiptMail = () => {
           onChangeText={onChangeText}
           onSubmitEditing={onSubmitEditing}
         />
-        <View style={styles.buttonGroup}>
-          <Button
-            onPress={onCancel}
-            mode="elevated"
-            style={styles.cancelButton}
-            labelStyle={styles.cancelText}
-          >
-            {t('cancel')}
-          </Button>
-          <Button
-            onPress={onDone}
-            mode="elevated"
-            style={styles.doneButton}
-            labelStyle={styles.doneText}
-          >
-            {t('done')}
-          </Button>
-        </View>
+        <CancelDoneButtonGroup onCancel={onCancel} onDone={onDone} />
       </CustomModal>
       <Portal>
         <Snackbar
