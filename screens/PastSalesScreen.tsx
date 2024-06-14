@@ -5,7 +5,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import Footer from '@/components/common/Footer';
 import usePastSalesScreenStyle from './styles/usePastSalesScreenStyle';
 import {PastSalesContext} from '@/contexts/PastSalesContext/PastSalesContext';
-import PastSalesDataTable from '@/components/PastSalesDataTable';
+import PastSalesDataTable from '@/components/pastSalesScreen/PastSalesDataTable';
 
 const PastSalesScreen = ({route, navigation}: any) => {
   const {t} = useTranslation();

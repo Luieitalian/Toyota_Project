@@ -7,9 +7,9 @@ import {
 import React, {useState} from 'react';
 import useProductsScreenStyle from './styles/useProductsScreenStyle';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import SearchBar from '@/components/SearchBar';
-import FilteringBar from '@/components/FilteringBar';
-import Products from '@/components/Products';
+import SearchBar from '@/components/common/SearchBar';
+import FilteringBar from '@/components/productsScreen/FilteringBar';
+import Products from '@/components/productsScreen/Products';
 import Footer from '@/components/common/Footer';
 
 const ProductsScreen = ({route, navigation}: any) => {

@@ -1,10 +1,10 @@
 import React, {memo, useContext, useMemo, useRef, useState} from 'react';
 import usePayStyle from './styles/usePayStyle';
-import CustomButton from './common/CustomButton';
+import CustomButton from '../common/CustomButton';
 import {useTranslation} from 'react-i18next';
 import {Modal, Portal, useTheme} from 'react-native-paper';
 import {ScrollView} from 'react-native';
-import Receipt from './Receipt';
+import Receipt from '../common/Receipt';
 import {UnsentCartsContext} from '@/contexts/UnsentCartsContext/UnsentCartsContext';
 import {StatusContext} from '@/contexts/StatusContext/StatusContext';
 import currency from 'currency.js';
@@ -14,7 +14,7 @@ import {PastSalesContext} from '@/contexts/PastSalesContext/PastSalesContext';
 import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
 
 const receipt = require('receipt');
-import CustomModal from './common/CustomModal';
+import CustomModal from '../common/CustomModal';
 import {SaleModel} from '@/models/SaleModel';
 
 receipt.config.currency = '₺';

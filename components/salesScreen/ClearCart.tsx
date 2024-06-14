@@ -1,9 +1,9 @@
 import React, {memo, useContext} from 'react';
 import {useTheme} from 'react-native-paper';
-import CustomButton from './common/CustomButton';
 import useClearCartStyle from './styles/useClearCartStyle';
 import {useTranslation} from 'react-i18next';
 import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
+import CustomButton from '@/components/common/CustomButton';
 
 const ClearCart = () => {
   const {t} = useTranslation();

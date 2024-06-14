@@ -2,15 +2,15 @@ import React, {memo, useContext, useEffect, useState} from 'react';
 import {ScrollView, Text} from 'react-native';
 import {useTheme} from 'react-native-paper';
 import usePickOfferStyle from './styles/usePickOfferStyle';
-import CustomButton from './common/CustomButton';
+import CustomButton from '../common/CustomButton';
 import {SpecialOfferModel} from '@/models/SpecialOfferModel';
 import SpecialOfferItem from './SpecialOfferItem';
 import useIsOfferApplicable from '@/hooks/useIsOfferApplicable';
 import {useTranslation} from 'react-i18next';
 import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
 import {SpecialOffersContext} from '@/contexts/SpecialOffersContext/SpecialOffersContext';
-import CancelDoneButtonGroup from './CancelDoneButtonGroup';
-import CustomModal from './common/CustomModal';
+import CancelDoneButtonGroup from '../common/CancelDoneButtonGroup';
+import CustomModal from '../common/CustomModal';
 
 const PickOffer = () => {
   const theme = useTheme();

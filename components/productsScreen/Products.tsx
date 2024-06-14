@@ -10,7 +10,7 @@ import {FlatList, ListRenderItemInfo, Text, View} from 'react-native';
 import {ProductModel} from '@/models/ProductModel';
 import useProductsStyle from './styles/useProductsStyle';
 import {ActivityIndicator, useTheme} from 'react-native-paper';
-import Product from './common/Product';
+import Product from '../common/Product';
 import {ProductsContext} from '@/contexts/ProductsContext/ProductsContext';
 import {useTranslation} from 'react-i18next';
 import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';

@@ -3,6 +3,7 @@ import {Button, useTheme} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 import useLoginStyle from './styles/useLoginStyle';
 import {Text} from 'react-native';
+import CustomButton from '../common/CustomButton';
 
 type LoginProps = {
   onSubmit: () => void;
@@ -20,15 +21,9 @@ const Login = ({onSubmit}: LoginProps) => {
   };
 
   return (
-    <Button
-      onPress={onButtonPress}
-      style={styles.button}
-      labelStyle={styles.buttonLabel}
-      theme={theme}
-      mode="contained"
-    >
+    <CustomButton onPress={onButtonPress} overridingButtonStyles={styles}>
       <Text>{t('login')} </Text>
-    </Button>
+    </CustomButton>
   );
 };
 

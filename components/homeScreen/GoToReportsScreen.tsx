@@ -1,28 +1,28 @@
 import React, {memo, useContext} from 'react';
 import {useTheme} from 'react-native-paper';
-import CustomButton from './common/CustomButton';
+import CustomButton from '../common/CustomButton';
 import {useTranslation} from 'react-i18next';
-import useGoToSettingsScreenStyle from './styles/useGoToSettingsScreenStyle';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import useGoToReportsScreenStyle from './styles/useGoToReportsScreenStyle';
 
-const GoToSettingsScreen = () => {
+const GoToReportsScreen = () => {
   const {t} = useTranslation();
   const theme = useTheme();
 
-  const {styles} = useGoToSettingsScreenStyle(theme);
+  const {styles} = useGoToReportsScreenStyle(theme);
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   const onPress = () => {
-    console.log('Go to settings');
-    navigation.navigate('SettingsScreen');
+    console.log('Go to reports screen');
+    navigation.navigate('ReportsScreen');
   };
 
   return (
     <CustomButton overridingButtonStyles={styles} onPress={onPress}>
-      {t('go_to_settings_screen')}
+      {t('go_to_reports_screen')}
     </CustomButton>
   );
 };
 
-export default memo(GoToSettingsScreen);
+export default memo(GoToReportsScreen);

@@ -5,21 +5,23 @@ import {breakPoint} from '@/globals/style';
 
 const useLoginStyle = (theme: MD3Theme) => {
   const {width} = useWindowDimensions();
-  const isWide = width >= breakPoint;
 
   const styles = React.useMemo(() => {
+    const isWide = width >= breakPoint;
+
     return StyleSheet.create({
-      button: {
-        borderRadius: 10,
+      buttonContainer: {
+        maxHeight: 50,
+        minWidth: isWide ? '60%' : '100%',
         marginTop: 20,
         backgroundColor: theme.colors.primary,
       },
-      buttonLabel: {
+      buttonText: {
         color: theme.colors.onPrimary,
         fontSize: isWide ? 15 : 15,
       },
     });
-  }, [theme, isWide]);
+  }, [theme, width]);
 
   return {styles};
 };

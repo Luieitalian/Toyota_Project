@@ -9,6 +9,7 @@ const useLoginScreenStyle = () => {
 
   const styles = React.useMemo(() => {
     const isWide = width >= breakPoint;
+
     return StyleSheet.create({
       screenView: {
         flex: 1,
@@ -18,7 +19,8 @@ const useLoginScreenStyle = () => {
         backgroundColor: theme.colors.background,
       },
       wrapper: {
-        flex: 10,
+        flex: 1,
+        width: '80%',
         marginTop: 40,
         marginBottom: 100,
         justifyContent: 'space-between',
@@ -27,21 +29,25 @@ const useLoginScreenStyle = () => {
         borderRadius: 12,
         padding: 40,
         paddingBottom: 10,
-        width: '80%',
       },
       contentWrapper: {
+        flex: 1,
+        width: '100%',
         gap: 40,
         alignItems: 'center',
         justifyContent: 'space-around',
+      },
+      form: {
+        flex: 1,
+        minWidth: isWide ? '60%' : '100%',
+        alignItems: 'center',
+        gap: isWide ? 24 : 16,
       },
       welcome: {
         fontSize: isWide ? 72 : 46,
         fontFamily: 'Roboto-Regular',
         textAlign: 'center',
         color: theme.colors.background,
-      },
-      form: {
-        gap: isWide ? 24 : 16,
       },
     });
   }, [theme, width]);

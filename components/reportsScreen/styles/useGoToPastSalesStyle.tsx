@@ -3,7 +3,7 @@ import {StyleSheet, useWindowDimensions} from 'react-native';
 import {MD3Theme} from 'react-native-paper';
 import {breakPoint} from '@/globals/style';
 
-const useShowPastSalesStyle = (theme: MD3Theme) => {
+const useGoToPastSalesStyle = (theme: MD3Theme) => {
   const {width} = useWindowDimensions();
 
   const styles = React.useMemo(() => {
@@ -36,4 +36,4 @@ const useShowPastSalesStyle = (theme: MD3Theme) => {
   return {styles};
 };
 
-export default useShowPastSalesStyle;
+export default useGoToPastSalesStyle;

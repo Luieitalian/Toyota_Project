@@ -4,11 +4,11 @@ import {useTranslation} from 'react-i18next';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import useHomeScreenStyle from './styles/useHomeScreenStyle';
 import Status from '@/components/common/Status';
-import GoToSalesScreen from '@/components/GoToSalesScreen';
-import GoToSettingsScreen from '@/components/GoToSettingsScreen';
-import GoToReportsScreen from '@/components/GoToReportsScreen';
+import GoToSalesScreen from '@/components/homeScreen/GoToSalesScreen';
+import GoToSettingsScreen from '@/components/homeScreen/GoToSettingsScreen';
+import GoToReportsScreen from '@/components/homeScreen/GoToReportsScreen';
 import Footer from '@/components/common/Footer';
-import Logout from '@/components/Logout';
+import Logout from '@/components/homeScreen/Logout';
 
 const HomeScreen = ({route, navigation}: any) => {
   const {t, i18n} = useTranslation();

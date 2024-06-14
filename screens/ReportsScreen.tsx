@@ -4,8 +4,8 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import Status from '@/components/common/Status';
 import Footer from '@/components/common/Footer';
 import useReportsScreenStyle from './styles/useReportsScreenStyle';
-import ShowPastSales from '@/components/ShowPastSales';
-import SynchronizeUnsentCarts from '@/components/SynchronizeUnsentCarts';
+import GoToPastSales from '@/components/reportsScreen/GoToPastSales';
+import SynchronizeUnsentCarts from '@/components/reportsScreen/SynchronizeUnsentCarts';
 
 const ReportsScreen = ({route, navigation}: any) => {
   const {styles, theme} = useReportsScreenStyle();
@@ -17,7 +17,7 @@ const ReportsScreen = ({route, navigation}: any) => {
         backgroundColor={theme.colors.background}
       />
       <View style={styles.group}>
-        <ShowPastSales />
+        <GoToPastSales />
         <SynchronizeUnsentCarts />
         <Status />
       </View>
