@@ -3,7 +3,7 @@ import {useTheme} from 'react-native-paper';
 import useCreditCardSelectStyle from './styles/useCreditCardSelectStyle';
 import CustomButton from './common/CustomButton';
 import {useTranslation} from 'react-i18next';
-import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';
+import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
 import {Image, KeyboardAvoidingView, TextInput, View} from 'react-native';
 import CreditCardNumberInput from './CreditCardNumberInput';
 import CreditCardNameInput from './CreditCardNameInput';
@@ -61,11 +61,11 @@ const CreditCardSelect = () => {
 
   const logo = useMemo(() => {
     if (creditCardLogo === 'mastercard') {
-      return require('../assets/credit_card_logos/mastercard.png');
+      return require('@/assets/credit_card_logos/mastercard.png');
     } else if (creditCardLogo === 'visa') {
-      return require('../assets/credit_card_logos/visa.png');
+      return require('@/assets/credit_card_logos/visa.png');
     } else if (creditCardLogo === 'american_express') {
-      return require('../assets/credit_card_logos/american_express.png');
+      return require('@/assets/credit_card_logos/american_express.png');
     } else {
       return null;
     }

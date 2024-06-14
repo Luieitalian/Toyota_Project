@@ -12,7 +12,7 @@ import ReceiptMail from './ReceiptMail';
 import PickOffer from './PickOffer';
 import Pay from './Pay';
 import ClearCart from './ClearCart';
-import {breakPoint} from '../globals/style';
+import {breakPoint} from '@/globals/style';
 import {useTranslation} from 'react-i18next';
 
 const SalesScreenOptions = () => {

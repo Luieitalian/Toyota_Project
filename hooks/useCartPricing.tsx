@@ -1,9 +1,9 @@
 import {useCallback, useContext, useMemo} from 'react';
-import {CartProductModel} from '../models/CartProductModel';
+import {CartProductModel} from '@/models/CartProductModel';
 import currency from 'currency.js';
-import {SpecialOfferModel} from '../models/SpecialOfferModel';
-import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';
-import {SpecialOffersContext} from '../contexts/SpecialOffersContext/SpecialOffersContext';
+import {SpecialOfferModel} from '@/models/SpecialOfferModel';
+import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
+import {SpecialOffersContext} from '@/contexts/SpecialOffersContext/SpecialOffersContext';
 
 const useCartPricing = (cart: CartProductModel[]) => {
   const {selectedOfferID} = useContext(ShoppingCartContext);

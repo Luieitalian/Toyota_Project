@@ -10,10 +10,10 @@ The `ProductsScreen` component is a screen in the HızlıPos React Native applic
 - `react-native`
 - `react-native-safe-area-context`
 - `./styles/useProductsScreenStyle`
-- `../components/SearchBar`
-- `../components/FilteringBar`
-- `../components/Products`
-- `../components/Footer`
+- `@/components/SearchBar`
+- `@/components/FilteringBar`
+- `@/components/Products`
+- `@/components/Footer`
 
 ## Component Definition
 
@@ -27,10 +27,10 @@ import {
 import React, {useState} from 'react';
 import useProductsScreenStyle from './styles/useProductsScreenStyle';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import SearchBar from '../components/SearchBar';
-import FilteringBar from '../components/FilteringBar';
-import Products from '../components/Products';
-import Footer from '../components/Footer';
+import SearchBar from '@/components/SearchBar';
+import FilteringBar from '@/components/FilteringBar';
+import Products from '@/components/Products';
+import Footer from '@/components/Footer';
 
 const ProductsScreen = ({route, navigation}: any) => {
   const {styles, theme} = useProductsScreenStyle();

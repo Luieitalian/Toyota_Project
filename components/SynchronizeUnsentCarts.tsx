@@ -11,9 +11,9 @@ import {
 } from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 import CustomButton from './common/CustomButton';
-import {UnsentCartsContext} from '../contexts/UnsentCartsContext/UnsentCartsContext';
+import {UnsentCartsContext} from '@/contexts/UnsentCartsContext/UnsentCartsContext';
 import useSynchronizeUnsentCartsStyle from './styles/useSynchronizeUnsentCartsStyle';
-import {StatusContext} from '../contexts/StatusContext/StatusContext';
+import {StatusContext} from '@/contexts/StatusContext/StatusContext';
 
 const SynchronizeUnsentCarts = () => {
   const {t} = useTranslation();

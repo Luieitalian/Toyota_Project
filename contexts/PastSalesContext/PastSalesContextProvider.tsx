@@ -1,5 +1,5 @@
 import React, {memo, useMemo, useState} from 'react';
-import {SaleModel} from '../../models/SaleModel';
+import {SaleModel} from '@/models/SaleModel';
 import {PastSalesContext} from './PastSalesContext';
 
 type PastSalesContextProviderProps = {

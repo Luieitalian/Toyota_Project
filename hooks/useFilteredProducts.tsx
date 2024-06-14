@@ -1,6 +1,6 @@
 import React, {useMemo} from 'react';
-import {Categories} from '../globals/categories';
-import {ProductModel} from '../models/ProductModel';
+import {Categories} from '@/globals/categories';
+import {ProductModel} from '@/models/ProductModel';
 
 type useFilteredProductsProps = {
   products: ProductModel[];

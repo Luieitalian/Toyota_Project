@@ -3,7 +3,7 @@ import {useTheme} from 'react-native-paper';
 import useScanBarcodeStyle from './styles/useScanBarcodeStyle';
 import CustomButton from './common/CustomButton';
 import {useTranslation} from 'react-i18next';
-import useNFC from '../hooks/useNFC';
+import useNFC from '@/hooks/useNFC';
 
 const ScanBarcode = () => {
   const {t} = useTranslation();

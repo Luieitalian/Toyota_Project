@@ -1,7 +1,7 @@
 import React, {memo, useCallback, useMemo, useState} from 'react';
 import {FavoritesContext} from './FavoritesContext';
-import useFavoriteProductsFunctions from '../../hooks/useFavoriteProductsFunctions';
-import {ProductModel} from '../../models/ProductModel';
+import useFavoriteProductsFunctions from '@/hooks/useFavoriteProductsFunctions';
+import {ProductModel} from '@/models/ProductModel';
 
 type FavoritesContextProviderProps = {
   children: React.ReactNode;

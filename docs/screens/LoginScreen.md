@@ -12,13 +12,13 @@ The `LoginScreen` component is a screen in the HızlıPos React Native applicati
 - `react-native-safe-area-context`
 - `@react-native-paper`
 - `./styles/useLoginScreenStyle`
-- `../components/Version`
-- `../hooks/useNFC`
-- `../components/UsernameInput`
-- `../components/PasswordInput`
-- `../components/Login`
-- `../utils/validateUser`
-- `../contexts/UserContext/UsersContext`
+- `@/components/Version`
+- `@/hooks/useNFC`
+- `@/components/UsernameInput`
+- `@/components/PasswordInput`
+- `@/components/Login`
+- `@/utils/validateUser`
+- `@/contexts/UserContext/UsersContext`
 - `react-native-nfc-manager`
 
 ## Component Definition
@@ -29,13 +29,13 @@ import {Text, View, StatusBar, TextInput} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import useLoginScreenStyle from './styles/useLoginScreenStyle';
-import Version from '../components/Version';
-import useNFC from '../hooks/useNFC';
-import UsernameInput from '../components/UsernameInput';
-import PasswordInput from '../components/PasswordInput';
-import Login from '../components/Login';
-import validateUser from '../utils/validateUser';
-import {UsersContext} from '../contexts/UserContext/UsersContext';
+import Version from '@/components/Version';
+import useNFC from '@/hooks/useNFC';
+import UsernameInput from '@/components/UsernameInput';
+import PasswordInput from '@/components/PasswordInput';
+import Login from '@/components/Login';
+import validateUser from '@/utils/validateUser';
+import {UsersContext} from '@/contexts/UserContext/UsersContext';
 import {Portal, Snackbar} from 'react-native-paper';
 import nfcManager from 'react-native-nfc-manager';
 

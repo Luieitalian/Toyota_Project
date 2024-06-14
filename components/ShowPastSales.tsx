@@ -4,7 +4,7 @@ import CustomButton from './common/CustomButton';
 import {useTranslation} from 'react-i18next';
 import {useTheme} from 'react-native-paper';
 import useShowPastSalesStyle from './styles/useShowPastSalesStyle';
-import {PastSalesContext} from '../contexts/PastSalesContext/PastSalesContext';
+import {PastSalesContext} from '@/contexts/PastSalesContext/PastSalesContext';
 import Receipt from './Receipt';
 import CustomModal from './common/CustomModal';
 import {useNavigation} from '@react-navigation/native';

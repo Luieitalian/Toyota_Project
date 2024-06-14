@@ -1,5 +1,5 @@
 import {createContext, Dispatch} from 'react';
-import {CartProductModel} from '../../models/CartProductModel';
+import {CartProductModel} from '@/models/CartProductModel';
 
 interface ShoppingCartContextType {
   addToCart: (prod: CartProductModel) => void;

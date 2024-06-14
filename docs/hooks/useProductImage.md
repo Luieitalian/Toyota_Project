@@ -14,7 +14,7 @@ The `useProductImage` hook is a custom React hook used in the HızlıPos React a
 ```js
 import axios from 'axios';
 import {useEffect, useState} from 'react';
-import {ProductModel} from '../models/ProductModel';
+import {ProductModel} from '@/models/ProductModel';
 
 const useProductImage = (prod: ProductModel) => {
   const [imageURL, setImageURL] = useState<string>();

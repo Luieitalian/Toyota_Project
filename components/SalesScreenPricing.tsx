@@ -2,9 +2,9 @@ import React, {memo} from 'react';
 import {Text, View} from 'react-native';
 import {useTheme} from 'react-native-paper';
 import useSalesScreenPricingStyle from './styles/useSalesScreenPricingStyle';
-import {CartProductModel} from '../models/CartProductModel';
+import {CartProductModel} from '@/models/CartProductModel';
 import currency from 'currency.js';
-import useCartPricing from '../hooks/useCartPricing';
+import useCartPricing from '@/hooks/useCartPricing';
 import {useTranslation} from 'react-i18next';
 
 type SalesScreenPricingProps = {

@@ -18,7 +18,7 @@ To use the `StatusContext`, follow these steps:
 
    ```typescript
    import {useContext} from 'react';
-   import {StatusContext} from '../path/to/StatusContext';
+   import {StatusContext} from '@/path/to/StatusContext';
    ```
 
 3. **Use Context Data**: Once you have access to the context, you can use the online status and toggle function in your components.
@@ -40,7 +40,7 @@ Here's an example of how to use the `StatusContext` within a component:
 
 ```js
 import {useContext} from 'react';
-import {StatusContext} from '../path/to/StatusContext';
+import {StatusContext} from '@/path/to/StatusContext';
 
 const StatusComponent = () => {
   const {isOnline, toggleOnlineStatus} = useContext(StatusContext);

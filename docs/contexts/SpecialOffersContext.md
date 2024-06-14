@@ -12,14 +12,14 @@ To use the `SpecialOffersContext`, follow these steps:
 
    ```typescript
    import {createContext} from 'react';
-   import {SpecialOfferModel} from '../../models/SpecialOfferModel';
+   import {SpecialOfferModel} from '@/@/models/SpecialOfferModel';
    ```
 
 2. **Access Context**: Access the special offers context within your components using the `useContext` hook.
 
    ```typescript
    import {useContext} from 'react';
-   import {SpecialOffersContext} from '../path/to/SpecialOffersContext';
+   import {SpecialOffersContext} from '@/path/to/SpecialOffersContext';
    ```
 
 3. **Use Context Data**: Once you have access to the context, you can use the special offers and loading status in your components.
@@ -41,7 +41,7 @@ Here's an example of how to use the `SpecialOffersContext` within a component:
 
 ```js
 import {useContext} from 'react';
-import {SpecialOffersContext} from '../path/to/SpecialOffersContext';
+import {SpecialOffersContext} from '@/path/to/SpecialOffersContext';
 
 const SpecialOffersComponent = () => {
   const {specialOffers, offersLoading} = useContext(SpecialOffersContext);

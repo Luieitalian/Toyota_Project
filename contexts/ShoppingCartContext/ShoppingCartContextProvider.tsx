@@ -1,7 +1,7 @@
 import React, {memo, useMemo, useState} from 'react';
 import {ShoppingCartContext} from './ShoppingCartContext';
-import {CartProductModel} from '../../models/CartProductModel';
-import useShoppingCartFunctions from '../../hooks/useShoppingCartFunctions';
+import {CartProductModel} from '@/models/CartProductModel';
+import useShoppingCartFunctions from '@/hooks/useShoppingCartFunctions';
 
 type ShoppingCartContextProviderProps = {
   children: React.ReactNode;

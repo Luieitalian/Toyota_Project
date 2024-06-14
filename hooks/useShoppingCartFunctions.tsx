@@ -1,5 +1,5 @@
 import {Dispatch, SetStateAction, useCallback} from 'react';
-import {CartProductModel} from '../models/CartProductModel';
+import {CartProductModel} from '@/models/CartProductModel';
 
 const useShoppingCartFunctions = (
   setShoppingCart: Dispatch<SetStateAction<CartProductModel[]>>

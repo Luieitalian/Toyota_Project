@@ -9,11 +9,11 @@ import {TextInput, useTheme} from 'react-native-paper';
 import useLookUpPriceStyle from './styles/useLookUpPriceStyle';
 import CustomButton from './common/CustomButton';
 import Product from './common/Product';
-import {ProductsContext} from '../contexts/ProductsContext/ProductsContext';
-import {ProductModel} from '../models/ProductModel';
+import {ProductsContext} from '@/contexts/ProductsContext/ProductsContext';
+import {ProductModel} from '@/models/ProductModel';
 import {useTranslation} from 'react-i18next';
-import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';
-import {FavoritesContext} from '../contexts/FavoritesContext/FavoritesContext';
+import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
+import {FavoritesContext} from '@/contexts/FavoritesContext/FavoritesContext';
 import CustomModal from './common/CustomModal';
 
 const LookUpPrice = () => {

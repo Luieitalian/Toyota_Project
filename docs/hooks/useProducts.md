@@ -9,7 +9,7 @@ The `useProducts` hook is a custom React hook that manages the fetching and stat
 - `react`
 - `@react-native-async-storage/async-storage`
 - `axios`
-- `../models/ProductModel`
+- `@/models/ProductModel`
 
 ## Types
 

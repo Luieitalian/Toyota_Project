@@ -9,13 +9,13 @@ import {
 import {useTranslation} from 'react-i18next';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import useLoginScreenStyle from './styles/useLoginScreenStyle';
-import Version from '../components/common/Version';
-import useNFC from '../hooks/useNFC';
-import UsernameInput from '../components/UsernameInput';
-import PasswordInput from '../components/PasswordInput';
-import Login from '../components/Login';
-import validateUser from '../utils/validateUser';
-import {UsersContext} from '../contexts/UsersContext/UsersContext';
+import Version from '@/components/common/Version';
+import useNFC from '@/hooks/useNFC';
+import UsernameInput from '@/components/UsernameInput';
+import PasswordInput from '@/components/PasswordInput';
+import Login from '@/components/Login';
+import validateUser from '@/utils/validateUser';
+import {UsersContext} from '@/contexts/UsersContext/UsersContext';
 import {Portal, Snackbar} from 'react-native-paper';
 
 const LoginScreen = ({route, navigation}: any) => {

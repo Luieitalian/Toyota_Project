@@ -10,10 +10,10 @@ The `SettingsScreen` component is a screen in the HızlıPos React Native applic
 - `react-native`
 - `react-native-safe-area-context`
 - `./styles/useSettingsScreenStyle`
-- `../components/LanguageSegButtons`
-- `../components/ThemeSwitchButton`
-- `../components/Status`
-- `../components/Footer`
+- `@/components/LanguageSegButtons`
+- `@/components/ThemeSwitchButton`
+- `@/components/Status`
+- `@/components/Footer`
 
 ## Component Definition
 
@@ -21,11 +21,11 @@ The `SettingsScreen` component is a screen in the HızlıPos React Native applic
 import React from 'react';
 import {View, StatusBar} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import Status from '../components/Status';
-import Footer from '../components/Footer';
+import Status from '@/components/Status';
+import Footer from '@/components/Footer';
 import useSettingsScreenStyle from './styles/useSettingsScreenStyle';
-import LanguageSegButtons from '../components/LanguageSegButtons';
-import ThemeSwitchButton from '../components/ThemeSwitchButton';
+import LanguageSegButtons from '@/components/LanguageSegButtons';
+import ThemeSwitchButton from '@/components/ThemeSwitchButton';
 
 const SettingsScreen = ({route, navigation}: any) => {
   const {styles, theme} = useSettingsScreenStyle();

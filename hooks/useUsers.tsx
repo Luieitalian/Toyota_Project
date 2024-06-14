@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {StatusContext} from '../contexts/StatusContext/StatusContext';
+import {StatusContext} from '@/contexts/StatusContext/StatusContext';
 import axios from 'axios';
-import {UserModel} from '../models/UserModel';
+import {UserModel} from '@/models/UserModel';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const useUsers = () => {

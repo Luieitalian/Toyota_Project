@@ -1,8 +1,8 @@
 import React, {memo, useContext, useMemo} from 'react';
 import {PaperProvider, useTheme} from 'react-native-paper';
-import {themes} from '../../globals/theme';
+import {themes} from '@/globals/theme';
 import SystemNavigationBar from 'react-native-system-navigation-bar';
-import {ThemeContext} from '../ThemeContext/ThemeContext';
+import {ThemeContext} from '@/contexts/ThemeContext/ThemeContext';
 
 type PaperProviderWrapperProps = {
   children: React.ReactNode;

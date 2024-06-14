@@ -11,12 +11,12 @@ The `HomeScreen` component is a screen in the HızlıPos React Native applicatio
 - `react-i18next`
 - `react-native-safe-area-context`
 - `./styles/useHomeScreenStyle`
-- `../components/Status`
-- `../components/GoToSalesScreen`
-- `../components/GoToSettingsScreen`
-- `../components/GoToReportsScreen`
-- `../components/Logout`
-- `../components/Footer`
+- `@/components/Status`
+- `@/components/GoToSalesScreen`
+- `@/components/GoToSettingsScreen`
+- `@/components/GoToReportsScreen`
+- `@/components/Logout`
+- `@/components/Footer`
 
 ## Component Definition
 
@@ -26,12 +26,12 @@ import {View, StatusBar} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import useHomeScreenStyle from './styles/useHomeScreenStyle';
-import Status from '../components/Status';
-import GoToSalesScreen from '../components/GoToSalesScreen';
-import GoToSettingsScreen from '../components/GoToSettingsScreen';
-import GoToReportsScreen from '../components/GoToReportsScreen';
-import Footer from '../components/Footer';
-import Logout from '../components/Logout';
+import Status from '@/components/Status';
+import GoToSalesScreen from '@/components/GoToSalesScreen';
+import GoToSettingsScreen from '@/components/GoToSettingsScreen';
+import GoToReportsScreen from '@/components/GoToReportsScreen';
+import Footer from '@/components/Footer';
+import Logout from '@/components/Logout';
 
 const HomeScreen = ({route, navigation}: any) => {
   const {t, i18n} = useTranslation();

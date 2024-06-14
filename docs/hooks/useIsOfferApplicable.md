@@ -7,19 +7,19 @@ The `useIsOfferApplicable` hook is a custom React hook used in the HızlıPos Re
 ## Dependencies
 
 - `react`
-- `../models/SpecialOfferModel`
-- `../models/CartProductModel`
+- `@/models/SpecialOfferModel`
+- `@/models/CartProductModel`
 - `./useCartPricing`
-- `../contexts/ShoppingCartContext/ShoppingCartContext`
+- `@/contexts/ShoppingCartContext/ShoppingCartContext`
 
 ## Hook Definition
 
 ```js
 import {useCallback, useContext} from 'react';
-import {SpecialOfferModel} from '../models/SpecialOfferModel';
-import {CartProductModel} from '../models/CartProductModel';
+import {SpecialOfferModel} from '@/models/SpecialOfferModel';
+import {CartProductModel} from '@/models/CartProductModel';
 import useCartPricing from './useCartPricing';
-import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';
+import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
 
 const useIsOfferApplicable = () => {
   const {cart} = useContext(ShoppingCartContext);

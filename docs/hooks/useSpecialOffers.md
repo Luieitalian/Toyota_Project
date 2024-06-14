@@ -9,8 +9,8 @@ The `useSpecialOffers` hook is a custom React hook used in the HızlıPos React 
 - `axios`
 - `react`
 - `@react-native-async-storage/async-storage`
-- `../models/SpecialOfferModel`
-- `../contexts/StatusContext/StatusContext`
+- `@/models/SpecialOfferModel`
+- `@/contexts/StatusContext/StatusContext`
 
 ## Hook Definition
 
@@ -18,8 +18,8 @@ The `useSpecialOffers` hook is a custom React hook used in the HızlıPos React 
 import axios from 'axios';
 import {useContext, useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {SpecialOfferModel} from '../models/SpecialOfferModel';
-import {StatusContext} from '../contexts/StatusContext/StatusContext';
+import {SpecialOfferModel} from '@/models/SpecialOfferModel';
+import {StatusContext} from '@/contexts/StatusContext/StatusContext';
 
 const useSpecialOffers = () => {
   const [specialOffers, setSpecialOffers] = useState<SpecialOfferModel[]>();

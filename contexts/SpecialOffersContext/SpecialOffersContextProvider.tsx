@@ -1,6 +1,6 @@
 import React, {memo, useMemo} from 'react';
 import {SpecialOffersContext} from './SpecialOffersContext';
-import useSpecialOffers from '../../hooks/useSpecialOffers';
+import useSpecialOffers from '@/hooks/useSpecialOffers';
 
 type SpecialOffersContextProviderProps = {
   children: React.ReactNode;

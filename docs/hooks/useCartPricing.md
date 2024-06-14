@@ -8,20 +8,20 @@ The `useCartPricing` hook is a custom React hook used in the HızlıPos React ap
 
 - `react`
 - `currency.js`
-- `../models/CartProductModel`
-- `../models/SpecialOfferModel`
-- `../contexts/ShoppingCartContext/ShoppingCartContext`
-- `../contexts/SpecialOffersContext/SpecialOffersContext`
+- `@/models/CartProductModel`
+- `@/models/SpecialOfferModel`
+- `@/contexts/ShoppingCartContext/ShoppingCartContext`
+- `@/contexts/SpecialOffersContext/SpecialOffersContext`
 
 ## Hook Definition
 
 ```js
 import {useCallback, useContext, useMemo} from 'react';
-import {CartProductModel} from '../models/CartProductModel';
+import {CartProductModel} from '@/models/CartProductModel';
 import currency from 'currency.js';
-import {SpecialOfferModel} from '../models/SpecialOfferModel';
-import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';
-import {SpecialOffersContext} from '../contexts/SpecialOffersContext/SpecialOffersContext';
+import {SpecialOfferModel} from '@/models/SpecialOfferModel';
+import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
+import {SpecialOffersContext} from '@/contexts/SpecialOffersContext/SpecialOffersContext';
 
 const useCartPricing = (cart: CartProductModel[]) => {
   const {selectedOfferID} = useContext(ShoppingCartContext);

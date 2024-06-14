@@ -8,10 +8,10 @@ import {
   Text,
   useTheme,
 } from 'react-native-paper';
-import {SpecialOfferModel} from '../models/SpecialOfferModel';
+import {SpecialOfferModel} from '@/models/SpecialOfferModel';
 import useSpecialOfferItemStyle from './styles/useSpecialOfferItemStyle';
-import {ProductsContext} from '../contexts/ProductsContext/ProductsContext';
-import {ProductModel} from '../models/ProductModel';
+import {ProductsContext} from '@/contexts/ProductsContext/ProductsContext';
+import {ProductModel} from '@/models/ProductModel';
 import {useTranslation} from 'react-i18next';
 
 type SpecialOfferItemProps = {

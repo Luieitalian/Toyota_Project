@@ -10,10 +10,10 @@ The `ReportsScreen` component is a screen in the HızlıPos React Native applica
 - `react-native`
 - `react-native-safe-area-context`
 - `./styles/useReportsScreenStyle`
-- `../components/ShowPastSales`
-- `../components/SynchronizeUnsentCarts`
-- `../components/Status`
-- `../components/Footer`
+- `@/components/ShowPastSales`
+- `@/components/SynchronizeUnsentCarts`
+- `@/components/Status`
+- `@/components/Footer`
 
 ## Component Definition
 
@@ -21,11 +21,11 @@ The `ReportsScreen` component is a screen in the HızlıPos React Native applica
 import React from 'react';
 import {View, StatusBar} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import Status from '../components/Status';
-import Footer from '../components/Footer';
+import Status from '@/components/Status';
+import Footer from '@/components/Footer';
 import useReportsScreenStyle from './styles/useReportsScreenStyle';
-import ShowPastSales from '../components/ShowPastSales';
-import SynchronizeUnsentCarts from '../components/SynchronizeUnsentCarts';
+import ShowPastSales from '@/components/ShowPastSales';
+import SynchronizeUnsentCarts from '@/components/SynchronizeUnsentCarts';
 
 const ReportsScreen = ({route, navigation}: any) => {
   const {styles, theme} = useReportsScreenStyle();

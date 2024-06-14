@@ -7,13 +7,13 @@ The `useFavoriteProductsFunctions` hook is a custom React hook used in the Hızl
 ## Dependencies
 
 - `react`
-- `../models/ProductModel`
+- `@/models/ProductModel`
 
 ## Hook Definition
 
 ```js
 import {Dispatch, useCallback} from 'react';
-import {ProductModel} from '../models/ProductModel';
+import {ProductModel} from '@/models/ProductModel';
 
 const useFavoriteProductsFunctions = (
   setFavorites: Dispatch<React.SetStateAction<string[]>>

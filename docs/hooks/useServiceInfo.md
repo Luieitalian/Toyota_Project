@@ -9,8 +9,8 @@ The `useServiceInfo` hook is a custom React hook used in the HızlıPos React Na
 - `@react-native-async-storage/async-storage`
 - `axios`
 - `react`
-- `../models/ServiceInfoModel`
-- `../contexts/StatusContext/StatusContext`
+- `@/models/ServiceInfoModel`
+- `@/contexts/StatusContext/StatusContext`
 
 ## Hook Definition
 
@@ -18,8 +18,8 @@ The `useServiceInfo` hook is a custom React hook used in the HızlıPos React Na
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import {useContext, useEffect, useState} from 'react';
-import {ServiceInfoModel} from '../models/ServiceInfoModel';
-import {StatusContext} from '../contexts/StatusContext/StatusContext';
+import {ServiceInfoModel} from '@/models/ServiceInfoModel';
+import {StatusContext} from '@/contexts/StatusContext/StatusContext';
 
 const useServiceInfo = () => {
   const [serviceInfo, setServiceInfo] = useState<ServiceInfoModel>();

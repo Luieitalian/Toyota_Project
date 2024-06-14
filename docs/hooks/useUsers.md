@@ -9,16 +9,16 @@ The `useUsers` hook is a custom React hook used in the HızlıPos React Native a
 - `react`
 - `axios`
 - `@react-native-async-storage/async-storage`
-- `../contexts/StatusContext/StatusContext`
-- `../models/UserModel`
+- `@/contexts/StatusContext/StatusContext`
+- `@/models/UserModel`
 
 ## Hook Definition
 
 ```js
 import React, {useContext, useEffect, useState} from 'react';
-import {StatusContext} from '../contexts/StatusContext/StatusContext';
+import {StatusContext} from '@/contexts/StatusContext/StatusContext';
 import axios from 'axios';
-import {UserModel} from '../models/UserModel';
+import {UserModel} from '@/models/UserModel';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const useUsers = () => {

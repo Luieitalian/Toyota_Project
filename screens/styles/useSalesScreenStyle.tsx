@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, useWindowDimensions} from 'react-native';
 import {useTheme} from 'react-native-paper';
-import {breakPoint} from '../../globals/style';
+import {breakPoint} from '@/globals/style';
 
 const useSalesScreenStyle = () => {
   const {width, height} = useWindowDimensions();

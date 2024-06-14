@@ -7,16 +7,16 @@ import React, {
   useState,
 } from 'react';
 import {FlatList, ListRenderItemInfo, Text, View} from 'react-native';
-import {ProductModel} from '../models/ProductModel';
+import {ProductModel} from '@/models/ProductModel';
 import useProductsStyle from './styles/useProductsStyle';
 import {ActivityIndicator, useTheme} from 'react-native-paper';
 import Product from './common/Product';
-import {ProductsContext} from '../contexts/ProductsContext/ProductsContext';
+import {ProductsContext} from '@/contexts/ProductsContext/ProductsContext';
 import {useTranslation} from 'react-i18next';
-import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';
-import {FavoritesContext} from '../contexts/FavoritesContext/FavoritesContext';
-import {Categories} from '../globals/categories';
-import useFilteredProducts from '../hooks/useFilteredProducts';
+import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
+import {FavoritesContext} from '@/contexts/FavoritesContext/FavoritesContext';
+import {Categories} from '@/globals/categories';
+import useFilteredProducts from '@/hooks/useFilteredProducts';
 
 type ProductsProps = {
   category: string;

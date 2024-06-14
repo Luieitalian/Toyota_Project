@@ -12,7 +12,7 @@ The `FavoritesContext` provides a context for managing favorite products within 
 
 ```js
 import {createContext} from 'react';
-import {ProductModel} from '../../models/ProductModel';
+import {ProductModel} from '@/@/models/ProductModel';
 
 interface FavoritesContextType {
   favorites: string[];

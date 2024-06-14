@@ -31,8 +31,8 @@ The hook accepts an object with the following properties:
 
 ```javascript
 import React, {useMemo} from 'react';
-import {Categories} from '../globals/categories';
-import {ProductModel} from '../models/ProductModel';
+import {Categories} from '@/globals/categories';
+import {ProductModel} from '@/models/ProductModel';
 
 type useFilteredProductsProps = {
   products: ProductModel[];

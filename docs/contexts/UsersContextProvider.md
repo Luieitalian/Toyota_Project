@@ -1,27 +1,27 @@
 import React, {memo, useMemo, useState} from 'react';
 import {UsersContext} from './UsersContext';
-import useUsers from '../../hooks/useUsers';
+import useUsers from '@/@/hooks/useUsers';
 
 type UsersContextProviderProps = {
-  children: React.ReactNode;
+children: React.ReactNode;
 };
 
 const UsersContextProvider = ({children}: UsersContextProviderProps) => {
-  const [user, setUser] = useState<string | undefined>();
-  const {users, loadingUsers} = useUsers();
+const [user, setUser] = useState<string | undefined>();
+const {users, loadingUsers} = useUsers();
 
-  const usersContext = useMemo(
-    () => ({users: users, user: user, setUser: setUser}),
-    [users, user, setUser]
-  );
+const usersContext = useMemo(
+() => ({users: users, user: user, setUser: setUser}),
+[users, user, setUser]
+);
 
-  if (!usersContext) return <>{children}</>;
+if (!usersContext) return <>{children}</>;
 
-  return (
-    <UsersContext.Provider value={usersContext}>
-      {children}
-    </UsersContext.Provider>
-  );
+return (
+<UsersContext.Provider value={usersContext}>
+{children}
+</UsersContext.Provider>
+);
 };
 
 export default memo(UsersContextProvider);

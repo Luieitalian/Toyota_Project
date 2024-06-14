@@ -1,17 +1,16 @@
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
-import LoginScreen from './screens/LoginScreen';
-import ProductsScreen from './screens/ProductsScreen';
-import SalesScreen from './screens/SalesScreen';
-import HomeScreen from './screens/HomeScreen';
+import LoginScreen from '@/screens/LoginScreen';
+import ProductsScreen from '@/screens/ProductsScreen';
+import SalesScreen from '@/screens/SalesScreen';
+import HomeScreen from '@/screens/HomeScreen';
 import {useTranslation} from 'react-i18next';
-import SettingsScreen from './screens/SettingsScreen';
-import useLoginScreenStyle from './screens/styles/useLoginScreenStyle';
-import ReportsScreen from './screens/ReportsScreen';
-import Header from './components/Header';
-import useScreenHeaderStyle from './screens/styles/useScreenHeaderStyle';
-import PastSalesScreen from './screens/PastSalesScreen';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import SettingsScreen from '@/screens/SettingsScreen';
+import ReportsScreen from '@/screens/ReportsScreen';
+import Header from '@/components/common/Header';
+import useScreenHeaderStyle from '@/screens/styles/useScreenHeaderStyle';
+import PastSalesScreen from '@/screens/PastSalesScreen';
 
 const Stack = createNativeStackNavigator();
 

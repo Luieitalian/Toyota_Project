@@ -1,4 +1,4 @@
-import dev_local_db from '../db/db.json';
+import dev_local_db from '@/db/db.json';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const setDatabase = async () => {

@@ -18,7 +18,7 @@ To use the `UnsentCartsContext`, follow these steps:
 
    ```js
    import {useContext} from 'react';
-   import {UnsentCartsContext} from '../path/to/UnsentCartsContext';
+   import {UnsentCartsContext} from '@/path/to/UnsentCartsContext';
    ```
 
 3. **Use Context Data**: Once you have access to the context, you can use the unsent cart receipts array and the function to update this array in your components.
@@ -41,7 +41,7 @@ Here's an example of how to use the `UnsentCartsContext` within a component:
 
 ```js
 import { useContext } from 'react';
-import { UnsentCartsContext } from '../path/to/UnsentCartsContext';
+import { UnsentCartsContext } from '@/path/to/UnsentCartsContext';
 
 const UnsentCartsComponent = () => {
   const { unsentCartReceipts, setUnsentCartReceipts } = useContext(UnsentCartsContext);

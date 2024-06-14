@@ -1,5 +1,5 @@
 import {createContext} from 'react';
-import {ProductModel} from '../../models/ProductModel';
+import {ProductModel} from '@/models/ProductModel';
 
 interface FavoritesContextType {
   favorites: string[];

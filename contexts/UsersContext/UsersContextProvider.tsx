@@ -1,6 +1,6 @@
 import React, {memo, useMemo, useState} from 'react';
 import {UsersContext} from './UsersContext';
-import useUsers from '../../hooks/useUsers';
+import useUsers from '@/hooks/useUsers';
 
 type UsersContextProviderProps = {
   children: React.ReactNode;

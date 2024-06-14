@@ -1,6 +1,6 @@
 import React, {memo, useMemo} from 'react';
 import {ServiceContext} from './ServiceContext';
-import useServiceInfo from '../../hooks/useServiceInfo';
+import useServiceInfo from '@/hooks/useServiceInfo';
 
 type ServiceContextProviderProps = {
   children: React.ReactNode;

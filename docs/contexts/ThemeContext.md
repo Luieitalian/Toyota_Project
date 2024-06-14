@@ -18,7 +18,7 @@ To use the `ThemeContext`, follow these steps:
 
    ```js
    import {useContext} from 'react';
-   import {ThemeContext} from '../path/to/ThemeContext';
+   import {ThemeContext} from '@/path/to/ThemeContext';
    ```
 
 3. **Use Context Data**: Once you have access to the context, you can use the theme and toggle function in your components.
@@ -40,7 +40,7 @@ Here's an example of how to use the `ThemeContext` within a component:
 
 ```js
 import {useContext} from 'react';
-import {ThemeContext} from '../path/to/ThemeContext';
+import {ThemeContext} from '@/path/to/ThemeContext';
 
 const ThemeToggleComponent = () => {
   const {isDark, toggleTheme} = useContext(ThemeContext);

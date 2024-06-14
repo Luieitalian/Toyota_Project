@@ -1,5 +1,5 @@
 import React, {createContext, Dispatch, SetStateAction} from 'react';
-import {UserModel} from '../../models/UserModel';
+import {UserModel} from '@/models/UserModel';
 
 interface UsersContextType {
   users: UserModel[];

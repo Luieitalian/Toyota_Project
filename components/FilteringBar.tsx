@@ -3,7 +3,7 @@ import {ScrollView, View} from 'react-native';
 import useFilteringBarStyle from './styles/useFilteringBarStyle';
 import {SegmentedButtons, useTheme} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
-import {Categories, CategoryIcons} from '../globals/categories';
+import {Categories, CategoryIcons} from '@/globals/categories';
 
 type FilteringBarProps = {
   category: string | undefined;

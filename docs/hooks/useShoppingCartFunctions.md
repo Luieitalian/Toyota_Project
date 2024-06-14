@@ -7,13 +7,13 @@ The `useShoppingCartFunctions` hook is a custom React hook used in the HızlıPo
 ## Dependencies
 
 - `react`
-- `../models/CartProductModel`
+- `@/models/CartProductModel`
 
 ## Hook Definition
 
 ```js
 import {Dispatch, SetStateAction, useCallback} from 'react';
-import {CartProductModel} from '../models/CartProductModel';
+import {CartProductModel} from '@/models/CartProductModel';
 
 const useShoppingCartFunctions = (
   setShoppingCart: Dispatch<SetStateAction<CartProductModel[]>>

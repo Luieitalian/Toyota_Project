@@ -5,17 +5,17 @@ import {useTranslation} from 'react-i18next';
 import {Modal, Portal, useTheme} from 'react-native-paper';
 import {ScrollView} from 'react-native';
 import Receipt from './Receipt';
-import {UnsentCartsContext} from '../contexts/UnsentCartsContext/UnsentCartsContext';
-import {StatusContext} from '../contexts/StatusContext/StatusContext';
+import {UnsentCartsContext} from '@/contexts/UnsentCartsContext/UnsentCartsContext';
+import {StatusContext} from '@/contexts/StatusContext/StatusContext';
 import currency from 'currency.js';
-import {CartProductModel} from '../models/CartProductModel';
-import useCartPricing from '../hooks/useCartPricing';
-import {PastSalesContext} from '../contexts/PastSalesContext/PastSalesContext';
-import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';
+import {CartProductModel} from '@/models/CartProductModel';
+import useCartPricing from '@/hooks/useCartPricing';
+import {PastSalesContext} from '@/contexts/PastSalesContext/PastSalesContext';
+import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
 
-import receipt from '../receipt/index';
+import receipt from '@/receipt/index';
 import CustomModal from './common/CustomModal';
-import {SaleModel} from '../models/SaleModel';
+import {SaleModel} from '@/models/SaleModel';
 
 receipt.config.currency = '₺';
 receipt.config.ruler = '-';

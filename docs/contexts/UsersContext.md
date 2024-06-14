@@ -18,7 +18,7 @@ To use the `UsersContext`, follow these steps:
 
    ```js
    import {useContext} from 'react';
-   import {UsersContext} from '../path/to/UsersContext';
+   import {UsersContext} from '@/path/to/UsersContext';
    ```
 
 3. **Use Context Data**: Once you have access to the context, you can use the list of users, the authenticated user, and the function to update the authenticated user in your components.
@@ -41,7 +41,7 @@ Here's an example of how to use the `UsersContext` within a component:
 
 ```js
 import { useContext } from 'react';
-import { UsersContext } from '../path/to/UsersContext';
+import { UsersContext } from '@/path/to/UsersContext';
 
 const UsersComponent = () => {
   const { users, user, setUser } = useContext(UsersContext);

@@ -2,7 +2,7 @@ import React, {memo, RefObject, useMemo, useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {useTheme, TextInput, DataTable} from 'react-native-paper';
 import usePastSalesDataTableStyle from './styles/usePastSalesDataTableStyle';
-import {SaleModel} from '../models/SaleModel';
+import {SaleModel} from '@/models/SaleModel';
 
 type PastSalesDataTableProps = {pastSales: SaleModel[]};
 

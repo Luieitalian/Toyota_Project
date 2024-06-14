@@ -1,8 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import {useContext, useEffect, useState} from 'react';
-import {ServiceInfoModel} from '../models/ServiceInfoModel';
-import {StatusContext} from '../contexts/StatusContext/StatusContext';
+import {ServiceInfoModel} from '@/models/ServiceInfoModel';
+import {StatusContext} from '@/contexts/StatusContext/StatusContext';
 
 const useServiceInfo = () => {
   const [serviceInfo, setServiceInfo] = useState<ServiceInfoModel>();
