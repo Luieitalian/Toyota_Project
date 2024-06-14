@@ -2,7 +2,7 @@ import React, {memo, useContext, useState} from 'react';
 import {Pressable, View} from 'react-native';
 import useHeaderStyle from './styles/useHeaderStyle';
 import {Icon, Menu, useTheme} from 'react-native-paper';
-import {ThemeContext} from '../contexts/ThemeContext/ThemeContext';
+import {ThemeContext} from '../../contexts/ThemeContext/ThemeContext';
 import {useTranslation} from 'react-i18next';
 import {changeLanguage} from 'i18next';
 

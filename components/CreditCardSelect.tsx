@@ -1,7 +1,7 @@
 import React, {memo, useContext, useMemo, useRef, useState} from 'react';
 import {useTheme} from 'react-native-paper';
 import useCreditCardSelectStyle from './styles/useCreditCardSelectStyle';
-import CustomButton from './CustomButton';
+import CustomButton from './common/CustomButton';
 import {useTranslation} from 'react-i18next';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';
 import {Image, KeyboardAvoidingView, TextInput, View} from 'react-native';
@@ -10,7 +10,7 @@ import CreditCardNameInput from './CreditCardNameInput';
 import CreditCardDateInput from './CreditCardDateInput';
 import CreditCardCVVInput from './CreditCardCVVInput';
 import CancelDoneButtonGroup from './CancelDoneButtonGroup';
-import CustomModal from './CustomModal';
+import CustomModal from './common/CustomModal';
 
 const CreditCardSelect = () => {
   const theme = useTheme();

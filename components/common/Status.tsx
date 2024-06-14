@@ -3,7 +3,7 @@ import {View, Text} from 'react-native';
 import {Surface, useTheme} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 import useStatusStyle from './styles/useStatusStyle';
-import {ServiceContext} from '../contexts/ServiceContext/ServiceContext';
+import {ServiceContext} from '../../contexts/ServiceContext/ServiceContext';
 
 const Status = () => {
   const {t} = useTranslation();

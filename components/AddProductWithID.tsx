@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 import {useTheme} from 'react-native-paper';
 import useAddProductWithIDStyle from './styles/useAddProductWithIDStyle';
-import CustomButton from './CustomButton';
+import CustomButton from './common/CustomButton';
 import ItemIDInput from './ItemIDInput';
 import {ProductModel} from '../models/ProductModel';
 import {ProductsContext} from '../contexts/ProductsContext/ProductsContext';

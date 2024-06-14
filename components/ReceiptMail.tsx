@@ -8,9 +8,9 @@ import {
   useTheme,
 } from 'react-native-paper';
 import useReceiptMailStyle from './styles/useReceiptMailStyle';
-import CustomButton from './CustomButton';
+import CustomButton from './common/CustomButton';
 import {useTranslation} from 'react-i18next';
-import CustomModal from './CustomModal';
+import CustomModal from './common/CustomModal';
 
 const ReceiptMail = () => {
   const {t} = useTranslation();

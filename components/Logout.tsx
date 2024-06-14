@@ -1,6 +1,6 @@
 import React, {memo} from 'react';
 import {useTheme} from 'react-native-paper';
-import CustomButton from './CustomButton';
+import CustomButton from './common/CustomButton';
 import {useTranslation} from 'react-i18next';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';

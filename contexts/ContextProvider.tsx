@@ -8,7 +8,7 @@ import ThemeContextProvider from './ThemeContext/ThemeContextProvider';
 import UnsentCartsContextProvider from './UnsentCartsContext/UnsentCartsContextProvider';
 import SafeAreaProviderWrapper from './SafeAreaProviderWrapper/SafeAreaProviderWrapper';
 import PaperProviderWrapper from './PaperProviderWrapper/PaperProviderWrapper';
-import UsersContextProvider from './UserContext/UsersContextProvider';
+import UsersContextProvider from './UsersContext/UsersContextProvider';
 import ServiceContextProvider from './ServiceContext/ServiceContextProvider';
 import SpecialOffersContextProvider from './SpecialOffersContext/SpecialOffersContextProvider';
 

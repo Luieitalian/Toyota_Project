@@ -1,6 +1,6 @@
-import React, {memo, useContext, useMemo, useState} from 'react';
+import React, {memo, useContext, useMemo, useRef, useState} from 'react';
 import usePayStyle from './styles/usePayStyle';
-import CustomButton from './CustomButton';
+import CustomButton from './common/CustomButton';
 import {useTranslation} from 'react-i18next';
 import {Modal, Portal, useTheme} from 'react-native-paper';
 import {ScrollView} from 'react-native';
@@ -14,7 +14,8 @@ import {PastSalesContext} from '../contexts/PastSalesContext/PastSalesContext';
 import {ShoppingCartContext} from '../contexts/ShoppingCartContext/ShoppingCartContext';
 
 import receipt from '../receipt/index';
-import CustomModal from './CustomModal';
+import CustomModal from './common/CustomModal';
+import {SaleModel} from '../models/SaleModel';
 
 receipt.config.currency = '₺';
 receipt.config.ruler = '-';
@@ -23,6 +24,7 @@ const Pay = () => {
   const {t} = useTranslation();
   const theme = useTheme();
 
+  const today = useRef(new Date());
   const [modalVisible, setModalVisible] = useState<boolean>(false);
 
   const {styles} = usePayStyle(theme);
@@ -32,7 +34,7 @@ const Pay = () => {
 
   const {setUnsentCartReceipts} = useContext(UnsentCartsContext);
   const {isOnline} = useContext(StatusContext);
-  const {setPastSalesReceipts} = useContext(PastSalesContext);
+  const {setPastSales} = useContext(PastSalesContext);
 
   const showModal = () => {
     setModalVisible(true);
@@ -52,7 +54,6 @@ const Pay = () => {
   });
 
   const receipt_str = useMemo(() => {
-    let today = new Date();
     return receipt.create([
       {type: 'empty'},
       {type: 'empty'},
@@ -69,7 +70,7 @@ const Pay = () => {
           {name: 'Order Number', value: '1004850027'},
           {
             name: 'Date',
-            value: `${today.toLocaleDateString('tr-TR')} ${today.toLocaleTimeString('tr-TR')}`,
+            value: `${today.current.toLocaleDateString('tr-TR')} ${today.current.toLocaleTimeString('tr-TR')}`,
           },
         ],
       },
@@ -107,7 +108,12 @@ const Pay = () => {
 
   const onPress = () => {
     if (cart.length !== 0) {
-      setPastSalesReceipts((receipts: string[]) => [...receipts, receipt_str]);
+      const newSale = {
+        charge: currency(paymentTotal).value,
+        date_time: `${today.current.toLocaleDateString('tr-TR')} ${today.current.toLocaleTimeString('tr-TR')}`,
+        orderID: Math.random() * 10000000,
+      };
+      setPastSales((pastSales: SaleModel[]) => [...pastSales, newSale]);
 
       if (!isOnline) {
         setUnsentCartReceipts((receipts: string[]) => {

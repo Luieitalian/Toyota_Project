@@ -2,9 +2,9 @@ import React, {memo, useCallback, useState} from 'react';
 import {Text, View} from 'react-native';
 import useProductStyle from './styles/useProductStyle';
 import {ActivityIndicator, IconButton, useTheme} from 'react-native-paper';
-import {ProductModel} from '../models/ProductModel';
-import useProductImage from '../hooks/useProductImage';
-import {CartProductModel} from '../models/CartProductModel';
+import {ProductModel} from '../../models/ProductModel';
+import useProductImage from '../../hooks/useProductImage';
+import {CartProductModel} from '../../models/CartProductModel';
 import FastImage from 'react-native-fast-image';
 import {useTranslation} from 'react-i18next';
 
