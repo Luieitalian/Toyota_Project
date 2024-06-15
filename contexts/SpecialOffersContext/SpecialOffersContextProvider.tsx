@@ -1,7 +1,7 @@
 import React, {memo, useMemo, useState} from 'react';
 import {SpecialOffersContext} from './SpecialOffersContext';
-import useSpecialOffers from '@/hooks/useSpecialOffers';
 import {SpecialOfferModel} from '@/models/SpecialOfferModel';
+import getSpecialOffers from '@/utils/getSpecialOffers';
 
 type SpecialOffersContextProviderProps = {
   children: React.ReactNode;
@@ -10,7 +10,7 @@ type SpecialOffersContextProviderProps = {
 const SpecialOffersContextProvider = ({
   children,
 }: SpecialOffersContextProviderProps) => {
-  const {specialOffers, offersLoading} = useSpecialOffers();
+  const {specialOffers, offersLoading} = getSpecialOffers();
   const [selectedSpecialOffer, setSelectedSpecialOffer] = useState<
     SpecialOfferModel | undefined
   >(undefined);

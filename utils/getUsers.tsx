@@ -4,13 +4,13 @@ import axios from 'axios';
 import {UserModel} from '@/models/UserModel';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const useUsers = () => {
+const getUsers = () => {
   const [users, setUsers] = useState<UserModel[]>([]);
   const [loadingUsers, setLoadingUsers] = useState<boolean>(true);
 
   const {isOnline} = useContext(StatusContext);
 
-  const getUsersFromServer = async () => {
+  const getSetUsersFromServer = async () => {
     console.log('Trying to get users from server!');
     axios
       .get('http://10.0.2.2:3000/users') // 10.0.2.2 Special alias to the host loopback interface
@@ -26,7 +26,7 @@ const useUsers = () => {
       });
   };
 
-  const getUsersFromLocalDB = async () => {
+  const getSetUsersFromLocalDB = async () => {
     console.log('Trying to get users from local database!');
     try {
       const local_db_string = await AsyncStorage.getItem('database'); // if users exist in local storage then simply get them
@@ -45,13 +45,13 @@ const useUsers = () => {
 
   useEffect(() => {
     if (isOnline) {
-      getUsersFromServer();
+      getSetUsersFromServer();
     } else {
-      getUsersFromLocalDB();
+      getSetUsersFromLocalDB();
     }
   }, [isOnline]);
 
   return {users, loadingUsers};
 };
 
-export default useUsers;
+export default getUsers;

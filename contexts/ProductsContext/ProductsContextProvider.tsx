@@ -1,8 +1,8 @@
 import React, {memo, useContext, useEffect, useMemo, useState} from 'react';
-import useProducts from '@/hooks/useProducts';
 import {ProductsContext} from './ProductsContext';
 import setDatabase from '@/utils/setDatabase';
 import {StatusContext} from '@/contexts/StatusContext/StatusContext';
+import getProducts from '@/utils/getProducts';
 
 type ProductsContextProviderProps = {
   children: React.ReactNode;
@@ -21,7 +21,7 @@ const ProductsContextProvider = ({children}: ProductsContextProviderProps) => {
     initializeDatabase();
   }, []);
 
-  const {products, loadingProducts} = useProducts({
+  const {products, loadingProducts} = getProducts({
     isOnline: isOnline, // TODO
     isDatabaseInitialized: isDatabaseInitialized, // TODO
   });

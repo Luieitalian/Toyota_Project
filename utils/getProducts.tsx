@@ -3,35 +3,43 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios, {AxiosError} from 'axios';
 import {ProductModel} from '@/models/ProductModel';
 
-type useProductsArgs = {
+type getProductsArgs = {
   isOnline: boolean;
   isDatabaseInitialized: boolean;
 };
 
-const useProducts = ({isOnline, isDatabaseInitialized}: useProductsArgs) => {
+const getProducts = ({isOnline, isDatabaseInitialized}: getProductsArgs) => {
   const [products, setProducts] = useState<ProductModel[]>([]);
   const [loadingProducts, setLoadingProducts] = useState<boolean>(true);
 
-  const getProductsFromServer = async () => {
+  const getSetProductsFromServer = async () => {
     console.log(`Trying to get products from server!`);
-    try {
-      const res = await axios.get('http://10.0.2.2:3000/products'); // Special alias to the host loopback interface
-      console.log('Getting products from server!');
-      const _products = res.data as ProductModel[];
-      setProducts(_products);
-      setLoadingProducts(false);
-    } catch (error) {
-      console.log(`Can't get products from server!`, error);
-    }
+
+    axios
+      .get('http://10.0.2.2:3000/products') // Special alias to the host loopback interface
+      .then((res) => {
+        console.log('Getting products from server!');
+
+        const _products = res.data as ProductModel[];
+
+        setProducts(_products);
+        setLoadingProducts(false);
+      })
+      .catch((e) => {
+        console.log("Can't get products from server (Server may be down)");
+      });
   };
 
-  const getProductsFromLocalDB = async () => {
+  const getSetProductsFromLocalDB = async () => {
     console.log(`Trying to get products from local database!`);
+
     try {
       const local_db_string = await AsyncStorage.getItem('database'); // if products exist in local storage then simply get them
       console.log('Getting products from local database!');
+
       const _products = JSON.parse(local_db_string as string)
         .products as ProductModel[];
+
       setProducts(_products);
       setLoadingProducts(false);
     } catch (error) {
@@ -49,13 +57,13 @@ const useProducts = ({isOnline, isDatabaseInitialized}: useProductsArgs) => {
 
     setLoadingProducts(true);
     if (isOnline) {
-      getProductsFromServer();
+      getSetProductsFromServer();
     } else {
-      getProductsFromLocalDB();
+      getSetProductsFromLocalDB();
     }
   }, [isOnline, isDatabaseInitialized]);
 
   return {products, loadingProducts};
 };
 
-export default useProducts;
+export default getProducts;

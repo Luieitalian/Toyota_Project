@@ -1,5 +1,4 @@
 import {Dispatch, useCallback} from 'react';
-import {ProductModel} from '@/models/ProductModel';
 
 const useFavoriteProductsFunctions = (
   setFavorites: Dispatch<React.SetStateAction<string[]>>

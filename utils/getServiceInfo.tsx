@@ -4,7 +4,7 @@ import {useContext, useEffect, useState} from 'react';
 import {ServiceInfoModel} from '@/models/ServiceInfoModel';
 import {StatusContext} from '@/contexts/StatusContext/StatusContext';
 
-const useServiceInfo = () => {
+const getServiceInfo = () => {
   const [serviceInfo, setServiceInfo] = useState<ServiceInfoModel>();
   const [serviceLoading, setServiceLoading] = useState<boolean>(true);
 
@@ -29,19 +29,19 @@ const useServiceInfo = () => {
 
   const getSetServiceInfoFromLocalDB = async () => {
     console.log('Trying to get service info from local database!');
-    await AsyncStorage.getItem('database')
-      .then((local_db_string) => {
-        console.log('Getting service info from local database!');
 
-        const local_db = JSON.parse(local_db_string as string);
-        const service = local_db.service;
+    try {
+      const local_db_string = await AsyncStorage.getItem('database'); // if users exist in local storage then simply get them
+      console.log('Getting service info from local database!');
 
-        setServiceInfo(service);
-        setServiceLoading(false);
-      })
-      .catch((e) => {
-        console.log(`Can't get service info from local database!`, e);
-      });
+      const local_db = JSON.parse(local_db_string as string);
+      const service = local_db.service;
+
+      setServiceInfo(service);
+      setServiceLoading(false);
+    } catch (error) {
+      console.log(`Can't get service info from local database!`, error);
+    }
   };
 
   useEffect(() => {
@@ -55,4 +55,4 @@ const useServiceInfo = () => {
   return {serviceInfo, serviceLoading};
 };
 
-export default useServiceInfo;
+export default getServiceInfo;

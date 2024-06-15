@@ -4,7 +4,7 @@ import {SpecialOfferModel} from '@/models/SpecialOfferModel';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {StatusContext} from '@/contexts/StatusContext/StatusContext';
 
-const useSpecialOffers = () => {
+const getSpecialOffers = () => {
   const [specialOffers, setSpecialOffers] = useState<SpecialOfferModel[]>();
   const [offersLoading, setOffersLoading] = useState<boolean>(true);
 
@@ -17,6 +17,7 @@ const useSpecialOffers = () => {
       .then((res) => {
         console.log('Getting special offers from server!');
         const data = res.data;
+
         setSpecialOffers(data);
         setOffersLoading(false);
       })
@@ -27,16 +28,19 @@ const useSpecialOffers = () => {
 
   const getSetSpecialOffersFromLocalDB = async () => {
     console.log('Trying to get special offers from local database!');
-    await AsyncStorage.getItem('database')
-      .then((local_db_string) => {
-        const local_db = JSON.parse(local_db_string as string);
-        const special_offers = local_db.special_offers;
-        setSpecialOffers(special_offers);
-        setOffersLoading(false);
-      })
-      .catch((e) => {
-        console.log(`Can't get special offers from local database!`, e);
-      });
+
+    try {
+      const local_db_string = await AsyncStorage.getItem('database'); // if users exist in local storage then simply get them
+      console.log('Getting special offers from local database!');
+
+      const local_db = JSON.parse(local_db_string as string);
+      const special_offers = local_db.special_offers;
+
+      setSpecialOffers(special_offers);
+      setOffersLoading(false);
+    } catch (error) {
+      console.log(`Can't get special offers from local database!`, error);
+    }
   };
 
   useEffect(() => {
@@ -50,4 +54,4 @@ const useSpecialOffers = () => {
   return {specialOffers, offersLoading};
 };
 
-export default useSpecialOffers;
+export default getSpecialOffers;

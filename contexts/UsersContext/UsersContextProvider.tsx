@@ -1,6 +1,6 @@
 import React, {memo, useMemo, useState} from 'react';
 import {UsersContext} from './UsersContext';
-import useUsers from '@/hooks/useUsers';
+import getUsers from '@/utils/getUsers';
 
 type UsersContextProviderProps = {
   children: React.ReactNode;
@@ -8,7 +8,7 @@ type UsersContextProviderProps = {
 
 const UsersContextProvider = ({children}: UsersContextProviderProps) => {
   const [user, setUser] = useState<string | undefined>();
-  const {users, loadingUsers} = useUsers();
+  const {users, loadingUsers} = getUsers();
 
   const usersContext = useMemo(
     () => ({users: users, user: user, setUser: setUser}),
