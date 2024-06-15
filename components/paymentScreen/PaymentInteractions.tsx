@@ -6,6 +6,10 @@ import {useTheme} from 'react-native-paper';
 import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
 import useCartPricing from '@/hooks/useCartPricing';
 import RemainingPrice from './RemainingPrice';
+import DiscountAndOffer from './DiscountAndOffer';
+import EnterPaymentAmount from './EnterPaymentAmount';
+import PayWithCash from './PayWithCash';
+import PayWithCreditCard from './PayWithCreditCard';
 
 const PaymentInteractions = () => {
   const {t} = useTranslation();
@@ -15,7 +19,7 @@ const PaymentInteractions = () => {
   const [remainingPrice, setRemainingPrice] = useState<number>(0);
 
   const {cart} = useContext(ShoppingCartContext);
-  const {paymentTotal} = useCartPricing(cart);
+  const {paymentTotal, discountTotal} = useCartPricing(cart);
 
   useEffect(() => {
     setRemainingPrice(paymentTotal);
@@ -24,6 +28,13 @@ const PaymentInteractions = () => {
   return (
     <View style={styles.container}>
       <RemainingPrice remainingPrice={remainingPrice} />
+      <DiscountAndOffer />
+      {discountTotal ? <DiscountAndOffer /> : <></>}
+      <EnterPaymentAmount />
+      <View style={styles.interactionGroup}>
+        <PayWithCash />
+        <PayWithCreditCard />
+      </View>
     </View>
   );
 };

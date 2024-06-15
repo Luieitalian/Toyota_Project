@@ -1,21 +1,21 @@
 import React, {memo} from 'react';
 import {Text, View} from 'react-native';
 import {useTheme} from 'react-native-paper';
-import useSalesScreenPricingStyle from './styles/useSalesScreenPricingStyle';
 import {CartProductModel} from '@/models/CartProductModel';
 import currency from 'currency.js';
 import useCartPricing from '@/hooks/useCartPricing';
 import {useTranslation} from 'react-i18next';
+import useCartProductsPricingStyle from './styles/useCartProductsPricingStyle';
 
-type SalesScreenPricingProps = {
+type CartProductsPricingProps = {
   cart: CartProductModel[];
 };
 
-const SalesScreenPricing = ({cart}: SalesScreenPricingProps) => {
+const CartProductsPricing = ({cart}: CartProductsPricingProps) => {
   const {t} = useTranslation();
   const theme = useTheme();
 
-  const {styles} = useSalesScreenPricingStyle(theme);
+  const {styles} = useCartProductsPricingStyle(theme);
 
   const {subTotal, paymentTotal} = useCartPricing(cart);
 
@@ -45,4 +45,4 @@ const SalesScreenPricing = ({cart}: SalesScreenPricingProps) => {
   );
 };
 
-export default memo(SalesScreenPricing);
+export default memo(CartProductsPricing);

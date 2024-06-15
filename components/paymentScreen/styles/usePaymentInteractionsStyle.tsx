@@ -12,6 +12,13 @@ const usePaymentInteractionsStyle = (theme: MD3Theme) => {
     return StyleSheet.create({
       container: {
         flex: 1,
+        gap: isWide ? 10 : 20,
+        //backgroundColor: 'purple',
+      },
+      interactionGroup: {
+        gap: 20,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
       },
     });
   }, [theme, width]);

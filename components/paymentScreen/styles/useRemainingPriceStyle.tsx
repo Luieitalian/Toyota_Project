@@ -10,10 +10,20 @@ const useRemainingPriceStyle = (theme: MD3Theme) => {
     const isWide = width >= breakPoint;
     return StyleSheet.create({
       container: {
-        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: isWide ? 20 : 20,
+        borderRadius: 10,
         backgroundColor: theme.colors.tertiary,
       },
       text: {
+        fontSize: isWide ? 18 : 16,
+        color: theme.colors.onTertiary,
+        textAlign: 'center',
+      },
+      amountText: {
+        fontSize: isWide ? 24 : 20,
         color: theme.colors.onTertiary,
       },
     });

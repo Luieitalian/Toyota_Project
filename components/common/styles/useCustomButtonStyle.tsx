@@ -25,7 +25,7 @@ const useCustomButtonStyle = (theme: MD3Theme) => {
         color: theme.colors.onSecondary,
         fontWeight: '500',
       },
-      androidRipple: {
+      buttonAndroidRipple: {
         color: theme.colors.onSecondary,
       },
     });

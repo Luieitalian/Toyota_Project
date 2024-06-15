@@ -4,9 +4,9 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import Footer from '@/components/common/Footer';
 import usePaymentScreenStyle from './styles/usePaymentScreenStyle';
 import {breakPoint} from '@/globals/style';
-import SelectedProductsList from '@/components/paymentScreen/SelectedProductsList';
 import PaymentInteractions from '@/components/paymentScreen/PaymentInteractions';
 import PaymentOptions from '@/components/paymentScreen/PaymentOptions';
+import PaymentProducts from '@/components/paymentScreen/PaymentProducts';
 
 const PaymentScreen = ({route, navigation}: any) => {
   const {styles, theme} = usePaymentScreenStyle();
@@ -21,14 +21,20 @@ const PaymentScreen = ({route, navigation}: any) => {
         backgroundColor={theme.colors.background}
       />
       {isWide ? (
-        <ScrollView contentContainerStyle={styles.containerRow}>
+        <View style={[styles.container, styles.containerRow]}>
           <PaymentInteractions />
-          <SelectedProductsList />
+          <PaymentProducts />
           <PaymentOptions />
-        </ScrollView>
+        </View>
       ) : (
-        <ScrollView contentContainerStyle={styles.containerCol}>
-          <SelectedProductsList />
+        <ScrollView
+          contentContainerStyle={[
+            styles.container,
+            styles.containerScrollView,
+            styles.containerCol,
+          ]}
+        >
+          <PaymentProducts />
           <PaymentInteractions />
           <PaymentOptions />
         </ScrollView>

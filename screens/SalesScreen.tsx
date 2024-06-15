@@ -2,7 +2,7 @@ import {StatusBar, View} from 'react-native';
 import React, {useCallback, useContext} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import useSalesScreenStyle from './styles/useSalesScreenStyle';
-import SalesScreenCart from '@/components/salesScreen/SalesScreenCart';
+import CartProducts from '@/components/salesScreen/CartProducts';
 import SalesScreenOptions from '@/components/salesScreen/SalesScreenOptions';
 import Footer from '@/components/common/Footer';
 import {FavoritesContext} from '@/contexts/FavoritesContext/FavoritesContext';
@@ -27,8 +27,7 @@ const SalesScreen = ({route, navigation}: any) => {
         backgroundColor={theme.colors.background}
       />
       <View style={styles.container}>
-        {/* <Header   /> */}
-        <SalesScreenCart />
+        <CartProducts />
         <SalesScreenOptions />
       </View>
       <Footer />

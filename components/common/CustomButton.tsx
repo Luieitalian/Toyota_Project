@@ -24,7 +24,9 @@ const CustomButton = ({
     <Pressable
       disabled={disabled}
       android_ripple={{
-        color: styles.androidRipple.color,
+        color: overridingButtonStyles.buttonAndroidRipple
+          ? overridingButtonStyles.buttonAndroidRipple.color
+          : styles.buttonAndroidRipple.color,
         foreground: true,
       }}
       style={[styles.buttonContainer, overridingButtonStyles.buttonContainer]}

@@ -14,15 +14,17 @@ const usePaymentScreenStyle = () => {
         flex: 1,
         backgroundColor: theme.colors.background,
       },
-      containerRow: {
+      container: {
         flex: 1,
-        flexDirection: 'row',
+        gap: isWide ? 10 : 20,
         padding: isWide ? 30 : 20,
       },
+      containerScrollView: {},
+      containerRow: {
+        flexDirection: 'row',
+      },
       containerCol: {
-        flex: 1,
         flexDirection: 'column',
-        padding: isWide ? 30 : 20,
       },
     });
   }, [theme, width]);

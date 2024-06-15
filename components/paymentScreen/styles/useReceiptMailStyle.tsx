@@ -9,41 +9,32 @@ const useReceiptMailStyle = (theme: MD3Theme) => {
   const styles = React.useMemo(() => {
     const isWide = width >= breakPoint;
 
-    return StyleSheet.create({
-      buttonContainer: {},
-      buttonText: {},
-      modalContainer: {
-        justifyContent: 'center',
-        marginHorizontal: isWide ? 400 : 80,
-        marginVertical: isWide ? 300 : 300,
-      },
-      textInput: {
-        width: '100%',
-      },
-      buttonGroup: {
-        minHeight: 50,
-        width: '100%',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-evenly',
-      },
-      cancelButton: {
-        backgroundColor: theme.colors.error,
-        borderRadius: 10,
-      },
-      doneButton: {
-        backgroundColor: theme.colors.primary,
-        borderRadius: 10,
-      },
-      cancelText: {
-        color: theme.colors.onError,
-        fontSize: isWide ? 18 : 16,
-      },
-      doneText: {
-        color: theme.colors.onPrimary,
-        fontSize: isWide ? 18 : 16,
-      },
-    });
+    return isWide
+      ? StyleSheet.create({
+          buttonContainer: {
+            margin: 0,
+            maxHeight: 80,
+            padding: 20,
+          },
+          buttonText: {
+            fontSize: 18,
+          },
+          textInput: {
+            width: '100%',
+          },
+        })
+      : StyleSheet.create({
+          buttonContainer: {
+            margin: 0,
+            padding: 20,
+          },
+          buttonText: {
+            fontSize: 18,
+          },
+          textInput: {
+            width: '100%',
+          },
+        });
   }, [theme, width]);
   return {styles};
 };

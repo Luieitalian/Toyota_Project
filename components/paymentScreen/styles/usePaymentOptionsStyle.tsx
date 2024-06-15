@@ -11,7 +11,26 @@ const usePaymentOptionsStyle = (theme: MD3Theme) => {
 
     return StyleSheet.create({
       container: {
+        gap: 20,
+        // backgroundColor: 'red',
+      },
+      containerWide: {
         flex: 1,
+        flexDirection: 'column',
+      },
+      containerThin: {
+        gap: 20,
+        flexDirection: 'column',
+      },
+      flexColWide: {
+        flex: 1,
+        flexDirection: 'column',
+        gap: 20,
+      },
+      flexRowThin: {
+        gap: 20,
+        justifyContent: 'space-between',
+        flexDirection: 'row',
       },
     });
   }, [theme, width]);

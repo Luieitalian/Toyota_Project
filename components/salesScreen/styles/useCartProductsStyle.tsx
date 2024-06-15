@@ -3,7 +3,7 @@ import React from 'react';
 import {StyleSheet, useWindowDimensions} from 'react-native';
 import {breakPoint} from '@/globals/style';
 
-const useSalesScreenCartStyle = (theme: MD3Theme) => {
+const useCartProductsStyle = (theme: MD3Theme) => {
   const {width} = useWindowDimensions();
 
   const styles = React.useMemo(() => {
@@ -24,4 +24,4 @@ const useSalesScreenCartStyle = (theme: MD3Theme) => {
   return {styles};
 };
 
-export default useSalesScreenCartStyle;
+export default useCartProductsStyle;

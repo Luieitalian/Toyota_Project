@@ -3,20 +3,34 @@ import {useTheme} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 import {Text, View} from 'react-native';
 import useDiscountAndOfferStyle from './styles/useDiscountAndOfferStyle';
+import {SpecialOffersContext} from '@/contexts/SpecialOffersContext/SpecialOffersContext';
+import useCartPricing from '@/hooks/useCartPricing';
+import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
 
-type DiscountAndOfferProps = {
-  remainingPrice: number;
-};
+type DiscountAndOfferProps = {};
 
-const DiscountAndOffer = ({remainingPrice}: DiscountAndOfferProps) => {
+const DiscountAndOffer = ({}: DiscountAndOfferProps) => {
   const theme = useTheme();
   const {t} = useTranslation();
 
   const {styles} = useDiscountAndOfferStyle(theme);
 
+  const {selectedSpecialOffer} = useContext(SpecialOffersContext);
+  const {cart} = useContext(ShoppingCartContext);
+  const {discountTotal} = useCartPricing(cart);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{remainingPrice}</Text>
+      <Text style={styles.text}>
+        {t('selected_offer', {
+          offer: selectedSpecialOffer
+            ? selectedSpecialOffer.name
+            : t('not_chosen'),
+        })}
+      </Text>
+      <Text style={styles.text}>
+        {t('discount_amount', {discount: discountTotal})}
+      </Text>
     </View>
   );
 };

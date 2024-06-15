@@ -14,6 +14,7 @@ import Pay from '../paymentScreen/Pay';
 import ClearCart from './ClearCart';
 import {breakPoint} from '@/globals/style';
 import {useTranslation} from 'react-i18next';
+import GoToPaymentScreen from './GoToPaymentScreen';
 
 const SalesScreenOptions = () => {
   const {t} = useTranslation();
@@ -37,19 +38,7 @@ const SalesScreenOptions = () => {
         <LookUpPrice />
         <ClearCart />
       </View>
-      <View style={styles.flexRow}>
-        <CreditCardSelect />
-        <CashSelect />
-      </View>
-      <View style={styles.flexRow}>
-        <View style={styles.flexCol}>
-          <ReceiptMail />
-          <PickOffer />
-        </View>
-        <View style={styles.flexRow}>
-          <Pay />
-        </View>
-      </View>
+      <GoToPaymentScreen />
     </View>
   ) : (
     <View style={styles.container}>
@@ -66,21 +55,7 @@ const SalesScreenOptions = () => {
         </View>
         <PickItems />
       </View>
-
-      <View style={styles.flexRow}>
-        <View style={[styles.flexCol, styles.flex2]}>
-          <View style={styles.flexRow}>
-            <CreditCardSelect />
-            <CashSelect />
-          </View>
-          <View style={styles.flexRow}>
-            <ReceiptMail />
-            <PickOffer />
-          </View>
-        </View>
-
-        <Pay />
-      </View>
+      <GoToPaymentScreen />
     </View>
   );
 };

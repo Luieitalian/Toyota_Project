@@ -1,18 +1,18 @@
 import React, {memo, useContext} from 'react';
 import {FlatList, ListRenderItemInfo, View} from 'react-native';
 import {useTheme} from 'react-native-paper';
-import useSalesScreenCartStyle from './styles/useSalesScreenCartStyle';
 import {CartProductModel} from '@/models/CartProductModel';
 import CartItem from './CartItem';
-import SalesScreenPricing from './SalesScreenPricing';
 import {useTranslation} from 'react-i18next';
 import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
+import useCartProductsStyle from './styles/useCartProductsStyle';
+import CartProductsPricing from './CartProductsPricing';
 
-const SalesScreenCart = () => {
+const CartProducts = () => {
   const {t} = useTranslation();
   const theme = useTheme();
 
-  const {styles} = useSalesScreenCartStyle(theme);
+  const {styles} = useCartProductsStyle(theme);
   const {cart} = useContext(ShoppingCartContext);
 
   const renderItem = ({item}: ListRenderItemInfo<CartProductModel>) => (
@@ -27,9 +27,9 @@ const SalesScreenCart = () => {
         data={cart}
         renderItem={renderItem}
       />
-      <SalesScreenPricing cart={cart} />
+      <CartProductsPricing cart={cart} />
     </View>
   );
 };
 
-export default memo(SalesScreenCart);
+export default memo(CartProducts);

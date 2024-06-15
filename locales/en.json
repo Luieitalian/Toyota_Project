@@ -38,7 +38,7 @@
   "cash_select": "SELECT CASH",
   "receipt_mail": "SEND RECEIPT VIA E-MAIL",
   "pick_offer": "PICK OFFER",
-  "pay": "PAY",
+  "complete_payment": "COMPLETE PAYMENT",
   "please_enter_a_valid_id": "Please enter a valid id.",
   "warning": "Warning!",
   "applicable_products": "Applicable products",
@@ -84,5 +84,9 @@
   "credit_card_number": "Card Number",
   "credit_card_name": "Name on the Card",
   "credit_card_date": "MM/YY",
-  "credit_card_CVV": "CVV"
+  "credit_card_CVV": "CVV",
+  "selected_offer": "Selected Offer: {{- offer}}",
+  "not_chosen": "N/A",
+  "discount_amount": "Discount Amount: {{discount}}",
+  "remaining_price": "Remaining Price"
 }

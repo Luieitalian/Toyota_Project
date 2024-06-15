@@ -12,6 +12,7 @@ const useSelectedProductsListStyle = (theme: MD3Theme) => {
     return StyleSheet.create({
       container: {
         flex: 1,
+        backgroundColor: 'blue',
       },
     });
   }, [theme, width]);

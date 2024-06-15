@@ -127,7 +127,7 @@ const Pay = () => {
   return (
     <>
       <CustomButton overridingButtonStyles={styles} onPress={onPress}>
-        {t('pay')}
+        {t('complete_payment')}
       </CustomButton>
       <CustomModal
         modalVisible={modalVisible}
