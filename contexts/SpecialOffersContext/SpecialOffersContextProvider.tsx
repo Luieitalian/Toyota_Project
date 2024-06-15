@@ -1,6 +1,7 @@
-import React, {memo, useMemo} from 'react';
+import React, {memo, useMemo, useState} from 'react';
 import {SpecialOffersContext} from './SpecialOffersContext';
 import useSpecialOffers from '@/hooks/useSpecialOffers';
+import {SpecialOfferModel} from '@/models/SpecialOfferModel';
 
 type SpecialOffersContextProviderProps = {
   children: React.ReactNode;
@@ -10,13 +11,23 @@ const SpecialOffersContextProvider = ({
   children,
 }: SpecialOffersContextProviderProps) => {
   const {specialOffers, offersLoading} = useSpecialOffers();
+  const [selectedSpecialOffer, setSelectedSpecialOffer] = useState<
+    SpecialOfferModel | undefined
+  >(undefined);
 
   const specialOffersContext = useMemo(
     () => ({
-      specialOffers: specialOffers!,
+      specialOffers: specialOffers,
       offersLoading: offersLoading,
+      selectedSpecialOffer: selectedSpecialOffer,
+      setSelectedSpecialOffer: setSelectedSpecialOffer,
     }),
-    [specialOffers, offersLoading]
+    [
+      specialOffers,
+      offersLoading,
+      setSelectedSpecialOffer,
+      selectedSpecialOffer,
+    ]
   );
 
   if (!specialOffersContext) {

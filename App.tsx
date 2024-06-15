@@ -11,6 +11,7 @@ import ReportsScreen from '@/screens/ReportsScreen';
 import Header from '@/components/common/Header';
 import useScreenHeaderStyle from '@/screens/styles/useScreenHeaderStyle';
 import PastSalesScreen from '@/screens/PastSalesScreen';
+import PaymentScreen from './screens/PaymentScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -56,6 +57,7 @@ const App = () => {
           }}
           component={ProductsScreen}
         />
+
         <Stack.Screen
           name="SalesScreen"
           options={{
@@ -64,6 +66,17 @@ const App = () => {
           }}
           component={SalesScreen}
         />
+
+        <Stack.Screen
+          name="PaymentScreen"
+          options={{
+            headerTitle: t('payment'),
+            headerShown: true,
+            headerRight: () => <Header />,
+          }}
+          component={PaymentScreen}
+        />
+
         <Stack.Screen
           name="SettingsScreen"
           options={{
@@ -72,6 +85,7 @@ const App = () => {
           }}
           component={SettingsScreen}
         />
+
         <Stack.Screen
           name="ReportsScreen"
           options={{
@@ -80,6 +94,7 @@ const App = () => {
           }}
           component={ReportsScreen}
         />
+
         <Stack.Screen
           name="PastSalesScreen"
           options={{

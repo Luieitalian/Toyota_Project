@@ -12,7 +12,6 @@ const ShoppingCartContextProvider = ({
 }: ShoppingCartContextProviderProps) => {
   const [shoppingCart, setShoppingCart] = useState<CartProductModel[]>([]);
   const [isCash, setIsCash] = useState<boolean>(true);
-  const [selectedOfferID, setSelectedOfferID] = useState<string>();
 
   const {addToCart, removeFromCart, removeOne, clearCart} =
     useShoppingCartFunctions(setShoppingCart);
@@ -23,13 +22,11 @@ const ShoppingCartContextProvider = ({
       removeFromCart: removeFromCart,
       removeOne: removeOne,
       clearCart: clearCart,
-      selectedOfferID: selectedOfferID,
-      setSelectedOfferID: setSelectedOfferID,
       cart: shoppingCart,
       isCash: isCash,
       setIsCash: setIsCash,
     }),
-    [shoppingCart, isCash, selectedOfferID]
+    [shoppingCart, isCash]
   );
 
   if (!shoppingCartContext) {

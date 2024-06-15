@@ -20,9 +20,13 @@ const PickOffer = () => {
 
   const [modalVisible, setModalVisible] = useState<boolean>(false);
 
-  const {selectedOfferID, setSelectedOfferID} = useContext(ShoppingCartContext);
   const {cart} = useContext(ShoppingCartContext);
-  const {specialOffers, offersLoading} = useContext(SpecialOffersContext);
+  const {
+    specialOffers,
+    offersLoading,
+    selectedSpecialOffer,
+    setSelectedSpecialOffer,
+  } = useContext(SpecialOffersContext);
 
   const {isApplicable} = useIsOfferApplicable();
 
@@ -35,7 +39,7 @@ const PickOffer = () => {
   };
 
   const onCancel = () => {
-    setSelectedOfferID(undefined);
+    setSelectedSpecialOffer(undefined);
     setModalVisible(false);
   };
 
@@ -45,7 +49,7 @@ const PickOffer = () => {
 
   const onSelect = (offer: SpecialOfferModel) => {
     console.log(`'${offer.name}' with id '${offer.id}' is selected!`);
-    setSelectedOfferID(offer.id);
+    setSelectedSpecialOffer(offer);
   };
 
   const onPress = () => {
@@ -54,7 +58,7 @@ const PickOffer = () => {
   };
 
   useEffect(() => {
-    setSelectedOfferID(undefined);
+    setSelectedSpecialOffer(undefined);
   }, [cart]);
 
   return (
@@ -71,7 +75,7 @@ const PickOffer = () => {
           <ScrollView contentContainerStyle={styles.offersContainer}>
             {specialOffers?.map((offer: SpecialOfferModel) => (
               <SpecialOfferItem
-                selected={selectedOfferID === offer.id && true}
+                selected={selectedSpecialOffer === offer && true}
                 applicable={isApplicable(offer)}
                 onSelect={onSelect}
                 offer={offer}

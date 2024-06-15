@@ -4,7 +4,7 @@ import CustomButton from '../common/CustomButton';
 import {useTranslation} from 'react-i18next';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import useLogoutStyle from './styles/useLogOutStyle';
+import useLogoutStyle from './styles/useLogoutStyle';
 
 const Logout = () => {
   const {t} = useTranslation();
