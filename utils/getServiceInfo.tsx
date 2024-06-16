@@ -3,6 +3,7 @@ import axios from 'axios';
 import {useContext, useEffect, useState} from 'react';
 import {ServiceInfoModel} from '@/models/ServiceInfoModel';
 import {StatusContext} from '@/contexts/StatusContext/StatusContext';
+import {HOST_LOOPBACK_INTERFACE} from '@env';
 
 const getServiceInfo = () => {
   const [serviceInfo, setServiceInfo] = useState<ServiceInfoModel>();
@@ -13,7 +14,7 @@ const getServiceInfo = () => {
   const getSetServiceInfoFromServer = async () => {
     console.log('Trying to get service info from server!');
     axios
-      .get('http://10.0.2.2:3000/service') // 10.0.2.2 Special alias to the host loopback interface
+      .get(`http://${HOST_LOOPBACK_INTERFACE}/service`)
       .then((res) => {
         console.log('Getting service info from server!');
 

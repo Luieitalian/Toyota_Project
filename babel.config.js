@@ -18,6 +18,7 @@ module.exports = {
         },
       },
     ],
+    ['module:react-native-dotenv'],
   ],
   env: {
     production: {

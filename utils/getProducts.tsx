@@ -1,7 +1,8 @@
 import {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import axios, {AxiosError} from 'axios';
+import axios from 'axios';
 import {ProductModel} from '@/models/ProductModel';
+import {HOST_LOOPBACK_INTERFACE} from '@env';
 
 type getProductsArgs = {
   isOnline: boolean;
@@ -16,7 +17,7 @@ const getProducts = ({isOnline, isDatabaseInitialized}: getProductsArgs) => {
     console.log(`Trying to get products from server!`);
 
     axios
-      .get('http://10.0.2.2:3000/products') // Special alias to the host loopback interface
+      .get(`http://${HOST_LOOPBACK_INTERFACE}/products`)
       .then((res) => {
         console.log('Getting products from server!');
 

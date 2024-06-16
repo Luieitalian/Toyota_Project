@@ -3,6 +3,7 @@ import {useContext, useEffect, useState} from 'react';
 import {SpecialOfferModel} from '@/models/SpecialOfferModel';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {StatusContext} from '@/contexts/StatusContext/StatusContext';
+import {HOST_LOOPBACK_INTERFACE} from '@env';
 
 const getSpecialOffers = () => {
   const [specialOffers, setSpecialOffers] = useState<SpecialOfferModel[]>();
@@ -13,7 +14,7 @@ const getSpecialOffers = () => {
   const getSetSpecialOffersFromServer = async () => {
     console.log('Trying to get special offers from server!');
     axios
-      .get('http://10.0.2.2:3000/special_offers') // 10.0.2.2 Special alias to the host loopback interface
+      .get(`http://${HOST_LOOPBACK_INTERFACE}/specialoffers`)
       .then((res) => {
         console.log('Getting special offers from server!');
         const data = res.data;

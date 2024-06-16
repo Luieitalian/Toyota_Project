@@ -3,6 +3,7 @@ import {StatusContext} from '@/contexts/StatusContext/StatusContext';
 import axios from 'axios';
 import {UserModel} from '@/models/UserModel';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {HOST_LOOPBACK_INTERFACE} from '@env';
 
 const getUsers = () => {
   const [users, setUsers] = useState<UserModel[]>([]);
@@ -13,7 +14,7 @@ const getUsers = () => {
   const getSetUsersFromServer = async () => {
     console.log('Trying to get users from server!');
     axios
-      .get('http://10.0.2.2:3000/users') // 10.0.2.2 Special alias to the host loopback interface
+      .get(`http://${HOST_LOOPBACK_INTERFACE}/users`)
       .then((res) => {
         console.log('Getting users from server!');
         const users = res.data as UserModel[];
