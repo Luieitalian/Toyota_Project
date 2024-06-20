@@ -3,8 +3,6 @@ import usePayStyle from './styles/usePayStyle';
 import CustomButton from '../common/CustomButton';
 import {useTranslation} from 'react-i18next';
 import {Modal, Portal, useTheme} from 'react-native-paper';
-import {ScrollView} from 'react-native';
-import Receipt from '../common/Receipt';
 import {UnsentCartsContext} from '@/contexts/UnsentCartsContext/UnsentCartsContext';
 import {StatusContext} from '@/contexts/StatusContext/StatusContext';
 import currency from 'currency.js';
@@ -12,12 +10,12 @@ import {CartProductModel} from '@/models/CartProductModel';
 import useCartPricing from '@/hooks/useCartPricing';
 import {PastSalesContext} from '@/contexts/PastSalesContext/PastSalesContext';
 import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
-
-const receipt = require('receipt');
 import CustomModal from '../common/CustomModal';
 import {SaleModel} from '@/models/SaleModel';
-import writeToPDF from '@/utils/writeToPDF';
-import usePDF from '@/utils/writeToPDF';
+import usePDF from '@/hooks/usePDF';
+import Pdf from 'react-native-pdf';
+import {PDF_PATH} from '@env';
+const receipt = require('receipt');
 
 receipt.config.currency = '₺';
 receipt.config.ruler = '-';
@@ -38,7 +36,9 @@ const Pay = () => {
   const {isOnline} = useContext(StatusContext);
   const {setPastSales} = useContext(PastSalesContext);
 
-  const {requestWritePermission, writeToPDF} = usePDF();
+  const {writeToPDF} = usePDF();
+
+  const pdfFileName = 'test';
 
   const showModal = () => {
     setModalVisible(true);
@@ -115,8 +115,7 @@ const Pay = () => {
   const onPress = async () => {
     if (cart.length === 0) return;
 
-    await requestWritePermission(t);
-    await writeToPDF(receipt_str);
+    await writeToPDF(receipt_str, pdfFileName);
 
     const newSale = {
       charge: currency(paymentTotal).value,
@@ -145,14 +144,21 @@ const Pay = () => {
         onDismissModal={hideModal}
         overridingModalStyles={styles}
       >
-        <ScrollView
+        <Pdf
+          source={{
+            uri: `${PDF_PATH}${pdfFileName}.pdf`,
+          }}
+          style={styles.pdf}
+          scale={styles.pdfScale.width}
+        />
+        {/* <ScrollView
           contentContainerStyle={{
             justifyContent: 'center',
             alignItems: 'center',
           }}
         >
           <Receipt receipt_str={receipt_str} />
-        </ScrollView>
+        </ScrollView> */}
       </CustomModal>
     </>
   );
