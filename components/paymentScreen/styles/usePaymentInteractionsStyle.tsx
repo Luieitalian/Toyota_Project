@@ -20,6 +20,10 @@ const usePaymentInteractionsStyle = (theme: MD3Theme) => {
         flexDirection: 'row',
         justifyContent: 'space-between',
       },
+      receivingPaymentText: {
+        color: theme.colors.onBackground,
+        fontSize: isWide ? 20 : 18,
+      },
     });
   }, [theme, width]);
   return {styles};

@@ -6,6 +6,7 @@ import useDiscountAndOfferStyle from './styles/useDiscountAndOfferStyle';
 import {SpecialOffersContext} from '@/contexts/SpecialOffersContext/SpecialOffersContext';
 import useCartPricing from '@/hooks/useCartPricing';
 import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
+import currency from 'currency.js';
 
 type DiscountAndOfferProps = {};
 
@@ -24,12 +25,19 @@ const DiscountAndOffer = ({}: DiscountAndOfferProps) => {
       <Text style={styles.text}>
         {t('selected_offer', {
           offer: selectedSpecialOffer
-            ? selectedSpecialOffer.name
+            ? t(selectedSpecialOffer.name)
             : t('not_chosen'),
         })}
       </Text>
       <Text style={styles.text}>
-        {t('discount_amount', {discount: discountTotal})}
+        {t('discount_amount')}
+        <Text>
+          {currency(discountTotal).format({
+            symbol: '₺',
+            separator: '.',
+            decimal: ',',
+          })}
+        </Text>
       </Text>
     </View>
   );

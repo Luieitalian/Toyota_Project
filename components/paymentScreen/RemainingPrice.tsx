@@ -17,14 +17,11 @@ const RemainingPrice = ({remainingPrice}: RemainingPriceProps) => {
 
   const {styles} = useRemainingPriceStyle(theme);
 
-  const {cart} = useContext(ShoppingCartContext);
-  const {paymentTotal} = useCartPricing(cart);
-
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{t('remaining_price')}</Text>
       <Text style={styles.amountText}>
-        {currency(paymentTotal).format({
+        {currency(remainingPrice).format({
           symbol: '₺',
           separator: '.',
           decimal: ',',

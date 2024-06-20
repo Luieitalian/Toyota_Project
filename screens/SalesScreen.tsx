@@ -17,7 +17,7 @@ const SalesScreen = ({route, navigation}: any) => {
   useFocusEffect(
     useCallback(() => {
       setFavoritesToLocalDB(favorites);
-    }, [])
+    }, [favorites])
   );
 
   return (

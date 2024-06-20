@@ -4,7 +4,11 @@ import {useTranslation} from 'react-i18next';
 import {useTheme} from 'react-native-paper';
 import usePayWithCreditCardStyle from './styles/usePayWithCreditCardStyle';
 
-const PayWithCreditCard = () => {
+type PayWithCreditCardProps = {
+  onSubmitAmount: (isCash: boolean) => void;
+};
+
+const PayWithCreditCard = ({onSubmitAmount}: PayWithCreditCardProps) => {
   const {t} = useTranslation();
   const theme = useTheme();
 
@@ -12,6 +16,7 @@ const PayWithCreditCard = () => {
 
   const onPress = () => {
     console.log('pay_with_credit_card');
+    onSubmitAmount(false);
   };
 
   return (

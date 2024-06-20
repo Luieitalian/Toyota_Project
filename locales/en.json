@@ -87,6 +87,6 @@
   "credit_card_CVV": "CVV",
   "selected_offer": "Selected Offer: {{- offer}}",
   "not_chosen": "N/A",
-  "discount_amount": "Discount Amount: {{discount}}",
+  "discount_amount": "Discount Amount: ",
   "remaining_price": "Remaining Price"
 }

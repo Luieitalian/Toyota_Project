@@ -9,9 +9,10 @@ import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartCo
 
 type CartItemProps = {
   cart_item: CartProductModel;
+  removeable?: boolean;
 };
 
-const CartItem = ({cart_item}: CartItemProps) => {
+const CartItem = ({cart_item, removeable = true}: CartItemProps) => {
   const theme = useTheme();
   const {t} = useTranslation();
 
@@ -41,17 +42,19 @@ const CartItem = ({cart_item}: CartItemProps) => {
             .multiply(cart_item._cart_amount)
             .format({symbol: '₺', separator: '.', decimal: ','})}
         </Text>
-        <View>
-          <IconButton
-            onPress={onPress}
-            size={styles.removeButton.width}
-            iconColor={styles.removeButton.color}
-            containerColor={styles.removeButton.backgroundColor}
-            rippleColor={styles.removeButton.color}
-            icon="minus-circle"
-            mode="contained"
-          />
-        </View>
+        {removeable ? (
+          <View>
+            <IconButton
+              onPress={onPress}
+              size={styles.removeButton.width}
+              iconColor={styles.removeButton.color}
+              containerColor={styles.removeButton.backgroundColor}
+              rippleColor={styles.removeButton.color}
+              icon="minus-circle"
+              mode="contained"
+            />
+          </View>
+        ) : null}
       </View>
     </Surface>
   );

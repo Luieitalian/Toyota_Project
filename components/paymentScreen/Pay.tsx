@@ -16,6 +16,8 @@ import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartCo
 const receipt = require('receipt');
 import CustomModal from '../common/CustomModal';
 import {SaleModel} from '@/models/SaleModel';
+import writeToPDF from '@/utils/writeToPDF';
+import usePDF from '@/utils/writeToPDF';
 
 receipt.config.currency = '₺';
 receipt.config.ruler = '-';
@@ -36,6 +38,8 @@ const Pay = () => {
   const {isOnline} = useContext(StatusContext);
   const {setPastSales} = useContext(PastSalesContext);
 
+  const {requestWritePermission, writeToPDF} = usePDF();
+
   const showModal = () => {
     setModalVisible(true);
   };
@@ -45,13 +49,15 @@ const Pay = () => {
     setModalVisible(false);
   };
 
-  const productLines = cart.map((cart_item: CartProductModel, idx: number) => {
-    return {
-      item: cart_item.prod.name,
-      qty: cart_item._cart_amount,
-      cost: currency(cart_item.prod.price).value,
-    };
-  });
+  const productLines = useMemo(() => {
+    return cart.map((cart_item: CartProductModel, idx: number) => {
+      return {
+        item: cart_item.prod.name,
+        qty: cart_item._cart_amount,
+        cost: currency(cart_item.prod.price).value,
+      };
+    });
+  }, [cart]);
 
   const receipt_str = useMemo(() => {
     return receipt.create([
@@ -106,22 +112,27 @@ const Pay = () => {
     ]);
   }, [productLines]);
 
-  const onPress = () => {
-    if (cart.length !== 0) {
-      const newSale = {
-        charge: currency(paymentTotal).value,
-        date_time: `${today.current.toLocaleDateString('tr-TR')} ${today.current.toLocaleTimeString('tr-TR')}`,
-        orderID: Math.random() * 10000000,
-      };
-      setPastSales((pastSales: SaleModel[]) => [...pastSales, newSale]);
+  const onPress = async () => {
+    if (cart.length === 0) return;
 
-      if (!isOnline) {
-        setUnsentCartReceipts((receipts: string[]) => {
-          return [...receipts, receipt_str];
-        });
-      }
-      showModal();
+    await requestWritePermission(t);
+    await writeToPDF(receipt_str);
+
+    const newSale = {
+      charge: currency(paymentTotal).value,
+      date_time: `${today.current.toLocaleDateString('tr-TR')} ${today.current.toLocaleTimeString('tr-TR')}`,
+      orderID: Math.random() * 10000000,
+    };
+
+    setPastSales((pastSales: SaleModel[]) => [...pastSales, newSale]);
+
+    if (!isOnline) {
+      setUnsentCartReceipts((receipts: string[]) => {
+        return [...receipts, receipt_str];
+      });
     }
+
+    showModal();
   };
 
   return (

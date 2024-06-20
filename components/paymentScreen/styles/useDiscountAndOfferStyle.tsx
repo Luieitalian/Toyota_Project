@@ -17,7 +17,7 @@ const useDiscountAndOfferStyle = (theme: MD3Theme) => {
       text: {
         fontSize: isWide ? 18 : 16,
         color: theme.colors.onTertiary,
-        textAlign: 'center',
+        textAlign: 'left',
       },
     });
   }, [theme, width]);

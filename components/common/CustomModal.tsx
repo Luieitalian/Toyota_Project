@@ -9,6 +9,8 @@ type CustomModalProps = {
   children: React.ReactNode;
   modalVisible: boolean;
   onDismissModal: () => void;
+  dismissable?: boolean;
+  dismissableBackButton?: boolean;
 };
 
 const CustomModal = ({
@@ -16,6 +18,8 @@ const CustomModal = ({
   children,
   modalVisible,
   onDismissModal,
+  dismissable = true,
+  dismissableBackButton = true,
 }: CustomModalProps) => {
   const theme = useTheme();
 
@@ -24,6 +28,8 @@ const CustomModal = ({
   return (
     <Portal>
       <Modal
+        dismissable={dismissable}
+        dismissableBackButton={dismissableBackButton}
         visible={modalVisible}
         onDismiss={onDismissModal}
         contentContainerStyle={[

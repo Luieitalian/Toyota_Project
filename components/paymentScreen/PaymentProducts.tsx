@@ -29,7 +29,7 @@ const PaymentProducts = () => {
   const isWide = useMemo(() => width >= breakPoint, [width]);
 
   const renderItem = ({item}: ListRenderItemInfo<CartProductModel>) => (
-    <CartItem key={item.prod.id} cart_item={item} />
+    <CartItem key={item.prod.id} removeable={false} cart_item={item} />
   );
 
   const ListEmptyComponent = <Text style={styles.emptyText}>empty</Text>;
