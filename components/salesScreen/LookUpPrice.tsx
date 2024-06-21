@@ -7,14 +7,14 @@ import {
 } from 'react-native';
 import {TextInput, useTheme} from 'react-native-paper';
 import useLookUpPriceStyle from './styles/useLookUpPriceStyle';
-import CustomButton from '../common/CustomButton';
-import Product from '../common/Product';
+import CustomButton from '@/components/common/CustomButton';
+import Product from '@/components/common/Product';
 import {ProductsContext} from '@/contexts/ProductsContext/ProductsContext';
 import {ProductModel} from '@/models/ProductModel';
 import {useTranslation} from 'react-i18next';
 import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
 import {FavoritesContext} from '@/contexts/FavoritesContext/FavoritesContext';
-import CustomModal from '../common/CustomModal';
+import CustomModal from '@/components/common/CustomModal';
 
 const LookUpPrice = () => {
   const theme = useTheme();

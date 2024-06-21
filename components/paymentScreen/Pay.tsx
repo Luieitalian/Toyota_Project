@@ -2,7 +2,7 @@ import React, {memo, useContext, useMemo, useRef, useState} from 'react';
 import usePayStyle from './styles/usePayStyle';
 import CustomButton from '../common/CustomButton';
 import {useTranslation} from 'react-i18next';
-import {Modal, Portal, useTheme} from 'react-native-paper';
+import {useTheme} from 'react-native-paper';
 import {UnsentCartsContext} from '@/contexts/UnsentCartsContext/UnsentCartsContext';
 import {StatusContext} from '@/contexts/StatusContext/StatusContext';
 import currency from 'currency.js';
@@ -15,6 +15,8 @@ import {SaleModel} from '@/models/SaleModel';
 import usePDF from '@/hooks/usePDF';
 import Pdf from 'react-native-pdf';
 import {PDF_PATH} from '@env';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 const receipt = require('receipt');
 
 receipt.config.currency = '₺';
@@ -30,24 +32,15 @@ const Pay = () => {
   const {styles} = usePayStyle(theme);
 
   const {cart, clearCart, isCash} = useContext(ShoppingCartContext);
-  const {subTotal, paymentTotal, discountTotal} = useCartPricing(cart);
-
   const {setUnsentCartReceipts} = useContext(UnsentCartsContext);
   const {isOnline} = useContext(StatusContext);
   const {setPastSales} = useContext(PastSalesContext);
 
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
+  const {subTotal, paymentTotal, discountTotal} = useCartPricing(cart);
   const {writeToPDF} = usePDF();
 
   const pdfFileName = 'test';
-
-  const showModal = () => {
-    setModalVisible(true);
-  };
-
-  const hideModal = () => {
-    clearCart();
-    setModalVisible(false);
-  };
 
   const productLines = useMemo(() => {
     return cart.map((cart_item: CartProductModel, idx: number) => {
@@ -112,6 +105,16 @@ const Pay = () => {
     ]);
   }, [productLines]);
 
+  const onModal = () => {
+    setModalVisible(true);
+  };
+
+  const onDismissModal = () => {
+    clearCart();
+    navigation.navigate('SalesScreen');
+    setModalVisible(false);
+  };
+
   const onPress = async () => {
     if (cart.length === 0) return;
 
@@ -131,7 +134,7 @@ const Pay = () => {
       });
     }
 
-    showModal();
+    onModal();
   };
 
   return (
@@ -141,7 +144,7 @@ const Pay = () => {
       </CustomButton>
       <CustomModal
         modalVisible={modalVisible}
-        onDismissModal={hideModal}
+        onDismissModal={onDismissModal}
         overridingModalStyles={styles}
       >
         <Pdf
@@ -151,14 +154,6 @@ const Pay = () => {
           style={styles.pdf}
           scale={styles.pdfScale.width}
         />
-        {/* <ScrollView
-          contentContainerStyle={{
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <Receipt receipt_str={receipt_str} />
-        </ScrollView> */}
       </CustomModal>
     </>
   );

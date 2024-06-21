@@ -5,9 +5,8 @@ const usePDF = () => {
   const writeToPDF = useCallback(
     async (receipt_str: string, fileName: string) => {
       let options = {
-        html: `<center>
-        <pre>${receipt_str}</pre>
-      </center>`,
+        html: `
+        <pre style="display: flex; justify-content: center">${receipt_str}</pre>`,
         fileName: fileName,
         directory: 'Documents',
       };

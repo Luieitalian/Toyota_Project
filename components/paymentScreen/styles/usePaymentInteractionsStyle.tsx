@@ -24,6 +24,10 @@ const usePaymentInteractionsStyle = (theme: MD3Theme) => {
         color: theme.colors.onBackground,
         fontSize: isWide ? 20 : 18,
       },
+      dialogText: {
+        color: theme.colors.onBackground,
+        fontSize: isWide ? 20 : 18,
+      },
     });
   }, [theme, width]);
   return {styles};

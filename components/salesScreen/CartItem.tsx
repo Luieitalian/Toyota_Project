@@ -31,7 +31,11 @@ const CartItem = ({cart_item, removeable = true}: CartItemProps) => {
             ? t('itemWithCount_other', {count: cart_item._cart_amount})
             : t('itemWithCount_one', {count: cart_item._cart_amount})}
         </Text>
-        <Text style={styles.name}>{cart_item.prod.name}</Text>
+        <Text ellipsizeMode="tail" style={styles.name}>
+          {cart_item.prod.name.length > 40
+            ? cart_item.prod.name.slice(0, 39).trimEnd() + '...'
+            : cart_item.prod.name}
+        </Text>
       </View>
       <View style={styles.priceAndRemove}>
         <Text style={styles.pricingText}>

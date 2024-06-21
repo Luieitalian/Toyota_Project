@@ -22,6 +22,14 @@ const useReceiptMailStyle = (theme: MD3Theme) => {
           textInput: {
             width: '100%',
           },
+          modalContainer: {
+            marginHorizontal: 200,
+            marginVertical: 250,
+          },
+          title: {
+            fontSize: 18,
+            color: theme.colors.onBackground,
+          },
         })
       : StyleSheet.create({
           buttonContainer: {
@@ -33,6 +41,14 @@ const useReceiptMailStyle = (theme: MD3Theme) => {
           },
           textInput: {
             width: '100%',
+          },
+          modalContainer: {
+            marginHorizontal: 50,
+            marginVertical: 320,
+          },
+          title: {
+            fontSize: 18,
+            color: theme.colors.onBackground,
           },
         });
   }, [theme, width]);

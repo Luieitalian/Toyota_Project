@@ -77,10 +77,13 @@ const useCartPricing = (cart: CartProductModel[]) => {
 
   const subTotal = useMemo(
     () => subTotalMap.reduce((acc, curr) => acc + curr, 0),
-    [cart]
+    [cart, subTotalMap]
   );
 
-  const paymentTotal = subTotal - discountTotal;
+  const paymentTotal = useMemo(
+    () => subTotal - discountTotal,
+    [subTotal, discountTotal]
+  );
 
   return {subTotal, paymentTotal, discountTotal};
 };

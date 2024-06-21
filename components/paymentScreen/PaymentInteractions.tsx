@@ -6,7 +6,6 @@ import {
   ActivityIndicator,
   Button,
   Dialog,
-  Icon,
   Portal,
   useTheme,
 } from 'react-native-paper';
@@ -38,10 +37,9 @@ const PaymentInteractions = () => {
   const [paymentAmountUnMasked, setPaymentAmountUnMasked] = useState<number>();
   const [dialogVisible, setDialogVisible] = useState<boolean>(false);
   const [dialogContent, setDialogContent] = useState<string>();
+  const [modalContent, setModalContent] = useState<string>();
 
-  const [isCashWaitingModalVisible, setIsCashWaitingModalVisible] =
-    useState<boolean>(false);
-  const [isCreditCardWaitingModalVisible, setIsCreditCardWaitingModalVisible] =
+  const [isWaitingModalVisible, setIsWaitingModalVisible] =
     useState<boolean>(false);
 
   const {cart, clearCart} = useContext(ShoppingCartContext);
@@ -61,11 +59,7 @@ const PaymentInteractions = () => {
       onDialog('please_enter_an_amount_less_than_or_equal_to_remaining_price');
       return;
     }
-    if (isCash) {
-      onCashWaitingModal();
-    } else {
-      onCreditCardWaitingModal();
-    }
+    onWaitingModal(isCash);
   };
 
   const onChangeAmountMasked = (text: string) => {
@@ -81,39 +75,36 @@ const PaymentInteractions = () => {
     setDialogVisible(true);
   };
 
-  const onDismissDialog = () => {
+  const onDismissDialog = (choice: string) => {
     if (dialogContent === t('are_you_sure_to_cancel_document')) {
-      resetScreen();
+      if (choice === 'ok') {
+        resetScreen();
+      }
     }
     setDialogVisible(false);
   };
 
-  const onCashWaitingModal = () => {
-    setIsCashWaitingModalVisible(true);
+  const onWaitingModal = (isCash: boolean) => {
+    if (isCash) {
+      setModalContent(t('please_insert_cash'));
+    } else {
+      setModalContent(t('please_scan_a_credit_card'));
+    }
+    setIsWaitingModalVisible(true);
   };
 
-  const onDismissCashWaitingModal = () => {
-    setIsCashWaitingModalVisible(false);
-  };
-
-  const onCreditCardWaitingModal = () => {
-    setIsCreditCardWaitingModalVisible(true);
-  };
-
-  const onDismissCreditCardWaitingModal = () => {
-    setIsCreditCardWaitingModalVisible(false);
+  const onDismissWaitingModal = () => {
+    setIsWaitingModalVisible(false);
   };
 
   const onCancel = () => {
-    onDismissCashWaitingModal();
-    onDismissCreditCardWaitingModal();
+    onDismissWaitingModal();
   };
 
   const onDone = () => {
     applyPayment(paymentAmountUnMasked!);
 
-    onDismissCashWaitingModal();
-    onDismissCreditCardWaitingModal();
+    onDismissWaitingModal();
   };
 
   const onCancelDocument = () => {
@@ -122,6 +113,7 @@ const PaymentInteractions = () => {
 
   const resetScreen = () => {
     clearCart();
+
     navigation.navigate('SalesScreen');
   };
 
@@ -158,38 +150,29 @@ const PaymentInteractions = () => {
       </View>
 
       <Portal>
-        <Dialog onDismiss={onDismissDialog} visible={dialogVisible}>
+        <Dialog
+          onDismiss={() => onDismissDialog('cancel')}
+          visible={dialogVisible}
+        >
           <Dialog.Title>
-            <Text>{dialogContent}</Text>
+            <Text style={styles.dialogText}>{dialogContent}</Text>
           </Dialog.Title>
           <Dialog.Actions>
-            <Button onPress={onDismissDialog}>{t('CANCEL')}</Button>
-            <Button onPress={onDismissDialog}>{t('OK')}</Button>
+            <Button onPress={() => onDismissDialog('cancel')}>
+              {t('CANCEL')}
+            </Button>
+            <Button onPress={() => onDismissDialog('ok')}>{t('OK')}</Button>
           </Dialog.Actions>
         </Dialog>
       </Portal>
 
       <CustomModal
-        modalVisible={isCashWaitingModalVisible}
-        onDismissModal={onDismissCashWaitingModal}
+        modalVisible={isWaitingModalVisible}
+        onDismissModal={onDismissWaitingModal}
         overridingModalStyles={styles}
       >
+        <Text style={styles.receivingPaymentText}>{modalContent}</Text>
         <ActivityIndicator size="large" theme={theme} />
-        <Text style={styles.receivingPaymentText}>
-          {t('please_insert_cash')}
-        </Text>
-        <CancelDoneButtonGroup onCancel={onCancel} onDone={onDone} />
-      </CustomModal>
-
-      <CustomModal
-        modalVisible={isCreditCardWaitingModalVisible}
-        onDismissModal={onDismissCreditCardWaitingModal}
-        overridingModalStyles={styles}
-      >
-        <ActivityIndicator size="large" theme={theme} />
-        <Text style={styles.receivingPaymentText}>
-          {t('please_scan_a_credit_card')}
-        </Text>
         <CancelDoneButtonGroup onCancel={onCancel} onDone={onDone} />
       </CustomModal>
     </>
