@@ -40,7 +40,7 @@ const Pay = () => {
   const {subTotal, paymentTotal, discountTotal} = useCartPricing(cart);
   const {writeToPDF} = usePDF();
 
-  const pdfFileName = 'test';
+  const pdfFileID = Math.random() * 10000000;
 
   const productLines = useMemo(() => {
     return cart.map((cart_item: CartProductModel, idx: number) => {
@@ -66,7 +66,7 @@ const Pay = () => {
       {
         type: 'properties',
         lines: [
-          {name: 'Order Number', value: '1004850027'},
+          {name: 'Order Number', value: pdfFileID},
           {
             name: 'Date',
             value: `${today.current.toLocaleDateString('tr-TR')} ${today.current.toLocaleTimeString('tr-TR')}`,
@@ -118,12 +118,12 @@ const Pay = () => {
   const onPress = async () => {
     if (cart.length === 0) return;
 
-    await writeToPDF(receipt_str, pdfFileName);
+    await writeToPDF(receipt_str, pdfFileID.toString());
 
     const newSale = {
       charge: currency(paymentTotal).value,
       date_time: `${today.current.toLocaleDateString('tr-TR')} ${today.current.toLocaleTimeString('tr-TR')}`,
-      orderID: Math.random() * 10000000,
+      orderID: pdfFileID,
     };
 
     setPastSales((pastSales: SaleModel[]) => [...pastSales, newSale]);
@@ -149,7 +149,7 @@ const Pay = () => {
       >
         <Pdf
           source={{
-            uri: `${PDF_PATH}${pdfFileName}.pdf`,
+            uri: `${PDF_PATH}${pdfFileID}.pdf`,
           }}
           style={styles.pdf}
           scale={styles.pdfScale.width}
