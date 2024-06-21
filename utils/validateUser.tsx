@@ -5,16 +5,15 @@ const validateUser = (
   password: string,
   users: UserModel[]
 ) => {
-  let user = undefined;
+  let user: UserModel;
 
-  users.every((_user: UserModel) => {
+  user = users.filter((_user: UserModel) => {
     if (_user.name === username) {
       if (_user.password === password) {
-        user = _user.name;
-        return false; // to break from loop
+        return true;
       }
     }
-  });
+  })[0];
 
   return {user};
 };

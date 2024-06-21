@@ -25,6 +25,7 @@ const SynchronizeUnsentCarts = () => {
   const {unsentCartReceipts, setUnsentCartReceipts} =
     useContext(UnsentCartsContext);
   const {isOnline} = useContext(StatusContext);
+
   const {styles} = useSynchronizeUnsentCartsStyle(theme);
 
   const onPressDialog = () => {
@@ -46,7 +47,7 @@ const SynchronizeUnsentCarts = () => {
   };
 
   return (
-    <View>
+    <>
       <CustomButton overridingButtonStyles={styles} onPress={onPressDialog}>
         {t('synchronize_unsent_receipts')}
       </CustomButton>
@@ -78,7 +79,7 @@ const SynchronizeUnsentCarts = () => {
           {t('shop_is_status', {status: isOnline ? t('online') : t('offline')})}
         </Snackbar>
       </Portal>
-    </View>
+    </>
   );
 };
 

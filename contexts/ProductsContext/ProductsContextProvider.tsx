@@ -6,19 +6,14 @@ import getProducts from '@/utils/getProducts';
 
 type ProductsContextProviderProps = {
   children: React.ReactNode;
+  isDatabaseInitialized: boolean;
 };
 
-const ProductsContextProvider = ({children}: ProductsContextProviderProps) => {
-  const [isDatabaseInitialized, setIsDatabaseInitialized] = useState(false);
+const ProductsContextProvider = ({
+  children,
+  isDatabaseInitialized,
+}: ProductsContextProviderProps) => {
   const {isOnline} = useContext(StatusContext);
-
-  useEffect(() => {
-    const initializeDatabase = async () => {
-      await setDatabase();
-      setIsDatabaseInitialized(true);
-    };
-    initializeDatabase();
-  }, []);
 
   const {products, loadingProducts} = getProducts({
     isOnline: isOnline,

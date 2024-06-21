@@ -22,6 +22,9 @@ const useReportsScreenStyle = () => {
         flexDirection: 'column',
         justifyContent: 'space-evenly',
       },
+      flexRow: {
+        flexDirection: 'row',
+      },
     });
   }, [theme, width]);
   return {styles, theme};

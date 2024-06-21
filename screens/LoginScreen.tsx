@@ -39,7 +39,7 @@ const LoginScreen = ({route, navigation}: any) => {
   const onLoginSubmit = async () => {
     const {user} = validateUser(username, password, users);
     if (user) {
-      setUser(user);
+      setUser(user.name);
       navigation.replace('HomeScreen');
     } else {
       await readNFC();

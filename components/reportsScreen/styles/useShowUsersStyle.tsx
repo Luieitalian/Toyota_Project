@@ -1,37 +1,37 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, useWindowDimensions} from 'react-native';
 import {MD3Theme} from 'react-native-paper';
 import {breakPoint} from '@/globals/style';
 
-const useSynchronizeUnsentCartsStyle = (theme: MD3Theme) => {
+const useShowUsersStyle = (theme: MD3Theme) => {
   const {width} = useWindowDimensions();
+
   const styles = React.useMemo(() => {
     const isWide = width >= breakPoint;
-
     return StyleSheet.create({
-      wrapper: {
-        flex: 1,
-      },
       buttonContainer: {
         flex: 1,
         minHeight: 100,
-        paddingHorizontal: 5,
       },
       buttonText: {
         fontSize: isWide ? 20 : 16,
       },
-      badgeView: {
-        position: 'absolute',
-        left: 0,
-        top: 0,
-        backgroundColor: theme.colors.primary,
+      modalContainer: {
+        padding: 0,
+        marginHorizontal: isWide ? 100 : 25,
+        marginVertical: isWide ? 100 : 100,
       },
-      badge: {
-        width: isWide ? 40 : 30,
-      },
-      dialogText: {
+      userNameText: {
         fontSize: isWide ? 18 : 16,
-        color: theme.colors.onBackground,
+      },
+      dataTable: {
+        flex: 1,
+        borderRadius: 10,
+        borderColor: theme.colors.outlineVariant,
+        borderWidth: 1,
+      },
+      currentUserDataRow: {
+        backgroundColor: theme.colors.primaryContainer,
       },
     });
   }, [theme, width]);
@@ -39,4 +39,4 @@ const useSynchronizeUnsentCartsStyle = (theme: MD3Theme) => {
   return {styles};
 };
 
-export default useSynchronizeUnsentCartsStyle;
+export default useShowUsersStyle;
