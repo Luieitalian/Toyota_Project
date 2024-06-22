@@ -7,14 +7,24 @@ type StatusContextProviderProps = {
 
 const StatusContextProvider = ({children}: StatusContextProviderProps) => {
   const [isOnline, setIsOnline] = useState(false);
+  const [isSyncAutomatic, setIsSyncAutomatic] = useState(false);
+
+  const toggleSyncAutomatic = useCallback(() => {
+    return setIsSyncAutomatic((s) => !s);
+  }, [setIsSyncAutomatic]);
 
   const toggleOnlineStatus = useCallback(() => {
     return setIsOnline((s) => !s);
-  }, []);
+  }, [setIsOnline]);
 
   const statusContext = useMemo(
-    () => ({isOnline: isOnline, toggleOnlineStatus: toggleOnlineStatus}),
-    [isOnline, toggleOnlineStatus]
+    () => ({
+      isOnline: isOnline,
+      toggleOnlineStatus: toggleOnlineStatus,
+      isSyncAutomatic: isSyncAutomatic,
+      toggleSyncAutomatic: toggleSyncAutomatic,
+    }),
+    [isOnline, toggleOnlineStatus, isSyncAutomatic, toggleSyncAutomatic]
   );
 
   if (!statusContext) {

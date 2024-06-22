@@ -1,9 +1,10 @@
-import {createContext, Dispatch} from 'react';
+import {createContext} from 'react';
 import {SaleModel} from '@/models/SaleModel';
 
 interface PastSalesContextType {
   pastSales: SaleModel[];
-  setPastSales: Dispatch<React.SetStateAction<SaleModel[]>>;
+  addToPastSales: (sale: SaleModel) => void;
+  clearPastSales: () => void;
 }
 
 export const PastSalesContext = createContext<PastSalesContextType>(

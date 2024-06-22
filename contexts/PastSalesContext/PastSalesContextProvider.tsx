@@ -1,4 +1,4 @@
-import React, {memo, useMemo, useState} from 'react';
+import React, {memo, useCallback, useMemo, useState} from 'react';
 import {SaleModel} from '@/models/SaleModel';
 import {PastSalesContext} from './PastSalesContext';
 
@@ -314,12 +314,24 @@ const PastSalesContextProvider = ({
 }: PastSalesContextProviderProps) => {
   const [pastSales, setPastSales] = useState<SaleModel[]>(mockPastSales);
 
+  const addToPastSales = useCallback(
+    (sale: SaleModel) => {
+      setPastSales((sales) => [...sales, sale]);
+    },
+    [setPastSales]
+  );
+
+  const clearPastSales = useCallback(() => {
+    setPastSales([]);
+  }, [setPastSales]);
+
   const pastSalesContext = useMemo(
     () => ({
       pastSales: pastSales,
-      setPastSales: setPastSales,
+      addToPastSales: addToPastSales,
+      clearPastSales: clearPastSales,
     }),
-    [pastSales, setPastSales]
+    [pastSales, addToPastSales, clearPastSales]
   );
 
   if (!pastSalesContext) {

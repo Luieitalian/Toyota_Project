@@ -5,7 +5,7 @@ import FavoritesContextProvider from './FavoritesContext/FavoritesContextProvide
 import ShoppingCartContextProvider from './ShoppingCartContext/ShoppingCartContextProvider';
 import PastSalesContextProvider from './PastSalesContext/PastSalesContextProvider';
 import ThemeContextProvider from './ThemeContext/ThemeContextProvider';
-import UnsentCartsContextProvider from './UnsentCartsContext/UnsentCartsContextProvider';
+import UnsentCartsContextProvider from './UnsentSalesContext/UnsentSalesContextProvider';
 import SafeAreaProviderWrapper from './SafeAreaProviderWrapper/SafeAreaProviderWrapper';
 import PaperProviderWrapper from './PaperProviderWrapper/PaperProviderWrapper';
 import UsersContextProvider from './UsersContext/UsersContextProvider';

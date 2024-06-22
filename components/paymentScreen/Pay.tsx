@@ -3,7 +3,6 @@ import usePayStyle from './styles/usePayStyle';
 import CustomButton from '../common/CustomButton';
 import {useTranslation} from 'react-i18next';
 import {useTheme} from 'react-native-paper';
-import {UnsentCartsContext} from '@/contexts/UnsentCartsContext/UnsentCartsContext';
 import {StatusContext} from '@/contexts/StatusContext/StatusContext';
 import currency from 'currency.js';
 import {CartProductModel} from '@/models/CartProductModel';
@@ -17,6 +16,7 @@ import Pdf from 'react-native-pdf';
 import {PDF_PATH} from '@env';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {UnsentSalesContext} from '@/contexts/UnsentSalesContext/UnsentSalesContext';
 const receipt = require('receipt');
 
 receipt.config.currency = '₺';
@@ -32,9 +32,9 @@ const Pay = () => {
   const {styles} = usePayStyle(theme);
 
   const {cart, clearCart, isCash} = useContext(ShoppingCartContext);
-  const {setUnsentCartReceipts} = useContext(UnsentCartsContext);
-  const {isOnline} = useContext(StatusContext);
-  const {setPastSales} = useContext(PastSalesContext);
+  const {addToUnsentSales, clearUnsentSales} = useContext(UnsentSalesContext);
+  const {isOnline, isSyncAutomatic} = useContext(StatusContext);
+  const {addToPastSales} = useContext(PastSalesContext);
 
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const {subTotal, paymentTotal, discountTotal} = useCartPricing(cart);
@@ -120,18 +120,21 @@ const Pay = () => {
 
     await writeToPDF(receipt_str, pdfFileID.toString());
 
-    const newSale = {
+    const newSale: SaleModel = {
       charge: currency(paymentTotal).value,
       date_time: `${today.current.toLocaleDateString('tr-TR')} ${today.current.toLocaleTimeString('tr-TR')}`,
       orderID: pdfFileID,
+      receipt_str: receipt_str,
     };
 
-    setPastSales((pastSales: SaleModel[]) => [...pastSales, newSale]);
+    addToPastSales(newSale);
 
     if (!isOnline) {
-      setUnsentCartReceipts((receipts: string[]) => {
-        return [...receipts, receipt_str];
-      });
+      // if not online then add to unsentsales
+      addToUnsentSales(newSale);
+    } else if (!isSyncAutomatic) {
+      // if online and manual synchronization then add to unsentsales
+      addToUnsentSales(newSale);
     }
 
     onModal();

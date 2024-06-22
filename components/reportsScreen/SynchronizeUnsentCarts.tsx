@@ -6,14 +6,13 @@ import {
   Dialog,
   Portal,
   Snackbar,
-  Surface,
   useTheme,
 } from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 import CustomButton from '../common/CustomButton';
-import {UnsentCartsContext} from '@/contexts/UnsentCartsContext/UnsentCartsContext';
 import useSynchronizeUnsentCartsStyle from './styles/useSynchronizeUnsentCartsStyle';
 import {StatusContext} from '@/contexts/StatusContext/StatusContext';
+import {UnsentSalesContext} from '@/contexts/UnsentSalesContext/UnsentSalesContext';
 
 const SynchronizeUnsentCarts = () => {
   const {t} = useTranslation();
@@ -22,23 +21,22 @@ const SynchronizeUnsentCarts = () => {
   const [isDialogVisible, setIsDialogVisible] = useState(false);
   const [isSnackBarVisible, setIsSnackBarVisible] = useState(false);
 
-  const {unsentCartReceipts, setUnsentCartReceipts} =
-    useContext(UnsentCartsContext);
+  const {clearUnsentSales, unsentSales} = useContext(UnsentSalesContext);
   const {isOnline} = useContext(StatusContext);
 
   const {styles} = useSynchronizeUnsentCartsStyle(theme);
 
-  const onPressDialog = () => {
+  const onPress = () => {
     console.log('Synchronize past sales!');
     if (!isOnline) {
       setIsSnackBarVisible(true);
-    } else if (unsentCartReceipts.length > 0) {
+    } else if (unsentSales.length > 0) {
       setIsDialogVisible(true);
     }
   };
 
   const onDismissDialog = () => {
-    setUnsentCartReceipts([]);
+    clearUnsentSales();
     setIsDialogVisible(false);
   };
 
@@ -48,12 +46,12 @@ const SynchronizeUnsentCarts = () => {
 
   return (
     <>
-      <CustomButton overridingButtonStyles={styles} onPress={onPressDialog}>
+      <CustomButton overridingButtonStyles={styles} onPress={onPress}>
         {t('synchronize_unsent_receipts')}
       </CustomButton>
-      {unsentCartReceipts.length > 0 ? (
+      {unsentSales.length > 0 ? (
         <Badge size={styles.badge.width} style={styles.badgeView}>
-          {unsentCartReceipts.length}
+          {unsentSales.length}
         </Badge>
       ) : null}
       <Portal>
@@ -61,7 +59,7 @@ const SynchronizeUnsentCarts = () => {
           <Dialog.Content>
             <Text style={styles.dialogText}>
               {t('receipts_synchronized', {
-                receipts: unsentCartReceipts.length,
+                receipts: unsentSales.length,
               })}
             </Text>
           </Dialog.Content>
