@@ -1,41 +1,52 @@
 import React, {memo} from 'react';
 import {View} from 'react-native';
 import {TextInput, useTheme} from 'react-native-paper';
-import useSearchBarStyle from './styles/useSearchBarStyle';
+import useCustomSearchBarStyle from './styles/useCustomSearchBarStyle';
 import {useTranslation} from 'react-i18next';
 
-type SearchBarProps = {
+type CustomSearchBarProps = {
   text: string | undefined;
   disabled?: boolean;
   onChangeText: (text: string) => void;
   onSubmitEditing: (nativeEvent: any) => void;
+  overridingSearchBarStyles: any;
+  placeholder: string;
 };
 
-const SearchBar = ({
+const CustomSearchBar = ({
   text,
   disabled = false,
   onChangeText,
   onSubmitEditing,
-}: SearchBarProps) => {
+  overridingSearchBarStyles,
+  placeholder,
+}: CustomSearchBarProps) => {
   const {t} = useTranslation();
   const theme = useTheme();
 
-  const {styles} = useSearchBarStyle(theme);
+  const {styles} = useCustomSearchBarStyle(theme);
 
   return (
-    <View style={styles.searchBarContainer}>
+    <View
+      style={[
+        styles.searchBarContainer,
+        overridingSearchBarStyles.searchBarContainer,
+      ]}
+    >
       <TextInput
         disabled={disabled}
-        style={styles.textInput}
-        value={text === undefined ? '' : text}
-        blurOnSubmit={false}
+        style={[
+          styles.searchBarInput,
+          overridingSearchBarStyles.searchBarInput,
+        ]}
+        value={text}
         onChangeText={onChangeText}
         onSubmitEditing={onSubmitEditing}
-        placeholder={t('search_for_product')}
+        placeholder={t(placeholder)}
         left={<TextInput.Icon icon="magnify" />}
       />
     </View>
   );
 };
 
-export default memo(SearchBar);
+export default memo(CustomSearchBar);

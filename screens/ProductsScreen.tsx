@@ -7,10 +7,10 @@ import {
 import React, {useState} from 'react';
 import useProductsScreenStyle from './styles/useProductsScreenStyle';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import SearchBar from '@/components/common/SearchBar';
 import FilteringBar from '@/components/productsScreen/FilteringBar';
 import Products from '@/components/productsScreen/Products';
 import Footer from '@/components/common/Footer';
+import CustomSearchBar from '@/components/common/CustomSearchBar';
 
 const ProductsScreen = ({route, navigation}: any) => {
   const {styles, theme} = useProductsScreenStyle();
@@ -32,14 +32,18 @@ const ProductsScreen = ({route, navigation}: any) => {
 
   const onChangeText = (text: string) => {
     if (text.length === 0) {
-      setText(undefined);
-    } else if (text.length >= 1) {
+      setText('');
+    } else {
       setText(text);
     }
   };
 
   const onChangeCategory = (category: string) => {
-    setSubmittedText(text);
+    if (text === '') {
+      setSubmittedText(undefined);
+    } else {
+      setSubmittedText(text);
+    }
     setCategory(category);
   };
 
@@ -50,10 +54,12 @@ const ProductsScreen = ({route, navigation}: any) => {
         backgroundColor={theme.colors.background}
       />
       <View style={styles.listHeader}>
-        <SearchBar
+        <CustomSearchBar
           text={text}
           onChangeText={onChangeText}
           onSubmitEditing={onSubmitEditing}
+          placeholder="search_for_product"
+          overridingSearchBarStyles={styles}
         />
         <FilteringBar category={category} onChangeCategory={onChangeCategory} />
       </View>
