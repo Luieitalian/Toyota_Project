@@ -12,6 +12,8 @@ import Header from '@/components/common/Header';
 import useScreenHeaderStyle from '@/screens/styles/useScreenHeaderStyle';
 import PastSalesScreen from '@/screens/PastSalesScreen';
 import PaymentScreen from './screens/PaymentScreen';
+import UnsentSalesScreen from './screens/UnsentSalesScreen';
+import SynchronizeAll from './components/unsentSalesScreen/SynchronizeAll';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,7 +30,7 @@ const App = () => {
           headerTitleStyle: headerStyles.headerTitleStyle,
           headerTintColor: headerStyles.headerTint.color,
         }}
-        initialRouteName="LoginScreen"
+        initialRouteName="HomeScreen"
       >
         <Stack.Screen
           name="LoginScreen"
@@ -102,6 +104,16 @@ const App = () => {
             headerShown: true,
           }}
           component={PastSalesScreen}
+        />
+
+        <Stack.Screen
+          name="UnsentSalesScreen"
+          options={{
+            headerTitle: t('unsent_sales'),
+            headerShown: true,
+            headerRight: () => <SynchronizeAll />,
+          }}
+          component={UnsentSalesScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

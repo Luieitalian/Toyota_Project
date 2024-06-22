@@ -325,13 +325,38 @@ const PastSalesContextProvider = ({
     setPastSales([]);
   }, [setPastSales]);
 
+  const markAllSynchronized = useCallback(() => {
+    setPastSales((sales) =>
+      sales.map((sale) => ({...sale, synchronized: true}))
+    );
+  }, [setPastSales]);
+
+  const markSynchronized = useCallback(
+    (orderID: number) => {
+      setPastSales((sales) =>
+        sales.map((sale) =>
+          sale.orderID === orderID ? {...sale, synchronized: true} : sale
+        )
+      );
+    },
+    [setPastSales]
+  );
+
   const pastSalesContext = useMemo(
     () => ({
       pastSales: pastSales,
       addToPastSales: addToPastSales,
       clearPastSales: clearPastSales,
+      markSynchronized: markSynchronized,
+      markAllSynchronized: markAllSynchronized,
     }),
-    [pastSales, addToPastSales, clearPastSales]
+    [
+      pastSales,
+      addToPastSales,
+      clearPastSales,
+      markSynchronized,
+      markAllSynchronized,
+    ]
   );
 
   if (!pastSalesContext) {

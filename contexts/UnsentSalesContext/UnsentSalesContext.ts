@@ -4,6 +4,7 @@ import {createContext} from 'react';
 interface UnsentSalesContextType {
   unsentSales: SaleModel[];
   addToUnsentSales: (sale: SaleModel) => void;
+  removeFromUnsentSales: (orderID: number) => void;
   clearUnsentSales: () => void;
 }
 

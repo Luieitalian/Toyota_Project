@@ -14,13 +14,13 @@ const GoToPastSales = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   const onPress = () => {
-    console.log('Show past sales');
+    console.log('go_to_past_sales');
     navigation.navigate('PastSalesScreen');
   };
 
   return (
     <CustomButton overridingButtonStyles={styles} onPress={onPress}>
-      {t('show_past_sales')}
+      {t('go_to_past_sales')}
     </CustomButton>
   );
 };

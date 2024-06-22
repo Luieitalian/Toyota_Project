@@ -17,6 +17,7 @@ import {PDF_PATH} from '@env';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {UnsentSalesContext} from '@/contexts/UnsentSalesContext/UnsentSalesContext';
+import {delay} from '@/utils/delay';
 const receipt = require('receipt');
 
 receipt.config.currency = '₺';
@@ -40,7 +41,7 @@ const Pay = () => {
   const {subTotal, paymentTotal, discountTotal} = useCartPricing(cart);
   const {writeToPDF} = usePDF();
 
-  const pdfFileID = Math.random() * 10000000;
+  const pdfFileID = useMemo(() => Math.floor(Math.random() * 10000000), [cart]);
 
   const productLines = useMemo(() => {
     return cart.map((cart_item: CartProductModel, idx: number) => {
@@ -120,24 +121,25 @@ const Pay = () => {
 
     await writeToPDF(receipt_str, pdfFileID.toString());
 
+    const isSynchronized = isOnline && isSyncAutomatic;
+
     const newSale: SaleModel = {
       charge: currency(paymentTotal).value,
       date_time: `${today.current.toLocaleDateString('tr-TR')} ${today.current.toLocaleTimeString('tr-TR')}`,
       orderID: pdfFileID,
       receipt_str: receipt_str,
+      synchronized: isSynchronized,
     };
 
     addToPastSales(newSale);
 
-    if (!isOnline) {
-      // if not online then add to unsentsales
-      addToUnsentSales(newSale);
-    } else if (!isSyncAutomatic) {
-      // if online and manual synchronization then add to unsentsales
+    if (!isSynchronized) {
+      // if not online or manual-sync then add to unsentsales
       addToUnsentSales(newSale);
     }
 
-    onModal();
+    // wait 2 seconds before calling onModal
+    delay(2000).then(() => onModal());
   };
 
   return (
@@ -152,7 +154,7 @@ const Pay = () => {
       >
         <Pdf
           source={{
-            uri: `${PDF_PATH}${pdfFileID}.pdf`,
+            uri: `${PDF_PATH}${pdfFileID.toString()}.pdf`,
           }}
           style={styles.pdf}
           scale={styles.pdfScale.width}
