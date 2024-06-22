@@ -7,6 +7,7 @@ import useReportsScreenStyle from './styles/useReportsScreenStyle';
 import GoToPastSales from '@/components/reportsScreen/GoToPastSales';
 import SynchronizeUnsentCarts from '@/components/reportsScreen/SynchronizeUnsentCarts';
 import ShowUsers from '@/components/reportsScreen/ShowUsers';
+import ShowSpecialOffers from '@/components/reportsScreen/ShowSpecialOffers';
 
 const ReportsScreen = ({route, navigation}: any) => {
   const {styles, theme} = useReportsScreenStyle();
@@ -18,7 +19,10 @@ const ReportsScreen = ({route, navigation}: any) => {
         backgroundColor={theme.colors.background}
       />
       <View style={styles.group}>
-        <GoToPastSales />
+        <View style={styles.flexRow}>
+          <GoToPastSales />
+          <ShowSpecialOffers />
+        </View>
         <View style={styles.flexRow}>
           <SynchronizeUnsentCarts />
           <ShowUsers />

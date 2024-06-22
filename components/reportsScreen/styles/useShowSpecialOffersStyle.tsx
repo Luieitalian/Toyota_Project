@@ -3,7 +3,7 @@ import {StyleSheet, useWindowDimensions} from 'react-native';
 import {MD3Theme} from 'react-native-paper';
 import {breakPoint} from '@/globals/style';
 
-const useGoToPastSalesStyle = (theme: MD3Theme) => {
+const useShowSpecialOffersStyle = (theme: MD3Theme) => {
   const {width} = useWindowDimensions();
 
   const styles = React.useMemo(() => {
@@ -17,18 +17,9 @@ const useGoToPastSalesStyle = (theme: MD3Theme) => {
         fontSize: isWide ? 20 : 16,
       },
       modalContainer: {
-        marginHorizontal: isWide ? 100 : 25,
+        padding: 20,
+        marginHorizontal: isWide ? 300 : 50,
         marginVertical: isWide ? 100 : 100,
-      },
-      receiptWrapper: {
-        borderWidth: 1,
-        borderColor: theme.colors.outline,
-        borderRadius: 10,
-        padding: 5,
-        marginBottom: 10,
-      },
-      emptySalesText: {
-        color: theme.colors.outline,
       },
     });
   }, [theme, width]);
@@ -36,4 +27,4 @@ const useGoToPastSalesStyle = (theme: MD3Theme) => {
   return {styles};
 };
 
-export default useGoToPastSalesStyle;
+export default useShowSpecialOffersStyle;
