@@ -88,5 +88,12 @@
   "selected_offer": "Selected Offer: {{- offer}}",
   "not_chosen": "N/A",
   "discount_amount": "Discount Amount: ",
-  "remaining_price": "Remaining Price"
+  "remaining_price": "Remaining Price",
+  "sale_order_id": "Sale Order ID: {{id}}",
+  "sale_charge": "Sale Charge: {{charge}}",
+  "sale_date_time": "Sale Date-Time: {{- date_time}}",
+  "sale_synchronized": "Is Sale Synchronized: {{sync}}",
+  "sale_chosen_special_offerID": "Sale Special Offer ID: {{- offer_id}}",
+  "no": "No",
+  "yes": "Yes"
 }

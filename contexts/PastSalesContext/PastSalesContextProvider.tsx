@@ -307,6 +307,125 @@ const mockPastSales = [
     orderID: 19678,
     date_time: '11/8/2023',
   },
+  {
+    charge: 645.57,
+    date_time: '24.06.2024 12:11:57',
+    orderID: 3840750,
+    receipt_str: '',
+    synchronized: false,
+    cart: [
+      {
+        prod: {
+          name: 'Algida Milka Stick',
+          img: 'https://market-product-images-cdn.getirapi.com/product/a8241f78-8c48-44f2-af47-145ad5840a69.jpg',
+          price: '₺19,80',
+          id: '2',
+          amount_attribute: '82 ml',
+          category: 'dondurma',
+        },
+        _cart_amount: 1,
+      },
+      {
+        prod: {
+          name: 'Golf Bravo Brownie',
+          img: 'https://cdn.getir.com/product/5f631e20d4b31d8369bade94_tr_1605186801735.png',
+          price: '₺24,80',
+          id: '23',
+          amount_attribute: '90 ml',
+          category: 'dondurma',
+        },
+        _cart_amount: 1,
+      },
+      {
+        prod: {
+          name: 'Banvit Piliç Şinitzel',
+          img: 'https://cdn.getir.com/product/600caee13e046f467d696552_tr_1611733531992.jpeg',
+          price: '₺59,99',
+          id: '235',
+          amount_attribute: '700 g',
+          category: 'et_balik',
+        },
+        _cart_amount: 1,
+      },
+      {
+        prod: {
+          name: 'Magnum Beyaz',
+          img: 'https://market-product-images-cdn.getirapi.com/product/335966ca-4364-4994-98be-ff29a7781582.jpg',
+          price: '₺39,60',
+          id: '12',
+          amount_attribute: '100 ml',
+          category: 'dondurma',
+        },
+        _cart_amount: 1,
+      },
+      {
+        prod: {
+          name: 'Do Ballı Muzlu Sütlü',
+          img: 'https://cdn.getir.com/product/5f1ffdd3271fd1ae48880944_tr_1638958716093.jpeg',
+          price: '₺123,80',
+          id: '123',
+          amount_attribute: '450 ml',
+          category: 'dondurma',
+        },
+        _cart_amount: 1,
+      },
+      {
+        prod: {
+          name: 'Mesh Roybos Bitki Çayı',
+          img: 'https://market-product-images-cdn.getirapi.com/product/0cff3a93-a048-477c-b22a-b511c71a0b70.jpg',
+          price: '₺26,70',
+          id: '1234',
+          amount_attribute: '16 Adet',
+          category: 'kahvalti',
+        },
+        _cart_amount: 1,
+      },
+      {
+        prod: {
+          name: 'Nogger Paketi',
+          img: 'https://cdn.getir.com/product/62e251a9316441a5a5928aff_tr_1659692215906.jpeg',
+          price: '₺79,20',
+          id: '1',
+          amount_attribute: "3'lü",
+          category: 'dondurma',
+        },
+        _cart_amount: 2,
+      },
+      {
+        prod: {
+          name: 'Magnum Düet Kırmızı Meyveler',
+          img: 'https://cdn.getir.com/product/61e8237ddaafed5cc5f4c9f8_tr_1643885762259.jpeg',
+          price: '₺24,50',
+          id: '13',
+          amount_attribute: '90 ml',
+          category: 'dondurma',
+        },
+        _cart_amount: 1,
+      },
+      {
+        prod: {
+          name: "Carte d'Or Classic Extra Cookie",
+          img: 'https://cdn.getir.com/product/601be38c9ea47d09ccc13774_953f215f-209f-4f49-8ab6-0f633df61421.jpeg',
+          price: '₺87,99',
+          id: '134',
+          amount_attribute: '850 ml',
+          category: 'dondurma',
+        },
+        _cart_amount: 1,
+      },
+      {
+        prod: {
+          name: 'Kereviz Sapı',
+          img: 'https://cdn.getir.com/product/5ef5bdb4e4f6682aa964f5fa_tr_1594972325203.jpeg',
+          price: '₺79,99',
+          id: '1345',
+          amount_attribute: '1 Adet',
+          category: 'meyve_sebze',
+        },
+        _cart_amount: 1,
+      },
+    ],
+  },
 ];
 
 const PastSalesContextProvider = ({

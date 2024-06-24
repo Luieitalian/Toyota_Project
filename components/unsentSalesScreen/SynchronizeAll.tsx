@@ -5,6 +5,7 @@ import {Icon, IconButton, useTheme} from 'react-native-paper';
 import useSynchronizeAllStyle from './styles/useSynchronizeAllStyle';
 import {useTranslation} from 'react-i18next';
 import {PastSalesContext} from '@/contexts/PastSalesContext/PastSalesContext';
+import {StatusContext} from '@/contexts/StatusContext/StatusContext';
 
 const SynchronizeAll = () => {
   const {t} = useTranslation();
@@ -12,13 +13,16 @@ const SynchronizeAll = () => {
 
   const {clearUnsentSales} = useContext(UnsentSalesContext);
   const {markAllSynchronized} = useContext(PastSalesContext);
+  const {isOnline} = useContext(StatusContext);
 
   const {styles} = useSynchronizeAllStyle(theme);
 
   const onPress = () => {
-    console.log('clearing unsent sales!');
-    clearUnsentSales();
-    markAllSynchronized();
+    if (isOnline) {
+      console.log('clearing unsent sales!');
+      clearUnsentSales();
+      markAllSynchronized();
+    }
   };
 
   return (

@@ -4,6 +4,8 @@ import {useTheme, TextInput, DataTable, Icon} from 'react-native-paper';
 import usePastSalesDataTableStyle from './styles/usePastSalesDataTableStyle';
 import {SaleModel} from '@/models/SaleModel';
 import {FlatList, ListRenderItem, ListRenderItemInfo} from 'react-native';
+import PastSaleDetails from './PastSaleDetails';
+import PastSaleDataRow from './PastSaleDataRow';
 
 type PastSalesDataTableProps = {pastSales: SaleModel[]};
 
@@ -20,18 +22,7 @@ const PastSalesDataTable = ({pastSales}: PastSalesDataTableProps) => {
   const {styles} = usePastSalesDataTableStyle(theme);
 
   const renderItem = ({item}: ListRenderItemInfo<SaleModel>) => (
-    <DataTable.Row>
-      <DataTable.Cell numeric>{item.orderID}</DataTable.Cell>
-      <DataTable.Cell numeric>{item.date_time}</DataTable.Cell>
-      <DataTable.Cell numeric>{item.charge}</DataTable.Cell>
-      <DataTable.Cell numeric>
-        {item.synchronized ? (
-          <Icon size={24} source="check-bold" />
-        ) : (
-          <Icon size={24} source="close-thick" />
-        )}
-      </DataTable.Cell>
-    </DataTable.Row>
+    <PastSaleDataRow item={item} />
   );
 
   const keyExtractor = (item: SaleModel, index: number) => index.toString();
