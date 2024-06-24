@@ -7,6 +7,7 @@ import {SpecialOffersContext} from '@/contexts/SpecialOffersContext/SpecialOffer
 import useCartPricing from '@/hooks/useCartPricing';
 import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
 import currency from 'currency.js';
+import {currency_format} from '@/globals/pricing';
 
 type DiscountAndOfferProps = {};
 
@@ -31,13 +32,7 @@ const DiscountAndOffer = ({}: DiscountAndOfferProps) => {
       </Text>
       <Text style={styles.text}>
         {t('discount_amount')}
-        <Text>
-          {currency(discountTotal).format({
-            symbol: '₺',
-            separator: '.',
-            decimal: ',',
-          })}
-        </Text>
+        <Text>{currency(discountTotal).format(currency_format)}</Text>
       </Text>
     </View>
   );

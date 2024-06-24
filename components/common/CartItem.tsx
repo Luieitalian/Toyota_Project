@@ -6,6 +6,7 @@ import useCartItemStyle from './styles/useCartItemStyle';
 import currency from 'currency.js';
 import {useTranslation} from 'react-i18next';
 import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
+import {currency_format} from '@/globals/pricing';
 
 type CartItemProps = {
   cart_item: CartProductModel;
@@ -44,7 +45,7 @@ const CartItem = ({cart_item, removeable = true}: CartItemProps) => {
             decimal: ',',
           })
             .multiply(cart_item._cart_amount)
-            .format({symbol: '₺', separator: '.', decimal: ','})}
+            .format(currency_format)}
         </Text>
         {removeable ? (
           <View>

@@ -6,6 +6,7 @@ import currency from 'currency.js';
 import useCartPricing from '@/hooks/useCartPricing';
 import {useTranslation} from 'react-i18next';
 import useCartProductsPricingStyle from './styles/useCartProductsPricingStyle';
+import {currency_format} from '@/globals/pricing';
 
 type CartProductsPricingProps = {
   cart: CartProductModel[];
@@ -19,17 +20,9 @@ const CartProductsPricing = ({cart}: CartProductsPricingProps) => {
 
   const {subTotal, paymentTotal} = useCartPricing(cart);
 
-  const subTotalText = currency(subTotal).format({
-    symbol: '₺',
-    separator: '.',
-    decimal: ',',
-  });
+  const subTotalText = currency(subTotal).format(currency_format);
 
-  const paymentTotalText = currency(paymentTotal).format({
-    symbol: '₺',
-    separator: '.',
-    decimal: ',',
-  });
+  const paymentTotalText = currency(paymentTotal).format(currency_format);
 
   return (
     <View style={styles.container}>

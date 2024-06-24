@@ -6,6 +6,7 @@ import {Text, View} from 'react-native';
 import useCartPricing from '@/hooks/useCartPricing';
 import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
 import currency from 'currency.js';
+import {currency_format} from '@/globals/pricing';
 
 type RemainingPriceProps = {
   remainingPrice: number;
@@ -21,11 +22,7 @@ const RemainingPrice = ({remainingPrice}: RemainingPriceProps) => {
     <View style={styles.container}>
       <Text style={styles.text}>{t('remaining_price')}</Text>
       <Text style={styles.amountText}>
-        {currency(remainingPrice).format({
-          symbol: '₺',
-          separator: '.',
-          decimal: ',',
-        })}
+        {currency(remainingPrice).format(currency_format)}
       </Text>
     </View>
   );
