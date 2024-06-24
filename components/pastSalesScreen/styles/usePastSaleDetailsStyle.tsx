@@ -28,6 +28,10 @@ const usePastSaleDetailsStyle = (theme: MD3Theme) => {
       flatlist: {
         padding: isWide ? 40 : 0,
       },
+      dialogContent: {
+        color: theme.colors.onBackground,
+        fontSize: isWide ? 16 : 14,
+      },
     });
   }, [theme, width]);
   return {styles};

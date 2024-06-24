@@ -7,5 +7,6 @@ export type SaleModel = {
   receipt_str?: string;
   chosenSpecialOfferID?: string;
   synchronized?: boolean;
+  isReturned?: boolean;
   cart?: CartProductModel[];
 };

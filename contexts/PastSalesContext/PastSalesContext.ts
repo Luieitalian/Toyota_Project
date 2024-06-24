@@ -7,6 +7,7 @@ interface PastSalesContextType {
   clearPastSales: () => void;
   markSynchronized: (orderID: number) => void;
   markAllSynchronized: () => void;
+  markReturned: (orderID: number) => void;
 }
 
 export const PastSalesContext = createContext<PastSalesContextType>(

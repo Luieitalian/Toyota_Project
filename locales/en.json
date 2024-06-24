@@ -94,6 +94,7 @@
   "sale_date_time": "Sale Date-Time: {{- date_time}}",
   "sale_synchronized": "Is Sale Synchronized: {{sync}}",
   "sale_chosen_special_offerID": "Sale Special Offer ID: {{- offer_id}}",
+  "sale_is_returned": "Is Sale Returned: {{returned}}",
   "no": "No",
   "yes": "Yes"
 }

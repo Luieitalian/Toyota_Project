@@ -9,11 +9,7 @@ const usePastSaleDataRowStyle = (theme: MD3Theme) => {
   const styles = React.useMemo(() => {
     const isWide = width >= breakPoint;
 
-    return StyleSheet.create({
-      modalContainer: {
-        padding: 20,
-      },
-    });
+    return StyleSheet.create({});
   }, [theme, width]);
   return {styles};
 };

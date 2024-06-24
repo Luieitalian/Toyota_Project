@@ -129,7 +129,13 @@ const Pay = () => {
       orderID: pdfFileID,
       receipt_str: receipt_str,
       synchronized: isSynchronized,
+      cart: cart,
+      isReturned: false,
     };
+
+    //debug
+    console.log(JSON.stringify(newSale));
+    //debug
 
     addToPastSales(newSale);
 

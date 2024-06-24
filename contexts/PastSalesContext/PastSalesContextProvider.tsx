@@ -461,6 +461,17 @@ const PastSalesContextProvider = ({
     [setPastSales]
   );
 
+  const markReturned = useCallback(
+    (orderID: number) => {
+      setPastSales((sales) =>
+        sales.map((sale) =>
+          sale.orderID === orderID ? {...sale, isReturned: true} : sale
+        )
+      );
+    },
+    [setPastSales]
+  );
+
   const pastSalesContext = useMemo(
     () => ({
       pastSales: pastSales,
@@ -468,6 +479,7 @@ const PastSalesContextProvider = ({
       clearPastSales: clearPastSales,
       markSynchronized: markSynchronized,
       markAllSynchronized: markAllSynchronized,
+      markReturned: markReturned,
     }),
     [
       pastSales,
@@ -475,6 +487,7 @@ const PastSalesContextProvider = ({
       clearPastSales,
       markSynchronized,
       markAllSynchronized,
+      markReturned,
     ]
   );
 
