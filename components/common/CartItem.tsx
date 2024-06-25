@@ -6,7 +6,8 @@ import useCartItemStyle from './styles/useCartItemStyle';
 import currency from 'currency.js';
 import {useTranslation} from 'react-i18next';
 import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
-import {currency_format} from '@/globals/pricing';
+import {currency_format, currency_format_wo_symbol} from '@/globals/pricing';
+import CustomText from './CustomText';
 
 type CartItemProps = {
   cart_item: CartProductModel;
@@ -32,18 +33,13 @@ const CartItem = ({cart_item, removeable = true}: CartItemProps) => {
             ? t('itemWithCount_other', {count: cart_item._cart_amount})
             : t('itemWithCount_one', {count: cart_item._cart_amount})}
         </Text>
-        <Text ellipsizeMode="tail" style={styles.name}>
-          {cart_item.prod.name.length > 40
-            ? cart_item.prod.name.slice(0, 39).trimEnd() + '...'
-            : cart_item.prod.name}
-        </Text>
+        <CustomText ellipsizeMode="tail" style={styles.name}>
+          {cart_item.prod.name}
+        </CustomText>
       </View>
       <View style={styles.priceAndRemove}>
         <Text style={styles.pricingText}>
-          {currency(cart_item.prod.price, {
-            separator: '.',
-            decimal: ',',
-          })
+          {currency(cart_item.prod.price, currency_format_wo_symbol)
             .multiply(cart_item._cart_amount)
             .format(currency_format)}
         </Text>
