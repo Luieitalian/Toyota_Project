@@ -6,8 +6,13 @@ import useCartItemStyle from './styles/useCartItemStyle';
 import currency from 'currency.js';
 import {useTranslation} from 'react-i18next';
 import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
-import {currency_format, currency_format_wo_symbol} from '@/globals/pricing';
+import {
+  currency_format,
+  currency_format_wo_symbol,
+  taxRate,
+} from '@/globals/pricing';
 import CustomText from './CustomText';
+import useCartPricing from '@/hooks/useCartPricing';
 
 type CartItemProps = {
   cart_item: CartProductModel;
@@ -20,6 +25,9 @@ const CartItem = ({cart_item, removeable = true}: CartItemProps) => {
 
   const {styles} = useCartItemStyle(theme);
   const {removeOne} = useContext(ShoppingCartContext);
+
+  const {cart} = useContext(ShoppingCartContext);
+  const {taxTotal} = useCartPricing(cart);
 
   const onPress = useCallback(() => {
     removeOne(cart_item.prod.id);
@@ -38,11 +46,14 @@ const CartItem = ({cart_item, removeable = true}: CartItemProps) => {
         </CustomText>
       </View>
       <View style={styles.priceAndRemove}>
-        <Text style={styles.pricingText}>
-          {currency(cart_item.prod.price, currency_format_wo_symbol)
-            .multiply(cart_item._cart_amount)
-            .format(currency_format)}
-        </Text>
+        <View style={styles.priceAndTax}>
+          <Text style={styles.pricingText}>
+            {currency(cart_item.prod.price, currency_format_wo_symbol)
+              .multiply(cart_item._cart_amount)
+              .format(currency_format)}
+          </Text>
+          <Text style={styles.taxRateText}>{`%${taxRate} ${t('tax')}`}</Text>
+        </View>
         {removeable ? (
           <View>
             <IconButton

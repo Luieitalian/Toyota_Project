@@ -1,8 +1,9 @@
 import {useCallback, useContext, useMemo} from 'react';
 import {CartProductModel} from '@/models/CartProductModel';
-import currency from 'currency.js';
 import {SpecialOfferModel} from '@/models/SpecialOfferModel';
 import {SpecialOffersContext} from '@/contexts/SpecialOffersContext/SpecialOffersContext';
+import {currency_format_wo_symbol, taxRate} from '@/globals/pricing';
+import currency from 'currency.js';
 
 const useCartPricing = (cart: CartProductModel[]) => {
   const {specialOffers, selectedSpecialOffer} =
@@ -29,10 +30,9 @@ const useCartPricing = (cart: CartProductModel[]) => {
 
       applicableCartItems.forEach((item: CartProductModel) => {
         const whole = item._cart_amount - Math.floor(item._cart_amount / num);
-        total += currency(item.prod.price, {
-          separator: '.',
-          decimal: ',',
-        }).multiply(whole).value;
+        total += currency(item.prod.price, currency_format_wo_symbol).multiply(
+          whole
+        ).value;
       });
 
       return total;
@@ -67,10 +67,9 @@ const useCartPricing = (cart: CartProductModel[]) => {
     () =>
       cart.map(
         (cart_item: CartProductModel) =>
-          currency(cart_item.prod.price, {
-            separator: '.',
-            decimal: ',',
-          }).multiply(cart_item._cart_amount).value
+          currency(cart_item.prod.price, currency_format_wo_symbol).multiply(
+            cart_item._cart_amount
+          ).value
       ),
     [cart]
   );
@@ -80,12 +79,17 @@ const useCartPricing = (cart: CartProductModel[]) => {
     [cart, subTotalMap]
   );
 
-  const paymentTotal = useMemo(
-    () => subTotal - discountTotal,
-    [subTotal, discountTotal]
+  const taxTotal = useMemo(
+    () => currency(subTotal).multiply(taxRate).divide(100).value,
+    [subTotal, taxRate]
   );
 
-  return {subTotal, paymentTotal, discountTotal};
+  const paymentTotal = useMemo(
+    () => currency(subTotal).add(taxTotal).subtract(discountTotal),
+    [subTotal, discountTotal, taxTotal]
+  );
+
+  return {subTotal, paymentTotal, discountTotal, taxTotal};
 };
 
 export default useCartPricing;

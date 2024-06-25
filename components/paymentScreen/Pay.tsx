@@ -1,6 +1,6 @@
 import React, {memo, useContext, useMemo, useRef, useState} from 'react';
 import usePayStyle from './styles/usePayStyle';
-import CustomButton from '../common/CustomButton';
+import CustomButton from '@/components/common/CustomButton';
 import {useTranslation} from 'react-i18next';
 import {useTheme} from 'react-native-paper';
 import {StatusContext} from '@/contexts/StatusContext/StatusContext';
@@ -9,7 +9,7 @@ import {CartProductModel} from '@/models/CartProductModel';
 import useCartPricing from '@/hooks/useCartPricing';
 import {PastSalesContext} from '@/contexts/PastSalesContext/PastSalesContext';
 import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
-import CustomModal from '../common/CustomModal';
+import CustomModal from '@/components/common/CustomModal';
 import {SaleModel} from '@/models/SaleModel';
 import usePDF from '@/hooks/usePDF';
 import Pdf from 'react-native-pdf';
@@ -38,7 +38,8 @@ const Pay = () => {
   const {addToPastSales} = useContext(PastSalesContext);
 
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
-  const {subTotal, paymentTotal, discountTotal} = useCartPricing(cart);
+  const {subTotal, paymentTotal, discountTotal, taxTotal} =
+    useCartPricing(cart);
   const {writeToPDF} = usePDF();
 
   const pdfFileID = useMemo(() => Math.floor(Math.random() * 10000000), [cart]);
@@ -90,10 +91,11 @@ const Pay = () => {
       {type: 'empty'},
       {type: 'empty'},
       {
-        type: 'properties',
+        type: 'properties2',
         lines: [
           {name: 'Subtotal', value: currency(subTotal).value},
           {name: 'Discount', value: currency(discountTotal).value},
+          {name: 'Tax', value: currency(taxTotal).value},
           {name: 'Payment Total', value: currency(paymentTotal).value},
         ],
       },
@@ -134,7 +136,7 @@ const Pay = () => {
     };
 
     //debug
-    console.log(JSON.stringify(newSale));
+    console.log(receipt_str);
     //debug
 
     addToPastSales(newSale);

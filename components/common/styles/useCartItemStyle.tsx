@@ -34,6 +34,10 @@ const useCartItemStyle = (theme: MD3Theme) => {
         fontSize: isWide ? 20 : 16,
         color: theme.colors.onPrimaryContainer,
       },
+      taxRateText: {
+        fontSize: isWide ? 18 : 16,
+        color: theme.colors.outline,
+      },
       removeButton: {
         backgroundColor: theme.colors.error,
         color: theme.colors.onError,
@@ -43,6 +47,11 @@ const useCartItemStyle = (theme: MD3Theme) => {
         gap: 10,
         flexDirection: 'row',
         alignItems: 'center',
+      },
+      priceAndTax: {
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'flex-end',
       },
     });
   }, [theme, width]);
