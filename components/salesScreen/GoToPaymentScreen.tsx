@@ -7,6 +7,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import useGoToPaymentScreenStyle from './styles/useGoToPaymentScreenStyle';
 import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
 import {Text} from 'react-native';
+import {vibrate} from '@/utils/vibration';
 
 const GoToPaymentScreen = () => {
   const {t} = useTranslation();
@@ -25,6 +26,7 @@ const GoToPaymentScreen = () => {
       navigation.navigate('PaymentScreen');
     } else {
       onDialog();
+      vibrate(1);
     }
   };
 

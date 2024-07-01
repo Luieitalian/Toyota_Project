@@ -23,6 +23,7 @@ import currency from 'currency.js';
 import CancelDocument from './CancelDocument';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {vibrate} from '@/utils/vibration';
 
 const PaymentInteractions = () => {
   const {t} = useTranslation();
@@ -53,10 +54,12 @@ const PaymentInteractions = () => {
       paymentAmountUnMasked === undefined
     ) {
       onDialog('please_enter_a_valid_amount');
+      vibrate(1);
       return;
     }
     if (paymentAmountUnMasked > remainingPrice) {
       onDialog('please_enter_an_amount_less_than_or_equal_to_remaining_price');
+      vibrate(1);
       return;
     }
     onWaitingModal(isCash);
@@ -125,11 +128,11 @@ const PaymentInteractions = () => {
   );
 
   useEffect(() => {
-    setRemainingPrice(paymentTotal);
+    setRemainingPrice(paymentTotal.value);
   }, []);
 
   useEffect(() => {
-    setRemainingPrice(paymentTotal);
+    setRemainingPrice(paymentTotal.value);
   }, [selectedSpecialOffer]);
 
   return (

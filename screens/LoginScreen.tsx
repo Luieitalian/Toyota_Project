@@ -17,6 +17,7 @@ import Login from '@/components/loginScreen/Login';
 import validateUser from '@/utils/validateUser';
 import {UsersContext} from '@/contexts/UsersContext/UsersContext';
 import {Portal, Snackbar} from 'react-native-paper';
+import {vibrate} from '@/utils/vibration';
 
 const LoginScreen = ({route, navigation}: any) => {
   const {t} = useTranslation();
@@ -44,6 +45,7 @@ const LoginScreen = ({route, navigation}: any) => {
     } else {
       await readNFC();
       setSnackbarVisible(true);
+      vibrate(1);
     }
   };
 
