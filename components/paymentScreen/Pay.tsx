@@ -128,16 +128,13 @@ const Pay = () => {
     const newSale: SaleModel = {
       charge: currency(paymentTotal).value,
       date_time: `${today.current.toLocaleDateString('tr-TR')} ${today.current.toLocaleTimeString('tr-TR')}`,
+      date_obj: today.current,
       orderID: pdfFileID,
       receipt_str: receipt_str,
       synchronized: isSynchronized,
       cart: cart,
       isReturned: false,
     };
-
-    //debug
-    console.log(receipt_str);
-    //debug
 
     addToPastSales(newSale);
 
@@ -147,7 +144,7 @@ const Pay = () => {
     }
 
     // wait 2 seconds before calling onModal
-    delay(2000).then(() => onModal());
+    delay(500).then(() => onModal());
   };
 
   return (

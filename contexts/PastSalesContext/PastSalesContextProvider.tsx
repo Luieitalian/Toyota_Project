@@ -431,7 +431,7 @@ const mockPastSales = [
 const PastSalesContextProvider = ({
   children,
 }: PastSalesContextProviderProps) => {
-  const [pastSales, setPastSales] = useState<SaleModel[]>(mockPastSales);
+  const [pastSales, setPastSales] = useState<SaleModel[]>([]);
 
   const addToPastSales = useCallback(
     (sale: SaleModel) => {
