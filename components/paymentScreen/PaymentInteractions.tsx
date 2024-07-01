@@ -116,7 +116,6 @@ const PaymentInteractions = () => {
 
   const resetScreen = () => {
     clearCart();
-
     navigation.navigate('SalesScreen');
   };
 
@@ -127,12 +126,14 @@ const PaymentInteractions = () => {
     [setRemainingPrice]
   );
 
+  // initially set the remaining price to paymentTotal from useCartPricing hook.
   useEffect(() => {
-    setRemainingPrice(paymentTotal.value);
+    setRemainingPrice(paymentTotal);
   }, []);
 
+  // set remaining price according to selected special offer, offer discount is applied in useCartPricing hook.
   useEffect(() => {
-    setRemainingPrice(paymentTotal.value);
+    setRemainingPrice(paymentTotal);
   }, [selectedSpecialOffer]);
 
   return (

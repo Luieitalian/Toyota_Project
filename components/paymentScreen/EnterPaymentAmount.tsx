@@ -7,6 +7,7 @@ import {
   TextInputSubmitEditingEventData,
 } from 'react-native';
 import {createNumberMask, useMaskedInputProps} from 'react-native-mask-input';
+import currency from 'currency.js';
 
 type EnterPaymentAmountProps = {
   paymentAmountMasked: string | undefined;
@@ -41,7 +42,8 @@ const EnterPaymentAmount = ({
     value: paymentAmountMasked,
     onChangeText: (masked: string) => {
       onChangeAmountMasked(masked);
-      onChangeAmountUnMasked(parseFloat(masked.slice(2)));
+      // slice off lira sign and one space then turn into appropriate value like '130.50'
+      onChangeAmountUnMasked(currency(masked.slice(2)).value);
     },
     mask: amountMask,
   });
