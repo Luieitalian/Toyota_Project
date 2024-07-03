@@ -10,7 +10,7 @@ import {
 } from 'react-native-vision-camera';
 import useBarcodeCameraStyle from './styles/useBarcodeCameraStyle';
 
-type BarcodeCameraProps = {
+export type BarcodeCameraProps = {
   closeCamera: () => void;
 };
 

@@ -12,7 +12,7 @@ import {currency_format} from '@/globals/pricing';
 import {PastSalesContext} from '@/contexts/PastSalesContext/PastSalesContext';
 import {StatusContext} from '@/contexts/StatusContext/StatusContext';
 
-type PastSaleDetailsProps = {
+export type PastSaleDetailsProps = {
   sale: SaleModel;
   modalVisible: boolean;
   onDismissModal: () => void;

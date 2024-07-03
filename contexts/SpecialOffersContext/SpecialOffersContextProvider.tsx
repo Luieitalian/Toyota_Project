@@ -3,7 +3,7 @@ import {SpecialOffersContext} from './SpecialOffersContext';
 import {SpecialOfferModel} from '@/models/SpecialOfferModel';
 import getSpecialOffers from '@/utils/getSpecialOffers';
 
-type SpecialOffersContextProviderProps = {
+export type SpecialOffersContextProviderProps = {
   children: React.ReactNode;
 };
 

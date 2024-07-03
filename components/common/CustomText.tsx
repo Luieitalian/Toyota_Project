@@ -2,7 +2,7 @@ import {max_text_chars_THIN, max_text_chars_WIDE} from '@/globals/style';
 import React, {memo} from 'react';
 import {Text, TextProps} from 'react-native';
 
-interface CustomTextProps extends TextProps {}
+export interface CustomTextProps extends TextProps {}
 
 const CustomText = (props: CustomTextProps) => {
   const {children, ...restProps} = props;

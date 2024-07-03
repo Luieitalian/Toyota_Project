@@ -1,8 +1,8 @@
 import {sortDirection} from '@/components/pastSalesScreen/PastSaleDataTitle';
 import {SaleModel} from '@/models/SaleModel';
-import {useCallback, useEffect, useMemo, useState} from 'react';
+import {useCallback, useState} from 'react';
 
-type useSortedPastSalesProps = SaleModel[];
+export type useSortedPastSalesProps = SaleModel[];
 
 const useSortedPastSales = (pastSales: useSortedPastSalesProps) => {
   const [sortedPastSales, setSortedPastSales] =
@@ -106,7 +106,6 @@ const useSortedPastSales = (pastSales: useSortedPastSalesProps) => {
   const sortPastSales = useCallback(
     (category: string, sortDir: sortDirection) => {
       setSortedPastSales(() => {
-        // todo
         switch (category) {
           case 'order_id':
             return sortOrderID(sortDir);

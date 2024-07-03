@@ -3,7 +3,7 @@ import {useTranslation} from 'react-i18next';
 import {Button, useTheme} from 'react-native-paper';
 import useCancelButtonStyle from './styles/useCancelButtonStyle';
 
-type CancelButtonProps = {
+export type CancelButtonProps = {
   onCancel: (x: any) => any;
 };
 

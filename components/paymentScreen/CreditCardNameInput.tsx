@@ -3,7 +3,7 @@ import {useTranslation} from 'react-i18next';
 import {useTheme, TextInput} from 'react-native-paper';
 import useCreditCardNameInputStyle from './styles/useCreditCardNameInputStyle';
 
-type CreditCardNameInputProps = {
+export type CreditCardNameInputProps = {
   creditCardNameInputRef: RefObject<any>;
   focusOnDateInput: () => void;
 };

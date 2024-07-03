@@ -8,7 +8,7 @@ import PastSaleDataRow from './PastSaleDataRow';
 import PastSaleDataTitle, {sortDirection} from './PastSaleDataTitle';
 import useSortedPastSales from '@/hooks/useSortedPastSales';
 
-type PastSalesDataTableProps = {
+export type PastSalesDataTableProps = {
   pastSales: SaleModel[];
   filter: string | undefined;
 };

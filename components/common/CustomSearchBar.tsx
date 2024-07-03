@@ -4,7 +4,7 @@ import {TextInput, useTheme} from 'react-native-paper';
 import useCustomSearchBarStyle from './styles/useCustomSearchBarStyle';
 import {useTranslation} from 'react-i18next';
 
-type CustomSearchBarProps = {
+export type CustomSearchBarProps = {
   text: string | undefined;
   disabled?: boolean;
   onChangeText: (text: string) => void;

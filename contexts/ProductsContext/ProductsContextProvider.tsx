@@ -4,7 +4,7 @@ import setDatabase from '@/utils/setDatabase';
 import {StatusContext} from '@/contexts/StatusContext/StatusContext';
 import getProducts from '@/utils/getProducts';
 
-type ProductsContextProviderProps = {
+export type ProductsContextProviderProps = {
   children: React.ReactNode;
   isDatabaseInitialized: boolean;
 };

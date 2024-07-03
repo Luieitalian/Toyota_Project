@@ -9,7 +9,7 @@ import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartCo
 import currency from 'currency.js';
 import {currency_format} from '@/globals/pricing';
 
-type DiscountAndOfferProps = {};
+export type DiscountAndOfferProps = {};
 
 const DiscountAndOffer = ({}: DiscountAndOfferProps) => {
   const theme = useTheme();

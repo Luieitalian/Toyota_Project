@@ -4,7 +4,7 @@ import {Modal, Portal, useTheme} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 import useCustomModalStyle from './styles/useCustomModalStyle';
 
-type CustomModalProps = {
+export type CustomModalProps = {
   overridingModalStyles: any;
   children: React.ReactNode;
   modalVisible: boolean;

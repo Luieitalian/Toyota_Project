@@ -7,7 +7,7 @@ import {
 import {useTheme, TextInput} from 'react-native-paper';
 import useUsernameInputStyle from './styles/useUsernameInputStyle';
 
-type UsernameInputProps = {
+export type UsernameInputProps = {
   focusOnPassword: (
     e: NativeSyntheticEvent<TextInputSubmitEditingEventData>
   ) => void;

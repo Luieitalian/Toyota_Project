@@ -8,7 +8,7 @@ import {CartProductModel} from '@/models/CartProductModel';
 import FastImage from 'react-native-fast-image';
 import {useTranslation} from 'react-i18next';
 
-type ProductProps = {
+export type ProductProps = {
   prod: ProductModel;
   isFavorite: boolean;
   addToCart: (prod: CartProductModel) => void;

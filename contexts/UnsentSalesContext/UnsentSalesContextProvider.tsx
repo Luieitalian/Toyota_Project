@@ -2,7 +2,7 @@ import React, {memo, useCallback, useMemo, useState} from 'react';
 import {UnsentSalesContext} from './UnsentSalesContext';
 import {SaleModel} from '@/models/SaleModel';
 
-type UnsentSalesContextProviderProps = {
+export type UnsentSalesContextProviderProps = {
   children: React.ReactNode;
 };
 
@@ -312,7 +312,7 @@ const mockUnsentSales = [
 const UnsentSalesContextProvider = ({
   children,
 }: UnsentSalesContextProviderProps) => {
-  const [unsentSales, setUnsentSales] = useState<SaleModel[]>(mockUnsentSales);
+  const [unsentSales, setUnsentSales] = useState<SaleModel[]>([]);
 
   const addToUnsentSales = useCallback(
     (sale: SaleModel) => {

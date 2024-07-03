@@ -8,7 +8,7 @@ import {StatusContext} from '@/contexts/StatusContext/StatusContext';
 import {UnsentSalesContext} from '@/contexts/UnsentSalesContext/UnsentSalesContext';
 import {PastSalesContext} from '@/contexts/PastSalesContext/PastSalesContext';
 
-type UnsentSalesDataTableProps = {unsentSales: SaleModel[]};
+export type UnsentSalesDataTableProps = {unsentSales: SaleModel[]};
 
 const UnsentSalesDataTable = ({unsentSales}: UnsentSalesDataTableProps) => {
   const {t} = useTranslation();

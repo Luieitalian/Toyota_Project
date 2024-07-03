@@ -5,7 +5,7 @@ import {ScrollView, useWindowDimensions} from 'react-native';
 import HTML from 'react-native-render-html';
 import useReceiptStyle from './styles/useReceiptStyle';
 
-type ReceiptProps = {
+export type ReceiptProps = {
   receipt_str: string;
 };
 

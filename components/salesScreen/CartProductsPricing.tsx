@@ -8,7 +8,7 @@ import {useTranslation} from 'react-i18next';
 import useCartProductsPricingStyle from './styles/useCartProductsPricingStyle';
 import {currency_format} from '@/globals/pricing';
 
-type CartProductsPricingProps = {
+export type CartProductsPricingProps = {
   cart: CartProductModel[];
 };
 

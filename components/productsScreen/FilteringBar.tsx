@@ -5,7 +5,7 @@ import {SegmentedButtons, useTheme} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 import {Categories, CategoryIcons} from '@/globals/categories';
 
-type FilteringBarProps = {
+export type FilteringBarProps = {
   category: string | undefined;
   onChangeCategory: (category: string) => void;
 };

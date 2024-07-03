@@ -4,7 +4,7 @@ import {CartProductModel} from '@/models/CartProductModel';
 import useCartPricing from './useCartPricing';
 import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
 
-type useIsOfferApplicable = {
+export type useIsOfferApplicable = {
   offer: SpecialOfferModel;
 };
 

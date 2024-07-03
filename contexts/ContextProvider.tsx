@@ -13,7 +13,7 @@ import ServiceContextProvider from './ServiceContext/ServiceContextProvider';
 import SpecialOffersContextProvider from './SpecialOffersContext/SpecialOffersContextProvider';
 import setDatabase from '@/utils/setDatabase';
 
-type ContextProviderProps = {
+export type ContextProviderProps = {
   children: React.ReactNode;
 };
 

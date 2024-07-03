@@ -8,7 +8,7 @@ import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartCo
 import currency from 'currency.js';
 import {currency_format} from '@/globals/pricing';
 
-type RemainingPriceProps = {
+export type RemainingPriceProps = {
   remainingPrice: number;
 };
 

@@ -9,7 +9,7 @@ import {
 import {createNumberMask, useMaskedInputProps} from 'react-native-mask-input';
 import currency from 'currency.js';
 
-type EnterPaymentAmountProps = {
+export type EnterPaymentAmountProps = {
   paymentAmountMasked: string | undefined;
   onChangeAmountMasked: (text: string) => void;
   onChangeAmountUnMasked: (amount: number) => void;

@@ -2,7 +2,7 @@ import React, {memo, useMemo, useState} from 'react';
 import {UsersContext} from './UsersContext';
 import getUsers from '@/utils/getUsers';
 
-type UsersContextProviderProps = {
+export type UsersContextProviderProps = {
   children: React.ReactNode;
 };
 

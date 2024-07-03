@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 import {useTheme} from 'react-native-paper';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
-type SafeAreaProviderWrapperProps = {
+export type SafeAreaProviderWrapperProps = {
   children: React.ReactNode;
 };
 

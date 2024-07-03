@@ -4,7 +4,7 @@ import {themes} from '@/globals/theme';
 import SystemNavigationBar from 'react-native-system-navigation-bar';
 import {ThemeContext} from '@/contexts/ThemeContext/ThemeContext';
 
-type PaperProviderWrapperProps = {
+export type PaperProviderWrapperProps = {
   children: React.ReactNode;
 };
 

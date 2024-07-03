@@ -4,7 +4,7 @@ import {useTheme, TextInput} from 'react-native-paper';
 import {useMaskedInputProps} from 'react-native-mask-input';
 import useCreditCardCVVInputStyle from './styles/useCreditCardCVVInputStyle';
 
-type CreditCardCVVInputProps = {
+export type CreditCardCVVInputProps = {
   creditCardCVVInputRef: RefObject<any>;
 };
 

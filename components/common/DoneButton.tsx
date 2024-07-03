@@ -3,7 +3,7 @@ import {useTranslation} from 'react-i18next';
 import {Button, useTheme} from 'react-native-paper';
 import useDoneButtonStyle from './styles/useDoneButtonStyle';
 
-type DoneButtonProps = {
+export type DoneButtonProps = {
   onDone: (x: any) => any;
 };
 

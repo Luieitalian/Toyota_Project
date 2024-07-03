@@ -1,7 +1,7 @@
 import React, {memo, useCallback, useMemo, useState} from 'react';
 import {StatusContext} from './StatusContext';
 
-type StatusContextProviderProps = {
+export type StatusContextProviderProps = {
   children: React.ReactNode;
 };
 

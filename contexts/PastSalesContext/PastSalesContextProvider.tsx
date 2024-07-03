@@ -2,7 +2,7 @@ import React, {memo, useCallback, useMemo, useState} from 'react';
 import {SaleModel} from '@/models/SaleModel';
 import {PastSalesContext} from './PastSalesContext';
 
-type PastSalesContextProviderProps = {
+export type PastSalesContextProviderProps = {
   children: React.ReactNode;
 };
 

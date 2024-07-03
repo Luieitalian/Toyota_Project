@@ -1,0 +1,13 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": [
+    "./components/**/*.tsx",
+    "./screens/**/*.tsx",
+    "./hooks/**/*.tsx",
+    "./contexts/**/*.tsx",
+    "./models/**/*.ts",
+    "./globals/**/*.ts"
+  ],
+  "exclude": ["node_modules/**/*.*"],
+  "out": "docs"
+}

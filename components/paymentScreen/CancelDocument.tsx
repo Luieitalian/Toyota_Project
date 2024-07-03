@@ -4,7 +4,7 @@ import CustomButton from '@/components/common/CustomButton';
 import {useTranslation} from 'react-i18next';
 import useCancelDocumentStyle from './styles/useCancelDocumentStyle';
 
-type CancelDocumentProps = {
+export type CancelDocumentProps = {
   onCancelDocument: () => void;
 };
 

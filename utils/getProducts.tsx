@@ -4,7 +4,7 @@ import axios from 'axios';
 import {ProductModel} from '@/models/ProductModel';
 import {HOST_LOOPBACK_INTERFACE} from '@env';
 
-type getProductsArgs = {
+export type getProductsArgs = {
   isOnline: boolean;
   isDatabaseInitialized: boolean;
 };

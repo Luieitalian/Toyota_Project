@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, useWindowDimensions} from 'react-native';
 import {MD3Theme} from 'react-native-paper';
 
-type useCashSelectStyleArgs = {
+export type useCashSelectStyleArgs = {
   theme: MD3Theme;
   isCash: boolean;
 };

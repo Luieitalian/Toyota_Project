@@ -5,7 +5,7 @@ import PastSaleDetails from './PastSaleDetails';
 import usePastSaleDataRowStyle from './styles/usePastSaleDataRowStyle';
 import {SaleModel} from '@/models/SaleModel';
 
-type PastSaleDataRowProps = {item: SaleModel};
+export type PastSaleDataRowProps = {item: SaleModel};
 
 const PastSaleDataRow = ({item}: PastSaleDataRowProps) => {
   const {t} = useTranslation();

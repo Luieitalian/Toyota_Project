@@ -5,7 +5,8 @@ import usePastSaleDataTitleStyle from './styles/usePastSaleDataTitleStyle';
 import {Props as DataTableTitleProps} from 'react-native-paper/lib/typescript/components/DataTable/DataTableTitle';
 import {Text} from 'react-native';
 
-interface PastSaleDataTitleProps extends Omit<DataTableTitleProps, 'children'> {
+export interface PastSaleDataTitleProps
+  extends Omit<DataTableTitleProps, 'children'> {
   category: string;
   onPress: any;
   children?: React.ReactNode | undefined;

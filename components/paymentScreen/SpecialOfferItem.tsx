@@ -14,7 +14,7 @@ import {ProductsContext} from '@/contexts/ProductsContext/ProductsContext';
 import {ProductModel} from '@/models/ProductModel';
 import {useTranslation} from 'react-i18next';
 
-type SpecialOfferItemProps = {
+export type SpecialOfferItemProps = {
   offer: SpecialOfferModel;
   onSelect: (offer: SpecialOfferModel) => void;
   selected: boolean;

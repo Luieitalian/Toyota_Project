@@ -6,7 +6,7 @@ import useCancelDoneButtonGroupStyle from './styles/useCancelDoneButtonGroupStyl
 import CancelButton from './CancelButton';
 import DoneButton from './DoneButton';
 
-type CancelDoneButtonGroupProps = {
+export type CancelDoneButtonGroupProps = {
   onCancel: (x: any) => any;
   onDone: (x: any) => any;
 };

@@ -4,7 +4,10 @@ import {SpecialOfferModel} from '@/models/SpecialOfferModel';
 import {SpecialOffersContext} from '@/contexts/SpecialOffersContext/SpecialOffersContext';
 import {currency_format_wo_symbol, taxRate} from '@/globals/pricing';
 import currency from 'currency.js';
-
+/**
+ * Creates an instance of User.
+ * @param {string} cart - The name of the user.
+ */
 const useCartPricing = (cart: CartProductModel[]) => {
   const {specialOffers, selectedSpecialOffer} =
     useContext(SpecialOffersContext);
@@ -63,6 +66,9 @@ const useCartPricing = (cart: CartProductModel[]) => {
     return 0;
   }, [selected_offer, cart]);
 
+  /**
+   * @returns {number[]} cart item prices by multiplying single price of the item and the quantity of the item in the cart.
+   */
   const subTotalMap = useMemo(
     () =>
       cart.map(
@@ -74,18 +80,22 @@ const useCartPricing = (cart: CartProductModel[]) => {
     [cart]
   );
 
+  /**
+   * returns the sum of subTotalMap to get the whole price of the cart
+   */
   const subTotal = useMemo(
     () => subTotalMap.reduce((acc, curr) => acc + curr, 0),
     [cart, subTotalMap]
   );
 
+  //
   const taxTotal = useMemo(
     () => currency(subTotal).multiply(taxRate).divide(100).value,
     [subTotal, taxRate]
   );
 
   const paymentTotal = useMemo(
-    () => currency(subTotal).add(taxTotal).subtract(discountTotal),
+    () => currency(subTotal).add(taxTotal).subtract(discountTotal).value,
     [subTotal, discountTotal, taxTotal]
   );
 

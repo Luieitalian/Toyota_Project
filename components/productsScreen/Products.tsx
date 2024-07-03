@@ -10,7 +10,7 @@ import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartCo
 import {FavoritesContext} from '@/contexts/FavoritesContext/FavoritesContext';
 import useFilteredProducts from '@/hooks/useFilteredProducts';
 
-type ProductsProps = {
+export type ProductsProps = {
   category: string;
   submittedText?: string | undefined;
 };

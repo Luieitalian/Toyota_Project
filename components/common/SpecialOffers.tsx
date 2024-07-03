@@ -9,7 +9,7 @@ import useIsOfferApplicable from '@/hooks/useIsOfferApplicable';
 import {SpecialOfferModel} from '@/models/SpecialOfferModel';
 import useSpecialOffersStyle from './styles/useSpecialOffersStyle';
 
-type SpecialOffersProps = {
+export type SpecialOffersProps = {
   onCancel?: (x: any) => any;
   onDone?: (x: any) => any;
   onSelect?: (x: any) => any;

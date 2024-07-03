@@ -14,7 +14,7 @@ import {
 import CustomText from './CustomText';
 import useCartPricing from '@/hooks/useCartPricing';
 
-type CartItemProps = {
+export type CartItemProps = {
   cart_item: CartProductModel;
   removeable?: boolean;
 };

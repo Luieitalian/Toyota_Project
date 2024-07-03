@@ -2,7 +2,7 @@ import React, {memo, useMemo} from 'react';
 import {ServiceContext} from './ServiceContext';
 import getServiceInfo from '@/utils/getServiceInfo';
 
-type ServiceContextProviderProps = {
+export type ServiceContextProviderProps = {
   children: React.ReactNode;
 };
 

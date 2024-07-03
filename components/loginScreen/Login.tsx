@@ -5,7 +5,7 @@ import useLoginStyle from './styles/useLoginStyle';
 import {Text} from 'react-native';
 import CustomButton from '../common/CustomButton';
 
-type LoginProps = {
+export type LoginProps = {
   onSubmit: () => void;
 };
 
