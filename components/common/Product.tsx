@@ -1,12 +1,18 @@
-import React, {memo, useCallback, useState} from 'react';
+import React, {memo, useCallback, useContext, useMemo, useState} from 'react';
 import {Text, View} from 'react-native';
 import useProductStyle from './styles/useProductStyle';
-import {ActivityIndicator, IconButton, useTheme} from 'react-native-paper';
+import {
+  ActivityIndicator,
+  Badge,
+  IconButton,
+  useTheme,
+} from 'react-native-paper';
 import {ProductModel} from '@/models/ProductModel';
 import useProductImage from '@/hooks/useProductImage';
 import {CartProductModel} from '@/models/CartProductModel';
 import FastImage from 'react-native-fast-image';
 import {useTranslation} from 'react-i18next';
+import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
 
 export type ProductProps = {
   prod: ProductModel;
@@ -30,11 +36,13 @@ const Product = ({
   const {imageURL, loadingImageURL} = useProductImage(prod);
   const [isStarred, setIsStarred] = useState<boolean>(isFavorite);
 
+  const {cart} = useContext(ShoppingCartContext);
+
   const onAddPress = useCallback(() => {
     addToCart({prod: prod, _cart_amount: 1});
   }, [prod, addToCart]);
 
-  const onStarPress = () => {
+  const onStarPress = useCallback(() => {
     if (isStarred) {
       setIsStarred(false);
       removeFromFavorites(prod.id);
@@ -42,7 +50,14 @@ const Product = ({
       addToFavorites(prod.id);
       setIsStarred(true);
     }
-  };
+  }, [addToFavorites, removeFromFavorites, setIsStarred, isStarred]);
+
+  const cart_amount = useMemo(() => {
+    const filteredProd = cart
+      .filter((_prod) => _prod.prod.id === prod.id)
+      .at(0);
+    return filteredProd ? filteredProd._cart_amount : null;
+  }, [prod, cart]);
 
   return (
     <View style={styles.productContainer}>
@@ -78,6 +93,11 @@ const Product = ({
           size={styles.favoriteButtonSize.width}
           style={styles.favoriteButton}
         />
+        {cart_amount ? (
+          <Badge size={styles.badgeSize.width} style={styles.badge}>
+            {cart_amount}
+          </Badge>
+        ) : null}
       </>
     </View>
   );

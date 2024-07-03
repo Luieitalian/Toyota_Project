@@ -65,6 +65,17 @@ const useProductStyle = (theme: MD3Theme) => {
       favoriteButtonSize: {
         width: isWide ? 40 : 24,
       },
+      badge: {
+        position: 'absolute',
+        right: 10,
+        bottom: 10,
+        backgroundColor: theme.colors.primary,
+        color: theme.colors.onPrimary,
+        opacity: 0.9,
+      },
+      badgeSize: {
+        width: isWide ? 26 : 24,
+      },
     });
   }, [theme, width]);
   return {styles};
