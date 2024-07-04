@@ -19,7 +19,7 @@ const SynchronizationSwitchButton = () => {
 
   return (
     <View style={styles.switchView}>
-      <Text style={styles.text}>{t('auto_synchronize_unsent_receipts')}</Text>
+      <Text style={styles.text}>{t('auto_synchronize_unsent_sales')}</Text>
       <Switch
         style={styles.switch}
         value={isSyncAutomatic}

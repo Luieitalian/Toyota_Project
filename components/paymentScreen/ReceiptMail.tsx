@@ -69,7 +69,7 @@ const ReceiptMail = () => {
         onDismissModal={hideModal}
         overridingModalStyles={styles}
       >
-        <Text style={styles.title}>{t('send_receipt_via_email')}</Text>
+        <Text style={styles.title}>{t('receipt_mail')}</Text>
         <TextInput
           inputMode="email"
           style={styles.textInput}
