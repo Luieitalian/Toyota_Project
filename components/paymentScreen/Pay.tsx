@@ -29,6 +29,7 @@ const Pay = () => {
 
   const today = useRef(new Date());
   const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [disabled, setDisabled] = useState<boolean>(false);
 
   const {styles} = usePayStyle(theme);
 
@@ -143,13 +144,22 @@ const Pay = () => {
       addToUnsentSales(newSale);
     }
 
-    // wait 2 seconds before calling onModal
-    delay(500).then(() => onModal());
+    // UI Blocking
+    setDisabled(true);
+    // wait 1 second before calling onModal
+    delay(1000).then(() => {
+      onModal();
+      setDisabled(false);
+    });
   };
 
   return (
     <>
-      <CustomButton overridingButtonStyles={styles} onPress={onPress}>
+      <CustomButton
+        disabled={disabled}
+        overridingButtonStyles={styles}
+        onPress={onPress}
+      >
         {t('complete_payment')}
       </CustomButton>
       <CustomModal

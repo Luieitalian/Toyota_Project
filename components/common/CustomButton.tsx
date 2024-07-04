@@ -18,7 +18,7 @@ const CustomButton = ({
 }: CustomButtonProps) => {
   const theme = useTheme();
 
-  const [styles] = useCustomButtonStyle(theme);
+  const {styles} = useCustomButtonStyle(theme, disabled);
 
   return (
     <Pressable

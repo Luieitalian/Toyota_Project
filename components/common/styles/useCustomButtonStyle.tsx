@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {StyleSheet, useWindowDimensions} from 'react-native';
 import {MD3Theme} from 'react-native-paper';
 import {breakPoint} from '@/globals/style';
 
-const useCustomButtonStyle = (theme: MD3Theme) => {
+const useCustomButtonStyle = (theme: MD3Theme, disabled?: boolean) => {
   const {width} = useWindowDimensions();
 
   const styles = React.useMemo(() => {
@@ -15,6 +15,7 @@ const useCustomButtonStyle = (theme: MD3Theme) => {
         elevation: 4,
         justifyContent: 'center',
         backgroundColor: theme.colors.secondary,
+        opacity: disabled ? 0.5 : 1,
         borderRadius: 10,
         margin: 10,
         paddingHorizontal: 2,
@@ -29,9 +30,9 @@ const useCustomButtonStyle = (theme: MD3Theme) => {
         color: theme.colors.onSecondary,
       },
     });
-  }, [theme, width]);
+  }, [theme, width, disabled]);
 
-  return [styles];
+  return {styles};
 };
 
 export default useCustomButtonStyle;
