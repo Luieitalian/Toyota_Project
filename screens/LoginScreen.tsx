@@ -31,8 +31,6 @@ const LoginScreen = ({route, navigation}: any) => {
 
   const {users, setUser} = useContext(UsersContext);
 
-  const readNFC = useNFC();
-
   const focusOnPassword = () => {
     passwordRef.current?.focus();
   };
@@ -43,7 +41,6 @@ const LoginScreen = ({route, navigation}: any) => {
       setUser(user.name);
       navigation.replace('HomeScreen');
     } else {
-      await readNFC();
       setSnackbarVisible(true);
       vibrate(1);
     }
@@ -54,7 +51,6 @@ const LoginScreen = ({route, navigation}: any) => {
   };
 
   const onChangeUsername = (username: string) => {
-    //readNFC();
     setUsername(username);
   };
   const onChangePassword = (password: string) => {
