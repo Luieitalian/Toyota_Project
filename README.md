@@ -3,6 +3,7 @@
 ## Mobile Cash Register Application
 
 ### Content
+
 - [Features](#features)
 - [How To Use](#how-to-use)
 
@@ -25,11 +26,15 @@
 - UI Blocking
 
 ### How To Use
+
 First install the dependencies.
+
 ```bash
   npm install
 ```
+
 Then run with
+
 ```bash
   npm start
 ```

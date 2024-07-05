@@ -6,7 +6,6 @@ import {useTheme} from 'react-native-paper';
 import {StatusContext} from '@/contexts/StatusContext/StatusContext';
 import currency from 'currency.js';
 import {CartProductModel} from '@/models/CartProductModel';
-import useCartPricing from '@/hooks/useCartPricing';
 import {PastSalesContext} from '@/contexts/PastSalesContext/PastSalesContext';
 import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
 import CustomModal from '@/components/common/CustomModal';
@@ -18,6 +17,7 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {UnsentSalesContext} from '@/contexts/UnsentSalesContext/UnsentSalesContext';
 import {delay} from '@/utils/delay';
+import {PriceContext} from '@/contexts/PriceContext/PriceContext';
 const receipt = require('receipt');
 
 receipt.config.currency = '₺';
@@ -39,8 +39,8 @@ const Pay = () => {
   const {addToPastSales} = useContext(PastSalesContext);
 
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
-  const {subTotal, paymentTotal, discountTotal, taxTotal} =
-    useCartPricing(cart);
+  const {subTotal, paymentTotal, discountTotal, taxTotal, remainingPrice} =
+    useContext(PriceContext);
   const {writeToPDF} = usePDF();
 
   const pdfFileID = useMemo(() => Math.floor(Math.random() * 10000000), [cart]);
@@ -120,11 +120,13 @@ const Pay = () => {
   };
 
   const onPress = async () => {
-    if (cart.length === 0) return;
+    console.log('rem: ', remainingPrice);
+    console.log('paymenttotal: ', paymentTotal);
+    if (cart.length === 0 || remainingPrice !== 0) return;
 
     await writeToPDF(receipt_str, pdfFileID.toString());
 
-    const isSynchronized = isOnline && isSyncAutomatic;
+    const isSynchronized = !isOnline && !isSyncAutomatic;
 
     const newSale: SaleModel = {
       charge: currency(paymentTotal).value,
@@ -137,15 +139,16 @@ const Pay = () => {
       isReturned: false,
     };
 
+    // UI Blocking
+    setDisabled(true);
+
     addToPastSales(newSale);
 
-    if (!isSynchronized) {
-      // if not online or manual-sync then add to unsentsales
+    if (isSynchronized) {
+      // if offline or manual-sync then add to unsentsales
       addToUnsentSales(newSale);
     }
 
-    // UI Blocking
-    setDisabled(true);
     // wait 1 second before calling onModal
     delay(1000).then(() => {
       onModal();

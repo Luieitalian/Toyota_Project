@@ -1,10 +1,8 @@
-import React, {memo, useContext, useEffect, useState} from 'react';
+import React, {memo} from 'react';
 import {useTheme} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 import useRemainingPriceStyle from './styles/useRemainingPriceStyle';
 import {Text, View} from 'react-native';
-import useCartPricing from '@/hooks/useCartPricing';
-import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
 import currency from 'currency.js';
 import {currency_format} from '@/globals/pricing';
 

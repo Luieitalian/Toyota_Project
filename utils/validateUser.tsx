@@ -1,6 +1,6 @@
 import {UserModel} from '@/models/UserModel';
 
-import ReactNativeBiometrics, {BiometryTypes} from 'react-native-biometrics';
+import ReactNativeBiometrics from 'react-native-biometrics';
 
 const rnBiometrics = new ReactNativeBiometrics();
 let _publicKey: string;

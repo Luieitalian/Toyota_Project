@@ -12,6 +12,7 @@ import UsersContextProvider from './UsersContext/UsersContextProvider';
 import ServiceContextProvider from './ServiceContext/ServiceContextProvider';
 import SpecialOffersContextProvider from './SpecialOffersContext/SpecialOffersContextProvider';
 import setDatabase from '@/utils/setDatabase';
+import PriceContextProvider from './PriceContext/PriceContextProvider';
 
 export type ContextProviderProps = {
   children: React.ReactNode;
@@ -40,13 +41,15 @@ const ContextProvider = ({children}: ContextProviderProps) => {
                 <UsersContextProvider>
                   <ServiceContextProvider>
                     <SpecialOffersContextProvider>
-                      <ThemeContextProvider>
-                        <PaperProviderWrapper>
-                          <SafeAreaProviderWrapper>
-                            {children}
-                          </SafeAreaProviderWrapper>
-                        </PaperProviderWrapper>
-                      </ThemeContextProvider>
+                      <PriceContextProvider>
+                        <ThemeContextProvider>
+                          <PaperProviderWrapper>
+                            <SafeAreaProviderWrapper>
+                              {children}
+                            </SafeAreaProviderWrapper>
+                          </PaperProviderWrapper>
+                        </ThemeContextProvider>
+                      </PriceContextProvider>
                     </SpecialOffersContextProvider>
                   </ServiceContextProvider>
                 </UsersContextProvider>

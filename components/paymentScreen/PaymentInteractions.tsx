@@ -1,4 +1,4 @@
-import React, {memo, useCallback, useContext, useEffect, useState} from 'react';
+import React, {memo, useContext, useState} from 'react';
 import {Text, View} from 'react-native';
 import usePaymentInteractionsStyle from './styles/usePaymentInteractionsStyle';
 import {useTranslation} from 'react-i18next';
@@ -10,7 +10,6 @@ import {
   useTheme,
 } from 'react-native-paper';
 import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
-import useCartPricing from '@/hooks/useCartPricing';
 import RemainingPrice from './RemainingPrice';
 import DiscountAndOffer from './DiscountAndOffer';
 import EnterPaymentAmount from './EnterPaymentAmount';
@@ -19,11 +18,11 @@ import PayWithCreditCard from './PayWithCreditCard';
 import {SpecialOffersContext} from '@/contexts/SpecialOffersContext/SpecialOffersContext';
 import CustomModal from '@/components/common/CustomModal';
 import CancelDoneButtonGroup from '@/components/common/CancelDoneButtonGroup';
-import currency from 'currency.js';
 import CancelDocument from './CancelDocument';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {vibrate} from '@/utils/vibration';
+import {PriceContext} from '@/contexts/PriceContext/PriceContext';
 
 const PaymentInteractions = () => {
   const {t} = useTranslation();
@@ -33,7 +32,6 @@ const PaymentInteractions = () => {
 
   const {styles} = usePaymentInteractionsStyle(theme);
 
-  const [remainingPrice, setRemainingPrice] = useState<number>(0);
   const [paymentAmountMasked, setPaymentAmountMasked] = useState<string>();
   const [paymentAmountUnMasked, setPaymentAmountUnMasked] = useState<number>();
   const [dialogVisible, setDialogVisible] = useState<boolean>(false);
@@ -43,10 +41,10 @@ const PaymentInteractions = () => {
   const [isWaitingModalVisible, setIsWaitingModalVisible] =
     useState<boolean>(false);
 
-  const {cart, clearCart} = useContext(ShoppingCartContext);
+  const {clearCart} = useContext(ShoppingCartContext);
   const {selectedSpecialOffer} = useContext(SpecialOffersContext);
 
-  const {paymentTotal} = useCartPricing(cart);
+  const {applyPayment, remainingPrice} = useContext(PriceContext);
 
   const onSubmitAmount = (isCash: boolean) => {
     if (
@@ -106,7 +104,6 @@ const PaymentInteractions = () => {
 
   const onDone = () => {
     applyPayment(paymentAmountUnMasked!);
-
     onDismissWaitingModal();
   };
 
@@ -118,23 +115,6 @@ const PaymentInteractions = () => {
     clearCart();
     navigation.navigate('SalesScreen');
   };
-
-  const applyPayment = useCallback(
-    (amount: number) => {
-      setRemainingPrice((p) => currency(p).subtract(amount).value);
-    },
-    [setRemainingPrice]
-  );
-
-  // initially set the remaining price to paymentTotal from useCartPricing hook.
-  useEffect(() => {
-    setRemainingPrice(paymentTotal);
-  }, []);
-
-  // set remaining price according to selected special offer, offer discount is applied in useCartPricing hook.
-  useEffect(() => {
-    setRemainingPrice(paymentTotal);
-  }, [selectedSpecialOffer]);
 
   return (
     <>

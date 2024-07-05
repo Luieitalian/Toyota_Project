@@ -12,7 +12,6 @@ import {
   taxRate,
 } from '@/globals/pricing';
 import CustomText from './CustomText';
-import useCartPricing from '@/hooks/useCartPricing';
 
 export type CartItemProps = {
   cart_item: CartProductModel;
@@ -25,9 +24,6 @@ const CartItem = ({cart_item, removeable = true}: CartItemProps) => {
 
   const {styles} = useCartItemStyle(theme);
   const {removeOne} = useContext(ShoppingCartContext);
-
-  const {cart} = useContext(ShoppingCartContext);
-  const {taxTotal} = useCartPricing(cart);
 
   const onPress = useCallback(() => {
     removeOne(cart_item.prod.id);

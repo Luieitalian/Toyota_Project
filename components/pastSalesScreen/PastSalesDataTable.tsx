@@ -43,12 +43,10 @@ const PastSalesDataTable = ({pastSales, filter}: PastSalesDataTableProps) => {
       );
     }
 
-    _filteredSales.slice(
+    return _filteredSales.slice(
       page * numberOfItemsPerPage,
       (page + 1) * numberOfItemsPerPage
     );
-
-    return _filteredSales;
   }, [sortedPastSales, filter, page]);
 
   const onPressTitle = (category: string, sortDir: sortDirection) => {
