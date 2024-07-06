@@ -1,16 +1,16 @@
 import {useCallback, useContext} from 'react';
 import {SpecialOfferModel} from '@/models/SpecialOfferModel';
 import {CartProductModel} from '@/models/CartProductModel';
-import useCartPricing from './useCartPricing';
 import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
+import {PriceContext} from '@/contexts/PriceContext/PriceContext';
 
-type useIsOfferApplicable = {
+export type useIsOfferApplicable = {
   offer: SpecialOfferModel;
 };
 
 const useIsOfferApplicable = () => {
   const {cart} = useContext(ShoppingCartContext);
-  const {subTotal} = useCartPricing(cart);
+  const {subTotal} = useContext(PriceContext);
 
   const n_discount_over_m = useCallback(
     (offer: SpecialOfferModel, num: number): boolean => {

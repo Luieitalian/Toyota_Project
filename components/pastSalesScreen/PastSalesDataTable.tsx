@@ -1,13 +1,19 @@
-import React, {memo, RefObject, useMemo, useState} from 'react';
+import React, {memo, useMemo, useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {useTheme, TextInput, DataTable} from 'react-native-paper';
+import {useTheme, DataTable} from 'react-native-paper';
 import usePastSalesDataTableStyle from './styles/usePastSalesDataTableStyle';
 import {SaleModel} from '@/models/SaleModel';
-import {FlatList, ListRenderItem, ListRenderItemInfo} from 'react-native';
+import {FlatList, ListRenderItemInfo} from 'react-native';
+import PastSaleDataRow from './PastSaleDataRow';
+import PastSaleDataTitle, {sortDirection} from './PastSaleDataTitle';
+import useSortedPastSales from '@/hooks/useSortedPastSales';
 
-type PastSalesDataTableProps = {pastSales: SaleModel[]};
+export type PastSalesDataTableProps = {
+  pastSales: SaleModel[];
+  filter: string | undefined;
+};
 
-const PastSalesDataTable = ({pastSales}: PastSalesDataTableProps) => {
+const PastSalesDataTable = ({pastSales, filter}: PastSalesDataTableProps) => {
   const {t} = useTranslation();
   const theme = useTheme();
 
@@ -19,31 +25,54 @@ const PastSalesDataTable = ({pastSales}: PastSalesDataTableProps) => {
 
   const {styles} = usePastSalesDataTableStyle(theme);
 
+  const {sortedPastSales, sortPastSales} = useSortedPastSales(pastSales);
+
   const renderItem = ({item}: ListRenderItemInfo<SaleModel>) => (
-    <DataTable.Row>
-      <DataTable.Cell>{item.orderID}</DataTable.Cell>
-      <DataTable.Cell>{item.date_time}</DataTable.Cell>
-      <DataTable.Cell>{item.charge}</DataTable.Cell>
-      <DataTable.Cell>{item.synchronized}</DataTable.Cell>
-    </DataTable.Row>
+    <PastSaleDataRow item={item} />
   );
 
   const keyExtractor = (item: SaleModel, index: number) => index.toString();
 
+  const filteredPastSales = useMemo(() => {
+    let _filteredSales = sortedPastSales.map((sale) => sale); // copy
+
+    if (filter !== undefined) {
+      _filteredSales = _filteredSales.filter(
+        (sale: SaleModel) =>
+          sale.orderID.toString().slice(0, filter.length) === filter
+      );
+    }
+
+    return _filteredSales.slice(
+      page * numberOfItemsPerPage,
+      (page + 1) * numberOfItemsPerPage
+    );
+  }, [sortedPastSales, filter, page]);
+
+  const onPressTitle = (category: string, sortDir: sortDirection) => {
+    sortPastSales(category, sortDir);
+  };
+
   return (
     <DataTable style={styles.dataTable}>
       <DataTable.Header>
-        <DataTable.Title>{t('order_id')}</DataTable.Title>
-        <DataTable.Title>{t('date_time')}</DataTable.Title>
-        <DataTable.Title>{t('charge')}</DataTable.Title>
-        <DataTable.Title>{t('is_synchronized')}</DataTable.Title>
+        <PastSaleDataTitle numeric onPress={onPressTitle} category="order_id" />
+        <PastSaleDataTitle
+          numeric
+          onPress={onPressTitle}
+          category="date_time"
+        />
+        <PastSaleDataTitle numeric onPress={onPressTitle} category="charge" />
+        <PastSaleDataTitle
+          numeric
+          onPress={onPressTitle}
+          category="is_synchronized"
+        />
       </DataTable.Header>
 
       <FlatList
-        data={pastSales.slice(
-          page * numberOfItemsPerPage,
-          (page + 1) * numberOfItemsPerPage
-        )}
+        keyboardShouldPersistTaps="handled"
+        data={filteredPastSales}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
       />

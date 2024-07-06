@@ -17,22 +17,6 @@ const useCancelDoneButtonGroupStyle = (theme: MD3Theme) => {
         alignItems: 'center',
         justifyContent: 'space-evenly',
       },
-      cancelButton: {
-        backgroundColor: theme.colors.error,
-        borderRadius: 10,
-      },
-      doneButton: {
-        backgroundColor: theme.colors.primary,
-        borderRadius: 10,
-      },
-      cancelText: {
-        color: theme.colors.onError,
-        fontSize: isWide ? 18 : 16,
-      },
-      doneText: {
-        color: theme.colors.onPrimary,
-        fontSize: isWide ? 18 : 16,
-      },
     });
   }, [theme, width]);
   return {styles};

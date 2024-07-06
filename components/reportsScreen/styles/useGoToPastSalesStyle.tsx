@@ -10,7 +10,7 @@ const useGoToPastSalesStyle = (theme: MD3Theme) => {
     const isWide = width >= breakPoint;
     return StyleSheet.create({
       buttonContainer: {
-        flex: 0,
+        flex: 1,
         minHeight: 100,
       },
       buttonText: {

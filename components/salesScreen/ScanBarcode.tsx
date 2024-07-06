@@ -1,26 +1,48 @@
-import React, {memo} from 'react';
+import React, {memo, useState} from 'react';
 import {useTheme} from 'react-native-paper';
 import useScanBarcodeStyle from './styles/useScanBarcodeStyle';
 import CustomButton from '../common/CustomButton';
 import {useTranslation} from 'react-i18next';
-import useNFC from '@/hooks/useNFC';
+import BarcodeCamera from './BarcodeCamera';
+import CustomModal from '../common/CustomModal';
 
 const ScanBarcode = () => {
   const {t} = useTranslation();
   const theme = useTheme();
 
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
+
   const {styles} = useScanBarcodeStyle(theme);
-  const readNFC = useNFC();
 
   const onPress = async () => {
-    await readNFC();
-    console.log('Scan barcode');
+    onModal();
+  };
+
+  const onDismissModal = () => {
+    setModalVisible(false);
+  };
+
+  const onModal = () => {
+    setModalVisible(true);
+  };
+
+  const closeCamera = () => {
+    setModalVisible(false);
   };
 
   return (
-    <CustomButton onPress={onPress} overridingButtonStyles={styles}>
-      {t('scan_barcode')}
-    </CustomButton>
+    <>
+      <CustomButton onPress={onPress} overridingButtonStyles={styles}>
+        {t('scan_barcode')}
+      </CustomButton>
+      <CustomModal
+        overridingModalStyles={styles}
+        modalVisible={modalVisible}
+        onDismissModal={onDismissModal}
+      >
+        <BarcodeCamera closeCamera={closeCamera} />
+      </CustomModal>
+    </>
   );
 };
 

@@ -8,6 +8,12 @@ const useScanBarcodeStyle = (theme: MD3Theme) => {
     return StyleSheet.create({
       buttonContainer: {},
       buttonText: {},
+      modalContainer: {
+        marginHorizontal: 0,
+        marginVertical: 0,
+        borderRadius: 0,
+        padding: 0,
+      },
     });
   }, [theme, width]);
 

@@ -1,7 +1,7 @@
 import React, {memo, useCallback, useMemo, useState} from 'react';
 import {ThemeContext} from './ThemeContext';
 
-type ThemeContextProviderProps = {
+export type ThemeContextProviderProps = {
   children: React.ReactNode;
 };
 

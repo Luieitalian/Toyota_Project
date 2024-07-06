@@ -3,7 +3,7 @@ import {useTranslation} from 'react-i18next';
 import {useTheme, TextInput} from 'react-native-paper';
 import usePasswordInputStyle from './styles/usePasswordInputStyle';
 
-type PasswordInputProps = {
+export type PasswordInputProps = {
   passwordRef: RefObject<any>;
   onChangePassword: (password: string) => void;
   password: string;

@@ -6,7 +6,7 @@ import trTranslation from './locales/tr.json';
 
 i18n.use(initReactI18next).init({
   compatibilityJSON: 'v3',
-  debug: true,
+  debug: false,
   fallbackLng: 'en',
   supportedLngs: ['en', 'tr'],
   resources: {

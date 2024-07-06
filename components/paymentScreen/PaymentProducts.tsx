@@ -8,13 +8,13 @@ import {
 } from 'react-native';
 import {useTheme} from 'react-native-paper';
 import {CartProductModel} from '@/models/CartProductModel';
-import CartItem from '../salesScreen/CartItem';
+import CartItem from '@/components/common/CartItem';
 import {useTranslation} from 'react-i18next';
 import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
 import usePaymentProductsStyle from './styles/usePaymentProductsStyle';
 import {breakPoint} from '@/globals/style';
-import CustomButton from '../common/CustomButton';
-import CustomModal from '../common/CustomModal';
+import CustomButton from '@/components/common/CustomButton';
+import CustomModal from '@/components/common/CustomModal';
 
 const PaymentProducts = () => {
   const {t} = useTranslation();
@@ -29,7 +29,7 @@ const PaymentProducts = () => {
   const isWide = useMemo(() => width >= breakPoint, [width]);
 
   const renderItem = ({item}: ListRenderItemInfo<CartProductModel>) => (
-    <CartItem key={item.prod.id} cart_item={item} />
+    <CartItem key={item.prod.id} removeable={false} cart_item={item} />
   );
 
   const ListEmptyComponent = <Text style={styles.emptyText}>empty</Text>;

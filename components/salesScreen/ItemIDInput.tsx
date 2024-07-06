@@ -3,7 +3,7 @@ import {TextInput, useTheme} from 'react-native-paper';
 import useItemIDInputStyle from './styles/useItemIDInputStyle';
 import {useTranslation} from 'react-i18next';
 
-type ItemIDInputProps = {
+export type ItemIDInputProps = {
   setIDText: Dispatch<SetStateAction<string>>;
   onSubmitEditing: any;
   text: string;

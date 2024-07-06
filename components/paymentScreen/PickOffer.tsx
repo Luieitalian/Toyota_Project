@@ -1,16 +1,13 @@
 import React, {memo, useContext, useEffect, useState} from 'react';
-import {ScrollView, Text} from 'react-native';
 import {useTheme} from 'react-native-paper';
 import usePickOfferStyle from './styles/usePickOfferStyle';
 import CustomButton from '../common/CustomButton';
 import {SpecialOfferModel} from '@/models/SpecialOfferModel';
-import SpecialOfferItem from './SpecialOfferItem';
-import useIsOfferApplicable from '@/hooks/useIsOfferApplicable';
 import {useTranslation} from 'react-i18next';
 import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
 import {SpecialOffersContext} from '@/contexts/SpecialOffersContext/SpecialOffersContext';
-import CancelDoneButtonGroup from '../common/CancelDoneButtonGroup';
 import CustomModal from '../common/CustomModal';
+import SpecialOffers from '../common/SpecialOffers';
 
 const PickOffer = () => {
   const theme = useTheme();
@@ -21,14 +18,7 @@ const PickOffer = () => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
 
   const {cart} = useContext(ShoppingCartContext);
-  const {
-    specialOffers,
-    offersLoading,
-    selectedSpecialOffer,
-    setSelectedSpecialOffer,
-  } = useContext(SpecialOffersContext);
-
-  const {isApplicable} = useIsOfferApplicable();
+  const {setSelectedSpecialOffer} = useContext(SpecialOffersContext);
 
   const showModal = () => {
     setModalVisible(true);
@@ -68,23 +58,11 @@ const PickOffer = () => {
         onDismissModal={hideModal}
         overridingModalStyles={styles}
       >
-        <Text style={styles.title}>{t('special_offers')}</Text>
-        {offersLoading ? (
-          <Text>{t('special_offers_loading')}</Text>
-        ) : (
-          <ScrollView contentContainerStyle={styles.offersContainer}>
-            {specialOffers?.map((offer: SpecialOfferModel) => (
-              <SpecialOfferItem
-                selected={selectedSpecialOffer === offer && true}
-                applicable={isApplicable(offer)}
-                onSelect={onSelect}
-                offer={offer}
-                key={offer.id}
-              />
-            ))}
-          </ScrollView>
-        )}
-        <CancelDoneButtonGroup onCancel={onCancel} onDone={onDone} />
+        <SpecialOffers
+          onCancel={onCancel}
+          onDone={onDone}
+          onSelect={onSelect}
+        />
       </CustomModal>
 
       <CustomButton onPress={onPress} overridingButtonStyles={styles}>

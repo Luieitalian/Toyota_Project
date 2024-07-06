@@ -4,7 +4,7 @@ import {useTheme, TextInput} from 'react-native-paper';
 import useCreditCardNumberInputStyle from './styles/useCreditCardNumberInputStyle';
 import {Masks, useMaskedInputProps} from 'react-native-mask-input';
 
-type CreditCardNumberInputProps = {
+export type CreditCardNumberInputProps = {
   focusOnNameInput: () => void;
   onChangeNumber: (masked: string, unmasked: string) => void;
   creditCardNumber: string | undefined;

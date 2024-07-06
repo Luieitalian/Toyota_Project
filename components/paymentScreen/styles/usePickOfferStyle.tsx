@@ -18,18 +18,6 @@ const usePickOfferStyle = (theme: MD3Theme) => {
           buttonText: {
             fontSize: 18,
           },
-          offersContainer: {
-            width: '100%',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-            gap: 30,
-            padding: 10,
-          },
-          title: {
-            color: theme.colors.onBackground,
-            fontSize: isWide ? 20 : 18,
-            fontWeight: '500',
-          },
         })
       : StyleSheet.create({
           buttonContainer: {
@@ -38,18 +26,6 @@ const usePickOfferStyle = (theme: MD3Theme) => {
           },
           buttonText: {
             fontSize: 18,
-          },
-          offersContainer: {
-            width: '100%',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-            gap: 30,
-            padding: 10,
-          },
-          title: {
-            color: theme.colors.onBackground,
-            fontSize: isWide ? 20 : 18,
-            fontWeight: '500',
           },
         });
   }, [theme, width]);

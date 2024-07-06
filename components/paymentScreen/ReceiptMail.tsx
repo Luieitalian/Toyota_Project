@@ -1,17 +1,11 @@
 import React, {memo, useState} from 'react';
-import {View} from 'react-native';
-import {
-  Button,
-  Portal,
-  Snackbar,
-  TextInput,
-  useTheme,
-} from 'react-native-paper';
+import {Portal, Snackbar, TextInput, useTheme} from 'react-native-paper';
 import useReceiptMailStyle from './styles/useReceiptMailStyle';
-import CustomButton from '../common/CustomButton';
+import CustomButton from '@/components/common/CustomButton';
 import {useTranslation} from 'react-i18next';
-import CustomModal from '../common/CustomModal';
-import CancelDoneButtonGroup from '../common/CancelDoneButtonGroup';
+import CustomModal from '@/components/common/CustomModal';
+import CancelDoneButtonGroup from '@/components/common/CancelDoneButtonGroup';
+import {Text} from 'react-native';
 
 const ReceiptMail = () => {
   const {t} = useTranslation();
@@ -75,6 +69,7 @@ const ReceiptMail = () => {
         onDismissModal={hideModal}
         overridingModalStyles={styles}
       >
+        <Text style={styles.title}>{t('receipt_mail')}</Text>
         <TextInput
           inputMode="email"
           style={styles.textInput}

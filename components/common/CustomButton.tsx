@@ -3,7 +3,7 @@ import {GestureResponderEvent, Pressable, Text} from 'react-native';
 import {useTheme} from 'react-native-paper';
 import useCustomButtonStyle from './styles/useCustomButtonStyle';
 
-type CustomButtonProps = {
+export type CustomButtonProps = {
   children: React.ReactNode;
   overridingButtonStyles: any;
   onPress: (event: GestureResponderEvent) => void;
@@ -18,7 +18,7 @@ const CustomButton = ({
 }: CustomButtonProps) => {
   const theme = useTheme();
 
-  const [styles] = useCustomButtonStyle(theme);
+  const {styles} = useCustomButtonStyle(theme, disabled);
 
   return (
     <Pressable

@@ -2,7 +2,7 @@ import React, {memo, useContext} from 'react';
 import {FlatList, ListRenderItemInfo, View} from 'react-native';
 import {useTheme} from 'react-native-paper';
 import {CartProductModel} from '@/models/CartProductModel';
-import CartItem from './CartItem';
+import CartItem from '@/components/common/CartItem';
 import {useTranslation} from 'react-i18next';
 import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
 import useCartProductsStyle from './styles/useCartProductsStyle';

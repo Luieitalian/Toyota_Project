@@ -3,7 +3,7 @@ import {StyleSheet, useWindowDimensions} from 'react-native';
 import {MD3Theme} from 'react-native-paper';
 import {breakPoint} from '@/globals/style';
 
-type useCreditCardSelectStyleArgs = {
+export type useCreditCardSelectStyleArgs = {
   theme: MD3Theme;
   isCash: boolean;
 };

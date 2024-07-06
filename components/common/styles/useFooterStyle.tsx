@@ -3,7 +3,7 @@ import {StyleSheet, useWindowDimensions} from 'react-native';
 import {MD3Theme} from 'react-native-paper';
 import {breakPoint} from '@/globals/style';
 
-type useFooterStyleProps = {
+export type useFooterStyleProps = {
   theme: MD3Theme;
   isOnline: boolean;
 };

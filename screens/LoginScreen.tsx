@@ -17,6 +17,7 @@ import Login from '@/components/loginScreen/Login';
 import validateUser from '@/utils/validateUser';
 import {UsersContext} from '@/contexts/UsersContext/UsersContext';
 import {Portal, Snackbar} from 'react-native-paper';
+import {vibrate} from '@/utils/vibration';
 
 const LoginScreen = ({route, navigation}: any) => {
   const {t} = useTranslation();
@@ -30,8 +31,6 @@ const LoginScreen = ({route, navigation}: any) => {
 
   const {users, setUser} = useContext(UsersContext);
 
-  const readNFC = useNFC();
-
   const focusOnPassword = () => {
     passwordRef.current?.focus();
   };
@@ -39,11 +38,11 @@ const LoginScreen = ({route, navigation}: any) => {
   const onLoginSubmit = async () => {
     const {user} = validateUser(username, password, users);
     if (user) {
-      setUser(user);
+      setUser(user.name);
       navigation.replace('HomeScreen');
     } else {
-      await readNFC();
       setSnackbarVisible(true);
+      vibrate(1);
     }
   };
 
@@ -52,7 +51,6 @@ const LoginScreen = ({route, navigation}: any) => {
   };
 
   const onChangeUsername = (username: string) => {
-    //readNFC();
     setUsername(username);
   };
   const onChangePassword = (password: string) => {

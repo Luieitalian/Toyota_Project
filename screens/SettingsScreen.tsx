@@ -6,6 +6,8 @@ import Footer from '@/components/common/Footer';
 import useSettingsScreenStyle from './styles/useSettingsScreenStyle';
 import LanguageSegButtons from '@/components/settingsScreen/LanguageSegButtons';
 import ThemeSwitchButton from '@/components/settingsScreen/ThemeSwitchButton';
+import PrinterTest from '@/components/settingsScreen/PrinterTest';
+import SynchronizationSwitchButton from '@/components/settingsScreen/SynchronizationSwitchButton';
 
 const SettingsScreen = ({route, navigation}: any) => {
   const {styles, theme} = useSettingsScreenStyle();
@@ -19,6 +21,8 @@ const SettingsScreen = ({route, navigation}: any) => {
       <View style={styles.group}>
         <LanguageSegButtons />
         <ThemeSwitchButton />
+        <SynchronizationSwitchButton />
+        <PrinterTest />
         <Status />
       </View>
       <Footer />

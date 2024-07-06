@@ -2,7 +2,7 @@ import React, {useMemo} from 'react';
 import {Categories} from '@/globals/categories';
 import {ProductModel} from '@/models/ProductModel';
 
-type useFilteredProductsProps = {
+export type useFilteredProductsProps = {
   products: ProductModel[];
   favorites: string[];
   submittedText: string | undefined;

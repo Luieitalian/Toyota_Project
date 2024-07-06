@@ -19,6 +19,16 @@ const usePastSalesScreenStyle = () => {
       contentContainer: {
         flex: 1,
       },
+      searchBarContainer: {
+        flex: 0,
+        padding: 20,
+        alignItems: 'center',
+        width: '100%',
+      },
+      searchBarInput: {
+        width: '100%',
+        color: theme.colors.onBackground,
+      },
     });
   }, [theme, width]);
   return {styles, theme};

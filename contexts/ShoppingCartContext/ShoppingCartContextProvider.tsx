@@ -3,7 +3,7 @@ import {ShoppingCartContext} from './ShoppingCartContext';
 import {CartProductModel} from '@/models/CartProductModel';
 import useShoppingCartFunctions from '@/hooks/useShoppingCartFunctions';
 
-type ShoppingCartContextProviderProps = {
+export type ShoppingCartContextProviderProps = {
   children: React.ReactNode;
 };
 

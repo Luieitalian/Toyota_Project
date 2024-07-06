@@ -1,25 +1,39 @@
-import React, {memo} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import StatusContextProvider from './StatusContext/StatusContextProvider';
 import ProductsContextProvider from './ProductsContext/ProductsContextProvider';
 import FavoritesContextProvider from './FavoritesContext/FavoritesContextProvider';
 import ShoppingCartContextProvider from './ShoppingCartContext/ShoppingCartContextProvider';
 import PastSalesContextProvider from './PastSalesContext/PastSalesContextProvider';
 import ThemeContextProvider from './ThemeContext/ThemeContextProvider';
-import UnsentCartsContextProvider from './UnsentCartsContext/UnsentCartsContextProvider';
+import UnsentCartsContextProvider from './UnsentSalesContext/UnsentSalesContextProvider';
 import SafeAreaProviderWrapper from './SafeAreaProviderWrapper/SafeAreaProviderWrapper';
 import PaperProviderWrapper from './PaperProviderWrapper/PaperProviderWrapper';
 import UsersContextProvider from './UsersContext/UsersContextProvider';
 import ServiceContextProvider from './ServiceContext/ServiceContextProvider';
 import SpecialOffersContextProvider from './SpecialOffersContext/SpecialOffersContextProvider';
+import setDatabase from '@/utils/setDatabase';
+import PriceContextProvider from './PriceContext/PriceContextProvider';
 
-type ContextProviderProps = {
+export type ContextProviderProps = {
   children: React.ReactNode;
 };
 
 const ContextProvider = ({children}: ContextProviderProps) => {
+  const [isDatabaseInitialized, setIsDatabaseInitialized] = useState(false);
+
+  useEffect(() => {
+    const initializeDatabase = async () => {
+      await setDatabase().then(() => {
+        console.log('resolved');
+        if (!isDatabaseInitialized) setIsDatabaseInitialized(true);
+      });
+    };
+    initializeDatabase();
+  }, [isDatabaseInitialized]);
+
   return (
     <StatusContextProvider>
-      <ProductsContextProvider>
+      <ProductsContextProvider isDatabaseInitialized={isDatabaseInitialized}>
         <FavoritesContextProvider>
           <ShoppingCartContextProvider>
             <PastSalesContextProvider>
@@ -27,13 +41,15 @@ const ContextProvider = ({children}: ContextProviderProps) => {
                 <UsersContextProvider>
                   <ServiceContextProvider>
                     <SpecialOffersContextProvider>
-                      <ThemeContextProvider>
-                        <PaperProviderWrapper>
-                          <SafeAreaProviderWrapper>
-                            {children}
-                          </SafeAreaProviderWrapper>
-                        </PaperProviderWrapper>
-                      </ThemeContextProvider>
+                      <PriceContextProvider>
+                        <ThemeContextProvider>
+                          <PaperProviderWrapper>
+                            <SafeAreaProviderWrapper>
+                              {children}
+                            </SafeAreaProviderWrapper>
+                          </PaperProviderWrapper>
+                        </ThemeContextProvider>
+                      </PriceContextProvider>
                     </SpecialOffersContextProvider>
                   </ServiceContextProvider>
                 </UsersContextProvider>

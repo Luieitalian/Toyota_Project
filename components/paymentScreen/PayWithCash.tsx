@@ -4,7 +4,11 @@ import {useTranslation} from 'react-i18next';
 import {useTheme} from 'react-native-paper';
 import usePayWithCashStyle from './styles/usePayWithCashStyle';
 
-const PayWithCash = () => {
+export type PayWithCashProps = {
+  onSubmitAmount: (isCash: boolean) => void;
+};
+
+const PayWithCash = ({onSubmitAmount}: PayWithCashProps) => {
   const {t} = useTranslation();
   const theme = useTheme();
 
@@ -12,6 +16,7 @@ const PayWithCash = () => {
 
   const onPress = () => {
     console.log('pay_with_cash');
+    onSubmitAmount(true);
   };
 
   return (

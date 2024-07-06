@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, useWindowDimensions} from 'react-native';
+import {Dimensions, StyleSheet, useWindowDimensions} from 'react-native';
 import {MD3Theme} from 'react-native-paper';
 import {breakPoint} from '@/globals/style';
 
@@ -26,9 +26,18 @@ const usePayStyle = (theme: MD3Theme) => {
         color: theme.colors.background,
       },
       modalContainer: {
-        marginHorizontal: isWide ? 350 : 30,
-        marginVertical: isWide ? 30 : 30,
-        backgroundColor: 'white',
+        marginHorizontal: 0,
+        marginVertical: 0,
+        borderRadius: 0,
+        padding: 0,
+      },
+      pdf: {
+        flex: 1,
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
+      },
+      pdfScale: {
+        width: isWide ? 1.5 : 1,
       },
     });
   }, [theme, width]);

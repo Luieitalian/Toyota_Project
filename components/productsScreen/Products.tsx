@@ -1,11 +1,4 @@
-import React, {
-  memo,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import React, {memo, useContext, useEffect, useState} from 'react';
 import {FlatList, ListRenderItemInfo, Text, View} from 'react-native';
 import {ProductModel} from '@/models/ProductModel';
 import useProductsStyle from './styles/useProductsStyle';
@@ -15,10 +8,9 @@ import {ProductsContext} from '@/contexts/ProductsContext/ProductsContext';
 import {useTranslation} from 'react-i18next';
 import {ShoppingCartContext} from '@/contexts/ShoppingCartContext/ShoppingCartContext';
 import {FavoritesContext} from '@/contexts/FavoritesContext/FavoritesContext';
-import {Categories} from '@/globals/categories';
 import useFilteredProducts from '@/hooks/useFilteredProducts';
 
-type ProductsProps = {
+export type ProductsProps = {
   category: string;
   submittedText?: string | undefined;
 };

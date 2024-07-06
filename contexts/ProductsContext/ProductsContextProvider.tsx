@@ -4,26 +4,20 @@ import setDatabase from '@/utils/setDatabase';
 import {StatusContext} from '@/contexts/StatusContext/StatusContext';
 import getProducts from '@/utils/getProducts';
 
-type ProductsContextProviderProps = {
+export type ProductsContextProviderProps = {
   children: React.ReactNode;
+  isDatabaseInitialized: boolean;
 };
 
-const ProductsContextProvider = ({children}: ProductsContextProviderProps) => {
-  const [isDatabaseInitialized, setIsDatabaseInitialized] = useState(false);
+const ProductsContextProvider = ({
+  children,
+  isDatabaseInitialized,
+}: ProductsContextProviderProps) => {
   const {isOnline} = useContext(StatusContext);
 
-  // TODO move this logic to another component
-  useEffect(() => {
-    const initializeDatabase = async () => {
-      await setDatabase();
-      setIsDatabaseInitialized(true);
-    };
-    initializeDatabase();
-  }, []);
-
   const {products, loadingProducts} = getProducts({
-    isOnline: isOnline, // TODO
-    isDatabaseInitialized: isDatabaseInitialized, // TODO
+    isOnline: isOnline,
+    isDatabaseInitialized: isDatabaseInitialized,
   });
 
   const productsContext = useMemo(

@@ -26,6 +26,9 @@ const usePaymentProductsStyle = (theme: MD3Theme) => {
       containerWide: {
         flex: 1.4,
         //backgroundColor: 'red',
+        borderColor: theme.colors.outlineVariant,
+        borderWidth: 1,
+        borderRadius: 10,
         justifyContent: 'space-between',
         flexDirection: 'column',
       },

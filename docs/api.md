@@ -1,4 +1,0 @@
-- HızlıPos API
-  - [Screens](screens.md)
-  - [Hooks](hooks.md)
-  - [Contexts](contexts.md)

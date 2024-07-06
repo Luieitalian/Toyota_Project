@@ -15,10 +15,21 @@ const usePaymentInteractionsStyle = (theme: MD3Theme) => {
         gap: isWide ? 10 : 20,
         //backgroundColor: 'purple',
       },
+      modalContainer: {
+        marginVertical: isWide ? 250 : 300,
+      },
       interactionGroup: {
         gap: 20,
         flexDirection: 'row',
         justifyContent: 'space-between',
+      },
+      receivingPaymentText: {
+        color: theme.colors.onBackground,
+        fontSize: isWide ? 20 : 18,
+      },
+      dialogText: {
+        color: theme.colors.onBackground,
+        fontSize: isWide ? 20 : 18,
       },
     });
   }, [theme, width]);

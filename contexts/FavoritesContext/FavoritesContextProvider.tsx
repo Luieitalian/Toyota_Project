@@ -3,7 +3,7 @@ import {FavoritesContext} from './FavoritesContext';
 import useFavoriteProductsFunctions from '@/hooks/useFavoriteProductsFunctions';
 import {ProductModel} from '@/models/ProductModel';
 
-type FavoritesContextProviderProps = {
+export type FavoritesContextProviderProps = {
   children: React.ReactNode;
 };
 

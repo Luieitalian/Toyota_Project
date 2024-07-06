@@ -12,6 +12,9 @@ import Header from '@/components/common/Header';
 import useScreenHeaderStyle from '@/screens/styles/useScreenHeaderStyle';
 import PastSalesScreen from '@/screens/PastSalesScreen';
 import PaymentScreen from './screens/PaymentScreen';
+import UnsentSalesScreen from './screens/UnsentSalesScreen';
+import SynchronizeAll from './components/unsentSalesScreen/SynchronizeAll';
+import CartIcon from './components/productsScreen/CartIcon';
 
 const Stack = createNativeStackNavigator();
 
@@ -54,6 +57,7 @@ const App = () => {
           options={{
             headerTitle: t('products'),
             headerShown: true,
+            headerRight: () => <CartIcon />,
           }}
           component={ProductsScreen}
         />
@@ -102,6 +106,16 @@ const App = () => {
             headerShown: true,
           }}
           component={PastSalesScreen}
+        />
+
+        <Stack.Screen
+          name="UnsentSalesScreen"
+          options={{
+            headerTitle: t('unsent_sales'),
+            headerShown: true,
+            headerRight: () => <SynchronizeAll />,
+          }}
+          component={UnsentSalesScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

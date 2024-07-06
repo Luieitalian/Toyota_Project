@@ -13,6 +13,7 @@ const useSynchronizeUnsentCartsStyle = (theme: MD3Theme) => {
         flex: 1,
       },
       buttonContainer: {
+        flex: 1,
         minHeight: 100,
         paddingHorizontal: 5,
       },

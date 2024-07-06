@@ -13,9 +13,14 @@ const useGoToPaymentScreenStyle = (theme: MD3Theme) => {
       buttonContainer: {
         flex: 0,
         padding: 20,
+        backgroundColor: theme.colors.primary,
       },
       buttonText: {
         fontSize: isWide ? 20 : 16,
+      },
+      dialogText: {
+        color: theme.colors.onBackground,
+        fontSize: isWide ? 20 : 18,
       },
     });
   }, [theme, width]);
