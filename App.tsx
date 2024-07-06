@@ -31,7 +31,7 @@ const App = () => {
           headerTitleStyle: headerStyles.headerTitleStyle,
           headerTintColor: headerStyles.headerTint.color,
         }}
-        initialRouteName="HomeScreen"
+        initialRouteName="LoginScreen"
       >
         <Stack.Screen
           name="LoginScreen"
