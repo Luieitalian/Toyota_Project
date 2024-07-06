@@ -7,7 +7,6 @@
 - [Features](#features)
 - [How To Use](#how-to-use)
 - [Prerequisites](#prerequisites)
-- [Screenshots](#screenshots)
 
 ### Features
 
